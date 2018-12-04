@@ -1,0 +1,500 @@
+body {
+	background: #EDF2F4;
+	color: #2B2D42;
+	font-family: Helvetica;
+}
+
+section {
+	background: #8D99AE;
+	color: #EDF2F4;
+}
+
+a:hover {
+	color: #EF233C;
+}
+
+.red {
+	background: #D90429;
+}
+
+.ui-enemies, .ui-list-enemies, .ui-character-bag, .ui-abilities, .ui {
+	display: flex;
+}
+.ui-list-enemies-item {
+	position: relative;
+}
+.ui-left, .ui-right {
+	flex: 1;
+}
+.ui-character-bag {
+	font-size: 12px;
+	flex-wrap: wrap;
+	max-width: 70%;
+	/*max-height: 300px;
+	overflow-y: auto;*/
+
+	border: 1px solid #cecece;
+	padding: 5px;
+	border-radius: 2px;
+}
+.character {
+	background: rgb(0, 185, 0);
+	color: #fff;
+	border-radius: 4px;
+	list-style: none;
+	margin: 5px;
+	padding: 5px 10px;
+	min-width: 100px;
+}
+.target {
+	background: rgb(185, 0, 0);
+	color: #fff;
+	border-radius: 4px;
+	list-style: none;
+	margin: 5px;
+	padding: 5px 10px;
+	min-width: 100px;
+}
+.select-enemy {
+	background: rgb(185, 0, 0);
+	color: #fff;
+	border-radius: 4px;
+	list-style: none;
+	margin: 5px;
+	padding: 5px 8px;
+	min-width: 50px;
+	font-size: 10px;
+	cursor: pointer;
+}
+.select-enemy.is_active {
+	border: 2px solid rgb(115, 52, 43);
+}
+.select-item {
+	background: rgba(104, 104, 104, 1);
+	color: #444;
+	border-radius: 4px;
+	list-style: none;
+	margin: 5px;
+	padding: 5px 10px;
+	min-width: 100px;
+	border: 1px solid #cecece;
+	text-shadow: 1px 0px 1px black;
+	animation: gotItem 1s linear;
+}
+
+.click-ability {
+	background: rgba(178, 149, 109, 1);
+	color: #f7f7f7;
+	border-radius: 4px;
+	margin: 5px;
+	padding: 5px 10px;
+	text-shadow: 1px 0px 1px black;
+	animation: gotItem 1s linear;
+}
+.click-ability ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.click-ability.damage {
+	background: rgba(178, 149, 109, 1);
+}
+.click-ability.heal {
+	background: rgba(113, 178, 96, 1);
+}
+.combat-log {
+	height: 150px;
+	overflow-x: auto;
+	border: 1px solid #cecece;
+	padding: 5px;
+	border-radius: 2px;
+	max-width: 600px;
+	font-size: 10px;
+}
+
+.game-icon {
+	width: 64px;
+	height: 64px;
+	display: inline-block;
+	border: 1px solid #333;
+	border-radius: 3px;
+	background: url(assets/default.png) center center/cover;
+	transition: all .1s linear;
+	cursor: pointer;
+	position: relative;
+	margin: 3px;
+	font-size: 10px;
+	color: #fff;
+}
+
+.game-icon.game-icon-small {
+	width: 26px;
+	height: 26px;
+}
+
+.game-icon .bind {
+	text-shadow: 1px 1px 1px #000000;
+	position: absolute;
+	top: 2px;
+	right: 5px;
+}
+.game-icon .label {
+	text-shadow: 1px 1px 1px #000000;
+	position: absolute;
+	bottom: 2px;
+	right: 5px;
+}
+.game-icon .level {
+	text-shadow: 1px 1px 1px #000000;
+	position: absolute;
+	bottom: 2px;
+	left: 5px;
+}
+.game-icon .name {
+	text-shadow: 1px 1px 1px #000000;
+	position: absolute;
+	top: 2px;
+	left: 5px;
+}
+.game-icon .cooldown {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	display: inline-block;
+	text-align: center;
+	font-size: 30px;
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+	line-height: 2em;
+	background: rgba(255, 46, 5, 0.23);
+	//background: url(assets/default.png) center center/cover;
+}
+.game-icon.game-icon-small .cooldown { 
+	font-size: 12px;
+	background: transparent;
+}
+.game-icon .tooltip, .game-icon:hover .tooltip:hover {
+	display: none;
+	z-index: 11;
+}
+.game-icon:hover {
+	border: 1px solid #9f55fc;
+	box-shadow: 0 0 3px 1px #fcf4b9 inset;
+}
+.game-icon:hover .tooltip {
+	display: block;
+	position: absolute;
+	left: 44px;
+	top: 64px;
+}
+.game-icon.game-icon-small:hover .tooltip {
+	left: 24px;
+	top: 24px;
+}
+
+.tooltip ul {
+	background: rgba(54, 54, 54, .8);
+	/*color: #fff;*/
+	border-radius: 4px;
+	list-style: none;
+	margin: 5px;
+	padding: 5px 10px;
+	min-width: 100px;
+	border: 1px solid #cecece;
+	text-shadow: 1px 0px 1px black;
+}
+
+.sword {
+	background: url(assets/sword.png) center center/cover;
+}
+.knife {
+	background: url(assets/knife.png) center center/cover;
+}
+.heal {
+	background: url(assets/regrown.png) center center/cover;
+}
+.scrap {
+	background: url(assets/scrap.png) center center/cover;
+}
+
+
+.poor {
+	color: #d2d2d2;
+	border: 1px solid #d2d2d2;
+	box-shadow: 0px 0px 5px 1px #d2d2d2 inset;
+}
+.common {
+	color: #fff;
+	border: 1px solid #fff;
+	box-shadow: 0px 0px 5px 1px #fff inset;
+}
+.uncommon {
+	color: #5ee76c;
+	border: 1px solid #5ee76c;
+	box-shadow: 0px 0px 5px 1px #5ee76c inset;
+}
+.rare {
+	color: #68b8ff;
+	border: 1px solid #68b8ff;
+	box-shadow: 0px 0px 5px 1px #68b8ff inset;
+}
+.epic {
+	color: #c984ff;
+	border: 1px solid #c984ff;
+	box-shadow: 0px 0px 5px 1px #c984ff inset;
+}
+.legendary {
+	color: #ff9a34;
+	border: 1px solid #ff9a34;
+	box-shadow: 0px 0px 5px 1px #ff9a34 inset;
+}
+
+
+@keyframes gotItem {
+	0% {
+		box-shadow: 0px 0px 4px 4px yellow;
+		background: rgb(177, 177, 0);
+	},
+	100% {
+		box-shadow: 0px 0px 0px 0px yellow;
+		background: rgba(104, 104, 104, 1);
+	}
+}
+
+@keyframes cantEquipItem {
+	0% {
+		color: red;
+	},
+}
+.cant_equip, .cant_use {
+	animation: cantEquipItem 1s linear;	
+}
+.equipped {
+	border: 1px solid #326d99;
+}
+
+.target-box {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	position: relative;
+}
+.target-box.union {
+	margin-right: 25px;
+}
+.hp-bar {
+	position: relative;
+	width: 130px;
+	display: inline-block;
+}
+.avatar {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background: url(assets/enemy.png) center center/cover;
+	border-radius: 50%;
+	border: 2px solid #b0b0b0;
+	vertical-align: middle;
+	margin-right: 5px;
+	position: relative;
+	z-index: 10;
+}
+.target-box .level {
+	font-size: 13px;
+	line-height: 1.5em;
+	color: #fff;
+	text-shadow: 1px 1px 0px #000;
+	position: absolute;
+	bottom: -2px;
+	right: 34px;
+	width: 18px;
+	height: 18px;
+	background: rgb(86, 84, 86);
+	border-radius: 50%;
+	border: 1px solid #d4cf12;
+}
+.hp-left {
+	background: red;
+	position: absolute;
+	left: -16px;
+	top: 1px;
+	height: 18px;
+	width: 100%;
+	border-radius: 4px;
+	padding-left: 14px;
+	z-index: 2
+}
+.union .hp-left {
+	background: green;
+}
+.hp-left-border {
+	background: rgba(134, 134, 134, 0.9);
+	position: absolute;
+	left: -18px;
+	top: 0;
+	height: 18px;
+	width: 100%;
+	border-radius: 4px;
+	padding-left: 14px;
+	border: 1px solid #606060;
+	z-index: 1
+}
+.hp-text {
+	position: relative;
+	z-index: 3;
+	color: #fff;
+	text-shadow: 1px 1px #000;
+	font-size: 11px;
+	vertical-align: middle;
+}
+
+.view-map-row span {
+	position: relative;
+	display: inline-block;
+	font-size: 8px;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #d0d0d0;
+}
+.view-map-row .layer1, .view-map-row .layer2 {
+	border: none;
+}
+.view-map-row .ground0 {
+	background: rgb(154, 127, 103);
+}
+.view-map-row .river0 {
+	background: rgb(104, 208, 255);
+}
+.view-map-row .forest0 {
+	background: rgb(60, 134, 76);
+}
+.view-map-row .rock0 {
+	background: rgb(163, 159, 167);
+}
+.view-map-row .bridge0 .layer1 {
+	position: absolute;
+	width: 100%;
+	height: 40%;
+	top: 30%;
+	left: 0;
+	background: #a0a0a0;
+	border-top: 2px solid #404040;
+	border-bottom: 2px solid #404040; 
+}
+.view-map-row .bridge1 .layer1 {
+	position: absolute;
+	width: 40%;
+	height: 100%;
+	top: 0;
+	left: 30%;
+	background: #a0a0a0;
+}
+
+.view-map-row .battle0 .layer1 {
+	position: absolute;
+	width: 80%;
+	height: 80%;
+	top: 10px;
+	left: 10%;
+	background: url(assets/battle.png) center center/cover;
+}
+
+.tile:hover .tile-detail, .tile .tile-detail:hover {
+	display: block;
+	position: absolute;
+	left: 34px;
+	top: 4px;
+}
+.tile-detail {
+	display: none;
+	background: rgba(54, 54, 54, .8);
+	color: #fff;
+	border-radius: 4px;
+	list-style: none;
+	margin: 5px;
+	padding: 5px 10px;
+	min-width: 100px;
+	border: 1px solid #cecece;
+	text-shadow: 1px 0px 1px black;
+	z-index: 11;
+	cursor: pointer;
+}
+
+.hp-changes {
+	transition: all 2s;
+	list-style: none;
+	position: absolute;
+	left: -10%;
+	z-index: 99;
+	text-shadow: 2px 2px 3px #000;
+	top: -9%;
+}
+.hp-changes li {
+	animation: enemyDamageHealTick 4s ease-in-out;
+	position: absolute;
+	top: 0;
+	margin-left: 20px;
+	display: block;
+	opacity: 0;
+	font-size: 30px;
+	margin-top: 160px;
+	text-align: center;
+}
+.hp-changes.hp-changes-up li {
+	animation: enemyDamageHealTickUp 2s ease-in-out;
+	margin-top: 80px;
+}
+
+@keyframes enemyDamageHealTick {
+	from {
+		opacity: 0;
+		font-size: 30px;
+		margin-top: -20px;
+	}
+	20% {
+		opacity: 1;
+		font-size: 40px;
+		margin-left: 40px;
+	}
+	40% {
+		margin-left: 0px;
+	}
+	80% {
+		opacity: 1;
+		font-size: 30px;
+		margin-left: 30px;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@keyframes enemyDamageHealTickUp {
+	from {
+		opacity: 0;
+		font-size: 20px;
+		margin-top: 10px;
+	}
+	20% {
+		opacity: 1;
+		font-size: 25px;
+	}
+	40% {
+		margin-left: 0px;
+	}
+	80% {
+		opacity: 1;
+		font-size: 20px;
+	}
+	to {
+		opacity: 0;
+	}
+}
+.hp-changes .damage {
+	color: rgb(255, 105, 51);
+}
+.hp-changes .healing {
+	color: rgb(117, 239, 114);
+}

@@ -1,0 +1,14 @@
+Revision file
+
+0.4.2 - 25.10.2018
+	- added gear equips
+	- added strength, agility, stamina stats
+	- added support new stats on equips
+	- added modificators of calculations for strength, stamina and agility
+	- added head0, chest0 items
+
+0.4.1 - 25.10.2018
+	- added shortkeys for abilities & selecting targets
+	- added avatar feature & added temporary icons for enemies
+	- added displaying shortkey labels on abilities
+	- small style corrections
