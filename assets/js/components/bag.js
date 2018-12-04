@@ -94,7 +94,10 @@ Vue.component('bag', {
       let html = config.db.items[this.item]
       let data = {}
 
-      data[html.quality] = true
+      if (html.quality) {
+        data[html.quality] = true
+      }
+      
       data['cant_equip'] = this.cant_equip
       data[html.icon] = true // showing icon class
       if (html.type == "weapon") {

@@ -875,19 +875,161 @@ var config = {
 			zone1: {
 				id: "zone1",
 				name: "Instance test",
-				layer0: [
-					[2, 0, 0, 1, 0, 0, 2, 2, 2, 1, ],
-					[2, 0, 1, 1, 1, 0, 2, 2, 2, 1, ],
-					[2, 0, 1, 0, 0, 0, 2, 2, 1, 1, ],
-					[2, 0, 1, 0, 0, 0, 0, 0, 1, 1, ],
-					[0, 0, 1, 0, 0, 0, 0, 0, 1, 1, ],
-					[0, 0, 1, 0, 0, 0, 0, 0, 1, 1, ],
-					[0, 0, 1, 0, 0, 0, 0, 0, 1, 3, ],
-					[0, 0, 1, 0, 0, 0, 0, 2, 0, 3, ],
-					[0, 1, 1, 0, 0, 0, 0, 2, 2, 3, ],
-					[1, 1, 1, 0, 0, 0, 2, 2, 2, 3, ],
+				layer0ld: [
+					[2, 0, 0, 1,  0, 0, 2, 2,  2, 1, ],
+					[2, 0, 1, 1,  1, 0, 2, 2,  2, 1, ],
+					[2, 0, 1, 0,  0, 0, 2, 2,  1, 1, ],
+					[2, 0, 1, 0,  0, 0, 0, 0,  1, 1, ],
+					[0, 0, 1, 0,  0, 0, 0, 0,  1, 1, ],
+					[0, 0, 1, 0,  0, 0, 0, 0,  1, 1, ],
+					[0, 0, 1, 0,  0, 0, 0, 0,  1, 3, ],
+					[0, 0, 1, 0,  0, 0, 0, 2,  0, 3, ],
+					[0, 1, 1, 0,  0, 0, 0, 2,  2, 3, ],
+					[1, 1, 1, 0,  0, 0, 2, 2,  2, 3, ],
 				],
-				layer1: {
+				layer0: [ // extended layer map
+					[
+						{bg: 2, mod: 0b0000, tile: 2}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 1, mod: 0b0100, tile: 0}, 
+						{bg: 1, mod: 0b0000, tile: 1}, 
+						
+						{bg: 1, mod: 0b1000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 2, mod: 0b0000, tile: 2},
+						{bg: 2, mod: 0b0000, tile: 2},
+						
+						{bg: 1, mod: 0b0010, tile: 2},
+						{bg: 1, mod: 0b0000, tile: 1},  
+					],
+					[
+						{bg: 2, mod: 0b0000, tile: 2}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0001, tile: 1}, 
+						{bg: 1, mod: 0b0000, tile: 1}, 
+						
+						{bg: 0, mod: 0b0110, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 2, mod: 0b0000, tile: 2},
+						{bg: 2, mod: 0b0000, tile: 2},
+						
+						{bg: 1, mod: 0b0100, tile: 2},
+						{bg: 1, mod: 0b0000, tile: 1},  
+					],
+					[
+						{bg: 2, mod: 0b0000, tile: 2}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 1, mod: 0b0001, tile: 0}, 
+						
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b1000, tile: 2},
+						{bg: 0, mod: 0b0000, tile: 2},
+						
+						{bg: 2, mod: 0b0001, tile: 1},
+						{bg: 1, mod: 0b0000, tile: 1},  
+					],
+					[
+						{bg: 0, mod: 0b0100, tile: 2}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0},
+						{bg: 0, mod: 0b0000, tile: 0},
+						
+						{bg: 0, mod: 0b0000, tile: 1},
+						{bg: 0, mod: 0b0000, tile: 1},  
+					],
+					[
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0},
+						{bg: 0, mod: 0b0000, tile: 0},
+						
+						{bg: 0, mod: 0b0000, tile: 1},
+						{bg: 0, mod: 0b0000, tile: 1},  
+					],
+					[
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0},
+						{bg: 0, mod: 0b0000, tile: 0},
+						
+						{bg: 0, mod: 0b0000, tile: 1},
+						{bg: 0, mod: 0b0000, tile: 1},  
+					],
+					[
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0},
+						{bg: 0, mod: 0b0000, tile: 0},
+						
+						{bg: 0, mod: 0b1100, tile: 1},
+						{bg: 1, mod: 0b0001, tile: 3},  
+					],
+					[
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 1, mod: 0b0100, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0},
+						{bg: 0, mod: 0b0011, tile: 2},
+						
+						{bg: 2, mod: 0b1000, tile: 0},
+						{bg: 0, mod: 0b0000, tile: 3},  
+					],
+					[
+						{bg: 1, mod: 0b0100, tile: 0}, 
+						{bg: 0, mod: 0b0001, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 2, mod: 0b0100, tile: 0},
+						{bg: 0, mod: 0b0000, tile: 2},
+						
+						{bg: 0, mod: 0b0000, tile: 2},
+						{bg: 0, mod: 0b0000, tile: 3},  
+					],
+					[
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 0, mod: 0b0000, tile: 1}, 
+						{bg: 1, mod: 0b1000, tile: 0},  
+						
+						{bg: 0, mod: 0b0000, tile: 0}, 
+						{bg: 2, mod: 0b0100, tile: 0},
+						{bg: 0, mod: 0b0001, tile: 2},
+						{bg: 0, mod: 0b0000, tile: 2},
+						
+						{bg: 0, mod: 0b0000, tile: 2},
+						{bg: 0, mod: 0b0000, tile: 3},  
+					],
+				],
+				layer2: {
 					0: {
 						7: {
 							"enemies_test2": {

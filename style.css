@@ -357,7 +357,15 @@ a:hover {
 	height: 50px;
 	text-align: center;
 	vertical-align: middle;
-	border: 1px solid #d0d0d0;
+	border: 1px solid rgba(100, 100, 100, 0.57);
+}
+.view-map-row span > span {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.view-map-row .service {
+	z-index: 2;
 }
 .view-map-row .layer1, .view-map-row .layer2 {
 	border: none;
@@ -368,13 +376,25 @@ a:hover {
 .view-map-row .river0 {
 	background: rgb(104, 208, 255);
 }
+.view-map-row .river1100 {
+	background: rgb(104, 208, 255);
+	border-radius: 50% 50% 0 0;
+}
+.view-map-row .river1010 {
+	background: rgb(104, 208, 255);
+	border-radius: 50% 0 50% 0;
+}
+.view-map-row .river0110 {
+	background: rgb(104, 208, 255);
+	border-radius: 0 50% 50% 0;
+}
 .view-map-row .forest0 {
 	background: rgb(60, 134, 76);
 }
 .view-map-row .rock0 {
 	background: rgb(163, 159, 167);
 }
-.view-map-row .bridge0 .layer1 {
+.view-map-row .bridge0 .layer2 {
 	position: absolute;
 	width: 100%;
 	height: 40%;
@@ -384,7 +404,7 @@ a:hover {
 	border-top: 2px solid #404040;
 	border-bottom: 2px solid #404040; 
 }
-.view-map-row .bridge1 .layer1 {
+.view-map-row .bridge1 .layer2 {
 	position: absolute;
 	width: 40%;
 	height: 100%;
@@ -393,7 +413,7 @@ a:hover {
 	background: #a0a0a0;
 }
 
-.view-map-row .battle0 .layer1 {
+.view-map-row .battle0 .layer2 {
 	position: absolute;
 	width: 80%;
 	height: 80%;
