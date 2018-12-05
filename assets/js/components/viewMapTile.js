@@ -1,7 +1,7 @@
 Vue.component('viewMapTile', {
   props: ['item', 'row_id', 'col_id', 'config', 'zone_id'],
   template: ['<span class="tile" :class="getClass"><span class="service">{{ getTile() }}</span>',
-        '<span class="layer1" :style="getStyle" :class="getLayer1Class">',
+        '<span class="layer1" style="getStyle" class="getLayer1Class">',
           
         '</span>',
         '<span class="layer2">',
@@ -10,14 +10,14 @@ Vue.component('viewMapTile', {
     '</span>'].join(""),
   methods: {
     getTile: function() {
-      let tile = config.db.map.tiles[this.item.bg]
+      let tile = config.db.map.tiles[this.item]
       return tile.id + ': x: ' + this.col_id + ' : y: ' + this.row_id
     }
   },
   computed: {
     getClass: function () {
       let data = {}
-      let tile = config.db.map.tiles[this.item.bg]
+      let tile = config.db.map.tiles[this.item]
       let objects = config.db.map[this.zone_id]['layer2']
       //console.log(this.zone_id)
 
@@ -32,6 +32,7 @@ Vue.component('viewMapTile', {
       data[tile.icon] = true
       return data
     },
+    // deprecated
     getLayer1Class: function () {
       let data = {}
       let tile = config.db.map.tiles[this.item.tile]
@@ -39,6 +40,7 @@ Vue.component('viewMapTile', {
       data[tile.icon] = true
       return data
     },
+    // deprecated
     getStyle: function () {
       let data = {}
       console.log(this.item)

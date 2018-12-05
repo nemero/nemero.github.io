@@ -376,18 +376,6 @@ a:hover {
 .view-map-row .river0 {
 	background: rgb(104, 208, 255);
 }
-.view-map-row .river1100 {
-	background: rgb(104, 208, 255);
-	border-radius: 50% 50% 0 0;
-}
-.view-map-row .river1010 {
-	background: rgb(104, 208, 255);
-	border-radius: 50% 0 50% 0;
-}
-.view-map-row .river0110 {
-	background: rgb(104, 208, 255);
-	border-radius: 0 50% 50% 0;
-}
 .view-map-row .forest0 {
 	background: rgb(60, 134, 76);
 }

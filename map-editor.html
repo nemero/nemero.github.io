@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>play</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/map-editor.css">
+</head>
+<body>
+	<div id="play">
+		Dimensions:
+		<input type="number" v-model="config.width" name="" value="config.width" />
+		<input type="number" v-model="config.height" name="" value="config.height" />
+		Layer:
+		<select v-model="config.activeLayer">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+		<div class="ui">
+			<div class="ui-left">
+				Generating Tiles
+				<div class="tiles-map">
+						<tiles-map :maps="config.tilesMap" :config="config"></tiles-map>
+						<active-tile-map :map="config.activeTileMap" v-model="config.activeLayer" :config="config"></active-tile-map>
+				</div>
+
+				<div>
+					Active Tile:
+					<active-brush-tile :tile="config.activeTile"></active-brush-tile>
+				</div>
+
+				Select Tile:
+				<div class="tile-list">
+					<tile v-for="tile in config.tiles" :tile="tile" :config="config"></tile>
+				</div>
+			</div>
+			<div class="ui-right">
+				<div class="map">
+					<view-map-row v-for="(row, row_id) in parseInt(config.height)" :row="row" :row_id="row_id" :config="config"></view-map-row>
+				</div>
+			</div>
+		</div>
+
+		<div class="map-config"><pre>{{ config.map }}</pre></div>
+	</div>
+
+
+	<!-- development version, includes helpful console warnings -->
+	<script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="assets/js/map/config.js"></script>
+
+	<script type="text/javascript">
+		Vue.component('activeBrushTile', {
+		  props: ['tile'],
+		  template: ['<span class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
+		    ].join(""),
+		  computed: {
+		  	getTileStyle: function () {
+		  		let data = {}
+		  		let tile = this.tile
+		  		if (!tile) {
+		  			return data
+		  		}
+
+		  		// style="width: 16px; height: 16px; background: url(assets/tileset_1.png); background-position: 0 0;"
+		  		if (tile['size']) {
+		  			data['width'] = tile['size'][0] + 'px'
+		  		}
+		  		if (tile['size']) {
+		  			data['height'] = tile['size'][1] + 'px'
+		  		}
+		  		if (tile['texture']) {
+		  			data['background'] = 'url(' + tile['texture'] + ')'
+		  		}
+		  		if (tile['offset']) {
+		  			data['background-position'] = tile['offset'][0] + 'px ' + tile['offset'][1] + 'px'
+		  		}
+
+		  		return data
+		  	},
+		  	getTileMapClass: function () {
+		  		let data = {}
+		  		let tile = this.tile
+
+		  		if (!tile) {
+		  			return data
+		  		}
+
+		  		if (tile['map']) {
+		  			data[tile['map']] = true
+		  		}
+
+		  		return data
+		  	},
+		  }
+		})
+
+		Vue.component('viewMapRow', {
+		  props: ['row', 'row_id', 'config'],
+		  template: ['<div class="view-map-row">',
+		              '<view-map-tile v-for="(col , col_id) in parseInt(config.width)" :row="row" :row_id="row_id" :col="col" :col_id="col_id" :config="config"></view-map-tile><br />',
+		            '</div>'
+		    ].join("")
+		})
+
+		Vue.component('viewMapTile', {
+		  props: ['row_id', 'col_id', 'config'],
+		  template: ['<span class="tile" @click="brushCell">',
+		  			'<span class="service">{{ row_id }}/{{ col_id }} {{ getTileName }}</span>',
+		        '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
+		        '</span>',
+		    '</span>'].join(""),
+		  methods: {
+		  	brushCell: function () {
+		  		if (!config.map[this.row_id]) {
+		  			Vue.set(config.map, this.row_id, {})
+		  		}
+
+		  		if (!config.map[this.row_id][this.col_id]) {
+		  			Vue.set(config.map[this.row_id], this.col_id, {})	
+		  		}
+
+		  		if (!config.map[this.row_id][this.col_id][config.activeLayer]) {
+		  			Vue.set(config.map[this.row_id][this.col_id], config.activeLayer, {})	
+		  		}
+
+		  		config.map[this.row_id][this.col_id][config.activeLayer] = config.activeTile
+		  	}
+		  },
+		  computed: {
+		  	getTiles: function () {
+		  		let tiles = {}
+		  		if (config.map[this.row_id] && config.map[this.row_id][this.col_id]) {
+		  			tiles = config.map[this.row_id][this.col_id]
+		  		}
+
+		  		return tiles
+		  	},
+		  	getTileName: function () {
+		  		if (config.map[this.row_id] && config.map[this.row_id][this.col_id]) {
+		  			let tile = config.map[this.row_id][this.col_id]
+		  			return tile.id
+		  		}
+
+		  		return null
+		  	}
+		  }
+		})
+
+		Vue.component('viewMapTileLayer', {
+		  props: ['tile'],
+		  template: ['<span class="layer" :style="getTileStyle" :class="getTileMapClass"></span>',
+		    ].join(""),
+		  computed: {
+		  	getTileStyle: function () {
+		  		let data = {}
+		  		let tile = this.tile
+
+		  		// style="width: 16px; height: 16px; background: url(assets/tileset_1.png); background-position: 0 0;"
+		  		if (tile['size']) {
+		  			data['width'] = tile['size'][0] + 'px'
+		  		}
+		  		if (tile['size']) {
+		  			data['height'] = tile['size'][1] + 'px'
+		  		}
+		  		if (tile['texture']) {
+		  			data['background'] = 'url(' + tile['texture'] + ')'
+		  		}
+		  		if (tile['offset']) {
+		  			data['background-position'] = tile['offset'][0] + 'px ' + tile['offset'][1] + 'px'
+		  		}
+
+		  		return data
+		  	},
+		  	getTileMapClass: function () {
+		  		let data = {}
+		  		let tile = this.tile
+
+		  		if (tile['map']) {
+		  			data[tile['map']] = true
+		  		}
+
+		  		return data
+		  	},
+		  }
+		})
+		Vue.component('tile', {
+		  props: ['tile', 'config'],
+		  template: ['<span class="tile" :class="isSelected" @click="selectTile">',
+		  				'<span class="tile-picture" :style="getTileStyle" :class="getTileMapClass" :title="getTileDetails"></span>',
+		  				//'<span class="tile-details">',
+		  					//'{{ getTileDetails }}',	
+		  				'</span>',
+		    '</span>'].join(""),
+		  methods: {
+		  	selectTile: function () {
+		  		config.activeTile = this.tile
+		  	},
+		  },
+	  	computed: {
+	  		getTileStyle: function () {
+		  		let data = {}
+		  		// style="width: 16px; height: 16px; background: url(assets/tileset_1.png); background-position: 0 0;"
+		  		if (this.tile['size']) {
+		  			data['width'] = this.tile['size'][0] + 'px'
+		  		}
+		  		if (this.tile['size']) {
+		  			data['height'] = this.tile['size'][1] + 'px'
+		  		}
+		  		// if (this.tile['texture']) {
+		  		// 	data['background'] = 'url(' + this.tile['texture'] + ')'
+		  		// }
+		  		if (this.tile['offset']) {
+		  			data['background-position'] = this.tile['offset'][0] + 'px ' + this.tile['offset'][1] + 'px'
+		  		}
+
+		  		return data
+		  	},
+		  	getTileMapClass: function () {
+		  		let data = {}
+		  		if (this.tile['map']) {
+		  			data[this.tile['map']] = true
+		  		}
+
+		  		return data
+		  	},
+		  	isSelected: function () {
+		  		let data = {}
+		  		if (config.activeTile == this.tile) {
+		  			data['active'] = true
+		  		}
+
+		  		return data
+		  	},
+	  		getTileDetails: function () {
+	  				return this.tile.id
+	  		}
+	  	}
+		})
+
+		Vue.component('tiles-map', {
+		  props: ['maps', 'config'],
+		  template: ['<select v-model="config.activeTileMap">',
+		  			'<option value="" disabled selected=selected>---</option>',
+		  			'<tile-map v-for="map in maps" :map="map"></tile-map>',
+		    '</select>'].join(""),
+		  methods: {
+		  	onChange: function () {
+		  		console.log('hurrey!')
+		  	},
+		  },
+		})
+
+		Vue.component('tile-map', {
+		  props: ['map'],
+		  template: ['<option :value="map">',
+		  			'{{ map.id }}',
+		    '</option>'].join(""),
+		})
+
+		Vue.component('active-tile-map', {
+		  props: ['map', 'config'],
+		  template: ['<span>',
+		  			'{{ regenerateTiles() }}',
+		  			//'{{ map }}',
+		    '</span>'].join(""),
+		  methods: {
+		  	regenerateTiles: function () {
+		  		let map = this.map
+		  		if (!map) {
+		  			return
+		  		}
+		  		config.tiles = []
+
+		  		let cols = Math.trunc(map.width / map.tileSize[0])
+		  		let rows = Math.trunc(map.height / map.tileSize[1])
+		  		let map_class = map.class
+		  		let tiles = [
+						{
+							id: 'null',
+							size: [16, 16],
+						},
+					]
+
+		  		for (let y = 0; y < rows; y++) {
+		  			let top_offset = - (map.tileSize[1] * y)
+		  			for (let x = 0; x < cols; x++) {
+		  				let left_offset = - (map.tileSize[0] * x)
+		  				//console.log(left_offset, top_offset)
+		  				let tile = {
+								id: map_class + top_offset + '_' + left_offset,
+								//texture: 'assets/tileset_1.png',
+								offset: [left_offset, top_offset],
+								size: [map.tileSize[0], map.tileSize[1]],
+								position: [0, 0],
+								map: map_class
+							}
+
+							tiles.push(tile)
+		  			}
+		  		}
+
+		  		config.tiles = tiles
+
+		  	}
+		  }
+		})
+
+	</script>
+
+	<script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>

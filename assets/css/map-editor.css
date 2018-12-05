@@ -1,0 +1,75 @@
+.ui {
+	display: flex;
+}
+.ui-left, .ui-right {
+	flex: 1;
+}
+
+.tile-list {
+	height: 400px;
+	width: 400px;
+	overflow-x: scroll;
+}
+.tile-list .tile {
+	display: inline-block;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	border: 1px solid #bababa;
+	font-size: 0;
+}
+.tile-list .tile.active{
+	border: 1px solid #408080;
+}
+.tile-list .tile .tile-picture {
+	height: 32px;
+	width: 32px;
+	zoom: 2;
+	display: inline-block;
+}
+.tile-list .tile .tile-details {
+	font-size: 10px;
+	display: block;
+}
+
+.view-map-row {
+	font-size: 0;
+}
+.view-map-row .tile {
+	position: relative;
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	border-right: 1px solid #cecece;
+	font-size: 10px;
+	border-bottom: 1px solid #cecece;
+}
+.view-map-row .tile > span.service {
+	position: absolute;
+	zoom: 1;
+	left: 0;
+	top: 0;
+	z-index: 999
+}
+.view-map-row .tile > span {
+	position: absolute;
+	zoom: 3;
+	left: 0;
+	top: 0;
+}
+
+.tile-map1 {
+	background: url(../tileset_1.png);
+}
+.map-config {
+	max-height: 400px;
+	overflow: auto;
+	border: 1px solid #cecece;
+	width: 100%;
+}
+.active-brush-tile {
+	height: 16px;
+	width: 16px;
+	zoom: 3;
+	display: inline-block;
+	font-size: 0;
+}
