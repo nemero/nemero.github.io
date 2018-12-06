@@ -35,8 +35,6 @@
 						<span>Enemies: </span>
 						<div class="ui-list-enemies">
 							<active-enemies v-for="item in config.activeEnemies" :enemy="item" :config="config"></active-enemies>
-
-							<!-- <select-enemy v-for="item in config.db.enemies" :enemy="item" :config="config"></select-enemy> -->
 						</div>
 					</div>
 				</div>
@@ -57,8 +55,12 @@
 
 			<div class="ui-right">
 				<div class="map">
-					<view-map :config="config" :zone="config.db.map.zone1"></view-map>
+					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.zone1.height)" :row="row" :row_id="row_id" :zone="config.db.map.zone1"></view-map-row>
 				</div>
+
+				<!-- <div class="map">
+					<view-map :config="config" :zone="config.db.map.zone1"></view-map>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -74,17 +76,21 @@
 	<script type="text/javascript" src="assets/js/components/debuff.js"></script>
 	<script type="text/javascript" src="assets/js/components/character.js"></script>
 	<script type="text/javascript" src="assets/js/components/combatLog.js"></script>
-	<script type="text/javascript" src="assets/js/components/selectEnemy.js"></script>
 	<script type="text/javascript" src="assets/js/components/target.js"></script>
 
 	<script type="text/javascript" src="assets/js/components/hpScroll.js"></script>
 	<script type="text/javascript" src="assets/js/components/hpScrollItem.js"></script>
 
 	<!-- Map Components -->
-	<script type="text/javascript" src="assets/js/components/tileDetail.js"></script>
+	<!-- <script type="text/javascript" src="assets/js/components/tileDetail.js"></script>
 	<script type="text/javascript" src="assets/js/components/viewMap.js"></script>
 	<script type="text/javascript" src="assets/js/components/viewMapRow.js"></script>
-	<script type="text/javascript" src="assets/js/components/viewMapTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/viewMapTile.js"></script> -->
+
+	<!-- new Map Components -->
+	<script type="text/javascript" src="assets/js/components/map/viewMapRow.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/viewMapTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayer.js"></script>
 	
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
