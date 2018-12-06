@@ -7,17 +7,6 @@
 </head>
 <body>
 	<div id="play">
-		Dimensions:
-		<input type="number" v-model="config.width" name="" value="config.width" />
-		<input type="number" v-model="config.height" name="" value="config.height" />
-		Layer:
-		<select v-model="config.activeLayer">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-		</select>
 		<div class="ui">
 			<div class="ui-left">
 				Generating Tiles
@@ -37,6 +26,17 @@
 				</div>
 			</div>
 			<div class="ui-right">
+				<div>
+					Layer:
+					<select v-model="config.activeLayer">
+						<option value="" selected="selected">Custom</option>
+						<option v-for="layer in config.layers" :value="layer">{{ layer }}</option>
+					</select>
+
+					Dimensions:
+					<input type="number" v-model="config.width" name="" value="config.width" />
+					<input type="number" v-model="config.height" name="" value="config.height" />
+				</div>
 				<div class="map">
 					<view-map-row v-for="(row, row_id) in parseInt(config.height)" :row="row" :row_id="row_id" :config="config"></view-map-row>
 				</div>
@@ -108,12 +108,23 @@
 		Vue.component('viewMapTile', {
 		  props: ['row_id', 'col_id', 'config'],
 		  template: ['<span class="tile" @click="brushCell">',
-		  			'<span class="service">{{ row_id }}/{{ col_id }} {{ getTileName }}</span>',
+		  		'<span class="service">{{ row_id }}/{{ col_id }} {{ getTileName }}</span>',
 		        '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
+		        '<span class="tile-layers-info">',
+		        	'<view-map-tile-layers-info v-for="(tile, idx) in getTiles" :tile="tile" :tiles="getTiles" :idx="idx"></view-map-tile-layers-info>',
+		        	'<div style="zoom: 0.3;"><span @click="addLayer">Add Layer +</span>',
+		        		'<span @click="removeLayer">Remove Layer -</span>',
+		        		'<span @click="removeAllLayers">Remove All Layers -</span>',
+		        	'</div>',
 		        '</span>',
+		      '</span>',
 		    '</span>'].join(""),
 		  methods: {
 		  	brushCell: function () {
+		  		if (!config.activeLayer) {
+		  			return
+		  		}
+
 		  		if (!config.map[this.row_id]) {
 		  			Vue.set(config.map, this.row_id, {})
 		  		}
@@ -126,10 +137,48 @@
 		  			Vue.set(config.map[this.row_id][this.col_id], config.activeLayer, {})	
 		  		}
 
-		  		config.map[this.row_id][this.col_id][config.activeLayer] = config.activeTile
+		  		if (config.activeTile.id == null) {
+		  			Vue.delete(config.map[this.row_id][this.col_id], config.activeLayer)
+		  		} else {
+		  			config.map[this.row_id][this.col_id][config.activeLayer] = config.activeTile
+		  		}
+		  	},
+		  	addLayer: function () {
+		  		if (!config.map[this.row_id]) {
+		  			Vue.set(config.map, this.row_id, {})
+		  		}
+
+		  		if (!config.map[this.row_id][this.col_id]) {
+		  			Vue.set(config.map[this.row_id], this.col_id, {})	
+		  		}
+
+		  		let layers_count = Object.keys(config.map[this.row_id][this.col_id]).length
+		  		// add new layer
+		  		console.log(layers_count, config.layers)
+		  		if (layers_count < config.layers) {
+		  			Vue.set(config.map[this.row_id][this.col_id], layers_count + 1, {})	
+		  		}
+		  	},
+		  	removeLayer: function () {
+		  		let layers_count = Object.keys(config.map[this.row_id][this.col_id]).length
+		  		// remove layer
+		  		if (layers_count > 1) {
+		  			Vue.delete(config.map[this.row_id][this.col_id], layers_count)
+		  		}
+		  	},
+		  	removeAllLayers: function () {
+		  		Vue.delete(config.map[this.row_id], this.col_id)
 		  	}
 		  },
 		  computed: {
+				getInfoCell: function () {
+		  		let tiles = {}
+		  		if (config.map[this.row_id] && config.map[this.row_id][this.col_id]) {
+		  			tiles = config.map[this.row_id][this.col_id]
+		  		}
+
+		  		config.hoveredTiles = tiles
+		  	},
 		  	getTiles: function () {
 		  		let tiles = {}
 		  		if (config.map[this.row_id] && config.map[this.row_id][this.col_id]) {
@@ -149,6 +198,59 @@
 		  }
 		})
 
+		Vue.component('viewMapTileLayersInfo', {
+		  props: ['tile', 'idx', 'tiles'],
+		  template: ['<span class="layer" :style="getTileStyle" @click="brushCell" :class="getTileMapClass">{{ idx }}</span>',
+		    ].join(""),
+		  methods: {
+		  	brushCell: function () {
+		  		// if selected layer don't brush on selected layer
+		  		if (config.activeLayer) {
+		  			return
+		  		}
+
+		  		if (config.activeTile) {
+		  			this.tiles[this.idx] = config.activeTile
+		  		}
+		  	},
+		  },
+		  computed: {
+		  	getTileStyle: function () {
+		  		let data = {}
+		  		let tile = this.tile
+
+		  		// style="width: 16px; height: 16px; background: url(assets/tileset_1.png); background-position: 0 0;"
+		  		if (tile['size']) {
+		  			data['width'] = tile['size'][0] + 'px'
+		  		}
+		  		if (tile['size']) {
+		  			data['height'] = tile['size'][1] + 'px'
+		  		}
+		  		if (tile['texture']) {
+		  			data['background'] = 'url(' + tile['texture'] + ')'
+		  		}
+		  		if (tile['offset']) {
+		  			data['background-position'] = tile['offset'][0] + 'px ' + tile['offset'][1] + 'px'
+		  		}
+
+		  		return data
+		  	},
+		  	getTileMapClass: function () {
+		  		let data = {}
+		  		let tile = this.tile
+
+		  		if (tile['map']) {
+		  			data[tile['map']] = true
+		  		}
+
+		  		if (config.activeLayer == this.idx) {
+		  			data['active'] = true
+		  		}
+
+		  		return data
+		  	},
+		  }
+		})
 		Vue.component('viewMapTileLayer', {
 		  props: ['tile'],
 		  template: ['<span class="layer" :style="getTileStyle" :class="getTileMapClass"></span>',
@@ -246,11 +348,6 @@
 		  			'<option value="" disabled selected=selected>---</option>',
 		  			'<tile-map v-for="map in maps" :map="map"></tile-map>',
 		    '</select>'].join(""),
-		  methods: {
-		  	onChange: function () {
-		  		console.log('hurrey!')
-		  	},
-		  },
 		})
 
 		Vue.component('tile-map', {
@@ -279,7 +376,7 @@
 		  		let map_class = map.class
 		  		let tiles = [
 						{
-							id: 'null',
+							id: null,
 							size: [16, 16],
 						},
 					]
