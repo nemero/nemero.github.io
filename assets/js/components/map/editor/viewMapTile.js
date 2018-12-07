@@ -18,49 +18,49 @@ Vue.component('viewMapTile', {
   			return
   		}
 
-  		if (!config.map[getRowId]) {
-  			Vue.set(config.map, getRowId, {})
+  		if (!config.map[this.getRowId]) {
+  			Vue.set(config.map, this.getRowId, {})
   		}
 
-  		if (!config.map[getRowId][getColId]) {
-  			Vue.set(config.map[getRowId], getColId, {})	
+  		if (!config.map[this.getRowId][this.getColId]) {
+  			Vue.set(config.map[this.getRowId], this.getColId, {})	
   		}
 
-  		if (!config.map[getRowId][getColId][config.activeLayer]) {
-  			Vue.set(config.map[getRowId][getColId], config.activeLayer, {})	
+  		if (!config.map[this.getRowId][this.getColId][config.activeLayer]) {
+  			Vue.set(config.map[this.getRowId][this.getColId], config.activeLayer, {})	
   		}
 
   		if (config.activeTile.id == null) {
-  			Vue.delete(config.map[getRowId][getColId], config.activeLayer)
+  			Vue.delete(config.map[this.getRowId][this.getColId], config.activeLayer)
   		} else {
-  			config.map[getRowId][getColId][config.activeLayer] = config.activeTile
+  			config.map[this.getRowId][this.getColId][config.activeLayer] = config.activeTile
   		}
   	},
   	addLayer: function () {
-  		if (!config.map[getRowId]) {
-  			Vue.set(config.map, getRowId, {})
+  		if (!config.map[this.getRowId]) {
+  			Vue.set(config.map, this.getRowId, {})
   		}
 
-  		if (!config.map[getRowId][getColId]) {
-  			Vue.set(config.map[getRowId], getColId, {})	
+  		if (!config.map[this.getRowId][this.getColId]) {
+  			Vue.set(config.map[this.getRowId], this.getColId, {})	
   		}
 
-  		let layers_count = Object.keys(config.map[getRowId][getColId]).length
+  		let layers_count = Object.keys(config.map[this.getRowId][this.getColId]).length
   		// add new layer
   		console.log(layers_count, config.layers)
   		if (layers_count < config.layers) {
-  			Vue.set(config.map[getRowId][getColId], layers_count + 1, {})	
+  			Vue.set(config.map[this.getRowId][this.getColId], layers_count + 1, {})	
   		}
   	},
   	removeLayer: function () {
-  		let layers_count = Object.keys(config.map[getRowId][getColId]).length
+  		let layers_count = Object.keys(config.map[this.getRowId][this.getColId]).length
   		// remove layer
   		if (layers_count > 1) {
-  			Vue.delete(config.map[getRowId][getColId], layers_count)
+  			Vue.delete(config.map[this.getRowId][this.getColId], layers_count)
   		}
   	},
   	removeAllLayers: function () {
-  		Vue.delete(config.map[getRowId], getColId)
+  		Vue.delete(config.map[this.getRowId], this.getColId)
   	}
   },
   computed: {

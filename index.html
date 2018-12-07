@@ -55,12 +55,8 @@
 
 			<div class="ui-right">
 				<div class="map">
-					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.zone1.height)" :row="row" :row_id="row_id" :zone="config.db.map.zone1"></view-map-row>
+					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map.zone1" :viewport="config.db.map.viewport"></view-map-row>
 				</div>
-
-				<!-- <div class="map">
-					<view-map :config="config" :zone="config.db.map.zone1"></view-map>
-				</div> -->
 			</div>
 		</div>
 	</div>
@@ -81,16 +77,12 @@
 	<script type="text/javascript" src="assets/js/components/hpScroll.js"></script>
 	<script type="text/javascript" src="assets/js/components/hpScrollItem.js"></script>
 
-	<!-- Map Components -->
-	<!-- <script type="text/javascript" src="assets/js/components/tileDetail.js"></script>
-	<script type="text/javascript" src="assets/js/components/viewMap.js"></script>
-	<script type="text/javascript" src="assets/js/components/viewMapRow.js"></script>
-	<script type="text/javascript" src="assets/js/components/viewMapTile.js"></script> -->
-
 	<!-- new Map Components -->
 	<script type="text/javascript" src="assets/js/components/map/viewMapRow.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/viewMapTile.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayer.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayerNpc.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayerDefault.js"></script>
 	
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>

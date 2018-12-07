@@ -22,8 +22,6 @@ var app = new Vue({
   	},
     methods: {
 	    startDrag() {
-	    	let e = window.event;
-			pauseEvent(e);
 	      	this.dragging = true;
 	      	this.x = this.y = 0;
 	    },
@@ -32,6 +30,8 @@ var app = new Vue({
 	      this.x = this.y = 'no';
 	    },
 	    doDrag(event) {
+	    	let e = window.event;
+			pauseEvent(e);
 	      if (this.dragging) {
 	        if (this.x == "no" || this.x == 0) {
 	        	this.prevX = event.clientX

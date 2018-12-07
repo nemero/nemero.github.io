@@ -334,6 +334,7 @@ Vue.component('abilities', {
           if (target.health <= 0) {
             logger('Hero is OWN! PZZZZZ RESURRECT! VIUUVIUU... ')
             target.health = target.max_health
+            config.character.dies++
           }
         } 
       }
