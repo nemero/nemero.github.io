@@ -882,12 +882,12 @@ var config = {
 					icon: "player0"
 				}
 			},
-			viewport: [10, 9],
+			viewport: [9, 11],
 			zone1: {
 				id: "zone1",
 				name: "Instance test",
-				height: 10,
-				width: 10,
+				height: 15,
+				width: 15,
 				map:{
   "0": {
     "0": {
