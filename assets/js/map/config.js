@@ -35,6 +35,7 @@ var config = {
 	],
 	tiles: [
 	],
+  mapOffset: [0, 0],
 	map:{
   "0": {
     "0": {
@@ -53,6 +54,22 @@ var config = {
           0
         ],
         "map": "tile-map3"
+      },
+      "2": {
+        "id": "tile-map10_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
       }
     },
     "1": {
@@ -73,6 +90,38 @@ var config = {
         "map": "tile-map3"
       },
       "2": {
+        "id": "tile-map10_-16",
+        "offset": [
+          -16,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "3": {
+        "id": "tile-map1-160_-48",
+        "offset": [
+          -48,
+          -160
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "4": {
         "id": "tile-map1-288_-144",
         "offset": [
           -144,
@@ -105,6 +154,38 @@ var config = {
           0
         ],
         "map": "tile-map3"
+      },
+      "2": {
+        "id": "tile-map10_-16",
+        "offset": [
+          -16,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "3": {
+        "id": "tile-map1-160_-64",
+        "offset": [
+          -64,
+          -160
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
       }
     },
     "3": {
@@ -123,6 +204,38 @@ var config = {
           0
         ],
         "map": "tile-map3"
+      },
+      "2": {
+        "id": "tile-map10_-16",
+        "offset": [
+          -16,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "3": {
+        "id": "tile-map1-160_-80",
+        "offset": [
+          -80,
+          -160
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
       }
     },
     "4": {
@@ -141,6 +254,22 @@ var config = {
           0
         ],
         "map": "tile-map3"
+      },
+      "2": {
+        "id": "tile-map10_-32",
+        "offset": [
+          -32,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
       }
     },
     "5": {
@@ -253,10 +382,10 @@ var config = {
         "map": "tile-map3"
       },
       "2": {
-        "id": "tile-map10_0",
+        "id": "tile-map1-16_0",
         "offset": [
           0,
-          0
+          -16
         ],
         "size": [
           16,
@@ -287,10 +416,10 @@ var config = {
         "map": "tile-map3"
       },
       "2": {
-        "id": "tile-map10_-16",
+        "id": "tile-map1-16_-16",
         "offset": [
           -16,
-          0
+          -16
         ],
         "size": [
           16,
@@ -303,6 +432,22 @@ var config = {
         "map": "tile-map1"
       },
       "3": {
+        "id": "tile-map1-192_-48",
+        "offset": [
+          -48,
+          -192
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "4": {
         "id": "tile-map1-304_-144",
         "offset": [
           -144,
@@ -337,10 +482,26 @@ var config = {
         "map": "tile-map3"
       },
       "2": {
-        "id": "tile-map10_-16",
+        "id": "tile-map1-16_-16",
         "offset": [
           -16,
+          -16
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
           0
+        ],
+        "map": "tile-map1"
+      },
+      "3": {
+        "id": "tile-map1-224_-64",
+        "offset": [
+          -64,
+          -224
         ],
         "size": [
           16,
@@ -371,10 +532,10 @@ var config = {
         "map": "tile-map3"
       },
       "2": {
-        "id": "tile-map10_-16",
+        "id": "tile-map1-16_-16",
         "offset": [
           -16,
-          0
+          -16
         ],
         "size": [
           16,
@@ -387,6 +548,22 @@ var config = {
         "map": "tile-map1"
       },
       "3": {
+        "id": "tile-map1-208_-80",
+        "offset": [
+          -80,
+          -208
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "4": {
         "id": "tile-map1-240_-112",
         "offset": [
           -112,
@@ -421,10 +598,10 @@ var config = {
         "map": "tile-map3"
       },
       "2": {
-        "id": "tile-map10_-16",
+        "id": "tile-map1-48_-16",
         "offset": [
           -16,
-          0
+          -48
         ],
         "size": [
           16,
@@ -437,9 +614,9 @@ var config = {
         "map": "tile-map1"
       },
       "3": {
-        "id": "tile-map1-160_-48",
+        "id": "tile-map1-160_-64",
         "offset": [
-          -48,
+          -64,
           -160
         ],
         "size": [
@@ -745,6 +922,22 @@ var config = {
         "map": "tile-map1"
       },
       "2": {
+        "id": "tile-map1-192_-48",
+        "offset": [
+          -48,
+          -192
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "3": {
         "id": "tile-map1-256_-96",
         "offset": [
           -96,
@@ -779,6 +972,22 @@ var config = {
         "map": "tile-map1"
       },
       "2": {
+        "id": "tile-map1-192_-80",
+        "offset": [
+          -80,
+          -192
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "3": {
         "id": "tile-map1-256_-112",
         "offset": [
           -112,
@@ -813,6 +1022,22 @@ var config = {
         "map": "tile-map1"
       },
       "2": {
+        "id": "tile-map1-192_-48",
+        "offset": [
+          -48,
+          -192
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map1"
+      },
+      "3": {
         "id": "tile-map1-256_-128",
         "offset": [
           -128,
@@ -847,10 +1072,10 @@ var config = {
         "map": "tile-map1"
       },
       "2": {
-        "id": "tile-map1-176_-48",
+        "id": "tile-map1-224_-64",
         "offset": [
-          -48,
-          -176
+          -64,
+          -224
         ],
         "size": [
           16,
@@ -1434,26 +1659,10 @@ var config = {
     },
     "1": {
       "1": {
-        "id": "tile-map1-160_-224",
+        "id": "tile-map1-176_-224",
         "offset": [
           -224,
-          -160
-        ],
-        "size": [
-          16,
-          16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map1"
-      },
-      "2": {
-        "id": "tile-map1-288_-48",
-        "offset": [
-          -48,
-          -288
+          -176
         ],
         "size": [
           16,

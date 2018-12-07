@@ -1,7 +1,7 @@
 Vue.component('viewMapTile', {
   props: ['row_id', 'col_id', 'config'],
   template: ['<span class="tile" @click="brushCell">',
-  		'<span class="service">{{ row_id }}/{{ col_id }} {{ getTileName }}</span>',
+  		'<span class="service">{{ getRowId }}/{{ getColId }} {{ getTileName }}</span>',
         '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
         '<span class="tile-layers-info">',
         	'<view-map-tile-layers-info v-for="(tile, idx) in getTiles" :tile="tile" :tiles="getTiles" :idx="idx"></view-map-tile-layers-info>',
@@ -18,71 +18,83 @@ Vue.component('viewMapTile', {
   			return
   		}
 
-  		if (!config.map[this.row_id]) {
-  			Vue.set(config.map, this.row_id, {})
+  		if (!config.map[getRowId]) {
+  			Vue.set(config.map, getRowId, {})
   		}
 
-  		if (!config.map[this.row_id][this.col_id]) {
-  			Vue.set(config.map[this.row_id], this.col_id, {})	
+  		if (!config.map[getRowId][getColId]) {
+  			Vue.set(config.map[getRowId], getColId, {})	
   		}
 
-  		if (!config.map[this.row_id][this.col_id][config.activeLayer]) {
-  			Vue.set(config.map[this.row_id][this.col_id], config.activeLayer, {})	
+  		if (!config.map[getRowId][getColId][config.activeLayer]) {
+  			Vue.set(config.map[getRowId][getColId], config.activeLayer, {})	
   		}
 
   		if (config.activeTile.id == null) {
-  			Vue.delete(config.map[this.row_id][this.col_id], config.activeLayer)
+  			Vue.delete(config.map[getRowId][getColId], config.activeLayer)
   		} else {
-  			config.map[this.row_id][this.col_id][config.activeLayer] = config.activeTile
+  			config.map[getRowId][getColId][config.activeLayer] = config.activeTile
   		}
   	},
   	addLayer: function () {
-  		if (!config.map[this.row_id]) {
-  			Vue.set(config.map, this.row_id, {})
+  		if (!config.map[getRowId]) {
+  			Vue.set(config.map, getRowId, {})
   		}
 
-  		if (!config.map[this.row_id][this.col_id]) {
-  			Vue.set(config.map[this.row_id], this.col_id, {})	
+  		if (!config.map[getRowId][getColId]) {
+  			Vue.set(config.map[getRowId], getColId, {})	
   		}
 
-  		let layers_count = Object.keys(config.map[this.row_id][this.col_id]).length
+  		let layers_count = Object.keys(config.map[getRowId][getColId]).length
   		// add new layer
   		console.log(layers_count, config.layers)
   		if (layers_count < config.layers) {
-  			Vue.set(config.map[this.row_id][this.col_id], layers_count + 1, {})	
+  			Vue.set(config.map[getRowId][getColId], layers_count + 1, {})	
   		}
   	},
   	removeLayer: function () {
-  		let layers_count = Object.keys(config.map[this.row_id][this.col_id]).length
+  		let layers_count = Object.keys(config.map[getRowId][getColId]).length
   		// remove layer
   		if (layers_count > 1) {
-  			Vue.delete(config.map[this.row_id][this.col_id], layers_count)
+  			Vue.delete(config.map[getRowId][getColId], layers_count)
   		}
   	},
   	removeAllLayers: function () {
-  		Vue.delete(config.map[this.row_id], this.col_id)
+  		Vue.delete(config.map[getRowId], getColId)
   	}
   },
   computed: {
+    getRowId: function () {
+      let offset_y = config.mapOffset[1]
+      let row_idx = this.row_id + parseInt(offset_y)
+
+      return row_idx
+    },
+    getColId: function () {
+      let offset_x = config.mapOffset[0]
+      let col_idx = this.col_id + parseInt(offset_x)
+
+      return col_idx
+    },
 		getInfoCell: function () {
   		let tiles = {}
-  		if (config.map[this.row_id] && config.map[this.row_id][this.col_id]) {
-  			tiles = config.map[this.row_id][this.col_id]
+  		if (config.map[this.getRowId] && config.map[this.getRowId][this.getColId]) {
+  			tiles = config.map[this.getRowId][this.getColId]
   		}
 
   		config.hoveredTiles = tiles
   	},
   	getTiles: function () {
   		let tiles = {}
-  		if (config.map[this.row_id] && config.map[this.row_id][this.col_id]) {
-  			tiles = config.map[this.row_id][this.col_id]
+  		if (config.map[this.getRowId] && config.map[this.getRowId][this.getColId]) {
+  			tiles = config.map[this.getRowId][this.getColId]
   		}
 
   		return tiles
   	},
   	getTileName: function () {
-  		if (config.map[this.row_id] && config.map[this.row_id][this.col_id]) {
-  			let tile = config.map[this.row_id][this.col_id]
+  		if (config.map[this.getRowId] && config.map[this.getRowId][this.getColId]) {
+  			let tile = config.map[this.getRowId][this.getColId]
   			return tile.id
   		}
 

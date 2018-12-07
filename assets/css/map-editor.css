@@ -34,6 +34,7 @@
 
 .view-map-row {
 	font-size: 0;
+	cursor: pointer;
 }
 .view-map-row .tile {
 	position: relative;

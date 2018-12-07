@@ -27,6 +27,8 @@
 			</div>
 			<div class="ui-right">
 				<div>
+					<div class="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">Start dragging here</div>
+  				<div>X: {{x}}, Y: {{y}}</div>
 					Layer:
 					<select v-model="config.activeLayer">
 						<option value="" selected="selected">Custom</option>
@@ -36,8 +38,12 @@
 					Dimensions:
 					<input type="number" v-model="config.width" name="" value="config.width" />
 					<input type="number" v-model="config.height" name="" value="config.height" />
+
+					Offset: 
+					<input type="number" v-model="config.mapOffset[0]" name="" value="config.mapOffset[0]" />
+					<input type="number" v-model="config.mapOffset[1]" name="" value="config.mapOffset[1]" />
 				</div>
-				<div class="map">
+				<div class="map" @mousedown="startDrag" @mousemove="doDrag">
 					<view-map-row v-for="(row, row_id) in parseInt(config.height)" :row="row" :row_id="row_id" :config="config"></view-map-row>
 				</div>
 			</div>
