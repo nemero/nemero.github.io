@@ -23,6 +23,15 @@
 				
 				<div class="ui-enemies">
 					<div>
+						<span>Actions: </span>
+						<div class="ui-actions">
+							<view-map-tile-actions :position="config.character.position" :config="config"></view-map-tile-actions>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui-enemies">
+					<div>
 						<span>Abilities: </span>
 						<div class="ui-abilities">
 							<abilities v-for="item in config.character.abilities" :ability="item" :config="config"></abilities>
@@ -55,7 +64,7 @@
 
 			<div class="ui-right">
 				<div class="map">
-					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map.zone1" :viewport="config.db.map.viewport"></view-map-row>
+					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map[config.db.map.activeMap]" :viewport="config.db.map.viewport"></view-map-row>
 				</div>
 			</div>
 		</div>
@@ -80,8 +89,11 @@
 	<!-- new Map Components -->
 	<script type="text/javascript" src="assets/js/components/map/viewMapRow.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/viewMapTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/viewMapTileActions.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/viewMapTileAction.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/viewMapTileActionEvent.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayer.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayerNpc.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayerEvent.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayerDefault.js"></script>
 	
 	<script type="text/javascript" src="assets/js/main.js"></script>

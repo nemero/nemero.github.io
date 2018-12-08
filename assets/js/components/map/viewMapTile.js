@@ -3,12 +3,12 @@ Vue.component('viewMapTile', {
   template: ['<span class="tile">',
       '<view-map-tile-layer-default></view-map-tile-layer-default>',
       '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
-      '<view-map-tile-layer-npc v-for="npc in getLayerNpc" :npc="npc" :tiles="getLayerNpc"></view-map-tile-layer-npc>',
+      '<view-map-tile-layer-event v-for="layer in getLayerEvents" :layer="layer" :tiles="getLayerEvents"></view-map-tile-layer-event>',
       '<span class="service">{{ getRowId }}/{{ getColId }} {{ getTileName }}</span>',
     '</span>'].join(""),
   methods: {
     selectEnemy: function () {
-      let objects = this.zone.layerNpc
+      let objects = this.zone.layerEvents
 
       if (objects[this.getRowId] && objects[this.getRowId][this.getColId]) {
         for (idx_layer_item in objects[this.getRowId][this.getColId]) {
@@ -62,8 +62,8 @@ Vue.component('viewMapTile', {
 
   		return null
   	},
-    getLayerNpc: function () {
-      let objects = this.zone.layerNpc
+    getLayerEvents: function () {
+      let objects = this.zone.layerEvents
       if (objects[this.getRowId] && objects[this.getRowId][this.getColId]) {
         return objects[this.getRowId][this.getColId]
       }

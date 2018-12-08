@@ -1,11 +1,11 @@
-Vue.component('viewMapTileLayerNpc', {
-  props: ['npc', 'tiles'],
-  template: ['<span class="layer-npc" :class="getTileNpcClass" @click="selectEnemy">',
-          '<span class="layer-npc-details" v-show="getLayerNpcDetails.length > 0">{{ getLayerNpcDetails }}</span>',
+Vue.component('viewMapTileLayerEvent', {
+  props: ['layer', 'tiles'],
+  template: ['<span class="layer-event" :class="getTileEventClass" @click="selectLayerEvent">',
+          //'<span class="layer-event-details" v-show="getLayerEventDetails.length > 0">{{ getLayerEventDetails }}</span>',
       '</span>'].join(""),
   methods: {
-    selectEnemy: function () {
-      let tile = this.npc
+    selectLayerEvent: function () {
+      let tile = this.layer
       let layer_tale = config.db.map.tiles[tile.id]
 
       if (tile.type == "enemies") {
@@ -28,9 +28,9 @@ Vue.component('viewMapTileLayerNpc', {
     }
   },
   computed: {
-    getTileNpcClass: function () {
+    getTileEventClass: function () {
       let data = {}
-      let tile = this.npc
+      let tile = this.layer
       let layer_tale = config.db.map.tiles[tile.id]
 
       data[layer_tale.icon] = true
@@ -38,10 +38,10 @@ Vue.component('viewMapTileLayerNpc', {
       //data[tile.icon] = true
       return data
     },
-    getLayerNpcDetails: function () {
+    getLayerEventDetails: function () {
       let layer_details = []
 
-      let tile = this.npc
+      let tile = this.layer
       let layer_tale = config.db.map.tiles[tile.id]
 
       if (tile.type == "enemies") {

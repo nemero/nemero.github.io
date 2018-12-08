@@ -880,9 +880,16 @@ var config = {
 					id: "7",
 					name: "Player 0",
 					icon: "player0"
+				},
+
+				8: {
+					id: "8",
+					name: "doors",
+					//icon: "player0"
 				}
 			},
 			viewport: [9, 11],
+			activeMap: "zone1",
 			zone1: {
 				id: "zone1",
 				name: "Instance test",
@@ -2473,20 +2480,11 @@ var config = {
     },
     "9": {
       "1": {
-        "id": "tile-map30_0",
-        "offset": [
-          0,
-          0
-        ],
+        "id": null,
         "size": [
           16,
           16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map3"
+        ]
       },
       "2": {
         "id": "tile-map1-16_-160",
@@ -2789,20 +2787,11 @@ var config = {
     },
     "9": {
       "1": {
-        "id": "tile-map30_0",
-        "offset": [
-          0,
-          0
-        ],
+        "id": null,
         "size": [
           16,
           16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map3"
+        ]
       },
       "2": {
         "id": "tile-map1-16_-160",
@@ -3160,20 +3149,11 @@ var config = {
     },
     "9": {
       "1": {
-        "id": "tile-map30_0",
-        "offset": [
-          0,
-          0
-        ],
+        "id": null,
         "size": [
           16,
           16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map3"
+        ]
       },
       "2": {
         "id": "tile-map1-16_-160",
@@ -3494,20 +3474,11 @@ var config = {
     },
     "9": {
       "1": {
-        "id": "tile-map30_0",
-        "offset": [
-          0,
-          0
-        ],
+        "id": null,
         "size": [
           16,
           16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map3"
+        ]
       },
       "2": {
         "id": "tile-map1-16_-160",
@@ -3890,20 +3861,11 @@ var config = {
     },
     "9": {
       "1": {
-        "id": "tile-map30_0",
-        "offset": [
-          0,
-          0
-        ],
+        "id": null,
         "size": [
           16,
           16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map3"
+        ]
       },
       "2": {
         "id": "tile-map1-16_-160",
@@ -4573,7 +4535,7 @@ var config = {
     }
   }
 },
-				layerNpc: {
+				layerEvents: {
 					2: {
 						1: {
 							"enemies_test2": {
@@ -4608,6 +4570,13 @@ var config = {
 								name: "Battle zone boss",
 								type: "enemies",
 								enemies: ["wolf1", "bear0", "bear1"]
+							},
+							"cave_toonel": {
+								id: "8",
+								name: "Subway",
+								type: "cave",
+								position: [10, 7],
+								map: "zone1",
 							}
 						},
 					},
@@ -4641,6 +4610,17 @@ var config = {
 							}
 						},
 					},
+					7: {
+						10: {
+							"cave_toonel": {
+								id: "8",
+								name: "Subway",
+								type: "cave",
+								position: [4, 3],
+								map: "zone1",
+							}
+						}
+					}
 				},
 			}
 		}
