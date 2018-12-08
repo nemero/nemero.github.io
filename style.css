@@ -125,6 +125,7 @@ a:hover {
 	margin: 3px;
 	font-size: 10px;
 	color: #fff;
+	background-color: #442487 !important;
 }
 
 .game-icon.game-icon-small {
@@ -299,6 +300,7 @@ a:hover {
 	margin-right: 5px;
 	position: relative;
 	z-index: 10;
+	background-color: #404040 !important;
 }
 .target-box .level {
 	font-size: 13px;

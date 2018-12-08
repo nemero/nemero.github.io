@@ -146,7 +146,7 @@ var config = {
 				quality: "poor",
 				class: "fists",
 				price: 0,
-				icon: "assets/sword.png"
+				icon: "assets/fists.png"
 			},
 			bow0: {
 				id: "bow0",
@@ -159,7 +159,7 @@ var config = {
 				quality: "poor",
 				class: "bow",
 				price: 3,
-				icon: "assets/scrap.png"
+				icon: "assets/bow.png"
 			},
 			cane0: {
 				id: "cane0",
@@ -172,7 +172,7 @@ var config = {
 				quality: "poor",
 				class: "sword_one",
 				price: 1,
-				icon: "assets/sword.png"
+				icon: "assets/cane.png"
 			},
 			cane1: {
 				id: "cane1",
@@ -185,7 +185,7 @@ var config = {
 				quality: "poor",
 				class: "sword_one",
 				price: 1,
-				icon: "assets/sword.png"
+				icon: "assets/cane.png"
 			},
 			garbage0: {
 				id: "garbage0",
@@ -239,7 +239,7 @@ var config = {
 				quality: "poor",
 				class: "sword_one",
 				price: 4,
-				icon: "assets/sword.png"
+				icon: "assets/cane.png"
 			},
 
 			// uncommon
@@ -255,7 +255,7 @@ var config = {
 				quality: "uncommon",
 				class: "head",
 				price: 24,
-				icon: "assets/scrap.png"
+				icon: "assets/helm.png"
 			},
 			chest0: {
 				id: "chest0",
@@ -269,7 +269,7 @@ var config = {
 				quality: "uncommon",
 				class: "chest",
 				price: 26,
-				icon: "assets/scrap.png"
+				icon: "assets/chest.png"
 			},
 			sword0: {
 				id: "sword0",
@@ -408,7 +408,7 @@ var config = {
 				quality: "legendary",
 				class: "sword_one",
 				price: 281,
-				icon: "assets/sword.png"
+				icon: "assets/sword-legendary.png"
 			},
 			knife1: {
 				id: "knife1",
@@ -447,7 +447,7 @@ var config = {
 				quality: "legendary",
 				class: "bow",
 				price: 266,
-				icon: "assets/scrap.png"
+				icon: "assets/bow.png"
 			},
 			bow2: {
 				id: "bow2",
@@ -460,7 +460,7 @@ var config = {
 				quality: "legendary",
 				class: "bow",
 				price: 266,
-				icon: "assets/scrap.png"
+				icon: "assets/bow.png"
 			},
 			
 		},
@@ -786,7 +786,7 @@ var config = {
 				heal: 0,
 				damage: 0,
 				type: "damage_dot",
-				icon: "assets/knife.png",
+				icon: "assets/knife-dot.png",
 				time: 20,
 				damage_tick: 2,
 				strength_scaling: 20
