@@ -1,6 +1,6 @@
 Vue.component('viewMapTile', {
   props: ['row_id', 'col_id', 'zone'],
-  template: ['<span class="tile">',
+  template: ['<span class="tile" @click="movePlayer">',
       '<view-map-tile-layer-default></view-map-tile-layer-default>',
       '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
       '<view-map-tile-layer-event v-for="layer in getLayerEvents" :layer="layer" :tiles="getLayerEvents"></view-map-tile-layer-event>',
@@ -29,6 +29,70 @@ Vue.component('viewMapTile', {
           }
         }
       }
+    },
+    movePlayer: function () {
+        // Todo: refactor with moveAction character component
+        let position = config.character.position
+        let previous_pos = [...position]
+        let new_position = [...position]
+
+        //console.log(this.getRowId, this.getColId)
+        if (this.getRowId > position[1]) {
+          new_position[1] = parseInt(position[1]) + 1
+        }
+        if (this.getRowId < position[1]) {
+          new_position[1] = parseInt(position[1]) - 1
+        }
+        if (this.getColId > position[0]) {
+          new_position[0] = parseInt(position[0]) + 1
+        }
+        if (this.getColId < position[0]) {
+          new_position[0] = parseInt(position[0]) - 1
+        }
+        
+        // check if can character move on new position
+        let cell_tiles = config.db.map[config.db.map.activeMap].map
+        // user cant move on not exist tiles
+        if (!cell_tiles[new_position[1]] || !cell_tiles[new_position[1]][new_position[0]]) {
+          return
+        }
+
+        //let cant_move = true
+        for (tile_idx in cell_tiles[new_position[1]][new_position[0]]) {
+          let tile = cell_tiles[new_position[1]][new_position[0]][tile_idx]
+
+          //let exclude_list = ['tile-map3']
+          if (tile.map == "tile-map3") {
+            return
+          }
+        }
+        
+        Vue.set(position, 0, parseInt(new_position[0]))
+        Vue.set(position, 1, parseInt(new_position[1]))
+
+        this.changedCharacterPostiton(previous_pos)
+    },
+    changedCharacterPostiton: function (previous_pos) {
+      let position = config.character.position
+
+      if (!config.db.map[config.db.map.activeMap].layerEvents[position[1]]) {
+        Vue.set(config.db.map[config.db.map.activeMap].layerEvents, position[1], {})  
+      }
+      if (!config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]]) {
+        Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]], position[0], {})  
+      }
+
+      //console.log(previous_pos, position)
+      if (config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]] && config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]][previous_pos[0]]) {
+        Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]][previous_pos[0]], config.character.id)  
+      }
+
+      Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]], config.character.id, {
+              id: "7",
+              player_id: config.character.id,
+              name: "Player Kokoko",
+              type: "player",
+      })
     }
   },
   computed: {

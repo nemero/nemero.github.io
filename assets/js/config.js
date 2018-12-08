@@ -4577,6 +4577,7 @@ var config = {
 								type: "cave",
 								position: [10, 7],
 								map: "zone1",
+								icon: "assets/cave.jpg"
 							}
 						},
 					},
@@ -4585,6 +4586,7 @@ var config = {
 						4: {
 							"player0": {
 								id: "7",
+								player_id: "player0",
 				                name: "Player Kokoko",
 				                type: "player",
 							}
@@ -4618,6 +4620,7 @@ var config = {
 								type: "cave",
 								position: [4, 3],
 								map: "zone1",
+								icon: "assets/cave.jpg"
 							}
 						}
 					}

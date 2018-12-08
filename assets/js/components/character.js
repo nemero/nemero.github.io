@@ -53,6 +53,7 @@ Vue.component('character', {
   },
   methods: {
     moveAction: function (e) {
+        // Todo: refactor with movePlayer virwMapTile component
         let position = config.character.position
         let previous_pos = [...position]
         let new_position = [...position]
@@ -154,6 +155,7 @@ Vue.component('character', {
 
       Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]], config.character.id, {
               id: "7",
+              player_id: config.character.id,
               name: "Player Kokoko",
               type: "player",
       })

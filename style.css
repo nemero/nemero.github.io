@@ -537,8 +537,14 @@ a:hover {
 	margin-right: 10px;
 	margin-bottom: 10px;
 	cursor: pointer;
+	text-align: center;
 }
 
 .view-map-tile-action .tile {
+	display: inline-block;
+}
+.view-map-tile-action span {
+	width: 64px;
+	height: 64px;
 	display: inline-block;
 }
