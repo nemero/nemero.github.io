@@ -94,5 +94,12 @@
 	<script type="text/javascript" src="assets/js/components/map/viewMapTileLayerDefault.js"></script>
 	
 	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript">
+		var cancelSelect = function () {
+			let e = window.event;
+			pauseEvent(e);
+		}
+		window.addEventListener('mousedown', cancelSelect);
+	</script>
 </body>
 </html>
