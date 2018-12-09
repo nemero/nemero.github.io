@@ -1,5 +1,5 @@
 Vue.component('viewMapTileLayerDefault', {
-  props: [''],
+  props: ['zone'],
   template: ['<span class="layer" :style="getTileStyle" :class="getTileMapClass"></span>',
     ].join(""),
   computed: {
@@ -18,7 +18,7 @@ Vue.component('viewMapTileLayerDefault', {
   		// 	data['background'] = 'url(' + tile['texture'] + ')'
   		// }
   		//if (tile['offset']) {
-  			data['background-position'] = 0 + 'px ' + 0 + 'px'
+  			data['background-position'] = this.zone.default_tile.position[0] + 'px ' + this.zone.default_tile.position[1] + 'px'
   		//}
 
   		return data
@@ -28,7 +28,7 @@ Vue.component('viewMapTileLayerDefault', {
   		//let tile = this.tile
 
   		//if (tile['map']) {
-  			data['tile-map3'] = true
+  			data[this.zone.default_tile.map_class] = true
   		//}
 
   		return data

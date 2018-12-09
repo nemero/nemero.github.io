@@ -544,6 +544,12 @@ a:hover {
 .tile-map3 {
 	background: url(assets/water_1.png);
 }
+.tile-map4 {
+	background: url(assets/tileset_cave.png);
+}
+.tile-map5 {
+	background: url(assets/tileset_sewer_1.png);
+}
 
 
 .view-map-tile-action {

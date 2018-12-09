@@ -32,6 +32,20 @@ var config = {
 			animation: true,
 			frame_time: 1000 // miliseconds
 		},
+    {
+      id: 'cave_1',
+      class: 'tile-map4',
+      width: 256,
+      height: 336,
+      tileSize: [16, 16],
+    },
+    {
+      id: 'sewer_1',
+      class: 'tile-map5',
+      width: 256,
+      height: 336,
+      tileSize: [16, 16],
+    },
 	],
 	tiles: [
 	],

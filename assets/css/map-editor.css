@@ -91,6 +91,13 @@
 .tile-map3 {
 	background: url(../water_1.png);
 }
+.tile-map4 {
+	background: url(../tileset_cave.png);
+}
+.tile-map5 {
+	background: url(../tileset_sewer_1.png);
+}
+
 .map-config {
 	max-height: 400px;
 	overflow: auto;

@@ -42,6 +42,9 @@
 					Offset: 
 					<input type="number" v-model="config.mapOffset[0]" name="" value="config.mapOffset[0]" />
 					<input type="number" v-model="config.mapOffset[1]" name="" value="config.mapOffset[1]" />
+
+					<view-map-clear></view-map-clear>
+
 				</div>
 				<div class="map" @mousedown="startDrag" @mousemove="doDrag">
 					<view-map-row v-for="(row, row_id) in parseInt(config.height)" :row="row" :row_id="row_id" :config="config"></view-map-row>
@@ -49,7 +52,7 @@
 			</div>
 		</div>
 
-		<div class="map-config"><pre>{{ config.map }}</pre></div>
+		<div class="map-config"><textarea style="width: 300px;" rows="40">{{ config.map }}</textarea></div>
 	</div>
 
 
@@ -67,6 +70,7 @@
 	<script type="text/javascript" src="assets/js/components/map/editor/tileMap.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/tilesMap.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapRow.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapClear.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTile.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileLayer.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileLayersInfo.js"></script>

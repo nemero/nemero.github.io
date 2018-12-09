@@ -1,7 +1,7 @@
 Vue.component('viewMapTile', {
   props: ['row_id', 'col_id', 'zone'],
   template: ['<span class="tile" @click="movePlayer">',
-      '<view-map-tile-layer-default></view-map-tile-layer-default>',
+      '<view-map-tile-layer-default :zone="zone"></view-map-tile-layer-default>',
       '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
       '<view-map-tile-layer-event v-for="layer in getLayerEvents" :layer="layer" :tiles="getLayerEvents"></view-map-tile-layer-event>',
       '<span class="service">{{ getRowId }}/{{ getColId }} {{ getTileName }}</span>',
