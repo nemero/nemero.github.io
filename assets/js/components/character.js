@@ -1,5 +1,10 @@
 Vue.component('character', {
   props: ['config'],
+  data: function () {
+    return {
+      isShowStats: false,
+    }
+  },
   template: [
       '<div>',
         '<div class="target-box union">',
@@ -24,15 +29,30 @@ Vue.component('character', {
         
         '<buff v-for="buff in config.character.buffs" :buff="buff"></buff>',
         
-        '<ul>',
-        '<li>Defence: {{ config.character.defence }}</li>',
-        '<li>Stamina: {{ config.character.stamina }}</li>',
-        '<li>Agility: {{ config.character.agility }}</li>',
-        '<li>Strength: {{ config.character.strength }}</li>',
-        '<li>EXP: {{ config.character.experience }}</li>',
-        '<li>Map position: {{ config.character.position }}</li>',
-        '<li>Resssrepecter: {{ config.character.dies }}</li>',
-        '</ul>',
+        '<div class="character-stats">',
+          '<span @click="showStats()">Show/Hide Stats</span>',
+          '<ul v-show="isShowStats">',
+            '<li>Defence: {{ config.character.defence }}</li>',
+            '<li>Stamina: {{ config.character.stamina }}</li>',
+            '<li>Agility: {{ config.character.agility }}</li>',
+            '<li>Strength: {{ config.character.strength }}</li>',
+            '<li>EXP: {{ config.character.experience }}</li>',
+            '<li>Map position: {{ config.character.position }}</li>',
+            '<li>Resssrepecter: {{ config.character.dies }}</li>',
+            '<li>Active equipment</li>',
+            '<li>Head: {{ config.character.activeEquipment.head }}</li>',
+            '<li>Neck: {{ config.character.activeEquipment.neck }}</li>',
+            '<li>Shoulders: {{ config.character.activeEquipment.shoulders }}</li>',
+            '<li>Cloak: {{ config.character.activeEquipment.cloak }}</li>',
+            '<li>Chest: {{ config.character.activeEquipment.chest }}</li>',
+            '<li>Hands: {{ config.character.activeEquipment.hands }}</li>',
+            '<li>Legs: {{ config.character.activeEquipment.legs }}</li>',
+            '<li>Boots: {{ config.character.activeEquipment.boots }}</li>',
+            '<li>Ring L: {{ config.character.activeEquipment.ring1 }}</li>',
+            '<li>Ring R: {{ config.character.activeEquipment.ring2 }}</li>',
+            '<li>Weapon: {{ config.character.activeEquipment.weapon }}</li>',
+          '</ul>',
+        '</div>',
       '</div>'
 	  	].join(''),
   created: function () {
@@ -52,6 +72,13 @@ Vue.component('character', {
     }
   },
   methods: {
+    showStats: function () {
+      if (this.isShowStats) {
+        this.isShowStats = false
+      } else {
+        this.isShowStats = true
+      }
+    },
     moveAction: function (e) {
         // Todo: refactor with movePlayer virwMapTile component
         let position = config.character.position

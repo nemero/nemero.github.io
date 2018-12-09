@@ -888,7 +888,7 @@ var config = {
 					//icon: "player0"
 				}
 			},
-			viewport: [9, 11],
+			viewport: [15, 10],
 			activeMap: "zone1",
 			zone1: {
 				id: "zone1",

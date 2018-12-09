@@ -11,7 +11,7 @@
 
 		<div class="ui">
 			<div class="ui-left">
-				<div class="ui-enemies">
+				<div class="ui-targets">
 					<div>
 						<character :config="config"></character>
 						<debuff v-for="debuff in config.character.debuffs" :debuff="debuff"></debuff>
@@ -20,16 +20,18 @@
 						<target :config="config"></target>
 					</div>
 				</div>
-				
-				<div class="ui-enemies">
-					<div>
-						<span>Actions: </span>
-						<div class="ui-actions">
-							<view-map-tile-actions :position="config.character.position" :config="config"></view-map-tile-actions>
-						</div>
+				<div class="tile-actions">
+					<span>Actions: </span>
+					<div class="ui-actions">
+						<view-map-tile-actions :position="config.character.position" :config="config"></view-map-tile-actions>
 					</div>
 				</div>
-
+				<div class="map">
+					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map[config.db.map.activeMap]" :viewport="config.db.map.viewport"></view-map-row>
+				</div>
+			</div>
+			
+			<div class="ui-right">
 				<div class="ui-enemies">
 					<div>
 						<span>Abilities: </span>
@@ -57,16 +59,10 @@
 					</div>
 				</div>
 
-				<ul class="combat-log">
+				<!-- <ul class="combat-log">
 					<combat-log v-for="record in config.combatLog" :record="record"></combat-log>
-				</ul>
+				</ul> -->
 			</div>	
-
-			<div class="ui-right">
-				<div class="map">
-					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map[config.db.map.activeMap]" :viewport="config.db.map.viewport"></view-map-row>
-				</div>
-			</div>
 		</div>
 	</div>
 
