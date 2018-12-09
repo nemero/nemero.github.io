@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>play</title>
+	<meta name="viewport" content="minimal-ui">
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -30,7 +31,7 @@
 					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map[config.db.map.activeMap]" :viewport="config.db.map.viewport"></view-map-row>
 				</div>
 			</div>
-			
+
 			<div class="ui-right">
 				<div class="ui-enemies">
 					<div>

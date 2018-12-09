@@ -2732,7 +2732,7 @@ layerEvents: {
 								type: "cave",
 								position: [1, 2],
 								map: "zone1",
-								icon: "assets/cave.jpg"
+								icon: "assets/town_out.jpg"
 							}
 						}
 					}
@@ -6407,7 +6407,7 @@ layerEvents: {
 								type: "cave",
 								position: [5, 7],
 								map: "sevew1",
-								icon: "assets/cave.jpg"
+								icon: "assets/town_in.jpg"
 							}
 						},
 						6: {
