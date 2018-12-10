@@ -149,7 +149,7 @@ var config = {
 					"tile-map5-64_-32", "tile-map5-64_-112", "tile-map5-64_-128", "tile-map5-64_-144",
 					"tile-map5-80_-32", "tile-map5-80_0", "tile-map5-80_-176", "tile-map5-80_-192",
 					"tile-map5-80_-208", "tile-map5-96_0", "tile-map5-144_-176", "tile-map5-144_-192",
-					"tile-map5-144_-208", "tile-map5-160_0", 
+					"tile-map5-144_-208", "tile-map5-160_0", "tile-map5-96_-64", "tile-map5-96_-96"
 				],
 			},
 			activeMap: "zone1",
@@ -168,7 +168,7 @@ var config = {
 						5: {
 							"cave_toonel": {
 								id: "8",
-								name: "Subway",
+								name: "Tower",
 								type: "cave",
 								position: [1, 2],
 								map: "zone1",

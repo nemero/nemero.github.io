@@ -362,20 +362,11 @@ var db_map_zone1 = {
     },
     "1": {
       "1": {
-        "id": "tile-map30_0",
-        "offset": [
-          0,
-          0
-        ],
+        "id": null,
         "size": [
           16,
           16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map3"
+        ]
       },
       "2": {
         "id": "tile-map1-16_-16",
@@ -428,20 +419,11 @@ var db_map_zone1 = {
     },
     "2": {
       "1": {
-        "id": "tile-map30_0",
-        "offset": [
-          0,
-          0
-        ],
+        "id": null,
         "size": [
           16,
           16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map3"
+        ]
       },
       "2": {
         "id": "tile-map1-16_-16",
@@ -478,20 +460,11 @@ var db_map_zone1 = {
     },
     "3": {
       "1": {
-        "id": "tile-map30_0",
-        "offset": [
-          0,
-          0
-        ],
+        "id": null,
         "size": [
           16,
           16
-        ],
-        "position": [
-          0,
-          0
-        ],
-        "map": "tile-map3"
+        ]
       },
       "2": {
         "id": "tile-map1-16_-16",
