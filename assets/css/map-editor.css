@@ -57,6 +57,11 @@ html {
 	left: -2px;
 	top: -2px;
 }
+.layer div {
+	zoom: 0.5;
+	display: block;
+	border: none;
+}
 .view-map-row .tile:hover .tile-layers-info {
 	display: block;
 }

@@ -36,18 +36,23 @@ Vue.component('viewMapTile', {
         let previous_pos = [...position]
         let new_position = [...position]
 
+        let directions = []
         //console.log(this.getRowId, this.getColId)
         if (this.getRowId > position[1]) {
           new_position[1] = parseInt(position[1]) + 1
+          directions.push("down")
         }
         if (this.getRowId < position[1]) {
           new_position[1] = parseInt(position[1]) - 1
+          directions.push("up")
         }
         if (this.getColId > position[0]) {
           new_position[0] = parseInt(position[0]) + 1
+          directions.push("right")
         }
         if (this.getColId < position[0]) {
           new_position[0] = parseInt(position[0]) - 1
+          directions.push("left")
         }
         
         // check if can character move on new position
@@ -57,15 +62,76 @@ Vue.component('viewMapTile', {
           return
         }
 
+        
         //let cant_move = true
         for (tile_idx in cell_tiles[new_position[1]][new_position[0]]) {
           let tile = cell_tiles[new_position[1]][new_position[0]][tile_idx]
 
           //let exclude_list = ['tile-map3']
-          if (tile.map == "tile-map3") {
+          if (tile.map == "tile-map3" || (config.db.map.stop_tiles[tile.map] && config.db.map.stop_tiles[tile.map].indexOf(tile.id) >= 0)) {
             return
           }
         }
+
+        // check direction from current postition
+        for (tile_idx in cell_tiles[position[1]][position[0]]) {
+          let tile = cell_tiles[position[1]][position[0]][tile_idx]
+
+          console.log(directions, config.db.map.directions_tiles[tile.map], tile.id)
+          // checking available direction 
+          if (config.db.map.directions_tiles[tile.map] && config.db.map.directions_tiles[tile.map][tile.id]) {
+            let can_move = true
+            for (idx in directions) {
+              let direction = directions[idx]
+              if (!config.db.map.directions_tiles[tile.map][tile.id][direction]) {
+                return // we cant move 
+              }
+
+            }
+          }
+        }        
+
+        // check direction to new postition
+        for (tile_idx in cell_tiles[new_position[1]][new_position[0]]) {
+          let tile = cell_tiles[new_position[1]][new_position[0]][tile_idx]
+
+          console.log(directions, config.db.map.directions_tiles[tile.map], tile.id)
+          // checking available direction 
+          if (config.db.map.directions_tiles[tile.map] && config.db.map.directions_tiles[tile.map][tile.id]) {
+            let can_move = true
+            for (idx in directions) {
+              let direction = directions[idx]
+              let new_direction = ""
+              if (direction == "left") {
+                new_direction = "right"
+                if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
+                  return // we cant move 
+                }
+              }
+
+              if (direction == "right") {
+                new_direction = "left"
+                if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
+                  return // we cant move 
+                }
+              }
+
+              if (direction == "up") {
+                new_direction = "down"
+                if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
+                  return // we cant move 
+                }
+              }
+
+              if (direction == "down") {
+                new_direction = "up"
+                if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
+                  return // we cant move 
+                }
+              }
+            }
+          }
+        }      
         
         Vue.set(position, 0, parseInt(new_position[0]))
         Vue.set(position, 1, parseInt(new_position[1]))

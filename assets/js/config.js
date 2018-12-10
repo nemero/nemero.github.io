@@ -141,17 +141,8 @@ var config = {
 		map: {
 			tiles: db_map_tiles,
 			viewport: [15, 10],
-			stop_tiles: {
-				"tile-map4": [],
-				"tile-map5": [
-					"tile-map5-48_0", "tile-map5-48_-16", "tile-map5-48_-32", "tile-map5-48_-112", 
-					"tile-map5-48_-128", "tile-map5-48_-144", "tile-map5-64_0", "tile-map5-64_-16",
-					"tile-map5-64_-32", "tile-map5-64_-112", "tile-map5-64_-128", "tile-map5-64_-144",
-					"tile-map5-80_-32", "tile-map5-80_0", "tile-map5-80_-176", "tile-map5-80_-192",
-					"tile-map5-80_-208", "tile-map5-96_0", "tile-map5-144_-176", "tile-map5-144_-192",
-					"tile-map5-144_-208", "tile-map5-160_0", "tile-map5-96_-64", "tile-map5-96_-96"
-				],
-			},
+			stop_tiles: stop_tiles,
+			directions_tiles: directions_tiles,
 			activeMap: "zone1",
 
 			sewer1_b1: {
@@ -164,8 +155,8 @@ var config = {
 				},
 				map: db_map_sewer1_b1,
 				layerEvents: {
-					2: {
-						5: {
+					1: {
+						7: {
 							"sub_town_opened": {
 								id: "8",
 								name: "Sub Tower",

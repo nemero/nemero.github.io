@@ -1,6 +1,9 @@
 Vue.component('viewMapTileLayersInfo', {
   props: ['tile', 'idx', 'tiles'],
-  template: ['<span class="layer" :style="getTileStyle" @click="brushCell" :class="getTileMapClass">{{ idx }}</span>',
+  template: ['<span class="layer" :style="getTileStyle" @click="brushCell" :class="getTileMapClass">',
+        '{{ idx }}',
+        //'<div>{{ tile.id }}<div>',
+      '</span>',
     ].join(""),
   methods: {
   	brushCell: function () {

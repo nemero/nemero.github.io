@@ -1151,7 +1151,22 @@ var db_map_zone1 = {
       }
     },
     "10": {
-      "1": {},
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map10_-64",
         "offset": [
@@ -1170,7 +1185,22 @@ var db_map_zone1 = {
       }
     },
     "11": {
-      "1": {},
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map10_-64",
         "offset": [
@@ -1189,7 +1219,22 @@ var db_map_zone1 = {
       }
     },
     "12": {
-      "1": {},
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map10_-80",
         "offset": [
@@ -1632,6 +1677,22 @@ var db_map_zone1 = {
       }
     },
     "12": {
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map1-16_-80",
         "offset": [
@@ -1923,6 +1984,22 @@ var db_map_zone1 = {
       }
     },
     "12": {
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map1-16_-80",
         "offset": [
@@ -2303,6 +2380,22 @@ var db_map_zone1 = {
       }
     },
     "12": {
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map1-16_-80",
         "offset": [
@@ -2658,6 +2751,22 @@ var db_map_zone1 = {
       }
     },
     "12": {
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map1-16_-80",
         "offset": [
@@ -3062,6 +3171,22 @@ var db_map_zone1 = {
       }
     },
     "12": {
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map1-16_-80",
         "offset": [
@@ -3374,6 +3499,22 @@ var db_map_zone1 = {
       }
     },
     "10": {
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map1-112_-64",
         "offset": [
@@ -3392,6 +3533,22 @@ var db_map_zone1 = {
       }
     },
     "11": {
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map1-112_-64",
         "offset": [
@@ -3410,6 +3567,22 @@ var db_map_zone1 = {
       }
     },
     "12": {
+      "1": {
+        "id": "tile-map30_0",
+        "offset": [
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map3"
+      },
       "2": {
         "id": "tile-map1-112_-80",
         "offset": [
