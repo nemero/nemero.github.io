@@ -80,6 +80,12 @@ var db_items = {
 	},
 
 	// common
+	key_old_tower0: {
+		id: "key_old_tower0",
+		name: "Key From some lock",
+		type: "key",
+		icon: "assets/key.png"
+	},
 	knife0: {
 		id: "knife0",
 		name: "Knife Frog",

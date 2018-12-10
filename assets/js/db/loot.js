@@ -10,7 +10,8 @@ var db_loot = {
 			cane2: 12,
 			garbage0: 8,
 			sword3: 2,
-			sword4: 1
+			sword4: 1,
+			key_old_tower0: 90
 		}
 	},
 	zomby: {
@@ -90,7 +91,8 @@ var db_loot = {
 			sword4: 1,
 			knife1: 2,
 			sword0: 15,
-			bow1: 2
+			bow1: 2,
+			key_old_tower0: 90
 		}
 	},
 	boss2: {

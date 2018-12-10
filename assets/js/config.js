@@ -53,7 +53,7 @@ var config = {
 		],
 
 		bag: [
-			"knife0", "cane1", "head0", "chest0", "sword0"
+			"knife0", "cane1", "head0", "chest0", "sword0", "key_old_tower0"
 		],
 
 		activeTarget: null,
@@ -154,7 +154,7 @@ var config = {
 			},
 			activeMap: "zone1",
 
-			sevew1: {
+			sewer1_b1: {
 				name: "Instance test",
 				height: 15,
 				width: 15,
@@ -162,8 +162,68 @@ var config = {
 					map_class: "tile-map5",
 					position: [0, -128],
 				},
-				map: db_map_sevew1,
+				map: db_map_sewer1_b1,
 				layerEvents: {
+					2: {
+						5: {
+							"sub_town_opened": {
+								id: "8",
+								name: "Sub Tower",
+								type: "cave",
+								position: [1, 3],
+								map: "sewer1",
+								icon: "assets/town_in.jpg",
+							}
+						}
+					}
+				},
+			},
+
+			sewer1: {
+				name: "Instance test",
+				height: 15,
+				width: 15,
+				default_tile: {
+					map_class: "tile-map5",
+					position: [0, -128],
+				},
+				map: db_map_sewer1,
+				layerEvents: {
+					3: {
+						1: {
+							"sub_town": {
+								id: "9",
+								name: "Sub Tower",
+								type: "cave_lock",
+								type_unlock: "item",
+								item: "key_old_tower0",
+								icon: "assets/town_out.jpg",
+
+								trigger: {
+									map: "sewer1", // map here show layer
+									position: [1, 3], // position in map that will showing
+									tile_id: "sub_town_opened", // id layer that need to show
+									layer_id: 2, 
+									tile: { 
+										"id": "tile-map5-80_-224", 
+										"offset": [ -224, -80 ], 
+										"size": [ 16, 16 ], 
+										"position": [ 0, 0 ], 
+										"map": "tile-map5" 
+									},
+								}
+							},
+							"sub_town_opened": {
+								id: "8",
+								name: "Sub Tower",
+								type: "cave",
+								position: [5, 2],
+								map: "sewer1_b1",
+								icon: "assets/town_in.jpg",
+								hidden: true,
+							}
+						},
+					},
 					7: {
 						5: {
 							"cave_toonel": {
@@ -198,12 +258,12 @@ var config = {
 								type: "enemies",
 								enemies: ["boss1", "zomby", "bear0"]
 							},
-							"sevew_tower": {
+							"sewer_tower": {
 								id: "8",
 								name: "Tower",
 								type: "cave",
 								position: [5, 7],
-								map: "sevew1",
+								map: "sewer1",
 								icon: "assets/town_in.jpg"
 							}
 						},

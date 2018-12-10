@@ -47,5 +47,11 @@ var db_map_tiles = {
 		id: "8",
 		name: "doors",
 		//icon: "player0"
+	},
+
+	9: {
+		id: "9",
+		name: "doors_lock",
+		//icon: "player0"
 	}
 }

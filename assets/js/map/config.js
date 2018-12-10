@@ -46,9 +46,16 @@ var config = {
 	      height: 336,
 	      tileSize: [16, 16],
 	    },
+	    {
+	      id: 'sewer_1_b1',
+	      class: 'tile-map5',
+	      width: 256,
+	      height: 336,
+	      tileSize: [16, 16],
+	    },
 	],
 	tiles: [],
-	map_list: [db_map_zone1, db_map_sevew1],
+	map_list: [db_map_zone1, db_map_sewer1, db_map_sewer1_b1],
 	activeMapId: null,
   	mapOffset: [0, 0],
 	map: {}
