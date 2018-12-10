@@ -1,7 +1,9 @@
 Vue.component('activeBrushTile', {
   props: ['tile'],
-  template: ['<span class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
-    ].join(""),
+  template: ['<span>',
+      '<span class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
+      '<div>{{ tile }}</div>',
+    '</span>'].join(""),
   computed: {
   	getTileStyle: function () {
   		let data = {}

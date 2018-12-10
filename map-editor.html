@@ -45,7 +45,7 @@
 					<input type="number" v-model="config.mapOffset[1]" name="" value="config.mapOffset[1]" />
 
 					<view-map-clear></view-map-clear>
-
+					<choose-saved-map :config="config"></choose-saved-map>
 				</div>
 				<div class="map" @mousedown="startDrag" @mousemove="doDrag">
 					<view-map-row v-for="(row, row_id) in parseInt(config.height)" :row="row" :row_id="row_id" :config="config"></view-map-row>
@@ -58,12 +58,14 @@
 
 
 	<!-- development version, includes helpful console warnings -->
-	<script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+	<script src="offline-vue.js"></script>
+
+	<!-- Map Data -->
+	<script type="text/javascript" src="assets/js/db/map/zone1.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/sevew1.js"></script>
+
 	<script type="text/javascript" src="assets/js/map/config.js"></script>
-
-	<script type="text/javascript">
-
-	</script>
 
 	<script type="text/javascript" src="assets/js/components/map/editor/activeBrushTile.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/activeTileMap.js"></script>
@@ -75,6 +77,8 @@
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTile.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileLayer.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileLayersInfo.js"></script>
+
+	<script type="text/javascript" src="assets/js/components/map/editor/chooseSavedMap.js"></script>
 
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>

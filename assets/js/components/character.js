@@ -114,7 +114,7 @@ Vue.component('character', {
           let tile = cell_tiles[new_position[1]][new_position[0]][tile_idx]
 
           //let exclude_list = ['tile-map3']
-          if (tile.map == "tile-map3") {
+          if (tile.map == "tile-map3" || (config.db.map.stop_tiles[tile.map] && config.db.map.stop_tiles[tile.map].indexOf(tile.id) >= 0)) {
             return
           }
         }
