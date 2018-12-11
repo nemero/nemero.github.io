@@ -401,6 +401,24 @@ a:hover {
 	background: url(assets/player.png) center center/cover;
 	cursor: pointer;
 }
+.view-map-row .layer-event.chest-open0 {
+	position: absolute;
+	width: 60%;
+	height: 60%;
+	top: 5%;
+	left: 20%;
+	background: url(assets/chest-locked.png) center center/cover;
+	cursor: pointer;
+}
+.view-map-row .layer-event.chest-locked0 {
+	position: absolute;
+	width: 60%;
+	height: 60%;
+	top: 0;
+	left: 0;
+	background: url(assets/chest-locked.png) center center/cover;
+	cursor: pointer;
+}
 
 
 .view-map-row .layer-event:hover .layer-event-details {

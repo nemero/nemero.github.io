@@ -1,6 +1,6 @@
 Vue.component('viewMapTileLayerEvent', {
   props: ['layer', 'tiles'],
-  template: ['<span class="layer-event" :class="getTileEventClass" @click="selectLayerEvent">',
+  template: ['<span class="layer-event" :class="getTileEventClass" @click="selectLayerEvent" v-if="isVisible">',
           //'<span class="layer-event-details" v-show="getLayerEventDetails.length > 0">{{ getLayerEventDetails }}</span>',
       '</span>'].join(""),
   methods: {
@@ -28,6 +28,15 @@ Vue.component('viewMapTileLayerEvent', {
     }
   },
   computed: {
+    isVisible: function () {
+      let tile = this.layer
+
+      if (tile.hidden) {
+        return false
+      }
+      
+      return true
+    },
     getTileEventClass: function () {
       let data = {}
       let tile = this.layer

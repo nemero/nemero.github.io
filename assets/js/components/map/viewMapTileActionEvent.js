@@ -71,6 +71,16 @@ Vue.component('viewMapTileActionEvent', {
 
         config.character.position = [...tile.position]
       }
+
+      if (tile.type == "chest_open") {
+        for (item_idx in tile.items) {
+          let item = tile.items[item_idx]
+          config.character.bag.push(item)
+        }
+
+        // hide chest
+        Vue.set(tile, "hidden", true)  
+      }
  	 },
    isVisible: function () {
     let tile = this.tile

@@ -29,11 +29,11 @@ var config = {
 		position: [0, 0],
 
 		activeEquipment: {
-			head: null,
+			head: "head0",
 			neck: null,
 			shoulders: null,
 			cloak: null,
-			chest: "whinte cloth",
+			chest: "chest0",
 			hands: null,
 			legs: "grey cloth",
 			boots: "grey cloth",
@@ -53,7 +53,7 @@ var config = {
 		],
 
 		bag: [
-			"knife0", "cane1", "head0", "chest0", "sword0", "key_old_tower0"
+			"head0", "chest0",
 		],
 
 		activeTarget: null,
@@ -166,7 +166,25 @@ var config = {
 								icon: "assets/town_in.jpg",
 							}
 						}
-					}
+					},
+					2: {
+						3: {
+							"enemies_test2": {
+								id: "6",
+								name: "Battle zone boss",
+								type: "enemies",
+								cooldown: 20, // after kill all enemies it will return after 20 steps
+								enemies: ["zomby", "zomby"]
+							},
+							"box0": {
+								id: "10",
+								name: "Box Items",
+								type: "chest_open",
+								items: ["sword4", "cane0"],
+								icon: "assets/town_out.jpg",
+							},
+						}
+					},
 				},
 			},
 
@@ -247,7 +265,7 @@ var config = {
 								id: "6",
 								name: "Battle zone boss",
 								type: "enemies",
-								enemies: ["boss1", "zomby", "bear0"]
+								enemies: ["boss1"]
 							},
 							"sewer_tower": {
 								id: "8",

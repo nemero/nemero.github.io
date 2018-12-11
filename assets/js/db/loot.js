@@ -11,7 +11,7 @@ var db_loot = {
 			garbage0: 8,
 			sword3: 2,
 			sword4: 1,
-			key_old_tower0: 90
+			key_old_tower0: 3
 		}
 	},
 	zomby: {

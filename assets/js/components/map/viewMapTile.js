@@ -77,7 +77,6 @@ Vue.component('viewMapTile', {
         for (tile_idx in cell_tiles[position[1]][position[0]]) {
           let tile = cell_tiles[position[1]][position[0]][tile_idx]
 
-          console.log(directions, config.db.map.directions_tiles[tile.map], tile.id)
           // checking available direction 
           if (config.db.map.directions_tiles[tile.map] && config.db.map.directions_tiles[tile.map][tile.id]) {
             let can_move = true
@@ -95,7 +94,6 @@ Vue.component('viewMapTile', {
         for (tile_idx in cell_tiles[new_position[1]][new_position[0]]) {
           let tile = cell_tiles[new_position[1]][new_position[0]][tile_idx]
 
-          console.log(directions, config.db.map.directions_tiles[tile.map], tile.id)
           // checking available direction 
           if (config.db.map.directions_tiles[tile.map] && config.db.map.directions_tiles[tile.map][tile.id]) {
             let can_move = true
