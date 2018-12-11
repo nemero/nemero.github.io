@@ -157,6 +157,9 @@ Vue.component('viewMapTile', {
               name: "Player Kokoko",
               type: "player",
       })
+
+      // track steps
+      config.step++
     }
   },
   computed: {

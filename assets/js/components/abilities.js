@@ -29,14 +29,8 @@ Vue.component('abilities', {
     testest: function(e) {
         let key = e.key // char
         let ability_item = config.db.abilities[this.ability]
-        //console.log(e)
-        //config.character.keyDown = e // reative variable
-        //if (e.ctrlKey && e.keyCode == 90) {
-          // Ctrl + z pressed
-        //}
         let key_binding = config.character.keyBindings[this.ability]
-        //console.log(key_binding, this.ability)
-        //console.log(ability_item.)}
+
         if (key_binding && key_binding.key == e.keyCode) {
           this.useAbility(this.ability)
         }
@@ -273,6 +267,7 @@ Vue.component('abilities', {
       }
     },
     enemyDownCheck: function () {
+      let all_enemies_down = true
       for (enemy_idx in config.activeEnemies) {
         let enemy = config.activeEnemies[enemy_idx]
 
@@ -305,6 +300,24 @@ Vue.component('abilities', {
             config.character.level = Math.trunc(config.character.experience/config.level.experience)
             config.character.max_health = config.character.base_health + ((config.character.level - 1) * config.level.up.health) + config.character.stamina
             config.character.health = config.character.max_health
+          }
+        }
+
+        if (enemy.dead !== true) {
+          all_enemies_down = false
+        }
+      }
+
+      // todo refact
+      //console.log(all_enemies_down)
+      if (all_enemies_down) {
+        let layers = config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]
+        for (layer_idx in layers) {
+          let layer = layers[layer_idx]
+          if (layer.type == "enemies" && layer.cooldown) {
+            // remove first enemies layer
+            Vue.set(layer, "cooldown_left", config.step + layer.cooldown)
+            break
           }
         }
       }

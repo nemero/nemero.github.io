@@ -248,6 +248,9 @@ Vue.component('character', {
               name: "Player Kokoko",
               type: "player",
       })
+
+      // track steps
+      config.step++
     }
   },
   computed: {

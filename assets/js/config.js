@@ -173,7 +173,7 @@ var config = {
 								id: "6",
 								name: "Battle zone boss",
 								type: "enemies",
-								cooldown: 20, // after kill all enemies it will return after 20 steps
+								cooldown: 40, // after kill all enemies it will return after 20 steps
 								enemies: ["zomby", "zomby"]
 							},
 							"box0": {
@@ -232,6 +232,16 @@ var config = {
 								hidden: true,
 							}
 						},
+						8: {
+							"enemies_test2": {
+								id: "6",
+								name: "Battle zone boss",
+								type: "enemies",
+								cooldown: 20,
+								enemies: ["fly", "fly"],
+								//hidden: false
+							},
+						}
 					},
 					7: {
 						5: {
@@ -265,6 +275,7 @@ var config = {
 								id: "6",
 								name: "Battle zone boss",
 								type: "enemies",
+								cooldown: 40,
 								enemies: ["boss1"]
 							},
 							"sewer_tower": {
@@ -281,6 +292,7 @@ var config = {
 								id: "6",
 								name: "Battle zone boss",
 								type: "enemies",
+								cooldown: 60,
 								enemies: ["wolf1", "wolf1", "boss"]
 							}
 						}
@@ -292,6 +304,7 @@ var config = {
 								id: "6",
 								name: "Battle zone boss",
 								type: "enemies",
+								cooldown: 20,
 								enemies: ["fly", "fly", "fly", "fly", "fly", "fly", "wolf1"]
 							}
 						},
@@ -300,6 +313,7 @@ var config = {
 								id: "6",
 								name: "Battle zone boss",
 								type: "enemies",
+								cooldown: 20,
 								enemies: ["wolf1", "bear0", "bear1"]
 							},
 							"cave_toonel": {
@@ -330,6 +344,7 @@ var config = {
 								id: "6",
 								name: "Battle zone",
 								type: "enemies",
+								cooldown: 20,
 								enemies: ["fly", "fly", "fly", "fly"]
 							}
 						},
@@ -339,6 +354,7 @@ var config = {
 								id: "6",
 								name: "Battle zone boss",
 								type: "enemies",
+								cooldown: 200,
 								enemies: ["boss2"]
 							}
 						},

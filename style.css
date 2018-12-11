@@ -292,8 +292,17 @@ a:hover {
 		color: red;
 	},
 }
+@keyframes cantUseAction {
+	0% {
+		color: red;
+		background: rgba(200, 0, 0, .4);
+	},
+}
 .cant_equip, .cant_use {
 	animation: cantEquipItem 1s linear;	
+}
+.cant_use_action {
+	animation: cantUseAction 1s linear;	
 }
 .equipped {
 	border: 1px solid #326d99;

@@ -1,5 +1,5 @@
 Vue.component('viewMapTileAction', {
-  	props: ['tile', 'config'],
+  	props: ['tile', 'config',],
   	template: ['<div class="view-map-tile-action">',
               	'{{ tile }}',
                 '<span class="tile" :style="getTileStyle" :class="getTileMapClass"></span>',

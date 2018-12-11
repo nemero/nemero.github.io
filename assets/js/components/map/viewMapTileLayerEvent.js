@@ -8,7 +8,7 @@ Vue.component('viewMapTileLayerEvent', {
       let tile = this.layer
       let layer_tale = config.db.map.tiles[tile.id]
 
-      if (tile.type == "enemies") {
+      if (tile.type == "enemies" || (tile.type == "enemies" && tile.cooldown && tile["cooldown_left"] <= config.step)) {
         // we can select enemies only in same tile
         if (!this.tiles[config.character.id]) {
           return
@@ -31,7 +31,7 @@ Vue.component('viewMapTileLayerEvent', {
     isVisible: function () {
       let tile = this.layer
 
-      if (tile.hidden) {
+      if (tile.hidden || tile["cooldown_left"] > config.step) {
         return false
       }
       

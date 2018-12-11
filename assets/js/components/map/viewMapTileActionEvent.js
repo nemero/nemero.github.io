@@ -1,17 +1,22 @@
 Vue.component('viewMapTileActionEvent', {
-	props: ['tile', 'config'],
-	template: ['<div class="view-map-tile-action" @click="actionLayer" v-if="isVisible()">',
+	props: ['tile', 'config', 'tiles'],
+	template: ['<div class="view-map-tile-action" @click="actionLayer" v-if="isVisible()" @animationend="cant_use_action = false" :class="actionLayerClasses">',
               '<span :style="getActionStyle">',
               '</span>',
               '<div>{{ getTileDetails }}</div>',
           '</div>'
   ].join(""),
+  data: function() {
+    return {
+      cant_use_action: false,
+    }
+  },
   methods: {
   	actionLayer: function () {
 		  let tile = this.tile
       let layer_tale = config.db.map.tiles[tile.id]
 
-      if (tile.type == "enemies") {
+      if (tile.type == "enemies" || (tile.type == "enemies" && tile.cooldown && tile["cooldown_left"] <= config.step)) {
         let counter = 0
         config.activeEnemies = []
         for (enemy_idx in tile.enemies) {
@@ -22,8 +27,18 @@ Vue.component('viewMapTileActionEvent', {
           config.activeEnemies.push(JSON.parse(JSON.stringify(enemy)))
           counter += 1
         }
+        return
   		}
 
+      // we can use any item until enemies is exist/showing
+      for (layer_idx in this.tiles) {
+        let layer = this.tiles[layer_idx]
+        //console.log(layer["cooldown_left"])
+        if (layer.type == "enemies" && layer.cooldown && (!layer["cooldown_left"] || (layer["cooldown_left"] && layer["cooldown_left"] <= config.step))) {
+          this.cant_use_action = true
+          return
+        }
+      }
 
       // open lock
       if (tile.type == "cave_lock") {
@@ -88,7 +103,7 @@ Vue.component('viewMapTileActionEvent', {
       return false
     }
 
-    if (tile.hidden) {
+    if (tile.hidden || tile["cooldown_left"] > config.step) {
       return false
     }
     
@@ -107,6 +122,12 @@ Vue.component('viewMapTileActionEvent', {
     },
     getTileDetails: function () {
       return this.tile.type
-    }
+    },
+    actionLayerClasses: function () {
+      let data = {}
+
+      data['cant_use_action'] = this.cant_use_action
+      return data
+    },
   },
 })

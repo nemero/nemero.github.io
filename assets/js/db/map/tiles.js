@@ -33,5 +33,5 @@ var db_map_tiles = {
 		id: "11",
 		name: "chest_locked",
 		icon: "check-locked0"
-	}
+	},
 }
