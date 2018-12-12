@@ -26,7 +26,7 @@ var config = {
 		hpScroll: [],
 		dies: 0,
 
-		position: [0, 0],
+		position: [5, 5],
 
 		activeEquipment: {
 			head: "head0",
@@ -163,7 +163,7 @@ var config = {
 								type: "cave",
 								position: [1, 3],
 								map: "sewer1",
-								icon: "assets/town_in.jpg",
+								icon: "assets/basement_door.jpg",
 							}
 						}
 					},
@@ -206,7 +206,7 @@ var config = {
 								type: "cave_lock",
 								type_unlock: "item",
 								item: "key_old_tower0",
-								icon: "assets/town_out.jpg",
+								icon: "assets/basement_door.jpg",
 
 								trigger: {
 									map: "sewer1", // map here show layer
