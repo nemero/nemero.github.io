@@ -1,7 +1,7 @@
-Vue.component('target', {
-  props: ['config'],
+Vue.component('characterTarget', {
+  props: ['character'],
   template: [
-      '<div v-if="config.character.activeTarget">',
+      '<div v-if="character.activeTarget">',
         '<div class="target-box">',
           '<span class="avatar" :style="getAvatar">',
             '<span class="level">{{ getOption("level", "") }}</span>',
@@ -18,7 +18,7 @@ Vue.component('target', {
           '</div>',
 
           '<div class="">{{ takeDamageHeal }}',
-            '<hp-scroll :enemy="config.character.activeTarget"></hp-scroll>',
+            '<hp-scroll :enemy="character.activeTarget"></hp-scroll>',
           '</div>',
         '</div>',
 
@@ -26,7 +26,8 @@ Vue.component('target', {
           '<li>Target: {{ getTarget }}</li>',
         '</ul>',
 
-        '<debuff v-for="debuff in config.character.activeTarget.debuffs" :debuff="debuff"></debuff>',
+        '<character-buff v-for="buff in character.activeTarget.buffs" :buff="buff"></character-buff>',
+        '<character-debuff v-for="debuff in character.activeTarget.debuffs" :debuff="debuff"></character-debuff>',
       '</div>'
       ].join(''),
   created: function () {
@@ -34,13 +35,13 @@ Vue.component('target', {
   },
   methods: {
     getOption(option, label) {
-      let item = config.character.activeTarget
+      let item = this.character.activeTarget
       if (item && item[option]) {
         return label + item[option]
       }
     },
     getHP: function () {
-      let item = config.character.activeTarget
+      let item = this.character.activeTarget
       if (item && item['health']) {
         let parent = config.db.enemies[item.id]
 
@@ -52,8 +53,8 @@ Vue.component('target', {
           e.preventDefault()
           
           // select next alive enemy
-          let enemies = config.activeEnemies
-          let item = config.character.activeTarget
+          let enemies = config.activeEnemies // TODO: refactor for enemies for current character
+          let item = this.character.activeTarget
           let first_enemy = null
 
           // select first enemy if selected nothing yet
@@ -62,7 +63,7 @@ Vue.component('target', {
               let enemy = enemies[enemy_id]
 
               if (enemy.health > 0) {
-                config.character.activeTarget = enemy
+                this.character.activeTarget = enemy
                 break
               }
             }
@@ -98,13 +99,13 @@ Vue.component('target', {
             next_enemy = first_enemy
           }
 
-          config.character.activeTarget = next_enemy;
+          this.character.activeTarget = next_enemy;
         }
     },
   },
   computed: {
     getLeftHP: function() {
-      let item = config.character.activeTarget
+      let item = this.character.activeTarget
       let data = {}
       if (item && item['health']) {
         let parent = config.db.enemies[item.id]
@@ -116,15 +117,15 @@ Vue.component('target', {
       return data
     },
     isSelected: function () {
-      if (config.character.activeTarget) {
+      if (this.character.activeTarget) {
         return true
       } else {
         return false
       }
     },
     getTarget: function () {
-      if (config.character.activeTarget && config.character.activeTarget.activeTarget) {
-        return config.character.activeTarget.activeTarget.name
+      if (this.character.activeTarget && this.character.activeTarget.activeTarget) {
+        return this.character.activeTarget.activeTarget.name
       } else {
         return false
       }
@@ -139,7 +140,7 @@ Vue.component('target', {
       return data
     },
     getAvatar: function() {
-      let target = config.character.activeTarget
+      let target = this.character.activeTarget
       let data = {}
 
       if (target.avatar) {
@@ -151,12 +152,12 @@ Vue.component('target', {
     takeDamageHeal: function () {
       //console.log(this.previousHP)
       if (this.previousHP == 0) {
-        this.previousHP = config.character.activeTarget.health
+        this.previousHP = this.character.activeTarget.health
       }
 
-      if (this.previousHP !== config.character.activeTarget.health) {
-        let differentHP = config.character.activeTarget.health - this.previousHP
-        this.previousHP = config.character.activeTarget.health
+      if (this.previousHP !== this.character.activeTarget.health) {
+        let differentHP = this.character.activeTarget.health - this.previousHP
+        this.previousHP = this.character.activeTarget.health
 
         let type = "damage"
         if (differentHP < 0) {
@@ -167,7 +168,7 @@ Vue.component('target', {
           type = "healing"
         }
         // hpscroller 
-        config.character.activeTarget.hpScroll.push({
+        this.character.activeTarget.hpScroll.push({
           type: type,
           value: differentHP
         })

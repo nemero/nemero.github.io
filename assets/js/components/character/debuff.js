@@ -1,7 +1,7 @@
-Vue.component('buff', {
-  props: ['buff'],
+Vue.component('characterDebuff', {
+  props: ['debuff'],
   template: [
-      '<span class="game-icon game-icon-small" :style="getIcon" v-if="buff">',
+      '<span class="game-icon game-icon-small" :style="getIcon" v-if="debuff && debuff.time > 0">',
         '<div class="tooltip">',
           '<ul>',
             '<li><b>{{ getOption("name", "") }}</b></li>',
@@ -10,12 +10,12 @@ Vue.component('buff', {
             '<li>{{ getOption("heal_tick", "Heal Tick: ") }}</li>',
           '</ul>',
         '</div>',
-        '<span class="cooldown">{{ buff.time }}</span>',
+        '<span class="cooldown">{{ debuff.time }}</span>',
       '</span>'
       ].join(''),
   methods: {
   	getOption: function (field, word) {
-  		let obj = config.db.abilities[this.buff.id]
+  		let obj = config.db.abilities[this.debuff.id]
   		let value = obj[field]
 
   		if (value) {
@@ -25,7 +25,7 @@ Vue.component('buff', {
   },
   computed: {
     getIcon: function() {
-    	let obj = config.db.abilities[this.buff.id]
+    	let obj = config.db.abilities[this.debuff.id]
       let data = {}
       data['background'] =  'url(' + obj.icon + ') center center/cover'
 

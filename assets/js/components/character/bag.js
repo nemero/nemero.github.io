@@ -1,4 +1,4 @@
-Vue.component('bag', {
+Vue.component('characterBag', {
   props: ['item', 'config'],
   data: function() {
     return {
@@ -6,7 +6,7 @@ Vue.component('bag', {
     }
   },
   template: [
-          '<span class="game-icon" :class="infoItem" @click="useItem(item)" @animationend="cant_equip = false" :style="getIcon">',
+        '<span class="game-icon" :class="infoItem" @click="useItem(item)" @animationend="cant_equip = false" :style="getIcon">',
           '<div class="tooltip">',
             '<ul>',
               '<li><b>{{ getOption(item, "name", "") }}</b></li>',
@@ -46,40 +46,6 @@ Vue.component('bag', {
           this.cant_equip = true
         }
       }
-
-      let stamina = 0
-      let strength = 0
-      let agility = 0
-      let defence = 0
-      for (wear_id in config.character.activeEquipment) {
-        if (config.character.activeEquipment[wear_id]) {
-          let wear = config.db.items[config.character.activeEquipment[wear_id]]
-          if (!wear) {
-            continue
-          }
-
-          if (wear.stamina) {
-            stamina += wear.stamina
-          }
-
-          if (wear.strength) {
-            strength += wear.strength
-          }
-
-          if (wear.agility) {
-            agility += wear.agility
-          }
-
-          if (wear.defence) {
-            defence += wear.defence
-          }
-        }
-      }
-
-      config.character.activeEquipmentStats.stamina = stamina
-      config.character.activeEquipmentStats.strength = strength
-      config.character.activeEquipmentStats.agility = agility
-      config.character.activeEquipmentStats.defence = defence
     },
     getOption(id, option, label) {
       let item = config.db.items[id]
@@ -93,6 +59,10 @@ Vue.component('bag', {
     infoItem: function () {
       let html = config.db.items[this.item]
       let data = {}
+
+      if (!html) {
+        return data
+      }
 
       if (html.quality) {
         data[html.quality] = true

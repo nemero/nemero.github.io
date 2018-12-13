@@ -13,13 +13,8 @@
 		<div class="ui">
 			<div class="ui-left">
 				<div class="ui-targets">
-					<div>
-						<character :config="config"></character>
-						<debuff v-for="debuff in config.character.debuffs" :debuff="debuff"></debuff>
-					</div>
-					<div>
-						<target :config="config"></target>
-					</div>
+					<character :character="config.character"></character>
+					<character-target :character="config.character"></character-target>
 				</div>
 				<div class="tile-actions">
 					<span>Actions: </span>
@@ -37,7 +32,7 @@
 					<div>
 						<span>Abilities: </span>
 						<div class="ui-abilities">
-							<abilities v-for="item in config.character.abilities" :ability="item" :config="config"></abilities>
+							<character-abilities v-for="item in config.character.abilities" :ability="item" :config="config"></character-abilities>
 						</div>
 					</div>
 				</div>
@@ -55,7 +50,7 @@
 					<div>
 						<span>Bag: </span>
 						<div class="ui-character-bag">
-							<bag v-for="item in config.character.bag" :item="item" :config="config"></bag>
+							<character-bag v-for="item in config.character.bag" :item="item" :config="config"></character-bag>
 						</div>
 					</div>
 				</div>
@@ -86,14 +81,16 @@
 	<script type="text/javascript" src="assets/js/db/abilities.js"></script>
 
 	<script type="text/javascript" src="assets/js/config.js"></script>
-	<script type="text/javascript" src="assets/js/components/abilities.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeEnemies.js"></script>
-	<script type="text/javascript" src="assets/js/components/bag.js"></script>
-	<script type="text/javascript" src="assets/js/components/buff.js"></script>
-	<script type="text/javascript" src="assets/js/components/debuff.js"></script>
 	<script type="text/javascript" src="assets/js/components/character.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/buff.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/debuff.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/control.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/abilities.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/stats.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/bag.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/target.js"></script>
 	<script type="text/javascript" src="assets/js/components/combatLog.js"></script>
-	<script type="text/javascript" src="assets/js/components/target.js"></script>
 
 	<script type="text/javascript" src="assets/js/components/hpScroll.js"></script>
 	<script type="text/javascript" src="assets/js/components/hpScrollItem.js"></script>

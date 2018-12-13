@@ -1,4 +1,4 @@
-Vue.component('abilities', {
+Vue.component('characterAbilities', {
   props: ['ability', 'config', 'cooldowns'],
   template: [
       '<span class="game-icon" :class="typeAbility" @click="useAbility(ability)" @animationend="cant_use = false" :style="getIcon">',
@@ -187,9 +187,6 @@ Vue.component('abilities', {
             id: ability_item.id, 
             time: ability_item.time
           })
-
-          // recalculate character stats
-          this.recalculateCharacter()
         } else {
           config.character.buffs[ability_item.id]["time"] = ability_item.time
         }
@@ -215,8 +212,6 @@ Vue.component('abilities', {
 
         if (buff && buff.time <= 0) {
           config.character.buffs[buff_idx] = null
-          // recalculate character stats
-          this.recalculateCharacter()
         }
       }
     },
@@ -377,69 +372,6 @@ Vue.component('abilities', {
         }
         
       }
-    },
-    recalculateCharacter: function () {
-      let stamina = 0
-      let strength = 0
-      let agility = 0
-      let defence = 0
-
-      for (buff_idx in config.character.buffs) {
-        let buff = config.character.buffs[buff_idx]
-        
-        if (!buff) {
-          continue
-        }
-
-        buff = config.db.abilities[buff.id]
-        if (buff.stamina) {
-          stamina += buff.stamina
-        }
-
-        if (buff.strength) {
-          strength += buff.strength
-        }
-
-        if (buff.agility) {
-          agility += buff.agility
-        }
-
-        if (buff.defence) {
-          defence += buff.defence
-        }
-        
-      }
-
-      for (buff_idx in config.character.debugg) {
-        let buff = config.character.debuff[buff_idx]
-        
-        if (!buff) {
-          continue
-        }
-
-        buff = config.db.abilities[buff.id]
-        if (buff.stamina) {
-          stamina += buff.stamina
-        }
-
-        if (buff.strength) {
-          strength += buff.strength
-        }
-
-        if (buff.agility) {
-          agility += buff.agility
-        }
-
-        if (buff.defence) {
-          defence += buff.defence
-        }
-        
-      }
-
-      config.character.activeBuffStats.stamina = stamina
-      config.character.activeBuffStats.strength = strength
-      config.character.activeBuffStats.agility = agility
-      config.character.activeBuffStats.defence = defence
     },
     getCooldown: function (item) {
       let cooldown = 0
