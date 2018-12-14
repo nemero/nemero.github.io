@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>play</title>
+	<meta name="viewport" content="minimal-ui">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/map-editor.css">
+</head>
+<body>
+	<div id="play">
+		<div class="ui">
+			<div class="ui-left">
+				Generate Layer Tile:
+				<div>
+					Layer types:
+					<div>{{ config.layer }}</div>
+					<select v-model="config.layer">
+						<option value="" selected="selected">---</option>
+						<option v-for="layer in config.layerTemplates" :value="layer">{{ layer.type }}</option>
+					</select>
+
+					<div>
+						Icon: assets/{{ config.layer.icon }}
+						<input type="text" v-model="config.layer.icon" />
+						<div>
+							<img width="64" :src="'assets/' + config.layer.icon" />
+						</div>
+					</div>
+
+					<div>
+						Hidden: 
+						<select v-model="config.layer.hidden">
+							<option value="" selected="selected">---</option>
+							<option value="true">True</option>
+							<option value="false">False</option>
+						</select>
+					</div>
+
+					<layer-enemies v-if="config.layer && config.layer.type == 'enemies'" :config="config"></layer-enemies>
+
+					<layer-cave v-if="config.layer && config.layer.type == 'cave'" :config="config"></layer-cave>
+
+					<layer-cave-lock v-if="config.layer && config.layer.type == 'cave_lock'" :config="config"></layer-cave-lock>
+
+					<layer-chest-open v-if="config.layer && config.layer.type == 'chest_open'" :config="config"></layer-chest-open>
+				</div>
+			</div>
+			<div class="ui-right">
+				<div>
+					<div class="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">Start dragging here</div>
+  					<div>X: , Y: </div>
+				</div>
+				<div class="map" @mousedown="startDrag" @mousemove="doDrag">
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="map-config"><textarea style="width: 300px;" rows="40"></textarea></div>
+	</div>
+
+
+	<!-- development version, includes helpful console warnings -->
+	<script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- <script src="offline-vue.js"></script> -->
+
+	<script type="text/javascript" src="assets/js/db/map/tile_maps.js"></script>
+	<script type="text/javascript" src="assets/js/db/enemies.js"></script>
+	<script type="text/javascript" src="assets/js/db/items.js"></script>
+
+	<script type="text/javascript">
+		Vue.component('layerEnemies', {
+		  props: ['config'],
+		  template: [
+		      '<div>',
+						'<div>{{ config.selectedEnemy }}</div>',
+						
+						'<select v-model="config.selectedEnemy">',
+							'<option value="" selected="selected">---</option>',
+							'<option v-for="enemy in config.enemies" :value="enemy">{{ enemy.id }}</option>',
+						'</select>',
+
+						'<div>',
+							'Cooldown: ',
+							'<input type="number" v-model="config.layer.cooldown" />',
+						'</div>',
+
+			    	'<span @click="addEnemy">Add Enemy +</span>',
+						'<span @click="removeEnemy">Remove Enemy -</span>',
+		      '</div>'
+		      ].join(''),
+		  methods: {
+		  	addEnemy: function () {
+		  		let enemies = config.layer.enemies
+		  		if (config.selectedEnemy) {
+		  			enemies.push(config.selectedEnemy.id)	
+		  		}
+		  	},
+		  	removeEnemy: function () {
+		  		let enemies = config.layer.enemies
+		  		if (config.selectedEnemy) {
+		  			enemies.pop()	
+		  		}
+		  	}
+		  }
+		})
+
+		Vue.component('layerCave', {
+		  props: ['config'],
+		  template: [
+		      '<div>',
+						'<div>Port Map: {{ config.layer.map }}</div>',
+						
+						'<select v-model="config.layer.map">',
+							'<option value="" selected="selected">---</option>',
+							'<option v-for="map in config.maps" :value="map">{{ map }}</option>',
+						'</select>',
+
+						'<div>',
+							'Port Position: ',
+							'X: <input type="number" v-model="config.layer.position[0]" />',
+							'Y: <input type="number" v-model="config.layer.position[1]" />',
+						'</div>',
+		      '</div>'
+		      ].join(''),
+		  methods: {
+		  }
+		})
+
+		Vue.component('layerCaveLock', {
+		  props: ['config'],
+		  template: [
+		      '<div>',
+		      	'Unlock Type: ',
+						'<select v-model="config.layer.type_unlock">',
+							'<option value="" selected="selected">---</option>',
+							'<option value="item">item</option>',
+						'</select>',
+
+						'<div v-show="config.layer.type_unlock == \'item\'">',
+							'Unlock Item: {{ config.layer.item }}',
+							'<select v-model="config.layer.item">',
+								'<option value="" selected="selected">---</option>',
+								'<option v-for="item in config.items" :value="item.id">{{ item.id }}</option>',
+							'</select>',
+						'</div>',
+
+						'<div>',
+							'Trigger: ',
+							'<div>',
+								'Map here triggering Action Layer: ',
+								'<select v-model="config.layer.trigger.map">',
+									'<option value="" selected="selected">---</option>',
+									'<option v-for="map in config.maps" :value="map">{{ map }}</option>',
+								'</select>',
+							'</div>',
+
+							'<div>',
+								'X/Y Position of Action Layers: ',
+								'X: <input type="number" v-model="config.layer.trigger.position[0]" />',
+								'Y: <input type="number" v-model="config.layer.trigger.position[1]" />',
+							'</div>',
+
+							'<div>',
+								'Action Layer id to show: ',
+								'<input type="text" v-model="config.layer.trigger.tile_id" />',
+							'</div>',
+
+							'Update Map Tile: ',
+							'<div>',
+								'Layer Id: ',
+								'<input type="number" v-model="config.layer.trigger.layer_id" />',
+							'</div>',
+
+							'<div>',
+								'<div>',
+									'Tile Map: ',
+									'<select v-model="config.layer.trigger.tile.map">',
+										'<option value="" selected="selected">---</option>',
+										'<option v-for="map in config.tileMaps" :value="map.class">{{ map.class }}</option>',
+									'</select>',
+								'</div>',
+
+								'Tile Id: ',
+								'<input type="text" v-model="config.layer.trigger.tile.id" />',
+
+								'<div>',
+									'Offset Tile Background: ',
+									'X: <input type="number" v-model="config.layer.trigger.tile.offset[0]" />',
+									'Y: <input type="number" v-model="config.layer.trigger.tile.offset[1]" />',
+								'</div>',
+
+								'<div>',
+									'Size Tile Background: ',
+									'X: <input type="number" v-model="config.layer.trigger.tile.size[0]" />',
+									'Y: <input type="number" v-model="config.layer.trigger.tile.size[1]" />',
+								'</div>',
+							'</div>',
+						'</div>',
+		      '</div>'
+		      ].join(''),
+		  methods: {
+		  }
+		})
+
+		Vue.component('layerChestOpen', {
+		  props: ['config'],
+		  template: [
+		      '<div>',
+						'<div>Selected Item: {{ config.selectedItem }}</div>',
+						
+						'<select v-model="config.selectedItem">',
+							'<option value="" selected="selected">---</option>',
+							'<option v-for="item in config.items" :value="item">{{ item.id }}</option>',
+						'</select>',
+
+			    	'<span @click="addItem">Add Item +</span>',
+						'<span @click="removeItem">Remove Item -</span>',
+		      '</div>'
+		      ].join(''),
+		  methods: {
+		  	addItem: function () {
+		  		let items = config.layer.items
+		  		if (config.selectedItem) {
+		  			items.push(config.selectedItem.id)	
+		  		}
+		  	},
+		  	removeItem: function () {
+		  		let items = config.layer.items
+		  		if (config.selectedItem) {
+		  			items.pop(config.selectedItem.id)	
+		  		}
+		  	}
+		  }
+		})
+	</script>
+
+	<script type="text/javascript">
+		var config = {
+			layerTypes: ["cave", "enemies", "cave_lock", "chest_open", "player"],
+			layer: {},
+			selectedEnemy: null,
+			selectedItem: null,
+			enemies: db_enemies,
+			items: db_items,
+			tileMaps: db_tile_maps,
+			selectedMap: null,
+			maps: ["zone1", "sewer1", "sewer1_b1"],
+			layerTemplates: {
+				"player": {
+					id: null,
+					type: "player",
+					name: "Player",
+					player_id: null,
+					icon: "player.png"
+				},
+				"enemies": {
+					id: null,
+					type: "enemies",
+					name: "Enemies",
+					icon: "battle.png",
+					cooldown: 20,
+					enemies: [],
+					hidden: false,
+				},
+				"cave": {
+					id: null,
+					type: "cave",
+					name: "Subway/Cave",
+					icon: "cave.jpg",
+					position: [0, 0],
+					map: null,
+				},
+				"cave_lock": {
+					id: null,
+					type: "cave_lock",
+					name: "Subway/Cave Lock",	
+					icon: "basement_door.jpg",
+
+					type_unlock: null,
+					item: null,
+
+					trigger: { // success (unlock) trigger action
+						map: "sewer1", // map here show layer
+						position: [1, 3], // position in map that will showing
+						tile_id: "sub_town_opened", // id layer that need to show
+
+						layer_id: 2, // layer which will updating after call trigger
+						tile: { 
+							"id": "tile-map5-80_-224", 
+							"offset": [ -224, -80 ], 
+							"size": [ 16, 16 ], 
+							"map": "tile-map5" 
+						},
+					}
+				},
+				"chest_open": {
+					id: null,
+					type: "chest_open",
+					name: "Chest open",	
+					icon: "chest-open.png",
+
+					items: [],
+				},
+			}
+		}
+
+
+	</script>
+
+	<script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>
