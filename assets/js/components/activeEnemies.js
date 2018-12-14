@@ -2,7 +2,7 @@ Vue.component('activeEnemies', {
   props: ['enemy', 'config'],
   data: function () {
     return {
-      previousHP: 0
+      previousHP: 0,
     }
   },
   template: [

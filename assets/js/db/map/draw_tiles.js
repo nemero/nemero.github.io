@@ -1,4 +1,4 @@
-var db_map_tiles = {
+var db_map_draw_tiles = {
 	6: {
 		id: "6",
 		name: "Enemy 0",
