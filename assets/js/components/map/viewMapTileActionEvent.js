@@ -42,20 +42,36 @@ Vue.component('viewMapTileActionEvent', {
 
       // open lock
       if (tile.type == "cave_lock") {
+        
         // search item in character bag
-        if (tile.type_unlock == "item" && config.character.bag.indexOf(tile.item) >= 0 ) {
-          // hide closed door event
-          Vue.set(tile, "hidden", true)  
+        if (tile.type_unlock == "item" && config.character.bag.indexOf(tile.item) < 0 ) {
+          return
+        }
 
-          // show enter cave event
-          let trigger = tile.trigger
-          console.log(config.db.map[trigger.map].layerEvents, trigger.position)
-          if (config.db.map[trigger.map] && config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.tile_id]) {
-            Vue.set(config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.tile_id], "hidden", false)
+        // tile.type_unlock == "use"
+        // hide closed door event
+        Vue.set(tile, "hidden", true)  
 
-            // change tile layer
-            let tile_layers = config.db.map[trigger.map].map[trigger.position[1]][trigger.position[0]]
-            Vue.set(tile_layers, trigger.layer_id, trigger.tile)              
+        for (trigger_idx in tile.triggers) {
+          let trigger = tile.triggers[trigger_idx]
+          //console.log(config.db.map[trigger.map].layerEvents, trigger.position)
+
+          if (trigger.type == "show_event_tile") {
+            if (config.db.map[trigger.map] && config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.event_id]) {
+              Vue.set(config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.event_id], "hidden", false)
+            }
+          }
+
+          if (trigger.type == "hide_event_tile") {
+            if (config.db.map[trigger.map] && config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.event_id]) {
+              Vue.set(config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.event_id], "hidden", true)
+            }   
+          }
+
+          if (trigger.type == "replace_tile") {
+            if (config.db.map[trigger.map] && config.db.map[trigger.map].map[trigger.position[1]][trigger.position[0]]) {
+              Vue.set(config.db.map[trigger.map].map[trigger.position[1]][trigger.position[0]], trigger.layer_id, trigger.tile) 
+            } 
           }
         }
       }

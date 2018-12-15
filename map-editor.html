@@ -4,6 +4,7 @@
 	<title>play</title>
 	<meta name="viewport" content="minimal-ui">
 
+	<link rel="stylesheet" type="text/css" href="assets/css/base.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/map-editor.css">
 </head>
 <body>
@@ -45,7 +46,7 @@
 						</select>
 
 						<div>
-							Icon: 
+							Event Icon: 
 							<input type="text" v-model="config.activeLayerEvent.icon" />
 							<div>
 								<img width="64" :src="config.activeLayerEvent.icon" />
@@ -61,11 +62,11 @@
 							</select>
 						</div>
 
-						<layer-player v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'player'" :config="config"></layer-player>
-						<layer-enemies v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'enemies'" :config="config"></layer-enemies>
-						<layer-cave v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'cave'" :config="config"></layer-cave>
-						<layer-cave-lock v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'cave_lock'" :config="config"></layer-cave-lock>
-						<layer-chest-open v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'chest_open'" :config="config"></layer-chest-open>
+						<event-player v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'player'" :config="config"></event-player>
+						<event-enemies v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'enemies'" :config="config"></event-enemies>
+						<event-cave v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'cave'" :config="config"></event-cave>
+						<event-cave-lock v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'cave_lock'" :config="config"></event-cave-lock>
+						<event-chest-open v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'chest_open'" :config="config"></event-chest-open>
 					</div>
 				</div>
 			</div>
@@ -121,6 +122,7 @@
 	<script type="text/javascript" src="assets/js/db/map/tile_maps.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/draw_tiles.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/event_templates.js"></script>
+	<script type="text/javascript" src="assets/js/db/event_triggers.js"></script>
 
 	<script type="text/javascript" src="assets/js/db/map/zone1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/zone1_actions.js"></script>
@@ -136,187 +138,24 @@
 
 	<!-- Action Layers -->
 	<script type="text/javascript">
-		Vue.component('layerPlayer', {
-		  props: ['config'],
-		  template: [
-		      '<div>',
-						'<div>Player Id: {{ config.activeLayerEvent.player_id }}</div>',
-						'<input type="text" v-model="config.activeLayerEvent.player_id" />',
-		      '</div>'
-		      ].join(''),
-		  methods: {
-		  }
-		})
+		
 
-		Vue.component('layerEnemies', {
-		  props: ['config'],
-		  template: [
-		      '<div>',
-					'<div>',
-						'Cooldown: ',
-						'<input type="number" v-model="config.activeLayerEvent.cooldown" />',
-					'</div>',
-
-	      			'Select Enemy:', 						
-					'<select v-model="config.selectedEnemy">',
-						'<option value="" selected="selected">---</option>',
-						'<option v-for="enemy in config.db.enemies" :value="enemy">{{ enemy.id }}</option>',
-					'</select>',
-					
-					'<span @click="addEnemy">Add Enemy +</span>',
-					'<span @click="removeEnemy">Remove Enemy -</span>',
-
-					'<div>Enemies: {{ config.activeLayerEvent.enemies }}</div>',
-		      '</div>'
-		      ].join(''),
-		  methods: {
-		  	addEnemy: function () {
-		  		let enemies = config.activeLayerEvent.enemies
-		  		if (config.selectedEnemy) {
-		  			enemies.push(config.selectedEnemy.id)	
-		  		}
-		  	},
-		  	removeEnemy: function () {
-		  		let enemies = config.activeLayerEvent.enemies
-		  		if (config.selectedEnemy) {
-		  			enemies.pop()	
-		  		}
-		  	}
-		  }
-		})
-
-		Vue.component('layerCave', {
-		  props: ['config'],
-		  template: [
-		      '<div>',
-						'<div>Port Map: {{ config.activeLayerEvent.map }}</div>',
-						
-						'<select v-model="config.activeLayerEvent.map">',
-							'<option value="" selected="selected">---</option>',
-							'<option v-for="map in config.map_list" :value="map.name">{{ map.name }}</option>',
-						'</select>',
-
-						'<div>',
-							'Port Position: ',
-							'X: <input type="number" v-model="config.activeLayerEvent.position[0]" />',
-							'Y: <input type="number" v-model="config.activeLayerEvent.position[1]" />',
-						'</div>',
-		      '</div>'
-		      ].join(''),
-		  methods: {
-		  }
-		})
-
-		Vue.component('layerCaveLock', {
-		  props: ['config'],
-		  template: [
-		      '<div>',
-		      	'Unlock Type: ',
-						'<select v-model="config.activeLayerEvent.type_unlock">',
-							'<option value="" selected="selected">---</option>',
-							'<option value="item">item</option>',
-						'</select>',
-
-						'<div v-show="config.activeLayerEvent.type_unlock == \'item\'">',
-							'Unlock Item: {{ config.activeLayerEvent.item }}',
-							'<select v-model="config.activeLayerEvent.item">',
-								'<option value="" selected="selected">---</option>',
-								'<option v-for="item in config.db.items" :value="item.id">{{ item.id }}</option>',
-							'</select>',
-						'</div>',
-
-						'<div>',
-							'Trigger: ',
-							'<div>',
-								'Map here triggering Action Layer: ',
-								'<select v-model="config.activeLayerEvent.trigger.map">',
-									'<option value="" selected="selected">---</option>',
-									'<option v-for="map in config.map_list" :value="map.name">{{ map.name }}</option>',
-								'</select>',
-							'</div>',
-
-							'<div>',
-								'X/Y Position of Action Layers: ',
-								'X: <input type="number" v-model="config.activeLayerEvent.trigger.position[0]" />',
-								'Y: <input type="number" v-model="config.activeLayerEvent.trigger.position[1]" />',
-							'</div>',
-
-							'<div>',
-								'Action Layer id to show: ',
-								'<input type="text" v-model="config.activeLayerEvent.trigger.tile_id" />',
-							'</div>',
-
-							'Update Map Tile: ',
-							'<div>',
-								'Layer Id: ',
-								'<input type="number" v-model="config.activeLayerEvent.trigger.layer_id" />',
-							'</div>',
-
-							'<div>',
-								'<div>',
-									'Tile Map: ',
-									'<select v-model="config.activeLayerEvent.trigger.tile.map">',
-										'<option value="" selected="selected">---</option>',
-										'<option v-for="map in config.tilesMap" :value="map.class">{{ map.class }}</option>',
-									'</select>',
-								'</div>',
-
-								'Tile Id: ',
-								'<input type="text" v-model="config.activeLayerEvent.trigger.tile.id" />',
-
-								'<div>',
-									'Offset Tile Background: ',
-									'X: <input type="number" v-model="config.activeLayerEvent.trigger.tile.offset[0]" />',
-									'Y: <input type="number" v-model="config.activeLayerEvent.trigger.tile.offset[1]" />',
-								'</div>',
-
-								'<div>',
-									'Size Tile Background: ',
-									'X: <input type="number" v-model="config.activeLayerEvent.trigger.tile.size[0]" />',
-									'Y: <input type="number" v-model="config.activeLayerEvent.trigger.tile.size[1]" />',
-								'</div>',
-							'</div>',
-						'</div>',
-		      '</div>'
-		      ].join(''),
-		  methods: {
-		  }
-		})
-
-		Vue.component('layerChestOpen', {
-		  props: ['config'],
-		  template: [
-		      '<div>',
-					'<div>Select Item: </div>',
-					
-					'<select v-model="config.selectedItem">',
-						'<option value="" selected="selected">---</option>',
-						'<option v-for="item in config.db.items" :value="item">{{ item.id }}</option>',
-					'</select>',
-
-			    	'<span @click="addItem">Add Item +</span>',
-					'<span @click="removeItem">Remove Item -</span>',
-
-					'<div>Items: {{ config.activeLayerEvent.items }}</div>',
-		      '</div>'
-		      ].join(''),
-		  methods: {
-		  	addItem: function () {
-		  		let items = config.activeLayerEvent.items
-		  		if (config.selectedItem) {
-		  			items.push(config.selectedItem.id)	
-		  		}
-		  	},
-		  	removeItem: function () {
-		  		let items = config.activeLayerEvent.items
-		  		if (config.selectedItem) {
-		  			items.pop(config.selectedItem.id)	
-		  		}
-		  	}
-		  }
-		})
 	</script>
 
+	<!-- Layer Events  -->
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/trigger.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/cave.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/caveLock.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/hideEventTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/showEventTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/replaceTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/chestOpen.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/enemies.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/player.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/showConditions.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/showCondition.js"></script>
+
+	<!-- Other -->
 	<script type="text/javascript" src="assets/js/components/map/editor/activeBrushTile.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/activeTileMap.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/tile.js"></script>
@@ -327,7 +166,9 @@
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTile.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileLayer.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileLayersInfo.js"></script>
+
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileEventsInfo.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileEvent.js"></script>
 
 	<script type="text/javascript" src="assets/js/components/map/editor/chooseSavedMap.js"></script>
 

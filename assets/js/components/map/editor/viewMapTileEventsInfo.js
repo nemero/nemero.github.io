@@ -1,10 +1,11 @@
 Vue.component('viewMapTileEventsInfo', {
   props: ['event', 'idx', 'row_id', 'col_id'],
-  template: ['<span :class="getTileMapClass">',
-        '<span class="layer" @click="selectEvent">',
-          '{{ idx }}',
-          '<div>{{ event }}</div>',
-        '</span>',
+  template: ['<span :class="isActive">',
+        '<div class="layer" @click="selectEvent">',
+          //'{{ idx }}',
+          '<div>{{ event.type }}</div>',
+          '<span class="layer-event" :style="getTileMapStyle" style="zoom: 3;"></span>',
+        '</div>',
         '<span @click="removeEvent">Remove Event -</span>',
       '</span>',
     ].join(""),
@@ -30,18 +31,26 @@ Vue.component('viewMapTileEventsInfo', {
     },
   },
   computed: {
-  	getTileMapClass: function () {
-  		let data = {}
-  		let event = this.event
-
-  		let layer_tale = config.layerEventsTypes[event.id]
+    isActive: function () {
+      let data = {}
+      let event = this.event
 
       if (config.activeLayerEvent == event) {
         data['active'] = true
       }
 
-      if (layer_tale) {
-        data[layer_tale.icon] = true
+      return data
+    },
+  	getTileMapStyle: function () {
+  		let data = {}
+  		let event = this.event
+
+      if (event.icon) {
+        data['background'] = 'url(' + event.icon + ')'
+      } else {
+        data['background'] = 'url(assets/question.png)'
+        data['width'] = '7px'
+        data['height'] = '7px'
       }
 
   		return data

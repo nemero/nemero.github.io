@@ -3,6 +3,8 @@ Vue.component('viewMapTile', {
   template: ['<span class="tile" @click="brushCell">',
   		'<span class="service">{{ getRowId }}/{{ getColId }} {{ getTileName }}</span>',
         '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
+        '<view-map-tile-event v-for="event in getEvents" :event="event"></view-map-tile-event>',
+
         '<span class="tile-layers-info">',
           '<div class="tile-map">',
           	'<view-map-tile-layers-info v-for="(tile, idx) in getTiles" :tile="tile" :tiles="getTiles" :idx="idx"></view-map-tile-layers-info>',
@@ -87,7 +89,7 @@ Vue.component('viewMapTile', {
         counter++ 
       }
       generated_id += '_' + counter
-      
+
       Vue.set(config.layerEvents[this.getRowId][this.getColId], generated_id, JSON.parse(JSON.stringify(config.activeLayerEvent)))
     },
   },

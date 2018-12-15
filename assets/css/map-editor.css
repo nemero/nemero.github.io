@@ -69,7 +69,6 @@ textarea, input, select, button {
 	top: -2px;
 }
 .layer div {
-	zoom: 0.5;
 	display: block;
 	border: none;
 }
@@ -131,4 +130,19 @@ textarea, input, select, button {
 	display: inline-block;
 	font-size: 0;
 	border: 1px solid #cecece;
+}
+
+.layer-event {
+	background-size: contain !important;
+	display: inline-block;
+	position: relative;
+	width: 16px; 
+	height: 16px; 
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.box {
+	border: 1px solid #cecece;
+	padding: 10px;
+	margin: 5px;
 }

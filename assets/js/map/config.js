@@ -39,8 +39,10 @@ var config = {
 	db: {
 		enemies: db_enemies,
 		items: db_items,
+		event_triggers: db_event_triggers,
 	},
 	selectedEnemy: null,
 	selectedItem: null,
+
 
 }
