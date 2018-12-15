@@ -74,7 +74,7 @@ textarea, input, select, button {
 	border: none;
 }
 .view-map-row .tile:hover .tile-layers-info {
-	display: block;
+	display: flex;
 }
 .view-map-row .tile .tile-layers-info span {
 	border: 1px solid #cecece;
@@ -118,10 +118,11 @@ textarea, input, select, button {
 }
 
 .map-config {
-	max-height: 400px;
-	overflow: auto;
-	border: 1px solid #cecece;
-	width: 100%;
+	display: flex;
+}
+.map-config textarea {
+	display: block;
+	margin: 5px;
 }
 .active-brush-tile {
 	height: 16px;

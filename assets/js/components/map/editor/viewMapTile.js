@@ -4,11 +4,17 @@ Vue.component('viewMapTile', {
   		'<span class="service">{{ getRowId }}/{{ getColId }} {{ getTileName }}</span>',
         '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
         '<span class="tile-layers-info">',
-        	'<view-map-tile-layers-info v-for="(tile, idx) in getTiles" :tile="tile" :tiles="getTiles" :idx="idx"></view-map-tile-layers-info>',
-        	'<div style="zoom: 0.3;"><span @click="addLayer">Add Layer +</span>',
-        		'<span @click="removeLayer">Remove Layer -</span>',
-        		'<span @click="removeAllLayers">Remove All Layers -</span>',
-        	'</div>',
+          '<div class="tile-map">',
+          	'<view-map-tile-layers-info v-for="(tile, idx) in getTiles" :tile="tile" :tiles="getTiles" :idx="idx"></view-map-tile-layers-info>',
+          	'<div style="zoom: 0.3;"><span @click="addLayer">Add Layer +</span>',
+          		'<span @click="removeLayer">Remove Layer -</span>',
+          		'<span @click="removeAllLayers">Remove All Layers -</span>',
+          	'</div>',
+          '</div>',
+          '<div class="tile-events" style="zoom: 0.3;">',
+            '<view-map-tile-events-info v-for="(event, idx) in getEvents" :event="event" :idx="idx" :row_id="getRowId" :col_id="getColId"></view-map-tile-events-info>',
+            '<span @click="addEvent">Add Event +</span>',
+          '</div>',
         '</span>',
       '</span>',
     '</span>'].join(""),
@@ -61,7 +67,29 @@ Vue.component('viewMapTile', {
   	},
   	removeAllLayers: function () {
   		Vue.delete(config.map[this.getRowId], this.getColId)
-  	}
+  	},
+    addEvent: function () {
+      if (!config.activeLayerEvent) {
+        console.log(config.activeLayerEvent)
+        return
+      }
+      
+      if (!config.layerEvents[this.getRowId]) {
+        Vue.set(config.layerEvents, this.getRowId, {})
+      }
+      if (!config.layerEvents[this.getRowId][this.getColId]) {
+        Vue.set(config.layerEvents[this.getRowId], this.getColId, {})
+      }
+      
+      let generated_id = config.activeLayerEvent.type + '_' + this.getRowId + '_' + this.getColId
+      let counter = 0
+      while (config.layerEvents[this.getRowId][this.getColId][generated_id + '_' + counter]) {
+        counter++ 
+      }
+      generated_id += '_' + counter
+      
+      Vue.set(config.layerEvents[this.getRowId][this.getColId], generated_id, JSON.parse(JSON.stringify(config.activeLayerEvent)))
+    },
   },
   computed: {
     getRowId: function () {
@@ -92,6 +120,14 @@ Vue.component('viewMapTile', {
 
   		return tiles
   	},
+    getEvents: function () {
+      let events = {}
+      if (config.layerEvents[this.getRowId] && config.layerEvents[this.getRowId][this.getColId]) {
+        events = config.layerEvents[this.getRowId][this.getColId]
+      }
+
+      return events
+    },
   	getTileName: function () {
   		if (config.map[this.getRowId] && config.map[this.getRowId][this.getColId]) {
   			let tile = config.map[this.getRowId][this.getColId]
