@@ -1,33 +1,34 @@
 Vue.component('eventTriggerReplaceTile', {
   props: ['trigger', 'config'],
   template: [
-      '<div class="box">',
-        'Edit Replace Tile',
+      '<div class="box" v-if="isActive">',
+        '<h5>Edit Replace Tile</h5>',
 
-          '<div>',
-            'Map here triggering Action Layer: ',
-            '<select v-model="trigger.map">',
-              '<option value="" selected="selected">---</option>',
-              '<option v-for="map in config.map_list" :value="map.name">{{ map.name }}</option>',
-            '</select>',
-          '</div>',
-          
-          '<div>',
-            'X/Y Replacing Tile: ',
-            'X: <input type="number" v-model="trigger.position[0]" />',
-            'Y: <input type="number" v-model="trigger.position[1]" />',
-          '</div>',
+        '<div class="field-row">',
+          '<label>Map:</label> ',
+          '<select v-model="trigger.map">',
+            '<option value="" selected="selected">---</option>',
+            '<option v-for="map in config.db.mapList" :value="map.name">{{ map.name }}</option>',
+          '</select>',
+        '</div>',
 
-          '<div>',
-            'Replacing Layer Id: ',
-            '<input type="number" v-model="trigger.layer_id" />',
-          '</div>',
+        '<div class="field-row">',
+          '<label>Y/X Replacing Tile:</label> ',
+          'Row: <input type="number" v-model="trigger.position[1]" />',
+          'Col: <input type="number" v-model="trigger.position[0]" />',
+        '</div>',
 
-          '<div>',
-            '<div>Replace to Tile if condition success: (click to change on selected tile)</div>',
-            '<span @click="useActiveTile" class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
-          '</div>',
-        '{{ trigger }}',
+        '<div class="field-row">',
+          '<label>Replacing Layer Id:</label> ',
+          '<input type="number" v-model="trigger.layer_id" />',
+        '</div>',
+
+        '<div class="field-row flex">',
+          '<label>Replace to Tile if condition success: (click to change on active tile)</label> ',
+          '<span @click="useActiveTile" class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
+        '</div>',
+        
+        '<div class="info">{{ trigger }}</div>',
       '</div>'
       ].join(''),
   methods: {
@@ -72,6 +73,9 @@ Vue.component('eventTriggerReplaceTile', {
       }
 
       return data
+    },
+    isActive: function () {
+       return this.trigger.type_trigger == 'replace_tile'
     },
   }
 })

@@ -2,7 +2,7 @@ Vue.component('activeBrushTile', {
   props: ['tile'],
   template: ['<span>',
       '<span class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
-      '<div>{{ tile }}</div>',
+      '<!--{{ tile }}-->',
     '</span>'].join(""),
   computed: {
   	getTileStyle: function () {

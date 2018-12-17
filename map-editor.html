@@ -11,63 +11,68 @@
 	<div id="play">
 		<div class="ui">
 			<div class="ui-left">
-				<ul>
-					<li @click="config.activeTab = 'tiles'">
-						Tiles 
-					</li>
-					<li @click="config.activeTab = 'layer_events'">
-						Layer Events
-					</li>
-				</ul>
-				<div v-show="config.activeTab == 'tiles'">
-					Generating Tiles
-					<div class="tiles-map">
-							<tiles-map :maps="config.tilesMap" :config="config"></tiles-map>
-							<active-tile-map :map="config.activeTileMap" v-model="config.activeLayer" :config="config"></active-tile-map>
-					</div>
-
-					<div>
-						Active Tile:
+				<div class="head-nav flex">
+					<ul class="ul-tabs">
+						<li @click="config.activeTab = 'tiles'" :class="{ active : config.activeTab == 'tiles'}">
+							Tiles 
+						</li>
+						<li @click="config.activeTab = 'events'" :class="{ active : config.activeTab == 'events'}">
+							Layer Events
+						</li>
+					</ul>
+					<div class="field-row">
+						<label>Active Tile:</label>
 						<active-brush-tile :tile="config.activeTile"></active-brush-tile>
 					</div>
+				</div>
+
+				<div v-show="config.activeTab == 'tiles'" class="section">
+					<div class="tiles-map">
+						<div class="field-row">
+							<label>Generating Tiles: </label>
+							<tiles-map :maps="config.db.tileMaps" :config="config"></tiles-map>
+							<active-tile-map :map="config.activeTileMap" v-model="config.activeLayer" :config="config"></active-tile-map>
+						</div>
+					</div>
+
+					
 
 					Select Tile:
 					<div class="tile-list">
 						<tile v-for="tile in config.tiles" :tile="tile" :config="config"></tile>
 					</div>
 				</div>
-				<div v-show="config.activeTab == 'layer_events'">
-					Generate Layer Tile:
-					<div>
-						Layer types:
+				<div v-show="config.activeTab == 'events'" class="section">
+					<div class="field-row">
+						<label>Select Layer type: </label>
 						<select v-model="config.activeLayerEvent">
 							<option value="" selected="selected">---</option>
-							<option v-for="layer in config.eventTemplates" :value="layer">{{ layer.type }}</option>
+							<option v-for="layer in config.db.eventTemplates" :value="layer">{{ layer.id }}</option>
 						</select>
-
-						<div>
-							Event Icon: 
-							<input type="text" v-model="config.activeLayerEvent.icon" />
-							<div>
-								<img width="64" :src="config.activeLayerEvent.icon" />
-							</div>
-						</div>
-
-						<div>
-							Hidden: 
-							<select v-model="config.activeLayerEvent.hidden">
-								<option value="" selected="selected">---</option>
-								<option value="true">True</option>
-								<option value="false">False</option>
-							</select>
-						</div>
-
-						<event-player v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'player'" :config="config"></event-player>
-						<event-enemies v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'enemies'" :config="config"></event-enemies>
-						<event-cave v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'cave'" :config="config"></event-cave>
-						<event-cave-lock v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'cave_lock'" :config="config"></event-cave-lock>
-						<event-chest-open v-if="config.activeLayerEvent && config.activeLayerEvent.type == 'chest_open'" :config="config"></event-chest-open>
 					</div>
+
+					<div class="tiles-map">
+						<div class="field-row">
+							<label>Event Icon: </label>
+							<input type="text" v-model="config.activeLayerEvent.icon" />
+						</div>
+						<img width="64" :src="config.activeLayerEvent.icon" />
+					</div>
+
+					<div class="field-row">
+						<label>Is Hidden: </label>
+						<select v-model="config.activeLayerEvent.hidden">
+							<option value="" selected="selected">---</option>
+							<option value="true">True</option>
+							<option value="false">False</option>
+						</select>
+					</div>
+
+					<event-player :config="config"></event-player>
+					<event-enemies :config="config"></event-enemies>
+					<event-teleport :config="config"></event-teleport>
+					<event-unlock :config="config"></event-unlock>
+					<event-loot-box :config="config"></event-loot-box>
 				</div>
 			</div>
 			<div class="ui-right">
@@ -120,9 +125,6 @@
 
 	<!-- Map Data -->
 	<script type="text/javascript" src="assets/js/db/map/tile_maps.js"></script>
-	<script type="text/javascript" src="assets/js/db/map/draw_tiles.js"></script>
-	<script type="text/javascript" src="assets/js/db/map/event_templates.js"></script>
-	<script type="text/javascript" src="assets/js/db/event_triggers.js"></script>
 
 	<script type="text/javascript" src="assets/js/db/map/zone1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/zone1_actions.js"></script>
@@ -131,29 +133,28 @@
 	<script type="text/javascript" src="assets/js/db/map/sewer1_b1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/sewer1_b1_actions.js"></script>
 
+	<script type="text/javascript" src="assets/js/db/map/event_templates.js"></script>
+
 	<script type="text/javascript" src="assets/js/db/enemies.js"></script>
 	<script type="text/javascript" src="assets/js/db/items.js"></script>
 
 	<script type="text/javascript" src="assets/js/map/config.js"></script>
 
-	<!-- Action Layers -->
-	<script type="text/javascript">
-		
-
-	</script>
-
 	<!-- Layer Events  -->
 	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/trigger.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/cave.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/caveLock.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/hideEventTile.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/showEventTile.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/replaceTile.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/chestOpen.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/teleport.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/unlock.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/lootBox.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/events/enemies.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/events/player.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/showConditions.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/showCondition.js"></script>
+
+	<!-- Unlock Triggers  -->
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/hideEvent.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/showEvent.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/replaceTile.js"></script>
+
+	<!-- Event Conditions -->
+	<script type="text/javascript" src="assets/js/components/map/editor/events/conditions.js"></script>
 
 	<!-- Other -->
 	<script type="text/javascript" src="assets/js/components/map/editor/activeBrushTile.js"></script>

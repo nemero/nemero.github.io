@@ -106,14 +106,6 @@ Vue.component('viewMapTile', {
 
       return col_idx
     },
-		getInfoCell: function () {
-  		let tiles = {}
-  		if (config.map[this.getRowId] && config.map[this.getRowId][this.getColId]) {
-  			tiles = config.map[this.getRowId][this.getColId]
-  		}
-
-  		config.hoveredTiles = tiles
-  	},
   	getTiles: function () {
   		let tiles = {}
   		if (config.map[this.getRowId] && config.map[this.getRowId][this.getColId]) {

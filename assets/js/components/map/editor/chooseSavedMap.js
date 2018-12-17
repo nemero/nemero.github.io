@@ -7,7 +7,6 @@ Vue.component('choose-saved-map', {
   methods: {
   	test: function () {
   		// set map
-      console.log(config.activeMapId)
   		config.map = config.map_list[config.activeMapId].map
       config.layerEvents = config.map_list[config.activeMapId].layerEvents
   	}
