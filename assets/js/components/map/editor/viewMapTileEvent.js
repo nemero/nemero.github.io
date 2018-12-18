@@ -6,11 +6,9 @@ Vue.component('viewMapTileEvent', {
   	getTileMapStyle: function () {
       let data = {}
       let event = this.event
-      //console.log(event)
-      let layer_tale = config.layerEventsTypes[event.id]
-
-      if (layer_tale && layer_tale['icon']) {
-        data['background'] = 'url(' + layer_tale.icon + ')'
+      
+      if (this.event.tile_icon) {
+        data['background'] = 'url(' + this.event.tile_icon + ')'
       } else {
         data['background'] = 'url(assets/question.png)'
         data['width'] = '7px'

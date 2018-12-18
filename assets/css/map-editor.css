@@ -1,6 +1,22 @@
 html {
 	touch-action: manipulation;
 }
+.map {
+	touch-action: manipulation;
+  	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.map {
+	border: 1px solid red;
+}
+.map.edit {
+	border: none;
+}
 body.black {
 	background: #202020;
 	color: #c6c6c6;
@@ -93,6 +109,39 @@ span, label {
 	border-bottom: 1px solid #cecece;;
 	background: transparent
 }
+.map.selectCell .view-map-row .tile:hover {
+	border-right: 1px solid red;
+	border-bottom: 1px solid red;
+	box-shadow: 0 0 1px 2px red;
+	z-index: 1;
+}
+.map.selectTail .view-map-row .tile:hover {
+	border-right: 1px solid red;
+	border-bottom: 1px solid red;
+	box-shadow: 0 0 1px 2px red;
+	z-index: 1;
+}
+
+.map.selectTile .view-map-row .tile:hover .tile-layers-info {
+	display: block;
+}
+.map.selectTile .tile-layers-info .layer:hover {
+	border: 1px solid red;
+}
+.map.selectTile .tile-events, .map.selectTile .tile-map > div {
+	display: none;
+}
+
+.map.selectEvent .view-map-row .tile:hover .tile-layers-info {
+	display: block;
+}
+.map.selectEvent .view-map-row .tile .tile-layers-info span:hover {
+	border: 1px solid red;
+}
+.map.selectEvent .tile-map, .map.selectEvent .tile-events > div, .map.selectEvent .tile-events .name, .map.selectEvent .tile-events .control {
+	display: none;
+}
+
 .view-map-row .tile .tile-layers-info {
 	display: none;
 	position: absolute;
@@ -112,7 +161,8 @@ span, label {
 	display: block;
 	border: none;
 }
-.view-map-row .tile:hover .tile-layers-info {
+
+.map.edit .view-map-row .tile:hover .tile-layers-info {
 	display: flex;
 }
 .view-map-row .tile .tile-layers-info span {
@@ -186,6 +236,14 @@ span, label {
 	border: 1px solid #cecece;
 	padding: 10px;
 	margin: 5px;
+	position: relative;
+}
+.close {
+	position: absolute;
+	right: 10px;
+	top: 7px;
+	font-size: 15px;
+	cursor: pointer;
 }
 
 .ul-tabs {

@@ -2,11 +2,17 @@ Vue.component('viewMapTileLayersInfo', {
   props: ['tile', 'idx', 'tiles'],
   template: ['<span class="layer" :style="getTileStyle" @click="brushCell" :class="getTileMapClass">',
         '{{ idx }}',
-        //'<div>{{ tile.id }}<div>',
       '</span>',
     ].join(""),
   methods: {
   	brushCell: function () {
+      if (config.activeModeMap == "selectTile") {
+        Vue.set(config.activeLayerEvent.trigger_active, "layer_id", this.idx)
+
+        //config.activeModeMap = "edit"
+        return
+      }
+
   		// if selected layer don't brush on selected layer
   		if (config.activeLayer) {
   			return

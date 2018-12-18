@@ -35,21 +35,13 @@
 						</div>
 					</div>
 
-					
-
 					Select Tile:
 					<div class="tile-list">
 						<tile v-for="tile in config.tiles" :tile="tile" :config="config"></tile>
 					</div>
 				</div>
 				<div v-show="config.activeTab == 'events'" class="section">
-					<div class="field-row">
-						<label>Select Layer type: </label>
-						<select v-model="config.activeLayerEvent">
-							<option value="" selected="selected">---</option>
-							<option v-for="layer in config.db.eventTemplates" :value="layer">{{ layer.id }}</option>
-						</select>
-					</div>
+					<event-select-template :event_templates="config.db.eventTemplates" :config="config"></event-select-template>
 
 					<div class="tiles-map">
 						<div class="field-row">
@@ -77,8 +69,8 @@
 			</div>
 			<div class="ui-right">
 				<div>
-					<div class="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">Start dragging here</div>
-  				<div>X: {{x}}, Y: {{y}}</div>
+					<!-- <div class="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">Start dragging here</div> -->
+  					<!-- <div>X: {{x}}, Y: {{y}}</div> -->
 					Layer:
 					<select v-model="config.activeLayer">
 						<option value="" selected="selected">Custom</option>
@@ -96,8 +88,8 @@
 					<view-map-clear></view-map-clear>
 					<choose-saved-map :config="config"></choose-saved-map>
 				</div>
-				<div class="map" @mousedown="startDrag" @mousemove="doDrag">
-					<view-map-row v-for="(row, row_id) in parseInt(config.height)" :row="row" :row_id="row_id" :config="config"></view-map-row>
+				<div @mousedown="startDrag" @mousemove="doDrag">
+					<view-map id="map" class="map" :config="config"></view-map>
 				</div>
 			</div>
 		</div>
@@ -147,6 +139,7 @@
 	<script type="text/javascript" src="assets/js/components/map/editor/events/lootBox.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/events/enemies.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/events/player.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/selectTemplate.js"></script>
 
 	<!-- Unlock Triggers  -->
 	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/hideEvent.js"></script>
@@ -162,6 +155,7 @@
 	<script type="text/javascript" src="assets/js/components/map/editor/tile.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/tileMap.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/tilesMap.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMap.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapRow.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapClear.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTile.js"></script>

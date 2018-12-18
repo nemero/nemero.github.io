@@ -38,9 +38,14 @@ Vue.component('eventUnlock', {
 			'</select>',
 
 			'<input type="button" @click="addTrigger" value="+"/>',
+			'<input type="button" @click="removeTrigger" value="-"/>',
 		'</div>',
 
-		'<event-trigger v-for="trigger in config.activeLayerEvent.triggers" :trigger="trigger" :config="config"></event-trigger>',
+		'<div v-for="trigger in config.activeLayerEvent.triggers" :trigger="trigger" :config="config">',
+			'<event-trigger-hide-event :trigger="trigger" :config="config"></event-trigger-hide-event>',
+	        '<event-trigger-show-event :trigger="trigger" :config="config"></event-trigger-show-event>',
+	        '<event-trigger-replace-tile :trigger="trigger" :config="config"></event-trigger-replace-tile>',
+		'</div>',
 
 		'<event-conditions :event="config.activeLayerEvent" :config="config"></event-conditions>',
       '</div>'
@@ -50,14 +55,18 @@ Vue.component('eventUnlock', {
   		if (!config.activeLayerEvent.triggers) {
   			Vue.set(config.activeLayerEvent, "triggers", [])
   		}
+  		
   		let triggers = config.activeLayerEvent.triggers
-
   		if (this.activeTrigger) {
 	  		triggers.push({
-	  			type: this.activeTrigger,
+	  			type_trigger: this.activeTrigger,
 	  			position: [0, 0],
 	  		})
   		}
+  	},
+  	removeTrigger: function () {
+  		let triggers = config.activeLayerEvent.triggers
+	  	triggers.pop()
   	},
   },
   computed: {

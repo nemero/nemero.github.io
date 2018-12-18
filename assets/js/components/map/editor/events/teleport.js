@@ -14,7 +14,7 @@ Vue.component('eventTeleport', {
 				'<label>Port Position:</label> ',
 				'Row: <input type="number" v-model="config.activeLayerEvent.position[1]" />',
 				'Col: <input type="number" v-model="config.activeLayerEvent.position[0]" />',
-				//'<input type="button" @click="selectOnMap" value="select on map"/>',
+				'<input type="button" @click="selectOnMap" value="select on map"/>',
 			'</div>',
 
 			'<event-conditions :event="config.activeLayerEvent" :config="config"></event-conditions>',
@@ -22,8 +22,7 @@ Vue.component('eventTeleport', {
       ].join(''),
   methods: {
   	selectOnMap: function () {
-  		// TODO: simple click on map put cell in global variable
-  		// trigger active cell to current
+  		config.activeModeMap = "selectCell"
   	}
   },
   computed: {

@@ -1,12 +1,19 @@
 var config = {
 	width: 10,
 	height: 10,
+	layers: 9,
 
 	activeTab: 'events', // 'tiles',
 	activeTile: null,
 	activeTileMap: null,
 	activeLayer: "",
-	layers: 9,
+	activeModeMap: "edit", // selectCell, selectTile, selectEvent
+	mapSelect: { // config for observing map selecting with external components
+		position: [],
+		layer_id: null,
+		map_id: null,
+		event_id: null
+	},
 	
 	tiles: [],
 	activeMapId: null,

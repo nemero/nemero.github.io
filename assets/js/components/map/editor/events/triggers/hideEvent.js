@@ -8,6 +8,8 @@ Vue.component('eventTriggerHideEvent', {
   template: [
       '<div class="box" v-if="isActive">',
         '<h5>Hide Event:</h5> ',
+        '<span class="close" @click="removeEvent">close</span>',
+
         '<div class="field-row">',
           '<label>Map here triggering Action Layer:</label> ',
           '<select v-model="trigger.map">',
@@ -17,25 +19,15 @@ Vue.component('eventTriggerHideEvent', {
         '</div>',
 
         '<div class="field-row">',
-          '<label>Select Event Cell:</label> ',
-          '<select @change="setCellPosition" v-model="selectCell">',
-            '<option value="" selected="selected">---</option>',
-            '<option v-for="(cell, idx) in getEventCells()" :value="cell">{{ idx }} - {{ getCellNames(cell) }},  {{ cell.position[1] }}, {{ cell.position[0] }}</option>',
-          '</select>',
-        '</div>',
-
-        '<div class="field-row">',
           '<label>Set Position of Event Cell:</label> ',
           'Row: <input type="number" v-model="trigger.position[1]" />',
           'Col: <input type="number" v-model="trigger.position[0]" />',
+          '<input type="button" @click="selectOnMap" value="select on map"/>',
         '</div>',
 
         '<div class="field-row">',
-          '<label>Action Layer id to hide:</label> ',
-          '<select v-model="trigger.event_id">',
-            '<option value="" selected="selected">---</option>',
-            '<option v-for="(map, idx) in getTileEvents()" :value="idx">{{ idx }} - {{ map.name }}, {{ map.type }}, is hidden: {{ map.hidden }}</option>',
-          '</select>',
+          '<label>Selected Event: </label> ',
+          '<view-map-tile-event :event="getEvent" v-if="getEvent"></view-map-tile-event>',
         '</div>',
 
         '<div class="info">{{ trigger }}</div>',
@@ -47,6 +39,10 @@ Vue.component('eventTriggerHideEvent', {
       if (map && map.layerEvents && map.layerEvents[this.trigger.position[1]] && map.layerEvents[this.trigger.position[1]][this.trigger.position[0]]) {
         return map.layerEvents[this.trigger.position[1]][this.trigger.position[0]]
       }
+    },
+    selectOnMap: function () {
+      Vue.set(config.activeLayerEvent, "trigger_active", this.trigger)
+      config.activeModeMap = "selectEvent"
     },
     getEventCells: function () {
       if (!config.db.mapList[this.trigger.map]) {
@@ -86,11 +82,25 @@ Vue.component('eventTriggerHideEvent', {
 
       this.trigger.position[1] = this.selectCell.position[1]
       this.trigger.position[0] = this.selectCell.position[0]
+    },
+    removeEvent: function () {
+      // remove item
+      Vue.delete(config.activeLayerEvent.triggers, this.trigger.event_id)
     }
   },
   computed: {
     isActive: function () {
        return this.trigger.type_trigger == 'hide_event'
     },
+    getEvent: function () {
+      if (this.trigger.event_id) {
+        let map = config.db.mapList[this.trigger.map]
+        let event = map.layerEvents[this.trigger.position[1]][this.trigger.position[0]][this.trigger.event_id]
+
+        return event
+      }
+
+      return
+    }
   }
 })

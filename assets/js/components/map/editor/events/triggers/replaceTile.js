@@ -3,6 +3,7 @@ Vue.component('eventTriggerReplaceTile', {
   template: [
       '<div class="box" v-if="isActive">',
         '<h5>Edit Replace Tile</h5>',
+        '<span class="close" @click="removeEvent">close</span>',
 
         '<div class="field-row">',
           '<label>Map:</label> ',
@@ -16,6 +17,7 @@ Vue.component('eventTriggerReplaceTile', {
           '<label>Y/X Replacing Tile:</label> ',
           'Row: <input type="number" v-model="trigger.position[1]" />',
           'Col: <input type="number" v-model="trigger.position[0]" />',
+          '<input type="button" @click="selectOnMap" value="select on map"/>',
         '</div>',
 
         '<div class="field-row">',
@@ -35,6 +37,14 @@ Vue.component('eventTriggerReplaceTile', {
     useActiveTile: function () {
       Vue.set(this.trigger, 'tile', config.activeTile)
     },
+    selectOnMap: function () {
+      Vue.set(config.activeLayerEvent, "trigger_active", this.trigger)
+      config.activeModeMap = "selectTile"
+    },
+    removeEvent: function () {
+      // remove item
+      Vue.delete(config.activeLayerEvent.triggers, this.trigger.event_id)
+    }
   },
   computed: {
     getTileStyle: function () {
