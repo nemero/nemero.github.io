@@ -7,7 +7,7 @@ Vue.component('viewMapTileLayersInfo', {
   methods: {
   	brushCell: function () {
       if (config.activeModeMap == "selectTile") {
-        Vue.set(config.activeLayerEvent.trigger_active, "layer_id", this.idx)
+        Vue.set(config.activeConditionTrigger, "layer_id", this.idx)
 
         //config.activeModeMap = "edit"
         return

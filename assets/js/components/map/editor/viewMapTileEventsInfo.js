@@ -12,7 +12,7 @@ Vue.component('viewMapTileEventsInfo', {
   methods: {
   	selectEvent: function () {
       if (config.activeModeMap == "selectEvent") {
-        Vue.set(config.activeLayerEvent.trigger_active, "event_id", this.idx)
+        Vue.set(config.activeConditionTrigger, "event_id", this.idx)
         
         //config.activeModeMap = "edit"
         return

@@ -24,20 +24,33 @@ var db_map_event_templates = {
 		map: null,
 		//tile_icon: "assets/player.png",
 
-		condidions: [
-			{
-				type_condition: "tile",
-				compare: "==", // == or !=
-				where: "tile_id", // comparing with
-				position: [3, 1], // position on map
-			},
-			{
-				type_condition: "tile",
-				compare: "==", // == or !=
-				where: "tile_id", // comparing with
-				position: [4, 1], // position on map
-			},
-		],
+		conditions: [
+		    {
+		      "type_condition": "exist_tile",
+		      "position": [
+		        5,
+		        0
+		      ],
+		      "layer_id": "2",
+		      "map": "sewer1_b1",
+		      "tile": {
+		        "id": "tile-map5-64_-96",
+		        "offset": [
+		          -96,
+		          -64
+		        ],
+		        "size": [
+		          16,
+		          16
+		        ],
+		        "position": [
+		          0,
+		          0
+		        ],
+		        "map": "tile-map5"
+		      }
+		    }
+	    ]
 	},
 	"unlock": {
 		id: "unlock",
@@ -78,20 +91,7 @@ var db_map_event_templates = {
 			},
 		],
 
-		condidions: [
-			{
-				type_condition: "tile",
-				compare: "==", // == or !=
-				where: "tile_id", // comparing with
-				position: [3, 1], // position on map
-			},
-			{
-				type_condition: "tile",
-				compare: "==", // == or !=
-				where: "tile_id", // comparing with
-				position: [4, 1], // position on map
-			},
-		],
+		condidions: [],
 	},
 	"loot_box": {
 		id: "loot_box",

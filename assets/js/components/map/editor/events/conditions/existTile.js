@@ -1,55 +1,52 @@
-Vue.component('eventTriggerReplaceTile', {
-  props: ['trigger', 'config'],
+Vue.component('eventConditionExistTile', {
+  props: ['condition', 'config'],
   template: [
       '<div class="box" v-if="isActive">',
-        '<h5>Edit Replace Tile</h5>',
-        '<span class="close" @click="removeEvent">close</span>',
+        '<h5>Exist Tile:</h5> ',
 
         '<div class="field-row">',
           '<label>Map:</label> ',
-          '<select v-model="trigger.map">',
+          '<select v-model="condition.map">',
             '<option value="" selected="selected">---</option>',
             '<option v-for="map in config.db.mapList" :value="map.name">{{ map.name }}</option>',
           '</select>',
         '</div>',
 
         '<div class="field-row">',
+          '<label>Replacing Layer Id:</label> ',
+          '<input type="number" v-model="condition.layer_id" />',
+        '</div>',
+
+        '<div class="field-row">',
           '<label>Y/X Replacing Tile:</label> ',
-          'Row: <input type="number" v-model="trigger.position[1]" />',
-          'Col: <input type="number" v-model="trigger.position[0]" />',
+          'Row: <input type="number" v-model="condition.position[1]" />',
+          'Col: <input type="number" v-model="condition.position[0]" />',
+
           '<input type="button" @click="selectOnMap" value="select on map"/>',
         '</div>',
 
         '<div class="field-row">',
-          '<label>Replacing Layer Id:</label> ',
-          '<input type="number" v-model="trigger.layer_id" />',
+          '<label>Condition Tile Is Equal: </label> ',
+          '<span class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
         '</div>',
 
-        '<div class="field-row flex">',
-          '<label>Replace to Tile if condition success: (click to change on active tile)</label> ',
-          '<span @click="useActiveTile" class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
-        '</div>',
-        
-        '<div class="info">{{ trigger }}</div>',
+        '<div class="info">{{ condition }}</div>',
       '</div>'
       ].join(''),
   methods: {
-    useActiveTile: function () {
-      Vue.set(this.trigger, 'tile', config.activeTile)
-    },
     selectOnMap: function () {
-      Vue.set(config, "activeConditionTrigger", this.trigger)
+      Vue.set(config, "activeConditionTrigger", this.condition)
       config.activeModeMap = "selectTile"
     },
-    removeEvent: function () {
-      // remove item
-      Vue.delete(config.activeLayerEvent.triggers, this.trigger.event_id)
-    }
   },
   computed: {
     getTileStyle: function () {
       let data = {}
-      let tile = this.trigger.tile
+      if (!this.condition.map || !this.condition.layer_id || !this.condition.position) {
+        return data
+      }
+
+      let tile = config.db.mapList[this.condition.map].map[this.condition.position[1]][this.condition.position[0]][this.condition.layer_id]
       if (!tile) {
         return data
       }
@@ -72,8 +69,11 @@ Vue.component('eventTriggerReplaceTile', {
     },
     getTileMapClass: function () {
       let data = {}
-      let tile = this.trigger.tile
+      if (!this.condition.map || !this.condition.layer_id || !this.condition.position) {
+        return data
+      }
 
+      let tile = config.db.mapList[this.condition.map].map[this.condition.position[1]][this.condition.position[0]][this.condition.layer_id]
       if (!tile) {
         return data
       }
@@ -82,10 +82,12 @@ Vue.component('eventTriggerReplaceTile', {
         data[tile['map']] = true
       }
 
+      Vue.set(this.condition, 'tile', tile)
+
       return data
     },
-    isActive: function () {
-       return this.trigger.type_trigger == 'replace_tile'
+  	isActive: function () {
+       return this.condition.type_condition == 'exist_tile'
     },
   }
 })

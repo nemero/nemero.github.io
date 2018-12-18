@@ -41,7 +41,7 @@ Vue.component('eventTriggerHideEvent', {
       }
     },
     selectOnMap: function () {
-      Vue.set(config.activeLayerEvent, "trigger_active", this.trigger)
+      Vue.set(config, "activeConditionTrigger", this.trigger)
       config.activeModeMap = "selectEvent"
     },
     getEventCells: function () {

@@ -19,7 +19,7 @@ Vue.component('eventEnemies', {
 
         '<div class="info">Enemies: {{ config.activeLayerEvent.enemies }}</div>',
   		  
-        '<event-conditions :event="config.activeLayerEvent" :config="config"></event-conditions>',
+        '<event-conditions :conditions="config.activeLayerEvent.conditions" :config="config"></event-conditions>',
       '</div>'
       ].join(''),
   methods: {

@@ -24,27 +24,27 @@ Vue.component('viewMapTile', {
   	brushCell: function () {
       if (config.activeModeMap == "selectCell") {
 
-        Vue.set(config.activeLayerEvent, "map", config.activeMapId)
-        Vue.set(config.activeLayerEvent.position, 0, parseInt(this.getColId))
-        Vue.set(config.activeLayerEvent.position, 1, parseInt(this.getRowId))
+        Vue.set(config.activeConditionTrigger, "map", config.activeMapId)
+        Vue.set(config.activeConditionTrigger.position, 0, parseInt(this.getColId))
+        Vue.set(config.activeConditionTrigger.position, 1, parseInt(this.getRowId))
 
         config.activeModeMap = "edit"
         return
       }
 
       if (config.activeModeMap == "selectTile") {
-        Vue.set(config.activeLayerEvent.trigger_active.position, 0, parseInt(this.getColId))
-        Vue.set(config.activeLayerEvent.trigger_active.position, 1, parseInt(this.getRowId))
-        Vue.set(config.activeLayerEvent.trigger_active, "map", config.activeMapId)
+        Vue.set(config.activeConditionTrigger.position, 0, parseInt(this.getColId))
+        Vue.set(config.activeConditionTrigger.position, 1, parseInt(this.getRowId))
+        Vue.set(config.activeConditionTrigger, "map", config.activeMapId)
 
         config.activeModeMap = "edit"
         return
       }
 
       if (config.activeModeMap == "selectEvent") {
-        Vue.set(config.activeLayerEvent.trigger_active.position, 0, parseInt(this.getColId))
-        Vue.set(config.activeLayerEvent.trigger_active.position, 1, parseInt(this.getRowId))
-        Vue.set(config.activeLayerEvent.trigger_active, "map", config.activeMapId)
+        Vue.set(config.activeConditionTrigger.position, 0, parseInt(this.getColId))
+        Vue.set(config.activeConditionTrigger.position, 1, parseInt(this.getRowId))
+        Vue.set(config.activeConditionTrigger, "map", config.activeMapId)
 
         config.activeModeMap = "edit"
         return

@@ -41,7 +41,13 @@
 					</div>
 				</div>
 				<div v-show="config.activeTab == 'events'" class="section">
-					<event-select-template :event_templates="config.db.eventTemplates" :config="config"></event-select-template>
+					<div class="field-row">
+				        <label>Select Layer type: </label>
+				      	<select v-model="config.activeLayerEvent">
+				          	<option value="" selected="selected">---</option>
+				          	<option v-for="layer in config.db.eventTemplates" :value="layer">{{ layer.id }}</option>
+				        </select>
+				    </div>
 
 					<div class="tiles-map">
 						<div class="field-row">
@@ -133,13 +139,12 @@
 	<script type="text/javascript" src="assets/js/map/config.js"></script>
 
 	<!-- Layer Events  -->
-	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/trigger.js"></script>
+	<!-- <script type="text/javascript" src="assets/js/components/map/editor/events/triggers/trigger.js"></script> -->
 	<script type="text/javascript" src="assets/js/components/map/editor/events/teleport.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/events/unlock.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/events/lootBox.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/events/enemies.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/events/player.js"></script>
-	<script type="text/javascript" src="assets/js/components/map/editor/events/selectTemplate.js"></script>
 
 	<!-- Unlock Triggers  -->
 	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/hideEvent.js"></script>
@@ -148,6 +153,7 @@
 
 	<!-- Event Conditions -->
 	<script type="text/javascript" src="assets/js/components/map/editor/events/conditions.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/conditions/existTile.js"></script>
 
 	<!-- Other -->
 	<script type="text/javascript" src="assets/js/components/map/editor/activeBrushTile.js"></script>
