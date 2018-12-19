@@ -1,7 +1,20 @@
 var db_map_sewer1_actions = {
-  "6": {
+  "3": {
+    "4": {
+      "undefined_3_4_0": {
+        "id": "loot_box",
+        "name": "Chest open",
+        "icon": "assets/chest-open.png",
+        "tile_icon": "assets/chest-locked.png",
+        "items": [
+          "sword0"
+        ]
+      }
+    }
+  },
+  "7": {
     "1": {
-      "undefined_6_1_1": {
+      "undefined_7_1_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "assets/basement_door.jpg",
@@ -34,7 +47,6 @@ var db_map_sewer1_actions = {
             }
           }
         ],
-        "condidions": [],
         "conditions": [
           {
             "type_condition": "exist_tile",
@@ -65,7 +77,7 @@ var db_map_sewer1_actions = {
       }
     },
     "2": {
-      "undefined_6_2_0": {
+      "undefined_7_2_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "assets/basement_door.jpg",
@@ -98,7 +110,6 @@ var db_map_sewer1_actions = {
             }
           }
         ],
-        "condidions": [],
         "conditions": [
           {
             "type_condition": "exist_tile",
@@ -154,7 +165,7 @@ var db_map_sewer1_actions = {
       }
     },
     "3": {
-      "undefined_6_3_0": {
+      "undefined_7_3_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "assets/basement_door.jpg",
@@ -187,7 +198,6 @@ var db_map_sewer1_actions = {
             }
           }
         ],
-        "condidions": [],
         "conditions": [
           {
             "type_condition": "exist_tile",
@@ -216,11 +226,48 @@ var db_map_sewer1_actions = {
           }
         ]
       }
+    },
+    "9": {
+      "undefined_7_9_0": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "assets/battle.png",
+        "tile_icon": "assets/battle.png",
+        "cooldown": 20,
+        "enemies": [
+          "fly",
+          "fly",
+          "fly"
+        ],
+        "hidden": false
+      },
+      "undefined_7_9_1": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "assets/cave.jpg",
+        "position": [
+          -15,
+          7
+        ],
+        "map": "sewer1"
+      }
+    },
+    "-15": {
+      "undefined_7_-15_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "assets/cave.jpg",
+        "position": [
+          9,
+          7
+        ],
+        "map": "sewer1"
+      }
     }
   },
   "8": {
     "2": {
-      "undefined_8_2_0": {
+      "player0": {
         "id": "player",
         "name": "Player",
         "player_id": "player0",

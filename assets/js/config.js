@@ -151,7 +151,8 @@ var config = {
 				width: 15,
 				default_tile: {
 					map_class: "tile-map5",
-					position: [0, -1],
+					position: [0, 8],
+					size: [16, 16]
 				},
 				map: db_map_sewer1,
 				layerEvents: db_map_sewer1_actions

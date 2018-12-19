@@ -17,11 +17,11 @@ html {
 .map.edit {
 	border: none;
 }
-body.black {
+.play.black {
 	background: #202020;
 	color: #c6c6c6;
 }
-body.black textarea, body.black input, body.black select, body.black button {
+.play.black textarea, .play.black input, .play.black select, .play.black button {
 	background: transparent;
 	color: #c4c4c4;
 }
@@ -32,12 +32,12 @@ input[type="number"] {
 select {
 	min-width: 100px;
 }
-body.black .view-map-row .tile {
+.play.black .view-map-row .tile {
 	border-right: 1px solid rgba(255, 255, 255, 0);
 	border-bottom: 1px solid rgba(255, 255, 255, 0);
 	background: #000;
 }
-body.black .view-map-row .tile .tile-layers-info {
+.play.black .view-map-row .tile .tile-layers-info {
 	background: #743674;
 }
 span, label {
@@ -70,7 +70,7 @@ span, label {
 
 .tile-list {
 	height: 400px;
-	width: 400px;
+	width: 100%;
 	overflow-x: scroll;
 }
 .tile-list .tile {

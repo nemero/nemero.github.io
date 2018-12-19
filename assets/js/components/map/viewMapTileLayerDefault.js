@@ -18,7 +18,9 @@ Vue.component('viewMapTileLayerDefault', {
   		// 	data['background'] = 'url(' + tile['texture'] + ')'
   		// }
   		//if (tile['offset']) {
-  			data['background-position'] = this.zone.default_tile.position[0] + 'px ' + this.zone.default_tile.position[1] + 'px'
+        //console.log(this.zone.default_tile.position[0]*this.zone.default_tile['size'][0])
+  			data['background-position'] = '-' + this.zone.default_tile.position[0]*this.zone.default_tile['size'][0] + 'px -' + this.zone.default_tile.position[1]*this.zone.default_tile['size'][1] + 'px'
+        //data['background-position'] = '-' + tile['offset'][0]*tile['size'][0] + 'px -' + tile['offset'][1]*tile['size'][0] + 'px'
   		//}
 
   		return data

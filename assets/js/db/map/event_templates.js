@@ -21,36 +21,36 @@ var db_map_event_templates = {
 		name: "Subway/Cave",
 		icon: "assets/cave.jpg",
 		position: [0, 0],
-		map: null,
+		map: "sewer1",
 		//tile_icon: "assets/player.png",
 
-		conditions: [
-		    {
-		      "type_condition": "exist_tile",
-		      "position": [
-		        5,
-		        0
-		      ],
-		      "layer_id": "2",
-		      "map": "sewer1_b1",
-		      "tile": {
-		        "id": "tile-map5-64_-96",
-		        "offset": [
-		          -96,
-		          -64
-		        ],
-		        "size": [
-		          16,
-		          16
-		        ],
-		        "position": [
-		          0,
-		          0
-		        ],
-		        "map": "tile-map5"
-		      }
-		    }
-	    ]
+		// conditions: [
+		//     {
+		//       "type_condition": "exist_tile",
+		//       "position": [
+		//         5,
+		//         0
+		//       ],
+		//       "layer_id": "2",
+		//       "map": "sewer1",
+		//       "tile": {
+		//         "id": "tile-map5-64_-96",
+		//         "offset": [
+		//           -96,
+		//           -64
+		//         ],
+		//         "size": [
+		//           16,
+		//           16
+		//         ],
+		//         "position": [
+		//           0,
+		//           0
+		//         ],
+		//         "map": "tile-map5"
+		//       }
+		//     }
+	 //    ]
 	},
 	"unlock": {
 		id: "unlock",
@@ -91,7 +91,7 @@ var db_map_event_templates = {
 			},
 		],
 
-		condidions: [],
+		conditions: [],
 	},
 	"loot_box": {
 		id: "loot_box",

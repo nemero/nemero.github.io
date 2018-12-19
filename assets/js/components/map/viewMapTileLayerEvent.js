@@ -6,8 +6,6 @@ Vue.component('viewMapTileLayerEvent', {
   methods: {
     selectLayerEvent: function () {
       let tile = this.layer
-      let layer_tale = config.db.map.tiles[tile.id]
-
       if (tile.type == "enemies" || (tile.type == "enemies" && tile.cooldown && tile["cooldown_left"] <= config.step)) {
         // we can select enemies only in same tile
         if (!this.tiles[config.character.id]) {
@@ -40,10 +38,9 @@ Vue.component('viewMapTileLayerEvent', {
     getTileMapStyle: function () {
       let data = {}
       let tile = this.layer
-      let layer_tale = config.db.map.tiles[tile.id]
 
-      if (layer_tale['icon']) {
-        data['background'] = 'url(' + layer_tale.icon + ')'
+      if (tile['tile_icon']) {
+        data['background'] = 'url(' + tile.tile_icon + ')'
       }
 
       return data

@@ -1,4 +1,5 @@
 var config = {
+	theme: "",
 	width: 10,
 	height: 10,
 	layers: 9,

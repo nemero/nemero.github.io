@@ -63,6 +63,23 @@ var app = new Vue({
 	        }
 	      }
 	    },
+	    changeTheme: function () {
+	    	if (config.theme) {
+	    		config.theme = ""
+	    	} else {
+	    		config.theme = "black"
+	    	}
+	    }
+	},
+	computed: {
+		getTheme: function () {
+			let data = {}
+			if (config.theme) {
+				data[config.theme] = true
+			}
+
+			return data
+		}
 	},
 	mounted() {
 	    window.addEventListener('mouseup', this.stopDrag);
