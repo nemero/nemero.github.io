@@ -27,7 +27,7 @@ Vue.component('eventConditionExistTile', {
 
         '<div class="field-row">',
           '<label>Condition Tile Is Equal: </label> ',
-          '<span class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
+          '<span @click="useActiveTile" class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
         '</div>',
 
         '<div class="info">{{ condition }}</div>',
@@ -38,6 +38,9 @@ Vue.component('eventConditionExistTile', {
       Vue.set(config, "activeConditionTrigger", this.condition)
       config.activeModeMap = "selectTile"
     },
+    useActiveTile: function () {
+      Vue.set(this.condition, 'tile', config.activeTile)
+    },
   },
   computed: {
     getTileStyle: function () {
@@ -46,7 +49,8 @@ Vue.component('eventConditionExistTile', {
         return data
       }
 
-      let tile = config.db.mapList[this.condition.map].map[this.condition.position[1]][this.condition.position[0]][this.condition.layer_id]
+      //let tile = config.db.mapList[this.condition.map].map[this.condition.position[1]][this.condition.position[0]][this.condition.layer_id]
+      let tile = this.condition.tile
       if (!tile) {
         return data
       }
@@ -62,7 +66,7 @@ Vue.component('eventConditionExistTile', {
         data['background'] = 'url(' + tile['texture'] + ')'
       }
       if (tile['offset']) {
-        data['background-position'] = tile['offset'][0] + 'px ' + tile['offset'][1] + 'px'
+        data['background-position'] = '-' + tile['offset'][0]*tile['size'][0] + 'px -' + tile['offset'][1]*tile['size'][1] + 'px'
       }
 
       return data

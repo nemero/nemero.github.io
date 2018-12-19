@@ -34,21 +34,11 @@ var config = {
 		items: db_items,
 		eventTriggers: ["hide_event", "show_event", "replace_tile"],
 		mapList: {
-			"zone1": {
-				"name": "zone1",
-				"map": db_map_zone1,
-				"layerEvents": db_map_zone1_actions,
-			},
 			"sewer1": {
 				"name": "sewer1",
 				"map": db_map_sewer1,
 				"layerEvents": db_map_sewer1_actions,
 			},
-			"sewer1_b1": {
-				"name": "sewer1_b1",
-				"map": db_map_sewer1_b1,
-				"layerEvents": db_map_sewer1_b1_actions,
-			}
 		},
 	},
 }

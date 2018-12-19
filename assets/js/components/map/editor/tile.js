@@ -25,7 +25,7 @@ Vue.component('tile', {
   		// 	data['background'] = 'url(' + this.tile['texture'] + ')'
   		// }
   		if (this.tile['offset']) {
-  			data['background-position'] = this.tile['offset'][0] + 'px ' + this.tile['offset'][1] + 'px'
+  			data['background-position'] = '-' + this.tile['offset'][0]*this.tile['size'][0] + 'px -' + this.tile['offset'][1]*this.tile['size'][1] + 'px'
   		}
 
   		return data
