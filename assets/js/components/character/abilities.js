@@ -309,7 +309,7 @@ Vue.component('characterAbilities', {
         let layers = config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]
         for (layer_idx in layers) {
           let layer = layers[layer_idx]
-          if (layer.type == "enemies" && layer.cooldown) {
+          if (layer.id == "enemies" && layer.cooldown) {
             // remove first enemies layer
             Vue.set(layer, "cooldown_left", config.step + layer.cooldown)
             break

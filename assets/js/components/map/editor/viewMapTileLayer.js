@@ -18,7 +18,7 @@ Vue.component('viewMapTileLayer', {
   			data['background'] = 'url(' + tile['texture'] + ')'
   		}
   		if (tile['offset']) {
-  			data['background-position'] = tile['offset'][0] + 'px ' + tile['offset'][1] + 'px'
+  			data['background-position'] = '-' + tile['offset'][0]*this.tile['size'][0] + 'px -' + tile['offset'][1]*this.tile['size'][1] + 'px'
   		}
 
   		return data

@@ -26,7 +26,7 @@ var config = {
 		hpScroll: [],
 		dies: 0,
 
-		position: [5, 5],
+		position: [2, 8],
 
 		activeEquipment: {
 			head: "head0",
@@ -139,23 +139,11 @@ var config = {
 		abilities: db_abilities,
 
 		map: {
-			tiles: db_map_draw_tiles,
+			//tiles: db_map_draw_tiles,
 			viewport: [15, 10],
 			stop_tiles: stop_tiles,
 			directions_tiles: directions_tiles,
-			activeMap: "zone1",
-
-			sewer1_b1: {
-				name: "Instance test",
-				height: 15,
-				width: 15,
-				default_tile: {
-					map_class: "tile-map5",
-					position: [0, -128],
-				},
-				map: db_map_sewer1_b1,
-				layerEvents: db_map_sewer1_b1_actions
-			},
+			activeMap: "sewer1",
 
 			sewer1: {
 				name: "Instance test",
@@ -163,24 +151,12 @@ var config = {
 				width: 15,
 				default_tile: {
 					map_class: "tile-map5",
-					position: [0, -128],
+					position: [0, 8],
+					size: [16, 16]
 				},
 				map: db_map_sewer1,
 				layerEvents: db_map_sewer1_actions
 			},
-
-			zone1: {
-				id: "zone1",
-				name: "Instance test",
-				height: 15,
-				width: 15,
-				default_tile: {
-					map_class: "tile-map3",
-					position: [0, 0],
-				},
-				map: db_map_zone1,
-				layerEvents: db_map_zone1_actions
-			}
 		}
 	}
 }

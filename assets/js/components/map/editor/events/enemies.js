@@ -1,24 +1,25 @@
 Vue.component('eventEnemies', {
   props: ['config'],
   template: [
-      '<div>',
-  			'<div>',
-  				'Cooldown: ',
+      '<div v-if="isActive">',
+  			'<div class="field-row">',
+  				'<label>Cooldown:</label> ',
   				'<input type="number" v-model="config.activeLayerEvent.cooldown" />',
   			'</div>',
 
-    			'Select Enemy:', 						
-  			'<select v-model="config.selectedEnemy">',
-  				'<option value="" selected="selected">---</option>',
-  				'<option v-for="enemy in config.db.enemies" :value="enemy">{{ enemy.id }}</option>',
-  			'</select>',
-  			
-  			'<span @click="addEnemy">Add Enemy +</span>',
-  			'<span @click="removeEnemy">Remove Enemy -</span>',
+    		'<div class="field-row">',
+          '<label>Select Enemy:</label> ',
+    			'<select v-model="config.selectedEnemy">',
+    				'<option value="" selected="selected">---</option>',
+    				'<option v-for="enemy in config.db.enemies" :value="enemy">{{ enemy.id }}</option>',
+    			'</select>',
+          '<input @click="addEnemy" type="button" value="+"/>',
+          '<input @click="removeEnemy" type="button" value="-"/>',
+        '</div>',
 
-  			'<div>Enemies: {{ config.activeLayerEvent.enemies }}</div>',
-        
-        '<event-show-conditions :event="config.activeLayerEvent" :config="config"></event-show-conditions>',
+        '<div class="info">Enemies: {{ config.activeLayerEvent.enemies }}</div>',
+  		  
+        '<event-conditions :conditions="config.activeLayerEvent.conditions" :config="config"></event-conditions>',
       '</div>'
       ].join(''),
   methods: {
@@ -34,5 +35,10 @@ Vue.component('eventEnemies', {
   			enemies.pop()	
   		}
   	}
+  },
+  computed: {
+    isActive: function () {
+      return config.activeLayerEvent && config.activeLayerEvent.id == 'enemies'
+    },
   }
 })

@@ -1,26 +1,76 @@
 html {
 	touch-action: manipulation;
 }
-body {
+.map {
+	touch-action: manipulation;
+  	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.map {
+	border: 1px solid red;
+}
+.map.edit {
+	border: none;
+}
+.play.black {
 	background: #202020;
 	color: #c6c6c6;
 }
-textarea, input, select, button {
+.play.black textarea, .play.black input, .play.black select, .play.black button {
 	background: transparent;
 	color: #c4c4c4;
-	border: 1px solid;
-	border-radius: 4px;
 }
+input[type="number"] {
+	width: 50px;
+	margin-right: 10px;
+}
+select {
+	min-width: 100px;
+}
+.play.black .view-map-row .tile {
+	border-right: 1px solid rgba(255, 255, 255, 0);
+	border-bottom: 1px solid rgba(255, 255, 255, 0);
+	background: #000;
+}
+.play.black .view-map-row .tile .tile-layers-info {
+	background: #743674;
+}
+span, label {
+	vertical-align: middle;
+}
+.flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.field-row, .info {
+	margin-bottom: 10px;
+}
+.field-row label {
+	min-width: 140px;
+	display: inline-block;
+}
+
 .ui {
 	display: flex;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 .ui-left, .ui-right {
 	flex: 1;
 }
+.ui-right {
+	border-left: 1px solid #cecece;
+}
 
 .tile-list {
 	height: 400px;
-	width: 400px;
+	width: 100%;
 	overflow-x: scroll;
 }
 .tile-list .tile {
@@ -31,7 +81,7 @@ textarea, input, select, button {
 	font-size: 0;
 	background: #542754;
 }
-.tile-list .tile.active{
+.tile-list .tile.active {
 	border: 1px solid #408080;
 }
 .tile-list .tile .tile-picture {
@@ -54,25 +104,65 @@ textarea, input, select, button {
 	width: 48px;
 	height: 48px;
 	display: inline-block;
-	border-right: 1px solid rgba(255, 255, 255, 0);
+	border-right: 1px solid #cecece;
 	font-size: 10px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0);
-	background: #000;
+	border-bottom: 1px solid #cecece;;
+	background: transparent
 }
+.map.selectCell .view-map-row .tile:hover {
+	border-right: 1px solid red;
+	border-bottom: 1px solid red;
+	box-shadow: 0 0 1px 2px red;
+	z-index: 1;
+}
+.map.selectTail .view-map-row .tile:hover {
+	border-right: 1px solid red;
+	border-bottom: 1px solid red;
+	box-shadow: 0 0 1px 2px red;
+	z-index: 1;
+}
+
+.map.selectTile .view-map-row .tile:hover .tile-layers-info {
+	display: block;
+}
+.map.selectTile .tile-layers-info .layer:hover {
+	border: 1px solid red;
+}
+.map.selectTile .tile-events, .map.selectTile .tile-map > div {
+	display: none;
+}
+
+.map.selectEvent .view-map-row .tile:hover .tile-layers-info {
+	display: block;
+}
+.map.selectEvent .view-map-row .tile .tile-layers-info span:hover {
+	border: 1px solid red;
+}
+.map.selectEvent .tile-map, .map.selectEvent .tile-events > div, .map.selectEvent .tile-events .name, .map.selectEvent .tile-events .control {
+	display: none;
+}
+
 .view-map-row .tile .tile-layers-info {
 	display: none;
 	position: absolute;
-	background: #743674;
+	background: #a45694;
 	padding: 1px;
 	z-index: 9999;
 	left: -2px;
 	top: -2px;
 }
+.head-nav {
+	margin: 10px;
+}
+.head-nav .field-row {
+	margin-bottom: 0;
+}
 .layer div {
 	display: block;
 	border: none;
 }
-.view-map-row .tile:hover .tile-layers-info {
+
+.map.edit .view-map-row .tile:hover .tile-layers-info {
 	display: flex;
 }
 .view-map-row .tile .tile-layers-info span {
@@ -118,6 +208,7 @@ textarea, input, select, button {
 
 .map-config {
 	display: flex;
+	justify-content: space-evenly;
 }
 .map-config textarea {
 	display: block;
@@ -145,4 +236,54 @@ textarea, input, select, button {
 	border: 1px solid #cecece;
 	padding: 10px;
 	margin: 5px;
+	position: relative;
+}
+.close {
+	position: absolute;
+	right: 10px;
+	top: 7px;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+.ul-tabs {
+	list-style: none;
+	padding-left: 5px;
+}
+.ul-tabs li {
+	display: inline-block;
+	padding: 5px;
+	margin: 10px;
+	cursor: pointer;
+}
+.ul-tabs li.active {
+	border: 1px solid rgb(163, 163, 0);
+}
+.section {
+	padding: 15px 10px;
+	margin: 15px;
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+}
+.tiles-map {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.tiles-map > div {
+	flex: 1;
+}
+.control span {
+	border: 1px solid #cecece;
+	margin: 5px;
+	padding: 5px;
+	display: inline-block;
+	cursor: pointer;
+}
+.info {
+	border: 1px solid #cecece;
+	border-radius: 3px;
+	padding: 7px 13px;
+	background: #f5f5f5;
+	font-size: 13px;
 }

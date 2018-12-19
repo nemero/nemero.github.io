@@ -30,8 +30,8 @@ var app = new Vue({
 	      this.x = this.y = 'no';
 	    },
 	    doDrag(event) {
-	    	let e = window.event;
-			pauseEvent(e);
+	    	//let e = window.event;
+			//pauseEvent(e);
 	      if (this.dragging) {
 	        if (this.x == "no" || this.x == 0) {
 	        	this.prevX = event.clientX
@@ -62,7 +62,24 @@ var app = new Vue({
 	        	this.prevY = event.clientY
 	        }
 	      }
+	    },
+	    changeTheme: function () {
+	    	if (config.theme) {
+	    		config.theme = ""
+	    	} else {
+	    		config.theme = "black"
+	    	}
 	    }
+	},
+	computed: {
+		getTheme: function () {
+			let data = {}
+			if (config.theme) {
+				data[config.theme] = true
+			}
+
+			return data
+		}
 	},
 	mounted() {
 	    window.addEventListener('mouseup', this.stopDrag);

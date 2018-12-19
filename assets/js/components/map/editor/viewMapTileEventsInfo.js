@@ -3,18 +3,24 @@ Vue.component('viewMapTileEventsInfo', {
   template: ['<span :class="isActive">',
         '<div class="layer" @click="selectEvent">',
           //'{{ idx }}',
-          '<div>{{ event.type }}</div>',
+          '<div class="name">{{ event.type }}</div>',
           '<span class="layer-event" :style="getTileMapStyle" style="zoom: 3;"></span>',
         '</div>',
-        '<span @click="removeEvent">Remove Event -</span>',
+        '<div class="control"><span @click="removeEvent">Remove Event -</span></div>',
       '</span>',
     ].join(""),
   methods: {
   	selectEvent: function () {
+      if (config.activeModeMap == "selectEvent") {
+        Vue.set(config.activeConditionTrigger, "event_id", this.idx)
+        
+        //config.activeModeMap = "edit"
+        return
+      }
+
       config.activeLayerEvent = this.event
   	},
     removeEvent: function () {
-      //console.log(this.idx, config.map[this.row_id][this.col_id])
       Vue.delete(config.layerEvents[this.row_id][this.col_id], this.idx)
 
       // remove empty cols

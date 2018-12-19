@@ -152,10 +152,11 @@ Vue.component('viewMapTile', {
       }
 
       Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]], config.character.id, {
-              id: "7",
-              player_id: config.character.id,
+              id: "player",
               name: "Player Kokoko",
-              type: "player",
+              player_id: config.character.id,
+              icon: "assets/player.png",
+              tile_icon: "assets/player.png",
       })
 
       // track steps

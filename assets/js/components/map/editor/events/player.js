@@ -1,12 +1,18 @@
 Vue.component('eventPlayer', {
   props: ['config'],
   template: [
-      '<div>',
-		'<div>Player Id: {{ config.activeLayerEvent.player_id }}</div>',
-		'<input type="text" v-model="config.activeLayerEvent.player_id" />',
-		'<event-show-conditions :event="config.activeLayerEvent" :config="config"></event-show-conditions>',
+      '<div v-if="isActive">',
+    		'<div class="field-row">',
+          '<label>Player Id: </label> ',
+    		  '<input type="text" v-model="config.activeLayerEvent.player_id" />',
+        '</div>',
+    		
+        '<event-conditions :conditions="config.activeLayerEvent.conditions" :config="config"></event-conditions>',
       '</div>'
       ].join(''),
-  methods: {
+  computed: {
+    isActive: function () {
+      return config.activeLayerEvent && config.activeLayerEvent.id == 'player'
+    }
   }
 })

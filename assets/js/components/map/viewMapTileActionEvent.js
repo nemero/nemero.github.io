@@ -14,9 +14,7 @@ Vue.component('viewMapTileActionEvent', {
   methods: {
   	actionLayer: function () {
 		  let tile = this.tile
-      let layer_tale = config.db.map.tiles[tile.id]
-
-      if (tile.type == "enemies" || (tile.type == "enemies" && tile.cooldown && tile["cooldown_left"] <= config.step)) {
+      if (tile.id == "enemies" || (tile.id == "enemies" && tile.cooldown && tile["cooldown_left"] <= config.step)) {
         let counter = 0
         config.activeEnemies = []
         for (enemy_idx in tile.enemies) {
@@ -34,14 +32,14 @@ Vue.component('viewMapTileActionEvent', {
       for (layer_idx in this.tiles) {
         let layer = this.tiles[layer_idx]
         //console.log(layer["cooldown_left"])
-        if (layer.type == "enemies" && layer.cooldown && (!layer["cooldown_left"] || (layer["cooldown_left"] && layer["cooldown_left"] <= config.step))) {
+        if (layer.id == "enemies" && layer.cooldown && (!layer["cooldown_left"] || (layer["cooldown_left"] && layer["cooldown_left"] <= config.step))) {
           this.cant_use_action = true
           return
         }
       }
 
       // open lock
-      if (tile.type == "cave_lock") {
+      if (tile.id == "unlock") {
         
         // search item in character bag
         if (tile.type_unlock == "item" && config.character.bag.indexOf(tile.item) < 0 ) {
@@ -56,19 +54,20 @@ Vue.component('viewMapTileActionEvent', {
           let trigger = tile.triggers[trigger_idx]
           //console.log(config.db.map[trigger.map].layerEvents, trigger.position)
 
-          if (trigger.type == "show_event_tile") {
+          if (trigger.type_trigger == "show_event_tile") {
             if (config.db.map[trigger.map] && config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.event_id]) {
               Vue.set(config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.event_id], "hidden", false)
             }
           }
 
-          if (trigger.type == "hide_event_tile") {
+          if (trigger.type_trigger == "hide_event_tile") {
             if (config.db.map[trigger.map] && config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.event_id]) {
               Vue.set(config.db.map[trigger.map].layerEvents[trigger.position[1]][trigger.position[0]][trigger.event_id], "hidden", true)
             }   
           }
 
-          if (trigger.type == "replace_tile") {
+          if (trigger.type_trigger == "replace_tile") {
+            //console.log(config.db.map[trigger.map].map[trigger.position[1]][trigger.position[0]][trigger.layer_id], trigger)
             if (config.db.map[trigger.map] && config.db.map[trigger.map].map[trigger.position[1]][trigger.position[0]]) {
               Vue.set(config.db.map[trigger.map].map[trigger.position[1]][trigger.position[0]], trigger.layer_id, trigger.tile) 
             } 
@@ -77,7 +76,7 @@ Vue.component('viewMapTileActionEvent', {
       }
 
 
-      if (tile.type == "cave") {
+      if (tile.id == "teleport") {
         // set character position
         // remove old player position on old map
         if (config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]] && config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]) {
@@ -94,16 +93,17 @@ Vue.component('viewMapTileActionEvent', {
           Vue.set(config.db.map[config.db.map.activeMap].layerEvents[tile.position[1]], tile.position[0], {})  
         }
         Vue.set(config.db.map[config.db.map.activeMap].layerEvents[tile.position[1]][tile.position[0]], config.character.id, {
-              id: "7",
-              player_id: config.character.id,
+              id: "player",
               name: "Player Kokoko",
-              type: "player",
+              player_id: config.character.id,
+              icon: "assets/player.png",
+              tile_icon: "assets/player.png",
         })
 
         config.character.position = [...tile.position]
       }
 
-      if (tile.type == "chest_open") {
+      if (tile.id == "loot_box") {
         for (item_idx in tile.items) {
           let item = tile.items[item_idx]
           config.character.bag.push(item)
@@ -115,8 +115,24 @@ Vue.component('viewMapTileActionEvent', {
  	 },
    isVisible: function () {
     let tile = this.tile
-    if (tile.type == "player" && config.character.id == tile["player_id"]) {
+    if (tile.id == "player" && config.character.id == tile["player_id"]) {
       return false
+    }
+
+
+    // check conditions if exist
+    if (tile.conditions) {
+      let is_showing = true
+      for (condition_idx in tile.conditions) {
+        let condition = tile.conditions[condition_idx]
+        if (condition.type_condition == "exist_tile") {
+          //console.log(condition.tile.id, config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id)
+          if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
+            return
+          }
+          //let checking_tile = config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id]
+        }
+      }
     }
 
     if (tile.hidden || tile["cooldown_left"] > config.step) {
@@ -137,7 +153,7 @@ Vue.component('viewMapTileActionEvent', {
       return data
     },
     getTileDetails: function () {
-      return this.tile.type
+      return this.tile.id
     },
     actionLayerClasses: function () {
       let data = {}

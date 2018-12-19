@@ -2,7 +2,7 @@ Vue.component('activeBrushTile', {
   props: ['tile'],
   template: ['<span>',
       '<span class="active-brush-tile" :style="getTileStyle" :class="getTileMapClass"></span>',
-      '<div>{{ tile }}</div>',
+      '<!--{{ tile }}-->',
     '</span>'].join(""),
   computed: {
   	getTileStyle: function () {
@@ -23,7 +23,7 @@ Vue.component('activeBrushTile', {
   			data['background'] = 'url(' + tile['texture'] + ')'
   		}
   		if (tile['offset']) {
-  			data['background-position'] = tile['offset'][0] + 'px ' + tile['offset'][1] + 'px'
+  			data['background-position'] = '-' + tile['offset'][0]*tile['size'][0] + 'px -' + tile['offset'][1]*tile['size'][1] + 'px'
   		}
 
   		return data

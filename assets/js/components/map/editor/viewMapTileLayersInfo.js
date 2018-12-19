@@ -2,11 +2,17 @@ Vue.component('viewMapTileLayersInfo', {
   props: ['tile', 'idx', 'tiles'],
   template: ['<span class="layer" :style="getTileStyle" @click="brushCell" :class="getTileMapClass">',
         '{{ idx }}',
-        //'<div>{{ tile.id }}<div>',
       '</span>',
     ].join(""),
   methods: {
   	brushCell: function () {
+      if (config.activeModeMap == "selectTile") {
+        Vue.set(config.activeConditionTrigger, "layer_id", this.idx)
+
+        //config.activeModeMap = "edit"
+        return
+      }
+
   		// if selected layer don't brush on selected layer
   		if (config.activeLayer) {
   			return
@@ -33,7 +39,7 @@ Vue.component('viewMapTileLayersInfo', {
   			data['background'] = 'url(' + tile['texture'] + ')'
   		}
   		if (tile['offset']) {
-  			data['background-position'] = tile['offset'][0] + 'px ' + tile['offset'][1] + 'px'
+  			data['background-position'] = '-' + tile['offset'][0]*this.tile['size'][0] + 'px -' + tile['offset'][1]*this.tile['size'][1] + 'px'
   		}
 
   		return data

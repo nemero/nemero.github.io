@@ -15,14 +15,42 @@ Vue.component('viewMapTile', {
           '</div>',
           '<div class="tile-events" style="zoom: 0.3;">',
             '<view-map-tile-events-info v-for="(event, idx) in getEvents" :event="event" :idx="idx" :row_id="getRowId" :col_id="getColId"></view-map-tile-events-info>',
-            '<span @click="addEvent">Add Event +</span>',
+            '<span class="control" @click="addEvent">Add Event +</span>',
           '</div>',
         '</span>',
       '</span>',
     '</span>'].join(""),
   methods: {
   	brushCell: function () {
-  		if (!config.activeLayer) {
+      if (config.activeModeMap == "selectCell") {
+
+        Vue.set(config.activeConditionTrigger, "map", config.activeMapId)
+        Vue.set(config.activeConditionTrigger.position, 0, parseInt(this.getColId))
+        Vue.set(config.activeConditionTrigger.position, 1, parseInt(this.getRowId))
+
+        config.activeModeMap = "edit"
+        return
+      }
+
+      if (config.activeModeMap == "selectTile") {
+        Vue.set(config.activeConditionTrigger.position, 0, parseInt(this.getColId))
+        Vue.set(config.activeConditionTrigger.position, 1, parseInt(this.getRowId))
+        Vue.set(config.activeConditionTrigger, "map", config.activeMapId)
+
+        config.activeModeMap = "edit"
+        return
+      }
+
+      if (config.activeModeMap == "selectEvent") {
+        Vue.set(config.activeConditionTrigger.position, 0, parseInt(this.getColId))
+        Vue.set(config.activeConditionTrigger.position, 1, parseInt(this.getRowId))
+        Vue.set(config.activeConditionTrigger, "map", config.activeMapId)
+
+        config.activeModeMap = "edit"
+        return
+      }
+
+  		if (!config.activeLayer/* || config.activeTab !== "tiles"*/) {
   			return
   		}
 
@@ -106,14 +134,6 @@ Vue.component('viewMapTile', {
 
       return col_idx
     },
-		getInfoCell: function () {
-  		let tiles = {}
-  		if (config.map[this.getRowId] && config.map[this.getRowId][this.getColId]) {
-  			tiles = config.map[this.getRowId][this.getColId]
-  		}
-
-  		config.hoveredTiles = tiles
-  	},
   	getTiles: function () {
   		let tiles = {}
   		if (config.map[this.getRowId] && config.map[this.getRowId][this.getColId]) {
