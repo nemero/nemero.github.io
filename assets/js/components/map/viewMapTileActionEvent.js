@@ -128,6 +128,7 @@ Vue.component('viewMapTileActionEvent', {
         if (condition.type_condition == "exist_tile") {
           //console.log(condition.tile.id, config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id)
           if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
+            Vue.set(tile, "hidden", false)  
             return
           }
           //let checking_tile = config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id]

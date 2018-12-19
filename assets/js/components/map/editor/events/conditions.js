@@ -27,7 +27,6 @@ Vue.component('eventConditions', {
         '<div v-for="condition in conditions" :condition="condition" :config="config">',
           '<event-condition-exist-tile :condition="condition" :config="config"></event-condition-exist-tile>',
         '</div>',
-
       '</div>'
       ].join(''),
   methods: {
@@ -36,6 +35,7 @@ Vue.component('eventConditions', {
         Vue.set(config.activeLayerEvent, "conditions", [])
       }
       
+
       let conditions = config.activeLayerEvent.conditions
       if (this.activeCondition) {
         conditions.push({

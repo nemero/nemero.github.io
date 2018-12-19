@@ -86,7 +86,7 @@ Vue.component('eventConditionExistTile', {
         data[tile['map']] = true
       }
 
-      Vue.set(this.condition, 'tile', tile)
+      //Vue.set(this.condition, 'tile', tile)
 
       return data
     },
