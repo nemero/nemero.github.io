@@ -190,22 +190,6 @@ span, label {
 	display: inline-block;
 }
 
-.tile-map1 {
-	background: url(../tileset_1.png);
-}
-.tile-map2 {
-	background: url(../mountains_0.png);
-}
-.tile-map3 {
-	background: url(../water_1.png);
-}
-.tile-map4 {
-	background: url(../tileset_cave.png);
-}
-.tile-map5 {
-	background: url(../tileset_sewer_1.png);
-}
-
 .map-config {
 	display: flex;
 	justify-content: space-evenly;

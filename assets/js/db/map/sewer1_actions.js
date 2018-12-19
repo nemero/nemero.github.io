@@ -24,6 +24,486 @@ var db_map_sewer1_actions = {
         ],
         "map": "sewer1"
       }
+    },
+    "-28": {
+      "undefined_5_-28_0": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "map": "sewer1",
+            "position": [
+              -28,
+              4
+            ],
+            "layer_id": "2",
+            "tile": {
+              "id": "tile-map5_5_16",
+              "offset": [
+                16,
+                5
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_trigger": "show_event",
+            "map": "sewer1",
+            "position": [
+              1,
+              3
+            ],
+            "event_id": "sub_town_opened"
+          },
+          {
+            "type_trigger": "hide_event",
+            "map": "sewer1",
+            "position": [
+              2,
+              2
+            ],
+            "event_id": "cave_lock_2_2_1"
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -28,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_16",
+              "offset": [
+                16,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      },
+      "undefined_5_-28_1": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "map": "sewer1",
+            "position": [
+              -28,
+              4
+            ],
+            "layer_id": "2",
+            "tile": {
+              "id": "tile-map5_4_16",
+              "offset": [
+                16,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_trigger": "show_event",
+            "map": "sewer1",
+            "position": [
+              1,
+              3
+            ],
+            "event_id": "sub_town_opened"
+          },
+          {
+            "type_trigger": "hide_event",
+            "map": "sewer1",
+            "position": [
+              2,
+              2
+            ],
+            "event_id": "cave_lock_2_2_1"
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -28,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_5_16",
+              "offset": [
+                16,
+                5
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      }
+    },
+    "-27": {
+      "undefined_5_-27_0": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "map": "sewer1",
+            "position": [
+              -27,
+              4
+            ],
+            "layer_id": "2",
+            "tile": {
+              "id": "tile-map5_4_16",
+              "offset": [
+                16,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_trigger": "show_event",
+            "map": "sewer1",
+            "position": [
+              1,
+              3
+            ],
+            "event_id": "sub_town_opened"
+          },
+          {
+            "type_trigger": "hide_event",
+            "map": "sewer1",
+            "position": [
+              2,
+              2
+            ],
+            "event_id": "cave_lock_2_2_1"
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -27,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_5_16",
+              "offset": [
+                16,
+                5
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      },
+      "undefined_5_-27_1": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "map": "sewer1",
+            "position": [
+              -27,
+              4
+            ],
+            "layer_id": "2",
+            "tile": {
+              "id": "tile-map5_5_16",
+              "offset": [
+                16,
+                5
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_trigger": "show_event",
+            "map": "sewer1",
+            "position": [
+              1,
+              3
+            ],
+            "event_id": "sub_town_opened"
+          },
+          {
+            "type_trigger": "hide_event",
+            "map": "sewer1",
+            "position": [
+              2,
+              2
+            ],
+            "event_id": "cave_lock_2_2_1"
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -27,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_16",
+              "offset": [
+                16,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      }
+    },
+    "-26": {
+      "undefined_5_-26_0": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "map": "sewer1",
+            "position": [
+              -26,
+              4
+            ],
+            "layer_id": "2",
+            "tile": {
+              "id": "tile-map5_4_16",
+              "offset": [
+                16,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_trigger": "show_event",
+            "map": "sewer1",
+            "position": [
+              1,
+              3
+            ],
+            "event_id": "sub_town_opened"
+          },
+          {
+            "type_trigger": "hide_event",
+            "map": "sewer1",
+            "position": [
+              2,
+              2
+            ],
+            "event_id": "cave_lock_2_2_1"
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -26,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_5_16",
+              "offset": [
+                16,
+                5
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      },
+      "undefined_5_-26_1": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "map": "sewer1",
+            "position": [
+              -26,
+              4
+            ],
+            "layer_id": "2",
+            "tile": {
+              "id": "tile-map5_5_16",
+              "offset": [
+                16,
+                5
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_trigger": "show_event",
+            "map": "sewer1",
+            "position": [
+              1,
+              3
+            ],
+            "event_id": "sub_town_opened"
+          },
+          {
+            "type_trigger": "hide_event",
+            "map": "sewer1",
+            "position": [
+              2,
+              2
+            ],
+            "event_id": "cave_lock_2_2_1"
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -26,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_16",
+              "offset": [
+                16,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      }
     }
   },
   "7": {
@@ -544,6 +1024,83 @@ var db_map_sewer1_actions = {
         "tile_icon": "icon-chest-locked0",
         "items": [
           "knife1"
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -27,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_16",
+              "offset": [
+                16,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -26,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_5_16",
+              "offset": [
+                16,
+                5
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -28,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_5_16",
+              "offset": [
+                16,
+                5
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
         ]
       }
     }

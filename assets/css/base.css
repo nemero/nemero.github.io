@@ -54,5 +54,6 @@ html, body {
 	background: url(../tileset_cave.png);
 }
 .tile-map5 {
-	background: url(../tileset_sewer_1.png);
+	//background: url(../tileset_sewer_1.png);
+	background: url(../tileset_sewer_1_ext.png);
 }

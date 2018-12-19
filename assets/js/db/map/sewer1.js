@@ -236,6 +236,22 @@ var db_map_sewer1 = {
           0
         ],
         "map": "tile-map5"
+      },
+      "2": {
+        "id": "tile-map5_4_16",
+        "offset": [
+          16,
+          4
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map5"
       }
     },
     "-27": {
@@ -254,6 +270,22 @@ var db_map_sewer1 = {
           0
         ],
         "map": "tile-map5"
+      },
+      "2": {
+        "id": "tile-map5_5_16",
+        "offset": [
+          16,
+          5
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map5"
       }
     },
     "-26": {
@@ -262,6 +294,22 @@ var db_map_sewer1 = {
         "offset": [
           0,
           4
+        ],
+        "size": [
+          16,
+          16
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "map": "tile-map5"
+      },
+      "2": {
+        "id": "tile-map5_5_16",
+        "offset": [
+          16,
+          5
         ],
         "size": [
           16,
