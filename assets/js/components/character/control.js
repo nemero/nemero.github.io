@@ -27,6 +27,12 @@ Vue.component('characterControl', {
         let previous_pos = [...position]
         let new_position = [...position]
 
+        //console.log(this.isVisible(), e.keyCode, this.tile)
+        //if (13 == e.keyCode) {
+        //  let events = config.db.map[config.db.map.activeMap].layerEvents[this.character.position[1]][this.character.position[0]]
+        //}
+
+        //console.log(e.keyCode)
         if ([37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
           pauseEvent(e);
         }
@@ -159,8 +165,8 @@ Vue.component('characterControl', {
               id: "player",
               name: "Player Kokoko",
               player_id: this.character.id,
-              icon: "assets/player.png",
-              tile_icon: "assets/player.png",
+              icon: "icon-player0",
+              tile_icon: "icon-player0",
       })
 
       // track steps

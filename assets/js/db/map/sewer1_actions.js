@@ -4,8 +4,8 @@ var db_map_sewer1_actions = {
       "undefined_3_4_0": {
         "id": "loot_box",
         "name": "Chest open",
-        "icon": "assets/chest-open.png",
-        "tile_icon": "assets/chest-locked.png",
+        "icon": "icon-chest-open0",
+        "tile_icon": "icon-chest-locked0",
         "items": [
           "sword0"
         ]
@@ -17,7 +17,7 @@ var db_map_sewer1_actions = {
       "undefined_7_1_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
-        "icon": "assets/basement_door.jpg",
+        "icon": "icon-basement-door0",
         "type_unlock": "use",
         "item": null,
         "triggers": [
@@ -80,7 +80,7 @@ var db_map_sewer1_actions = {
       "undefined_7_2_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
-        "icon": "assets/basement_door.jpg",
+        "icon": "icon-basement-door0",
         "type_unlock": "use",
         "item": null,
         "triggers": [
@@ -168,7 +168,7 @@ var db_map_sewer1_actions = {
       "undefined_7_3_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
-        "icon": "assets/basement_door.jpg",
+        "icon": "icon-basement-door0",
         "type_unlock": "use",
         "item": null,
         "triggers": [
@@ -231,8 +231,8 @@ var db_map_sewer1_actions = {
       "undefined_7_9_0": {
         "id": "enemies",
         "name": "Enemies",
-        "icon": "assets/battle.png",
-        "tile_icon": "assets/battle.png",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-battle0",
         "cooldown": 20,
         "enemies": [
           "fly",
@@ -244,7 +244,7 @@ var db_map_sewer1_actions = {
       "undefined_7_9_1": {
         "id": "teleport",
         "name": "Subway/Cave",
-        "icon": "assets/cave.jpg",
+        "icon": "icon-cave0",
         "position": [
           -15,
           7
@@ -256,7 +256,7 @@ var db_map_sewer1_actions = {
       "undefined_7_-15_0": {
         "id": "teleport",
         "name": "Subway/Cave",
-        "icon": "assets/cave.jpg",
+        "icon": "icon-cave0",
         "position": [
           9,
           7
@@ -271,8 +271,8 @@ var db_map_sewer1_actions = {
         "id": "player",
         "name": "Player",
         "player_id": "player0",
-        "icon": "assets/player.png",
-        "tile_icon": "assets/player.png"
+        "icon": "icon-player0",
+        "tile_icon": "icon-player0"
       }
     }
   }

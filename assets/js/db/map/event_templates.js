@@ -3,14 +3,14 @@ var db_map_event_templates = {
 		id: "player",
 		name: "Player",
 		player_id: null,
-		icon: "assets/player.png",
-		tile_icon: "assets/player.png",
+		icon: "icon-player0",
+		tile_icon: "icon-player0",
 	},
 	"enemies": {
 		id: "enemies",
 		name: "Enemies",
-		icon: "assets/battle.png",
-		tile_icon: "assets/battle.png",
+		icon: "icon-battle0",
+		tile_icon: "icon-battle0",
 
 		cooldown: 20,
 		enemies: [],
@@ -19,7 +19,7 @@ var db_map_event_templates = {
 	"teleport": {
 		id: "teleport",
 		name: "Subway/Cave",
-		icon: "assets/cave.jpg",
+		icon: "icon-teleport0",
 		position: [0, 0],
 		map: "sewer1",
 		//tile_icon: "assets/player.png",
@@ -55,7 +55,7 @@ var db_map_event_templates = {
 	"unlock": {
 		id: "unlock",
 		name: "Subway/Cave Lock",	
-		icon: "assets/basement_door.jpg",
+		icon: "icon-basement-door0",
 		//tile_icon: "assets/player.png",
 
 		type_unlock: null, // item or use (just click event for triggering)
@@ -96,8 +96,8 @@ var db_map_event_templates = {
 	"loot_box": {
 		id: "loot_box",
 		name: "Chest open",	
-		icon: "assets/chest-open.png",
-		tile_icon: "assets/chest-locked.png",
+		icon: "icon-chest-open0",
+		tile_icon: "icon-chest-locked0",
 
 		items: [],
 	},

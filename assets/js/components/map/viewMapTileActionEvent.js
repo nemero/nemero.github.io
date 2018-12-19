@@ -1,7 +1,7 @@
 Vue.component('viewMapTileActionEvent', {
 	props: ['tile', 'config', 'tiles'],
 	template: ['<div class="view-map-tile-action" @click="actionLayer" v-if="isVisible()" @animationend="cant_use_action = false" :class="actionLayerClasses">',
-              '<span :style="getActionStyle">',
+              '<span :class="getActionClass">',
               '</span>',
               '<div>{{ getTileDetails }}</div>',
           '</div>'
@@ -96,8 +96,8 @@ Vue.component('viewMapTileActionEvent', {
               id: "player",
               name: "Player Kokoko",
               player_id: config.character.id,
-              icon: "assets/player.png",
-              tile_icon: "assets/player.png",
+              icon: "icon-player0",
+              tile_icon: "icon-player0",
         })
 
         config.character.position = [...tile.position]
@@ -143,11 +143,11 @@ Vue.component('viewMapTileActionEvent', {
    }
  	},
   computed: {
-    getActionStyle: function () {
+    getActionClass: function () {
       let data = {}
 
       if (this.tile.icon) {
-        data['background'] = 'url(' + this.tile.icon + ') center center/cover'
+        data[this.tile.icon] = true
       }
 
       return data

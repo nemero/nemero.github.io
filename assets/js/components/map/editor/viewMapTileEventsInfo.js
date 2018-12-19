@@ -4,7 +4,7 @@ Vue.component('viewMapTileEventsInfo', {
         '<div class="layer" @click="selectEvent">',
           //'{{ idx }}',
           '<div class="name">{{ event.type }}</div>',
-          '<span class="layer-event" :style="getTileMapStyle" style="zoom: 3;"></span>',
+          '<span class="layer-event" :class="getTileMapClass" style="zoom: 3;"></span>',
         '</div>',
         '<div class="control"><span @click="removeEvent">Remove Event -</span></div>',
       '</span>',
@@ -47,19 +47,17 @@ Vue.component('viewMapTileEventsInfo', {
 
       return data
     },
-  	getTileMapStyle: function () {
-  		let data = {}
-  		let event = this.event
-
+    getTileMapClass: function () {
+      let data = {}
+      let event = this.event
+      
       if (event.icon) {
-        data['background'] = 'url(' + event.icon + ')'
+        data[event.icon] = true
       } else {
-        data['background'] = 'url(assets/question.png)'
-        data['width'] = '7px'
-        data['height'] = '7px'
+        data['question0'] = true
       }
 
-  		return data
-  	},
+      return data
+    },
   }
 })

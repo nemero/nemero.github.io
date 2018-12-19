@@ -55,7 +55,7 @@
 							<label>Event Icon: </label>
 							<input type="text" v-model="config.activeLayerEvent.icon" />
 						</div>
-						<img width="64" :src="config.activeLayerEvent.icon" />
+						<span class="layer-event" style="zoom: 3; border: 0.2px solid #cecece;" :class="config.activeLayerEvent.icon"></span>
 					</div>
 
 					<div class="field-row">

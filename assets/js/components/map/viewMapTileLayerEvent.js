@@ -1,6 +1,6 @@
 Vue.component('viewMapTileLayerEvent', {
   props: ['layer', 'tiles'],
-  template: ['<span class="layer-event" :style="getTileMapStyle" @click="selectLayerEvent" v-if="isVisible">',
+  template: ['<span class="layer-event" :class="getTileMapClass" @click="selectLayerEvent" v-if="isVisible">',
           //'<span class="layer-event-details" v-show="getLayerEventDetails.length > 0">{{ getLayerEventDetails }}</span>',
       '</span>'].join(""),
   methods: {
@@ -35,12 +35,12 @@ Vue.component('viewMapTileLayerEvent', {
       
       return true
     },
-    getTileMapStyle: function () {
+    getTileMapClass: function () {
       let data = {}
       let tile = this.layer
 
-      if (tile['tile_icon']) {
-        data['background'] = 'url(' + tile.tile_icon + ')'
+      if (tile.tile_icon) {
+        data[tile.tile_icon] = true
       }
 
       return data

@@ -155,8 +155,8 @@ Vue.component('viewMapTile', {
               id: "player",
               name: "Player Kokoko",
               player_id: config.character.id,
-              icon: "assets/player.png",
-              tile_icon: "assets/player.png",
+              icon: "icon-player0",
+              tile_icon: "icon-player0",
       })
 
       // track steps

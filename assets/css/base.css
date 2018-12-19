@@ -2,43 +2,43 @@ html, body {
   margin: 0;
   padding: 0;
 }
-.view-map-row .layer-event.battle0 {
+.view-map-row .layer-event {
 	position: absolute;
 	width: 80%;
 	height: 80%;
 	top: 0;
 	left: 0;
+	cursor: pointer;
+	z-index: 1;	
+	position: relative;
+}
+.icon-battle0 {
 	background: url(../battle.png) center center/cover;
-	cursor: pointer;
-	z-index: 1;
 }
-
-.view-map-row .layer-event.player0 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
+.icon-player0 {
 	background: url(../player.png) center center/cover;
-	cursor: pointer;
 }
-.view-map-row .layer-event.chest-open0 {
-	position: absolute;
-	width: 60%;
-	height: 60%;
-	top: 5%;
-	left: 20%;
+.icon-chest-open0 {
 	background: url(../chest-locked.png) center center/cover;
-	cursor: pointer;
 }
-.view-map-row .layer-event.chest-locked0 {
-	position: absolute;
-	width: 60%;
-	height: 60%;
-	top: 0;
-	left: 0;
+.icon-chest-locked0 {
 	background: url(../chest-locked.png) center center/cover;
-	cursor: pointer;
+}
+.icon-basement-door0 {
+	background: url(../basement_door.jpg) center center/cover;
+}
+.icon-question0 {
+	background: url(../question.png) center center/cover;	
+	width: 7px;
+    height: 7px;
+    left: 8px;
+    top: 1px;
+}
+.icon-cave0 {
+	background: url(../town_in.jpg) center center/cover;	
+}
+.icon-teleport0 {
+	background: url(../town_in.jpg) center center/cover;	
 }
 
 .tile-map1 {
