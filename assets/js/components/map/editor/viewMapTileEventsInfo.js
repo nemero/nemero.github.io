@@ -1,13 +1,15 @@
 Vue.component('viewMapTileEventsInfo', {
   props: ['event', 'idx', 'row_id', 'col_id'],
-  template: ['<span :class="isActive">',
+  template: ['<div :class="isActive" class="layer-event-box">',
         '<div class="layer" @click="selectEvent">',
           //'{{ idx }}',
           '<div class="name">{{ event.type }}</div>',
           '<span class="layer-event" :class="getTileMapClass" style="zoom: 3;"></span>',
         '</div>',
-        '<div class="control"><span @click="removeEvent">Remove Event -</span></div>',
-      '</span>',
+        '<div class="control">',
+          '<input type="button" @click="removeEvent" value="x" />',
+        '</div>',
+      '</div>',
     ].join(""),
   methods: {
   	selectEvent: function () {

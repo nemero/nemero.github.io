@@ -24,6 +24,8 @@ html {
 .play.black textarea, .play.black input, .play.black select, .play.black button {
 	background: transparent;
 	color: #c4c4c4;
+	border-radius: 4px;
+	border-width: 1px;
 }
 input[type="number"] {
 	width: 50px;
@@ -31,6 +33,9 @@ input[type="number"] {
 }
 select {
 	min-width: 100px;
+}
+.tile-map {
+	margin-right: 2px;
 }
 .play.black .view-map-row .tile {
 	border-right: 1px solid rgba(255, 255, 255, 0);
@@ -43,13 +48,17 @@ select {
 span, label {
 	vertical-align: middle;
 }
+h5 {
+	padding: 0;
+	margin: 5px 0 10px;
+}
 .flex {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 .field-row, .info {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 .field-row label {
 	min-width: 140px;
@@ -170,8 +179,17 @@ span, label {
 	min-height: 16px;
 	min-width: 16px;
 }
-.view-map-row .tile .tile-layers-info span.active {
+.view-map-row .tile .tile-layers-info .active .layer-event {
 	border: 1px solid #ff0;
+}
+.layer-event-box {
+	position: relative;
+}
+.tile-events .layer-event-box .control {
+	position: absolute;
+	top: -4px;
+	z-index: 9;
+	right: -5px;
 }
 .view-map-row .tile > span.service {
 	position: absolute;
@@ -232,7 +250,8 @@ span, label {
 
 .ul-tabs {
 	list-style: none;
-	padding-left: 5px;
+	padding: 0;
+	margin: 0;
 }
 .ul-tabs li {
 	display: inline-block;
@@ -270,4 +289,9 @@ span, label {
 	padding: 7px 13px;
 	background: #f5f5f5;
 	font-size: 13px;
+}
+
+/* shift modificator */
+.key16 .map.edit .view-map-row .tile:hover .tile-layers-info {
+	display: none;
 }

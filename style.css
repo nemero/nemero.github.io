@@ -524,6 +524,7 @@ a:hover {
 	border: 1px solid #ff0;
 }
 .view-map-row .tile > span.service {
+	display: none;
 }
 .view-map-row .tile > span {
 	position: absolute;

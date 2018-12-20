@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div id="play" class="play" :class="getTheme">
+		{{ config.holdKeys }}
 		<input type="button" value="Change Theme" @click="changeTheme"/>
 		<div class="ui">
 			<div class="ui-left">

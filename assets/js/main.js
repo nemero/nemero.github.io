@@ -22,17 +22,19 @@ var app = new Vue({
   	},
     methods: {
 	    startDrag() {
-	      	this.dragging = true;
-	      	this.x = this.y = 0;
+	    	// if (config.holdKeys.indexOf('key16') >= 0) {
+	     //  		this.dragging = true;
+	     //  		this.x = this.y = 0;
+	     //  	}
 	    },
 	    stopDrag() {
-	      this.dragging = false;
-	      this.x = this.y = 'no';
+	      	//this.dragging = false;
+	      	//this.x = this.y = 'no';
 	    },
 	    doDrag(event) {
 	    	//let e = window.event;
 			//pauseEvent(e);
-	      if (this.dragging) {
+	      if (this.dragging && config.holdKeys.indexOf('key16') >= 0) {
 	        if (this.x == "no" || this.x == 0) {
 	        	this.prevX = event.clientX
 	        }
@@ -44,20 +46,20 @@ var app = new Vue({
 	        this.x = event.clientX;
 	        this.y = event.clientY;
 
-	        if (this.x - this.prevX < -6) {
+	        if (this.x - this.prevX < -4) {
 	        	Vue.set(config.mapOffset, 0, parseInt(config.mapOffset[0]) + 1)
 	        	this.prevX = event.clientX
 	        }
-	        if (this.x - this.prevX > 6) {
+	        if (this.x - this.prevX > 4) {
 	        	this.prevX = event.clientX
 	        	Vue.set(config.mapOffset, 0, parseInt(config.mapOffset[0]) - 1)
 	        }
 
-	        if (this.y - this.prevY < -6) {
+	        if (this.y - this.prevY < -4) {
 	        	Vue.set(config.mapOffset, 1, parseInt(config.mapOffset[1]) + 1)
 	        	this.prevY = event.clientY
 	        }
-	        if (this.y - this.prevY > 6) {
+	        if (this.y - this.prevY > 4) {
 	        	Vue.set(config.mapOffset, 1, parseInt(config.mapOffset[1]) - 1)
 	        	this.prevY = event.clientY
 	        }
@@ -69,7 +71,27 @@ var app = new Vue({
 	    	} else {
 	    		config.theme = "black"
 	    	}
-	    }
+	    },
+	    keyDown: function (e) {
+	    	if (config.holdKeys.indexOf('key' + e.keyCode) < 0) {
+	    		config.holdKeys.push('key' + e.keyCode)
+	    	}
+
+	    	if (config.holdKeys.indexOf('key16') >= 0) {
+	      		this.dragging = true;
+	      		this.x = this.y = 0;
+	      	}
+	    },
+	    keyUp: function (e) {
+	    	if (config.holdKeys.indexOf('key' + e.keyCode) >= 0) {
+	    		config.holdKeys.splice(config.holdKeys.indexOf('key' + e.keyCode), 1);
+	    	}
+
+			if (config.holdKeys.indexOf('key16') >= 0) {
+	      		this.dragging = false;
+	      		this.x = this.y = 'no';
+	      	}
+	    },
 	},
 	computed: {
 		getTheme: function () {
@@ -77,11 +99,16 @@ var app = new Vue({
 			if (config.theme) {
 				data[config.theme] = true
 			}
+			for (key in config.holdKeys) {
+				data[config.holdKeys[key]] = true
+			}
 
 			return data
 		}
 	},
 	mounted() {
 	    window.addEventListener('mouseup', this.stopDrag);
+	    window.addEventListener('keydown', this.keyDown);
+	    window.addEventListener('keyup', this.keyUp);
 	}
 })

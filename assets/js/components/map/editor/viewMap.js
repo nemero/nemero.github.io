@@ -8,6 +8,7 @@ Vue.component('viewMap', {
   	getClass: function () {
   		let data = {}
   		data[config.activeModeMap] = true
+      data[config.activeKeyModeMap] = true
 
   		return data
   	}

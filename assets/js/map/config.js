@@ -9,6 +9,7 @@ var config = {
 	activeTileMap: null,
 	activeLayer: "",
 	activeModeMap: "edit", // selectCell, selectTile, selectEvent
+	holdKeys: [], // shift, ctrl, alt
 	mapSelect: { // config for observing map selecting with external components
 		position: [],
 		layer_id: null,

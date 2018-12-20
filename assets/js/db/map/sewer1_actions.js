@@ -979,7 +979,34 @@ var db_map_sewer1_actions = {
           "fly",
           "fly"
         ],
-        "hidden": false
+        "hidden": false,
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              8,
+              6
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_4",
+              "offset": [
+                4,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
       },
       "undefined_7_9_1": {
         "id": "teleport",

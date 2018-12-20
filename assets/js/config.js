@@ -1,5 +1,6 @@
 var config = {
 	step: 0,
+	holdKeys: [], // shift, ctrl, alt
 
 	level: {
 		experience: 10,
