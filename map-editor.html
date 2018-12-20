@@ -59,6 +59,14 @@
 						<span class="layer-event" style="zoom: 3; border: 0.2px solid #cecece;" :class="config.activeLayerEvent.icon"></span>
 					</div>
 
+					<div class="tiles-map">
+						<div class="field-row">
+							<label>Tile Icon: </label>
+							<input type="text" v-model="config.activeLayerEvent.tile_icon" />
+						</div>
+						<span class="layer-event" style="zoom: 3; border: 0.2px solid #cecece;" :class="config.activeLayerEvent.tile_icon"></span>
+					</div>
+
 					<div class="field-row">
 						<label>Is Hidden: </label>
 						<select v-model="config.activeLayerEvent.hidden">

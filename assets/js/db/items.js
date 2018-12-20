@@ -86,6 +86,13 @@ var db_items = {
 		type: "key",
 		icon: "assets/key.png"
 	},
+	paper0: {
+		id: "paper0",
+		name: "Paper",
+		type: "note",
+		icon: "assets/paper.png",
+		text: "Subtown lever: down up down",
+	},
 	knife0: {
 		id: "knife0",
 		name: "Knife Frog",

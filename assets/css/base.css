@@ -40,6 +40,15 @@ html, body {
 .icon-teleport0 {
 	background: url(../town_in.jpg) center center/cover;	
 }
+.icon-paper0 {
+	background: url(../paper.png) center center/cover;	
+}
+.view-map-row .layer-event.icon-paper0 {
+	width: 7px;
+	height: 7px;
+	left: 5px;
+	top: 8px;
+}
 
 .tile-map1 {
 	background: url(../tileset_1.png);

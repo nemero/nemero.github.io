@@ -179,7 +179,7 @@ h5 {
 	min-height: 16px;
 	min-width: 16px;
 }
-.view-map-row .tile .tile-layers-info .active .layer-event {
+.view-map-row .tile .tile-layers-info .active .layer-event-info-icon {
 	border: 1px solid #ff0;
 }
 .layer-event-box {

@@ -43,6 +43,7 @@ Vue.component('viewMapTileActionEvent', {
         
         // search item in character bag
         if (tile.type_unlock == "item" && config.character.bag.indexOf(tile.item) < 0 ) {
+          this.cant_use_action = true
           return
         }
 

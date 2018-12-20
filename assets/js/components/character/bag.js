@@ -17,6 +17,7 @@ Vue.component('characterBag', {
               '<li>{{ getOption(item, "agility", "Agility: ") }}</li>',
               '<li>{{ getOption(item, "defence", "Defence: ") }}</li>',
               '<li>{{ getOption(item, "price", "Price: ") }}</li>',
+              '<li>{{ getOption(item, "text", "Note: ") }}</li>',
             '</ul>',
           '</div>',
           '<span class="name"><b>{{ getOption(item, "name", "") }}</b></span>',

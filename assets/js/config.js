@@ -54,7 +54,7 @@ var config = {
 		],
 
 		bag: [
-			"head0", "chest0", "key_old_tower0"
+			"head0", "chest0",
 		],
 
 		activeTarget: null,

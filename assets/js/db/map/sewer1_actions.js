@@ -4,10 +4,10 @@ var db_map_sewer1_actions = {
       "undefined_3_4_0": {
         "id": "loot_box",
         "name": "Chest open",
-        "icon": "icon-chest-open0",
-        "tile_icon": "icon-chest-locked0",
+        "icon": "icon-paper0",
+        "tile_icon": "icon-paper0",
         "items": [
-          "sword0"
+          "paper0"
         ]
       }
     }
@@ -980,33 +980,7 @@ var db_map_sewer1_actions = {
           "fly"
         ],
         "hidden": false,
-        "conditions": [
-          {
-            "type_condition": "exist_tile",
-            "position": [
-              8,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_4_4",
-              "offset": [
-                4,
-                4
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ]
+        "conditions": []
       },
       "undefined_7_9_1": {
         "id": "teleport",
@@ -1050,7 +1024,7 @@ var db_map_sewer1_actions = {
         "icon": "icon-chest-open0",
         "tile_icon": "icon-chest-locked0",
         "items": [
-          "knife1"
+          "cane0"
         ],
         "conditions": [
           {
@@ -1130,6 +1104,81 @@ var db_map_sewer1_actions = {
           }
         ]
       }
+    },
+    "-12": {
+      "undefined_7_-12_0": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "item",
+        "item": "cane0",
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "position": [
+              -12,
+              6
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_1_7",
+              "offset": [
+                7,
+                1
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ],
+        "conditions": []
+      },
+      "undefined_7_-12_1": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-teleport0",
+        "position": [
+          -16,
+          -2
+        ],
+        "map": "sewer1",
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              -12,
+              6
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_1_7",
+              "offset": [
+                7,
+                1
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ],
+        "hidden": "false"
+      }
     }
   },
   "8": {
@@ -1140,6 +1189,22 @@ var db_map_sewer1_actions = {
         "player_id": "player0",
         "icon": "icon-player0",
         "tile_icon": "icon-player0"
+      }
+    }
+  },
+  "-2": {
+    "-16": {
+      "undefined_-2_-16_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-teleport0",
+        "position": [
+          -12,
+          7
+        ],
+        "map": "sewer1",
+        "conditions": [],
+        "hidden": ""
       }
     }
   }
