@@ -1,4 +1,9 @@
 var stop_tiles = {
+		"tile-map1": [
+			"tile-map1_0_0", "tile-map1_0_1", "tile-map1_0_2", "tile-map1_1_0", "tile-map1_1_2", "tile-map1_2_0", "tile-map1_2_1",
+			"tile-map1_2_2", "tile-map1_3_0", "tile-map1_3_1", "tile-map1_4_0", "tile-map1_4_1", "tile-map1_10_13", "tile-map1_10_15",
+			"tile-map1_14_13", "tile-map1_14_15", "tile-map1_9_0", "tile-map1_9_1", "tile-map1_8_0", "tile-map1_8_1"
+		],
 		"tile-map4": [],
 		"tile-map5": [
 			"tile-map5_3_0", "tile-map5_3_1", "tile-map5_3_2", "tile-map5_3_7",
@@ -67,6 +72,16 @@ var directions_tiles = {
 		},
 		"tile-map5_2_7": {
 			right: true,
+			left: true
+		},
+		"tile-map5_6_4": {
+			up: true,
+			down: true,
+			right: true
+		},
+		"tile-map5_6_6": {
+			up: true,
+			down: true,
 			left: true
 		}
 	},
