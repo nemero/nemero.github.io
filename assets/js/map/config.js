@@ -37,10 +37,20 @@ var config = {
 		tileMaps: db_tile_maps,
 		tileSize: [48, 48],
 		mapList: {
+			"cave1": {
+				"name": "cave1",
+				"map": db_map_cave1,
+				"layerEvents": db_map_cave1_actions,
+			},
 			"sewer1": {
 				"name": "sewer1",
 				"map": db_map_sewer1,
 				"layerEvents": db_map_sewer1_actions,
+			},
+			"world1": {
+				"name": "world1",
+				"map": db_map_world1,
+				"layerEvents": db_map_world1_actions,
 			},
 		},
 	},

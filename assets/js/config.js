@@ -27,7 +27,7 @@ var config = {
 		hpScroll: [],
 		dies: 0,
 
-		position: [2, 8],
+		position: [5, 6],
 
 		activeEquipment: {
 			head: "head0",
@@ -146,9 +146,21 @@ var config = {
 			stop_tiles: stop_tiles,
 			directions_tiles: directions_tiles,
 			z_tiles: z_tiles,
-			activeMap: "sewer1",
+			activeMap: "cave1",
 			tileSize: [48, 48],
 
+			cave1: {
+				name: "Start Pos 1",
+				height: 15,
+				width: 15,
+				default_tile: {
+					map_class: "tile-map5",
+					position: [11, 1],
+					size: [48, 48]
+				},
+				map: db_map_cave1,
+				layerEvents: db_map_cave1_actions
+			},
 			sewer1: {
 				name: "Instance test",
 				height: 15,
@@ -160,6 +172,18 @@ var config = {
 				},
 				map: db_map_sewer1,
 				layerEvents: db_map_sewer1_actions
+			},
+			world1: {
+				name: "World 1",
+				height: 15,
+				width: 15,
+				default_tile: {
+					map_class: "tile-map3",
+					position: [0, 0],
+					size: [48, 48]
+				},
+				map: db_map_world1,
+				layerEvents: db_map_world1_actions
 			},
 		}
 	}

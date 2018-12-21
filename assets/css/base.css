@@ -48,8 +48,8 @@ html, body {
 	left: 24px;
 	top: 3px;
 }
-.icon-cave0 {
-	background: url(../town_in.jpg) center center/cover;	
+.icon-townout0 {
+	background: url(../town_out.jpg) center center/cover;	
 }
 .icon-teleport0 {
 	background: url(../town_in.jpg) center center/cover;	
@@ -86,10 +86,10 @@ html, body {
 	background: url(../mountains_0.png);
 }
 .tile-map3 {
-	background: url(../water_1.png);
+	background: url(../tileset_water.png);
 }
 .tile-map4 {
-	background: url(../tileset_cave.png);
+	background: url(../tileset_cave1.png);
 }
 .tile-map5 {
 	background: url(../tileset_sewer_1_48.png);

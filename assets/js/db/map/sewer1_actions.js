@@ -17,7 +17,7 @@ var db_map_sewer1_actions = {
       "undefined_5_-25_0": {
         "id": "teleport",
         "name": "Subway/Cave",
-        "icon": "icon-teleport0",
+        "icon": "icon-basement-door0",
         "position": [
           -10,
           7
@@ -635,7 +635,7 @@ var db_map_sewer1_actions = {
       "undefined_7_2_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
-        "icon": "icon-basement-door0",
+        "icon": "icon-townout0",
         "type_unlock": "use",
         "item": null,
         "triggers": [
@@ -709,6 +709,17 @@ var db_map_sewer1_actions = {
             }
           }
         ]
+      },
+      "undefined_7_2_1": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-battle0",
+        "cooldown": 20,
+        "enemies": [
+          "boss"
+        ],
+        "hidden": ""
       }
     },
     "3": {
@@ -977,22 +988,10 @@ var db_map_sewer1_actions = {
       "undefined_7_9_1": {
         "id": "teleport",
         "name": "Subway/Cave",
-        "icon": "icon-cave0",
+        "icon": "icon-townout0",
         "position": [
-          -15,
-          7
-        ],
-        "map": "sewer1"
-      }
-    },
-    "-15": {
-      "undefined_7_-15_0": {
-        "id": "teleport",
-        "name": "Subway/Cave",
-        "icon": "icon-cave0",
-        "position": [
-          9,
-          7
+          23,
+          -10
         ],
         "map": "sewer1"
       }
@@ -1001,7 +1000,7 @@ var db_map_sewer1_actions = {
       "undefined_7_-10_0": {
         "id": "teleport",
         "name": "Subway/Cave",
-        "icon": "icon-teleport0",
+        "icon": "icon-basement-door0",
         "position": [
           -25,
           5
@@ -1136,7 +1135,7 @@ var db_map_sewer1_actions = {
       "undefined_7_-12_1": {
         "id": "teleport",
         "name": "Subway/Cave",
-        "icon": "icon-teleport0",
+        "icon": "icon-basement-door0",
         "position": [
           -16,
           -2
@@ -1173,23 +1172,12 @@ var db_map_sewer1_actions = {
       }
     }
   },
-  "8": {
-    "2": {
-      "player0": {
-        "id": "player",
-        "name": "Player",
-        "player_id": "player0",
-        "icon": "icon-player0",
-        "tile_icon": "icon-player0"
-      }
-    }
-  },
   "-2": {
     "-16": {
       "undefined_-2_-16_0": {
         "id": "teleport",
         "name": "Subway/Cave",
-        "icon": "icon-teleport0",
+        "icon": "icon-townout0",
         "position": [
           -12,
           7
@@ -1197,6 +1185,106 @@ var db_map_sewer1_actions = {
         "map": "sewer1",
         "conditions": [],
         "hidden": ""
+      }
+    },
+    "-27": {
+      "undefined_-2_-27_0": {
+        "id": "loot_box",
+        "name": "Chest open",
+        "icon": "icon-chest-open0",
+        "tile_icon": "icon-chest-locked0",
+        "items": [
+          "key_old_tower0",
+          "sword3"
+        ]
+      },
+      "undefined_-2_-27_1": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-battle0",
+        "cooldown": 20,
+        "enemies": [
+          "boss1",
+          "zomby",
+          "zomby"
+        ],
+        "hidden": ""
+      }
+    }
+  },
+  "-10": {
+    "23": {
+      "undefined_-10_23_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-basement-door0",
+        "position": [
+          9,
+          7
+        ],
+        "map": "sewer1",
+        "hidden": "",
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              23,
+              -10
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_5_14",
+              "offset": [
+                14,
+                5
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      },
+      "undefined_-10_23_1": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "position": [
+              23,
+              -10
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_5_14",
+              "offset": [
+                14,
+                5
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ],
+        "conditions": []
+      }
+    }
+  },
+  "-6": {
+    "21": {
+      "undefined_-6_21_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-townout0",
+        "position": [
+          2,
+          1
+        ],
+        "map": "world1"
       }
     }
   }
