@@ -151,6 +151,17 @@ h5 {
 	display: none;
 }
 
+.map.eraseMode .tile-events, .map.eraseMode .tile-layers-info .control {
+	display: none;
+}
+.map.eraseMode .view-map-row .tile .tile-layers-info {
+	display: none !important;
+}
+
+.map.layerBrushMode .tile-events, .map.layerBrushMode .tile-layers-info .control {
+	display: none;
+}
+
 .view-map-row .tile .tile-layers-info {
 	display: none;
 	position: absolute;
@@ -161,6 +172,10 @@ h5 {
 	top: -5px;
 	border: 1px solid black;
 }
+.view-map-row .tile .tile-layers-info .active {
+	border: 1px solid red;
+}
+
 .head-nav {
 	margin: 10px;
 }

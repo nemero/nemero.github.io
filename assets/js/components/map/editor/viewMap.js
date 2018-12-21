@@ -9,6 +9,12 @@ Vue.component('viewMap', {
   		let data = {}
   		data[config.activeModeMap] = true
       data[config.activeKeyModeMap] = true
+      if (config.eraseMode) {
+        data['eraseMode'] = true
+      }
+      if (config.activeLayer) {
+        data['layerBrushMode'] = true
+      }
 
   		return data
   	}

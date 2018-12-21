@@ -8,7 +8,7 @@ Vue.component('viewMapTile', {
         '<span class="tile-layers-info">',
           '<div class="tile-map">',
           	'<view-map-tile-layers-info v-for="(tile, idx) in getTiles" :tile="tile" :tiles="getTiles" :idx="idx"></view-map-tile-layers-info>',
-          	'<div>',
+          	'<div class="control">',
               '<input type="button" @click="addLayer" value="+"/>',
           		'<input type="button" @click="removeLayer" value="-"/>',
           		'<input type="button" @click="removeAllLayers" value="clear"/>',
@@ -24,6 +24,12 @@ Vue.component('viewMapTile', {
     '</span>'].join(""),
   methods: {
   	brushCell: function () {
+      if (config.eraseMode) {
+        this.removeAllLayers()
+        this.removeAllEvents()
+        return
+      }
+
       if (config.activeModeMap == "selectCell") {
 
         Vue.set(config.activeConditionTrigger, "map", config.activeMapId)
@@ -121,6 +127,15 @@ Vue.component('viewMapTile', {
       generated_id += '_' + counter
 
       Vue.set(config.layerEvents[this.getRowId][this.getColId], generated_id, JSON.parse(JSON.stringify(config.activeLayerEvent)))
+    },
+    removeAllEvents: function () {
+      Vue.delete(config.layerEvents[this.getRowId], this.getColId)
+
+      // remove empty rows
+      let rows = Object.keys(config.layerEvents[this.getRowId]).length
+      if (rows == 0) {
+        Vue.delete(config.layerEvents, this.getRowId)
+      }
     },
   },
   computed: {

@@ -7,6 +7,7 @@ var config = {
 	activeTab: 'events', // 'tiles',
 	activeTile: null,
 	activeTileMap: null,
+	eraseMode: false,
 	activeLayer: "",
 	activeModeMap: "edit", // selectCell, selectTile, selectEvent
 	holdKeys: [], // shift, ctrl, alt

@@ -5,7 +5,7 @@ var stop_tiles = {
 			"tile-map5_3_8", "tile-map5_3_9", "tile-map5_4_0", "tile-map5_4_1",
 			"tile-map5_4_2", "tile-map5_4_7", "tile-map5_4_8", "tile-map5_4_9",
 			"tile-map5_5_2", "tile-map5_5_11", "tile-map5_5_12", "tile-map5_5_13",
-			"tile-map5_6_0", "tile-map5_10_0", "tile-map5_1_8",
+			"tile-map5_6_0", "tile-map5_10_0", "tile-map5_1_8", "tile-map5_1_7",
 		]
 	}
 

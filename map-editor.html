@@ -103,6 +103,7 @@
 
 					<view-map-clear></view-map-clear>
 					<choose-saved-map :config="config"></choose-saved-map>
+					<input type="checkbox" v-model="config.eraseMode" id="erase-mode" /> <label for="erase-mode">Erase Mode</label>
 				</div>
 				<div @mousedown="startDrag" @mousemove="doDrag">
 					<view-map id="map" class="map" :config="config"></view-map>

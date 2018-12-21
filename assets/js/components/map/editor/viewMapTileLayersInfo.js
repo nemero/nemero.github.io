@@ -1,6 +1,6 @@
 Vue.component('viewMapTileLayersInfo', {
   props: ['tile', 'idx', 'tiles'],
-  template: ['<span class="layer" :style="getTileStyle" @click="brushCell" :class="getTileMapClass">',
+  template: ['<span class="layer" :style="getTileStyle" @click="brushCell" :class="getTileMapClass" v-show="isShowing">',
         '{{ idx }}',
       '</span>',
     ].join(""),
@@ -40,6 +40,13 @@ Vue.component('viewMapTileLayersInfo', {
 
   		return data
   	},
+    isShowing: function () {
+      if (config.activeLayer && config.activeLayer != this.idx ) {
+        return false
+      } 
+
+      return true
+    },
   	getTileMapClass: function () {
   		let data = {}
   		let tile = this.tile
