@@ -13,6 +13,7 @@ body {
 	color: #2B2D42;
 	font-family: Helvetica;
 	position: relative;
+	overflow: hidden;
 }
 
 section {
@@ -30,7 +31,7 @@ a:hover {
 
 .ui-enemies, .ui-list-enemies, .ui-character-bag, .ui-abilities, .ui {
 	display: flex;
-	flex-wrap: wrap;
+	justify-content: center;
 }
 .ui-list-enemies-item {
 	position: relative;
@@ -149,6 +150,21 @@ a:hover {
 	position: relative;
 	margin: 2px;
 	font-size: 9px;
+	color: #fff;
+	background-color: #393637 !important;
+}
+.ui-main-bag .game-icon {
+	width: 43px;
+	height: 43px;
+	display: inline-block;
+	border: 1px solid #333;
+	border-radius: 3px;
+	background: url(assets/default.png) center center/cover;
+	transition: all .1s linear;
+	cursor: pointer;
+	position: relative;
+	margin: 2px;
+	font-size: 8px;
 	color: #fff;
 	background-color: #393637 !important;
 }
@@ -567,7 +583,7 @@ a:hover {
 .character-stats {
 	font-size: 10px;
 }
-.character-stats span {
+.character-stats span, .button {
 	cursor: pointer;
 	padding: 3px;
 	display: inline-block;
@@ -592,4 +608,25 @@ a:hover {
 	background-position: center center;
 	background-size: contain !important;
 	background-repeat: no-repeat;
+}
+
+
+.ui-battle, .ui-battle-finish, .ui-game-over {
+	display: none;
+}
+.active-ui-battle .ui-battle {
+	display: flex;
+	position: absolute;
+	bottom: 30px;
+	transform: translate(-50%, 0);
+	z-index: 2;
+	border-radius: 4px;
+	padding: 2px 20px;
+	flex-direction: column;
+	left: 50%;
+}
+.ui-main-bag {
+	position: absolute;
+	left: 0;
+	z-index: 1;
 }

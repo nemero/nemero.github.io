@@ -8,11 +8,11 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div id="play">
-		Iteration: {{ config.step }}
+	<div id="play" class="app" :class="getGameUI">
+		<!-- Iteration: {{ config.step }} -->
 
-		<div class="ui">
-			<div class="ui-left">
+		<div class="uiii">
+			<div class="ui-world">
 				<div class="ui-targets">
 					<character :character="config.character"></character>
 					<character-target :character="config.character"></character-target>
@@ -23,43 +23,25 @@
 						<view-map-tile-actions :position="config.character.position" :config="config"></view-map-tile-actions>
 					</div>
 				</div>
+				
 				<div class="map">
 					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map[config.db.map.activeMap]" :viewport="config.db.map.viewport"></view-map-row>
 				</div>
+
+
+				<div class="ui-battle">
+					<div class="ui-list-enemies">
+						<active-enemies v-for="item in config.activeEnemies" :enemy="item" :config="config"></active-enemies>
+					</div>
+
+					<div class="ui-abilities">
+						<character-abilities v-for="item in config.character.abilities" :ability="item" :config="config"></character-abilities>
+					</div>
+					<!-- <ul class="combat-log">
+						<combat-log v-for="record in config.combatLog" :record="record"></combat-log>
+					</ul> -->
+				</div>	
 			</div>
-
-			<div class="ui-right">
-				<div class="ui-enemies">
-					<div>
-						<span>Abilities: </span>
-						<div class="ui-abilities">
-							<character-abilities v-for="item in config.character.abilities" :ability="item" :config="config"></character-abilities>
-						</div>
-					</div>
-				</div>
-
-				<div class="ui-enemies">
-					<div>
-						<span>Enemies: </span>
-						<div class="ui-list-enemies">
-							<active-enemies v-for="item in config.activeEnemies" :enemy="item" :config="config"></active-enemies>
-						</div>
-					</div>
-				</div>
-
-				<div class="ui-enemies">
-					<div>
-						<span>Bag: </span>
-						<div class="ui-character-bag">
-							<character-bag v-for="item in config.character.bag" :item="item" :config="config"></character-bag>
-						</div>
-					</div>
-				</div>
-
-				<!-- <ul class="combat-log">
-					<combat-log v-for="record in config.combatLog" :record="record"></combat-log>
-				</ul> -->
-			</div>	
 		</div>
 	</div>
 
@@ -75,7 +57,7 @@
 	<script type="text/javascript" src="assets/js/db/map/world1_actions.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/sewer1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/sewer1_actions.js"></script>
-	
+
 	<script type="text/javascript" src="assets/js/db/map/tile_maps.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/stop_tiles.js"></script>
 

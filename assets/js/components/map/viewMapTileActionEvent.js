@@ -25,6 +25,9 @@ Vue.component('viewMapTileActionEvent', {
           config.activeEnemies.push(JSON.parse(JSON.stringify(enemy)))
           counter += 1
         }
+
+        // show ui battle
+        config.activeUI = "battle"
         return
   		}
 

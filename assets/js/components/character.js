@@ -1,5 +1,10 @@
 Vue.component('character', {
   props: ['character'],
+  data: function () {
+    return {
+      show_bag: true,
+    }
+  },
   template: [
       '<div>',
         '<div class="target-box union">',
@@ -27,6 +32,11 @@ Vue.component('character', {
         
         '<character-control :character="character"></character-control>',
         '<character-stats :character="character"></character-stats>',
+
+        '<span @click="showBag" class="button">Bag</span>',
+        '<div class="ui-main-bag" v-show="show_bag">',
+          '<character-bag v-for="item in this.character.bag" :item="item"></character-bag>',
+        '</div>',
       '</div>'
 	  	].join(''),
   methods: {
@@ -45,6 +55,13 @@ Vue.component('character', {
       }
 
       return '' + player.health + '/' + player.max_health
+    },
+    showBag: function () {
+      if (this.show_bag) {
+        this.show_bag = false
+      } else {
+        this.show_bag = true
+      }
     },
   },
   computed: {

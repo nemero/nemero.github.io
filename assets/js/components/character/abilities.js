@@ -315,6 +315,8 @@ Vue.component('characterAbilities', {
             break
           }
         }
+
+        config.activeUI = "world"
       }
     },
     enemyAttack: function () {

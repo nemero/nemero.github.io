@@ -92,6 +92,24 @@ var app = new Vue({
 	      		this.x = this.y = 'no';
 	      	}
 	    },
+	    onResize: function (e) {
+	    	if (config.db.map.viewport) {
+	    			let w = 48
+			    	let h = 48
+			    	var width = window.innerWidth
+						|| document.documentElement.clientWidth
+						|| document.body.clientWidth;
+
+					var height = window.innerHeight
+						|| document.documentElement.clientHeight
+						|| document.body.clientHeight;
+
+					let rows = Math.trunc(height/h)
+					let cols = Math.trunc(width/w)
+					Vue.set(config.db.map.viewport, 0, cols + 1)
+					Vue.set(config.db.map.viewport, 1, rows + 1)
+			}
+	    }
 	},
 	computed: {
 		getTheme: function () {
@@ -103,12 +121,22 @@ var app = new Vue({
 				data[config.holdKeys[key]] = true
 			}
 
+			data[config.activeUI] = true
+
 			return data
-		}
+		},
+		getGameUI: function () {
+			let data = {}
+			data['active-ui-' + config.activeUI] = true
+
+			return data
+		},
 	},
 	mounted() {
 	    window.addEventListener('mouseup', this.stopDrag);
 	    window.addEventListener('keydown', this.keyDown);
 	    window.addEventListener('keyup', this.keyUp);
+	    window.addEventListener('resize', this.onResize);
+	    this.onResize();
 	}
 })
