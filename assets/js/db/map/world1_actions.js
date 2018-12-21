@@ -31,7 +31,7 @@ var db_map_world1_actions = {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "tile_icon": "icon-angry_bear1",
         "cooldown": 20,
         "enemies": [
           "bear0"
@@ -46,7 +46,7 @@ var db_map_world1_actions = {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "tile_icon": "icon-wolf1",
         "cooldown": 20,
         "enemies": [
           "wolf",
@@ -63,7 +63,7 @@ var db_map_world1_actions = {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "tile_icon": "icon-boss2",
         "cooldown": 20,
         "enemies": [
           "boss2"
@@ -78,7 +78,7 @@ var db_map_world1_actions = {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "tile_icon": "icon-zombie1",
         "cooldown": 20,
         "enemies": [
           "zomby",

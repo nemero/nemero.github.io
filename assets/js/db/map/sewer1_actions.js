@@ -220,7 +220,7 @@ var db_map_sewer1_actions = {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "tile_icon": "icon-boss1",
         "cooldown": 20,
         "enemies": [
           "boss"

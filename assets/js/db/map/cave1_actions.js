@@ -19,7 +19,7 @@ var db_map_cave1_actions = {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "tile_icon": "icon-angry_bear1",
         "cooldown": 20,
         "enemies": [
           "bear1"

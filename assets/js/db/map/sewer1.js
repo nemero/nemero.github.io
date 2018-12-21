@@ -1319,6 +1319,14 @@ var db_map_sewer1 = {
           1
         ],
         "map": "tile-map5"
+      },
+      "2": {
+        "id": "tile-map5_8_16",
+        "offset": [
+          16,
+          8
+        ],
+        "map": "tile-map5"
       }
     },
     "20": {
@@ -1409,6 +1417,14 @@ var db_map_sewer1 = {
         "offset": [
           1,
           1
+        ],
+        "map": "tile-map5"
+      },
+      "2": {
+        "id": "tile-map5_7_16",
+        "offset": [
+          16,
+          7
         ],
         "map": "tile-map5"
       }
@@ -1525,6 +1541,14 @@ var db_map_sewer1 = {
         "offset": [
           1,
           1
+        ],
+        "map": "tile-map5"
+      },
+      "2": {
+        "id": "tile-map5_6_16",
+        "offset": [
+          16,
+          6
         ],
         "map": "tile-map5"
       }

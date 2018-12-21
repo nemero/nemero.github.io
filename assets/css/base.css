@@ -15,6 +15,46 @@ html, body {
 .icon-battle0 {
 	background: url(../battle.png) center center/cover;
 }
+.icon-angry_bear1 {
+	background: url(../angry_bear1.png) center center/cover;
+}
+.view-map-row .layer-event.icon-angry_bear1 {
+	width: 27px;
+	position: relative;
+	left: 9px;
+}
+.icon-wolf1 {
+	background: url(../wolf1.png) center center/cover;
+}
+.view-map-row .layer-event.icon-wolf1 {
+	width: 27px;
+	position: relative;
+	left: 9px;
+}
+.icon-zombie1 {
+	background: url(../zombie1.png) center center/cover;
+}
+.view-map-row .layer-event.icon-zombie1 {
+	width: 27px;
+	position: relative;
+	left: 9px;
+}
+.icon-boss2 {
+	background: url(../boss2.png) center center/cover;
+}
+.view-map-row .layer-event.icon-boss2 {
+	width: 27px;
+	position: relative;
+	left: 9px;
+}
+.icon-boss1 {
+	background: url(../boss1.png) center center/cover;
+}
+.view-map-row .layer-event.icon-boss1 {
+	width: 27px;
+	position: relative;
+	left: 9px;
+}
 .icon-player0 {
 	background: url(../player.png) center center/cover;
 }

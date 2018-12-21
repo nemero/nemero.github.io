@@ -274,18 +274,18 @@ var db_map_world1 = {
         "map": "tile-map1"
       },
       "2": {
-        "id": "tile-map1_13_3",
-        "offset": [
-          3,
-          13
-        ],
-        "map": "tile-map1"
-      },
-      "3": {
         "id": "tile-map1_15_5",
         "offset": [
           5,
           15
+        ],
+        "map": "tile-map1"
+      },
+      "3": {
+        "id": "tile-map1_13_3",
+        "offset": [
+          3,
+          13
         ],
         "map": "tile-map1"
       }
