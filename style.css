@@ -147,10 +147,10 @@ a:hover {
 	transition: all .1s linear;
 	cursor: pointer;
 	position: relative;
-	margin: 3px;
-	font-size: 10px;
+	margin: 2px;
+	font-size: 9px;
 	color: #fff;
-	background-color: #442487 !important;
+	background-color: #393637 !important;
 }
 
 .game-icon.game-icon-small {
@@ -251,32 +251,32 @@ a:hover {
 .poor {
 	color: #d2d2d2;
 	border: 1px solid #d2d2d2;
-	box-shadow: 0px 0px 5px 1px #d2d2d2 inset;
+	box-shadow: 0px 0px 0px 2px #d2d2d2 inset;
 }
 .common {
 	color: #fff;
 	border: 1px solid #fff;
-	box-shadow: 0px 0px 5px 1px #fff inset;
+	box-shadow: 0px 0px 0px 2px #fff inset;
 }
 .uncommon {
 	color: #5ee76c;
 	border: 1px solid #5ee76c;
-	box-shadow: 0px 0px 5px 1px #5ee76c inset;
+	box-shadow: 0px 0px 0px 2px #5ee76c inset;
 }
 .rare {
 	color: #68b8ff;
 	border: 1px solid #68b8ff;
-	box-shadow: 0px 0px 5px 1px #68b8ff inset;
+	box-shadow: 0px 0px 0px 2px #68b8ff inset;
 }
 .epic {
 	color: #c984ff;
 	border: 1px solid #c984ff;
-	box-shadow: 0px 0px 5px 1px #c984ff inset;
+	box-shadow: 0px 0px 0px 2px #c984ff inset;
 }
 .legendary {
 	color: #ff9a34;
 	border: 1px solid #ff9a34;
-	box-shadow: 0px 0px 5px 1px #ff9a34 inset;
+	box-shadow: 0px 0px 0px 2px #ff9a34 inset;
 }
 
 
@@ -496,13 +496,15 @@ a:hover {
 }
 .view-map-row .tile {
 	position: relative;
-	width: 16px;
-	height: 16px;
+	//width: 16px;
+	//height: 16px;
+	width: 47.5px;
+	height: 47.5px;
 	display: inline-block;
 	//border-right: 1px solid #cecece;
 	font-size: 5px;
 	//border-bottom: 1px solid #cecece;
-	zoom: 3;
+	zoom: 1;
 }
 .view-map-row .tile .tile-layers-info {
 	display: none;

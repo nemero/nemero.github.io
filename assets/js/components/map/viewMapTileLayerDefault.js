@@ -7,21 +7,9 @@ Vue.component('viewMapTileLayerDefault', {
   		let data = {}
   		//let tile = this.tile
 
-  		// style="width: 16px; height: 16px; background: url(assets/tileset_1.png); background-position: 0 0;"
-  		//if (tile['size']) {
-  			data['width'] = 16 + 'px'
-  		//}
-  		//if (tile['size']) {
-  			data['height'] = 16 + 'px'
-  		//}
-  		// if (tile['texture']) {
-  		// 	data['background'] = 'url(' + tile['texture'] + ')'
-  		// }
-  		//if (tile['offset']) {
-        //console.log(this.zone.default_tile.position[0]*this.zone.default_tile['size'][0])
-  			data['background-position'] = '-' + this.zone.default_tile.position[0]*this.zone.default_tile['size'][0] + 'px -' + this.zone.default_tile.position[1]*this.zone.default_tile['size'][1] + 'px'
-        //data['background-position'] = '-' + tile['offset'][0]*tile['size'][0] + 'px -' + tile['offset'][1]*tile['size'][0] + 'px'
-  		//}
+  		data['width'] = this.zone.default_tile['size'][0] + 'px'
+  		data['height'] = this.zone.default_tile['size'][1] + 'px'
+  		data['background-position'] = '-' + this.zone.default_tile.position[0]*this.zone.default_tile['size'][0] + 'px -' + this.zone.default_tile.position[1]*this.zone.default_tile['size'][1] + 'px'
 
   		return data
   	},

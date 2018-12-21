@@ -9,6 +9,12 @@ var stop_tiles = {
 		]
 	}
 
+var z_tiles = {
+	"tile-map5": [
+		"tile-map5_0_16", "tile-map5_0_7", "tile-map5_0_8", "tile-map5_0_5", "tile-map5_2_5",
+	],
+}
+
 // move directions from tile
 var directions_tiles = {
 	"tile-map5": {
@@ -39,6 +45,12 @@ var directions_tiles = {
 		"tile-map5_1_9": {
 			down: true,
 			up: true
+		},
+		"tile-map5_1_16": {
+			left: true
+		},
+		"tile-map5_2_16": {
+			right: true
 		},
 		"tile-map5_2_0": {
 			right: true,

@@ -29,12 +29,13 @@ var config = {
 	selectedItem: null,
 
 	db: {
-		// 256x336 auto tiling by 16px
-		tileMaps: db_tile_maps,
 		eventTemplates: db_map_event_templates,
 		enemies: db_enemies,
 		items: db_items,
 		eventTriggers: ["hide_event", "show_event", "replace_tile"],
+		// 256x336 auto tiling by 16px
+		tileMaps: db_tile_maps,
+		tileSize: [48, 48],
 		mapList: {
 			"sewer1": {
 				"name": "sewer1",

@@ -645,20 +645,12 @@ var db_map_sewer1_actions = {
               2,
               6
             ],
-            "layer_id": "1",
+            "layer_id": "2",
             "map": "sewer1",
             "tile": {
-              "id": "tile-map5_1_7",
+              "id": "tile-map5_0_16",
               "offset": [
-                7,
-                1
-              ],
-              "size": [
                 16,
-                16
-              ],
-              "position": [
-                0,
                 0
               ],
               "map": "tile-map5"
@@ -972,7 +964,7 @@ var db_map_sewer1_actions = {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "tile_icon": "icon-fly0",
         "cooldown": 20,
         "enemies": [
           "fly",

@@ -18,21 +18,35 @@ html, body {
 .icon-player0 {
 	background: url(../player.png) center center/cover;
 }
+.view-map-row .layer-event.icon-player0 {
+	width: 30px;
+	height: 30px;
+	left: 7px;
+	top: 0px;
+}
+
 .icon-chest-open0 {
 	background: url(../chest-locked.png) center center/cover;
 }
 .icon-chest-locked0 {
 	background: url(../chest-locked.png) center center/cover;
 }
+.view-map-row .layer-event.icon-chest-locked0 {
+	width: 28px;
+	height: 28px;
+	left: 9px;
+	top: -7px;
+}
+
 .icon-basement-door0 {
 	background: url(../basement_door.jpg) center center/cover;
 }
-.icon-question0 {
+.view-map-row .layer-event.icon-question0 {
 	background: url(../question.png) center center/cover;	
-	width: 7px;
-    height: 7px;
-    left: 8px;
-    top: 1px;
+	width: 20px;
+	height: 20px;
+	left: 24px;
+	top: 3px;
 }
 .icon-cave0 {
 	background: url(../town_in.jpg) center center/cover;	
@@ -40,14 +54,29 @@ html, body {
 .icon-teleport0 {
 	background: url(../town_in.jpg) center center/cover;	
 }
+
 .icon-paper0 {
 	background: url(../paper.png) center center/cover;	
 }
 .view-map-row .layer-event.icon-paper0 {
-	width: 7px;
-	height: 7px;
-	left: 5px;
-	top: 8px;
+	width: 20px;
+	height: 20px;
+	left: 18px;
+	top: 11px;
+	z-index: 2;
+}
+
+.icon-raven0 {
+	background: url(../raven.png) center center/cover;
+}
+.view-map-row .layer-event.icon-raven0 {
+	top: -7px;
+}
+.icon-fly0 {
+	background: url(../fly.png) center center/cover;
+}
+.view-map-row .layer-event.icon-fly0 {
+	top: -7px;
 }
 
 .tile-map1 {
@@ -63,6 +92,6 @@ html, body {
 	background: url(../tileset_cave.png);
 }
 .tile-map5 {
-	//background: url(../tileset_sewer_1.png);
-	background: url(../tileset_sewer_1_ext.png);
+	background: url(../tileset_sewer_1_48.png);
+	//background: url(../tileset_sewer_1_ext.png);
 }

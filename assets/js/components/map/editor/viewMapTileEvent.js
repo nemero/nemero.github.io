@@ -10,7 +10,7 @@ Vue.component('viewMapTileEvent', {
       if (event.tile_icon) {
         data[event.tile_icon] = true
       } else {
-        data['question0'] = true
+        data['icon-question0'] = true
       }
 
       return data

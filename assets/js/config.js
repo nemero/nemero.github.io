@@ -138,13 +138,16 @@ var config = {
 		enemies: db_enemies,
 		loot: db_loot,
 		abilities: db_abilities,
+		tileMaps: db_tile_maps,
 
 		map: {
 			//tiles: db_map_draw_tiles,
 			viewport: [15, 10],
 			stop_tiles: stop_tiles,
 			directions_tiles: directions_tiles,
+			z_tiles: z_tiles,
 			activeMap: "sewer1",
+			tileSize: [48, 48],
 
 			sewer1: {
 				name: "Instance test",
@@ -153,7 +156,7 @@ var config = {
 				default_tile: {
 					map_class: "tile-map5",
 					position: [0, 8],
-					size: [16, 16]
+					size: [48, 48]
 				},
 				map: db_map_sewer1,
 				layerEvents: db_map_sewer1_actions

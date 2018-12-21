@@ -7,18 +7,18 @@ Vue.component('viewMapTileLayer', {
   		let data = {}
   		let tile = this.tile
 
-  		// style="width: 16px; height: 16px; background: url(assets/tileset_1.png); background-position: 0 0;"
-  		if (tile['size']) {
-  			data['width'] = tile['size'][0] + 'px'
-  		}
-  		if (tile['size']) {
-  			data['height'] = tile['size'][1] + 'px'
-  		}
+			data['width'] = config.db.map.tileSize[0] + 'px'
+			data['height'] = config.db.map.tileSize[1] + 'px'
+
+      if (config.db.map.z_tiles[tile.map] && config.db.map.z_tiles[tile.map].indexOf(tile.id) >= 0) {
+        data['z-index'] = 2
+      }
+
   		if (tile['texture']) {
   			data['background'] = 'url(' + tile['texture'] + ')'
   		}
   		if (tile['offset']) {
-  			data['background-position'] = '-' + tile['offset'][0]*tile['size'][0] + 'px -' + tile['offset'][1]*tile['size'][0] + 'px'
+  			data['background-position'] = '-' + tile['offset'][0]*config.db.map.tileSize[0] + 'px -' + tile['offset'][1]*config.db.map.tileSize[1] + 'px'
   		}
 
   		return data

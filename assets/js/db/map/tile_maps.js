@@ -32,8 +32,8 @@ var db_tile_maps = [
     {
       id: 'sewer_1',
       class: 'tile-map5',
-      width: 272,
-      height: 336,
-      tileSize: [16, 16],
+      width: 816, //272,
+      height: 1056, //336,
+      tileSize: [48, 48], // [16, 16],
     },
 ]

@@ -35,7 +35,7 @@ select {
 	min-width: 100px;
 }
 .tile-map {
-	margin-right: 2px;
+	margin-right: 5px;
 }
 .play.black .view-map-row .tile {
 	border-right: 1px solid rgba(255, 255, 255, 0);
@@ -96,7 +96,7 @@ h5 {
 .tile-list .tile .tile-picture {
 	height: 32px;
 	width: 32px;
-	zoom: 2;
+	zoom: .7;
 	display: inline-block;
 }
 .tile-list .tile .tile-details {
@@ -155,10 +155,11 @@ h5 {
 	display: none;
 	position: absolute;
 	background: #a45694;
-	padding: 1px;
+	padding: 3px;
 	z-index: 9999;
-	left: -2px;
-	top: -2px;
+	left: -5px;
+	top: -5px;
+	border: 1px solid black;
 }
 .head-nav {
 	margin: 10px;
@@ -176,8 +177,8 @@ h5 {
 }
 .view-map-row .tile .tile-layers-info span {
 	border: 1px solid #cecece;
-	min-height: 16px;
-	min-width: 16px;
+	min-height: 48px;
+	min-width: 48px;
 }
 .view-map-row .tile .tile-layers-info .active .layer-event-info-icon {
 	border: 1px solid #ff0;
@@ -187,9 +188,17 @@ h5 {
 }
 .tile-events .layer-event-box .control {
 	position: absolute;
-	top: -4px;
+	top: -7px;
 	z-index: 9;
-	right: -5px;
+	right: -10px;
+}
+.tile-events label {
+	position: absolute;
+	top: -12px;
+}
+.tile-map input[type="button"] {
+	padding: 0;
+	margin: 2px 1px;
 }
 .view-map-row .tile > span.service {
 	position: absolute;
@@ -200,12 +209,15 @@ h5 {
 }
 .view-map-row .tile > span {
 	position: absolute;
-	zoom: 3;
+	zoom: 1;
 	left: 0;
 	top: 0;
 }
 .view-map-row .tile span {
 	display: inline-block;
+}
+.tile-events {
+	margin-right: 5px;
 }
 
 .map-config {
@@ -219,7 +231,7 @@ h5 {
 .active-brush-tile {
 	height: 16px;
 	width: 16px;
-	zoom: 3;
+	zoom: 1;
 	display: inline-block;
 	font-size: 0;
 	border: 1px solid #cecece;

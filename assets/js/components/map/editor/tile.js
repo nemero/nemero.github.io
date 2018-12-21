@@ -14,18 +14,11 @@ Vue.component('tile', {
 	computed: {
 		getTileStyle: function () {
   		let data = {}
-  		// style="width: 16px; height: 16px; background: url(assets/tileset_1.png); background-position: 0 0;"
-  		if (this.tile['size']) {
-  			data['width'] = this.tile['size'][0] + 'px'
-  		}
-  		if (this.tile['size']) {
-  			data['height'] = this.tile['size'][1] + 'px'
-  		}
-  		// if (this.tile['texture']) {
-  		// 	data['background'] = 'url(' + this.tile['texture'] + ')'
-  		// }
+  		data['width'] = config.db.tileSize[0] + 'px'
+  		data['height'] = config.db.tileSize[1] + 'px'
+
   		if (this.tile['offset']) {
-  			data['background-position'] = '-' + this.tile['offset'][0]*this.tile['size'][0] + 'px -' + this.tile['offset'][1]*this.tile['size'][1] + 'px'
+  			data['background-position'] = '-' + this.tile['offset'][0]*config.db.tileSize[0] + 'px -' + this.tile['offset'][1]*config.db.tileSize[1] + 'px'
   		}
 
   		return data
