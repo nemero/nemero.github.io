@@ -629,6 +629,8 @@ a:hover {
 	position: absolute;
 	left: 0;
 	z-index: 1;
+	height: 190px;
+	overflow: auto;
 }
 .active-ui-game-over .ui-game-over {
 	display: flex;
