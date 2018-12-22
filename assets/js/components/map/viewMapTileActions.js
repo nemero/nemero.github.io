@@ -7,8 +7,12 @@ Vue.component('viewMapTileActions', {
     ].join(""),
     computed: {
     	getEventLayers: function () {
-		    let event_layer = config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]]
-		    return event_layer
+        if (config.db.map[config.db.map.activeMap].layerEvents[this.position[1]] && config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]]) {
+		      let event_layer = config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]]
+		      return event_layer
+        }
+
+        return 
     	},
     	getTileLayers: function () {
 		    let cell_tiles = config.db.map[config.db.map.activeMap].map[this.position[1]][this.position[0]]

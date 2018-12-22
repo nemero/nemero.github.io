@@ -22,6 +22,10 @@ Vue.component('characterControl', {
   },
   methods: {
     moveAction: function (e) {
+        if (config.activeUI !== "world") {
+          return
+        }
+
         // Todo: refactor with movePlayer virwMapTile component
         let position = this.character.position
         let previous_pos = [...position]

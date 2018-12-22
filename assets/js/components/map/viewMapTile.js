@@ -31,6 +31,10 @@ Vue.component('viewMapTile', {
       }
     },
     movePlayer: function () {
+        if (config.activeUI !== "world") {
+          return
+        }
+        
         // Todo: refactor with moveAction character component
         let position = config.character.position
         let previous_pos = [...position]

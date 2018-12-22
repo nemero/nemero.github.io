@@ -31,6 +31,9 @@ Vue.component('characterAbilities', {
         let ability_item = config.db.abilities[this.ability]
         let key_binding = config.character.keyBindings[this.ability]
 
+        if (config.activeUI == "game-over") {
+          return
+        }
         if (key_binding && key_binding.key == e.keyCode) {
           this.useAbility(this.ability)
         }
@@ -72,6 +75,27 @@ Vue.component('characterAbilities', {
       let strength = config.character.strength
       let critical_damage = getRandomArbitrary(1, 100) <= config.character.agility ? 2 : 1
       let active_enemy = config.character.activeTarget
+
+      // try run
+      if (ability_item.type == "escape") {
+        let is_success = getRandomArbitrary(1, 100) <= ability_item.chance ? true : false
+        if (is_success) {
+          // remove active enemies & targets
+          config.character.activeTarget = null
+          config.activeEnemies = []
+          config.activeUI = "world"
+          
+          // change map
+          config.db.map.activeMap = config.prevMap
+          Vue.set(config.character.position, 0, config.prevPosition[0])
+          Vue.set(config.character.position, 1, config.prevPosition[1])
+
+          return
+        }
+
+        this.cant_use = true
+      }
+
 
       // if cant use ability
       if (ability_item.level > character_level || (config.character.cooldown[item] && config.character.cooldown[item] > 0) ) {
@@ -306,6 +330,12 @@ Vue.component('characterAbilities', {
       // todo refact
       //console.log(all_enemies_down)
       if (all_enemies_down) {
+        // change map
+        config.activeUI = "world"
+        config.db.map.activeMap = config.prevMap
+        Vue.set(config.character.position, 0, config.prevPosition[0])
+        Vue.set(config.character.position, 1, config.prevPosition[1])
+
         let layers = config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]
         for (layer_idx in layers) {
           let layer = layers[layer_idx]
@@ -315,8 +345,6 @@ Vue.component('characterAbilities', {
             break
           }
         }
-
-        config.activeUI = "world"
       }
     },
     enemyAttack: function () {
@@ -343,8 +371,9 @@ Vue.component('characterAbilities', {
 
           if (target.health <= 0) {
             logger('Hero is OWN! PZZZZZ RESURRECT! VIUUVIUU... ')
-            target.health = target.max_health
-            config.character.dies++
+            config.activeUI = "game-over"
+            //target.health = target.max_health
+            //config.character.dies++
           }
         } 
       }

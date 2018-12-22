@@ -97,4 +97,12 @@ var db_abilities = {
 		type: "debuff",
 		icon: "assets/knife.png"
 	},
+	escape0: {
+		id: "escape0",
+		name: "Forrest run Forest run!",
+		cooldown: 1,
+		chance: 75, // percents
+		type: "escape",
+		icon: "assets/escape.png"
+	},
 }

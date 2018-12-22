@@ -630,3 +630,22 @@ a:hover {
 	left: 0;
 	z-index: 1;
 }
+.active-ui-game-over .ui-game-over {
+	display: flex;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	background: rgba(26, 26, 26, 0.85);
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	color: wheat;
+	align-items: center;
+}
+.active-ui-game-over .ui-game-over a {
+	cursor: pointer;
+	text-decoration: underline;	
+	color: wheat;
+}
+

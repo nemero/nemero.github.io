@@ -28,6 +28,21 @@ Vue.component('viewMapTileActionEvent', {
 
         // show ui battle
         config.activeUI = "battle"
+        // save current map
+        config.prevMap = config.db.map.activeMap
+        config.prevPosition = []
+        config.prevPosition[0] = config.character.position[0]
+        config.prevPosition[1] = config.character.position[1]
+        // set battle map
+        if (tile.battleMap) {
+          config.db.map.activeMap = tile.battleMap
+        } else {
+          config.db.map.activeMap = config.db.map[config.db.map.activeMap].defaultBattleMap
+        }
+        // centering map
+        Vue.set(config.character.position, 0, 4)
+        Vue.set(config.character.position, 1, 6)
+
         return
   		}
 

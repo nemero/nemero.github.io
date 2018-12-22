@@ -53,6 +53,21 @@ var config = {
 				"map": db_map_world1,
 				"layerEvents": db_map_world1_actions,
 			},
+			"battle1": {
+				"name": "battle1",
+				"map": db_map_battle1,
+				"layerEvents": {},
+			},
+			"battle2": {
+				"name": "battle2",
+				"map": db_map_battle2,
+				"layerEvents": {},
+			},
+			"battle3": {
+				"name": "battle3",
+				"map": db_map_battle3,
+				"layerEvents": {},
+			},
 		},
 	},
 }
