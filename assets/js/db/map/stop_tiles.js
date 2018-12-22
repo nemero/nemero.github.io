@@ -25,7 +25,7 @@ var stop_tiles = {
 
 var z_tiles = {
 	"tile-map5": [
-		"tile-map5_0_16", "tile-map5_0_7", "tile-map5_0_8", "tile-map5_0_5", "tile-map5_2_5",
+		"tile-map5_0_16", "tile-map5_0_7", "tile-map5_0_8", "tile-map5_0_5", "tile-map5_2_5", "tile-map5_9_15",
 	],
 }
 

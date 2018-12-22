@@ -1261,6 +1261,14 @@ var db_map_sewer1 = {
           10
         ],
         "map": "tile-map5"
+      },
+      "3": {
+        "id": "tile-map5_9_15",
+        "offset": [
+          15,
+          9
+        ],
+        "map": "tile-map5"
       }
     },
     "19": {
@@ -1393,6 +1401,14 @@ var db_map_sewer1 = {
           12
         ],
         "map": "tile-map5"
+      },
+      "3": {
+        "id": "tile-map5_9_15",
+        "offset": [
+          15,
+          9
+        ],
+        "map": "tile-map5"
       }
     },
     "19": {
@@ -1517,6 +1533,14 @@ var db_map_sewer1 = {
           11
         ],
         "map": "tile-map5"
+      },
+      "3": {
+        "id": "tile-map5_10_15",
+        "offset": [
+          15,
+          10
+        ],
+        "map": "tile-map5"
       }
     },
     "19": {
@@ -1631,6 +1655,14 @@ var db_map_sewer1 = {
         "offset": [
           4,
           11
+        ],
+        "map": "tile-map5"
+      },
+      "3": {
+        "id": "tile-map5_9_15",
+        "offset": [
+          15,
+          9
         ],
         "map": "tile-map5"
       }
@@ -1771,6 +1803,14 @@ var db_map_sewer1 = {
         "offset": [
           4,
           11
+        ],
+        "map": "tile-map5"
+      },
+      "3": {
+        "id": "tile-map5_10_15",
+        "offset": [
+          15,
+          10
         ],
         "map": "tile-map5"
       }
