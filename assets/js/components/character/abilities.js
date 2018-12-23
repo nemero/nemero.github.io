@@ -86,9 +86,9 @@ Vue.component('characterAbilities', {
           config.activeUI = "world"
           
           // change map
-          config.db.map.activeMap = config.prevMap
-          Vue.set(config.character.position, 0, config.prevPosition[0])
-          Vue.set(config.character.position, 1, config.prevPosition[1])
+          // config.db.map.activeMap = config.prevMap
+          // Vue.set(config.character.position, 0, config.prevPosition[0])
+          // Vue.set(config.character.position, 1, config.prevPosition[1])
 
           return
         }
@@ -332,9 +332,9 @@ Vue.component('characterAbilities', {
       if (all_enemies_down) {
         // change map
         config.activeUI = "world"
-        config.db.map.activeMap = config.prevMap
-        Vue.set(config.character.position, 0, config.prevPosition[0])
-        Vue.set(config.character.position, 1, config.prevPosition[1])
+        // config.db.map.activeMap = config.prevMap
+        // Vue.set(config.character.position, 0, config.prevPosition[0])
+        // Vue.set(config.character.position, 1, config.prevPosition[1])
 
         let layers = config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]
         for (layer_idx in layers) {

@@ -6,8 +6,9 @@ Vue.component('activeEnemies', {
     }
   },
   template: [
-      '<div class="ui-list-enemies-item" v-if="enemy.health > 0">',
-        '<ul class="select-enemy" @click="selectEnemy" :class="isActive">',
+      '<div class="ui-list-enemies-item" @click="selectEnemy" v-if="enemy.health > 0">',
+        '<span class="enemy-model" :class="activeEnemyClass"></span>',
+        '<ul class="select-enemy" :class="isActive">',
           '<li>{{ enemy.name }}</li>',
           '<li>HP: {{ enemy.health }}</li>',
           '<li>Target: {{ getTarget }}</li>',
@@ -66,6 +67,16 @@ Vue.component('activeEnemies', {
           value: differentHP
         })
       }
+    },
+    activeEnemyClass: function () {
+      let data = {}
+      if (this.enemy.model) {
+        data[this.enemy.model] = true
+      } else {
+        data['icon-angry_bear1'] = true
+      }
+
+      return data
     }
   }
 })

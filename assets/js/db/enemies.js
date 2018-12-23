@@ -12,6 +12,7 @@ var db_enemies = {
 		debuffs: {},
 		buffs: {},
 		activeTarget: null,
+		model: 'icon-boss2',
 		hpScroll: [],
 	},
 	boss1: {
@@ -27,6 +28,7 @@ var db_enemies = {
 		debuffs: {},
 		buffs: {},
 		activeTarget: null,
+		model: 'icon-boss1',
 		hpScroll: [],
 	},
 
@@ -43,6 +45,7 @@ var db_enemies = {
 		debuffs: {},
 		buffs: {},
 		activeTarget: null,
+		model: 'icon-boss1',
 		hpScroll: [],
 	},
 
@@ -61,6 +64,7 @@ var db_enemies = {
 		debuffs: {},
 		buffs: {},
 		activeTarget: null,
+		model: 'icon-angry_bear1',
 		hpScroll: [],
 	},
 
@@ -79,6 +83,7 @@ var db_enemies = {
 		debuffs: {},
 		buffs: {},
 		activeTarget: null,
+		model: 'icon-angry_bear1',
 		hpScroll: [],
 	},
 
@@ -97,6 +102,7 @@ var db_enemies = {
 		debuffs: {},
 		buffs: {},
 		activeTarget: null,
+		model: 'icon-wolf1',
 		hpScroll: [],
 	},
 
@@ -115,6 +121,7 @@ var db_enemies = {
 		debuffs: {},
 		buffs: {},
 		activeTarget: null,
+		model: 'icon-wolf1',
 		hpScroll: [],
 	},
 
@@ -132,6 +139,7 @@ var db_enemies = {
 		debuffs: {},
 		buffs: {},
 		activeTarget: null,
+		model: 'icon-zombie1',
 		hpScroll: [],
 	},
 
@@ -147,6 +155,7 @@ var db_enemies = {
 		agility: 0,
 		faction: "fly",
 		avatar: 'assets/fly.png',
+		model: 'icon-fly0',
 		script: {
 			80: ["attack", "attack", "range_shot"],
 			20: ["range_shot"]

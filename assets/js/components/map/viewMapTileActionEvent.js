@@ -29,19 +29,44 @@ Vue.component('viewMapTileActionEvent', {
         // show ui battle
         config.activeUI = "battle"
         // save current map
-        config.prevMap = config.db.map.activeMap
-        config.prevPosition = []
-        config.prevPosition[0] = config.character.position[0]
-        config.prevPosition[1] = config.character.position[1]
-        // set battle map
-        if (tile.battleMap) {
-          config.db.map.activeMap = tile.battleMap
-        } else {
-          config.db.map.activeMap = config.db.map[config.db.map.activeMap].defaultBattleMap
-        }
-        // centering map
-        Vue.set(config.character.position, 0, 4)
-        Vue.set(config.character.position, 1, 6)
+        // config.prevMap = config.db.map.activeMap
+        // config.prevPosition = []
+        // config.prevPosition[0] = config.character.position[0]
+        // config.prevPosition[1] = config.character.position[1]
+        // // set battle map
+        // if (tile.battleMap) {
+        //   config.db.map.activeMap = tile.battleMap
+        // } else {
+        //   config.db.map.activeMap = config.db.map[config.db.map.activeMap].defaultBattleMap
+        // }
+        // // centering map
+        // Vue.set(config.character.position, 0, 4)
+        // Vue.set(config.character.position, 1, 6)
+
+        // // put enemies on map
+        // counter = 0
+        // for (enemy_idx in config.activeEnemies) {
+        //   let enemy = config.activeEnemies[enemy_idx]
+        //   counter++
+
+        //   if (!config.db.map[config.db.map.activeMap].layerEvents[4]) {
+        //     Vue.set(config.db.map[config.db.map.activeMap].layerEvents, 4, {})
+        //   }
+
+        //   if (!config.db.map[config.db.map.activeMap].layerEvents[4][counter*3]) {
+        //     Vue.set(config.db.map[config.db.map.activeMap].layerEvents[4], counter*3, {})
+        //   }
+
+        //   Vue.set(config.db.map[config.db.map.activeMap].layerEvents[4][counter*3], 'enemy_'+counter*3, {
+        //     "id": "enemy",
+        //     "name": "Enemies",
+        //     "icon": "icon-battle0",
+        //     "tile_icon": "icon-angry_bear1",
+        //     "enemies": [
+        //       "bear1"
+        //     ],
+        //   })
+        // }
 
         return
   		}
