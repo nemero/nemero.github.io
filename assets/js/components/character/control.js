@@ -32,9 +32,17 @@ Vue.component('characterControl', {
         let new_position = [...position]
 
         //console.log(this.isVisible(), e.keyCode, this.tile)
-        //if (13 == e.keyCode) {
-        //  let events = config.db.map[config.db.map.activeMap].layerEvents[this.character.position[1]][this.character.position[0]]
-        //}
+        if (13 == e.keyCode) {
+         let events = config.activeEvents
+         for (idx in events) {
+          let event = events[idx]
+          if (!event.hidden && event.autoTrigger == "13") {
+            console.log(event.hidden)
+            Vue.set(config, "executeEvent", event)
+            return
+          }
+         }
+        }
 
         //console.log(e.keyCode)
         if ([37, 38, 39, 40].indexOf(e.keyCode) >= 0) {

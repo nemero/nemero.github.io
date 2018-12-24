@@ -6,9 +6,40 @@ var db_map_sewer1_actions = {
         "name": "Chest open",
         "icon": "icon-paper0",
         "tile_icon": "icon-paper0",
+        "autoTrigger": "13",
         "items": [
           "paper0"
         ]
+      }
+    }
+  },
+  "6": {
+    "9": {
+      "undefined_6_9_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-townout0",
+        "autoTrigger": "hover",
+        "position": [
+          2,
+          2
+        ],
+        "map": "world1"
+      },
+      "undefined_6_9_1": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-fly0",
+        "cooldown": 20,
+        "autoTrigger": "13",
+        "enemies": [
+          "fly",
+          "fly",
+          "fly"
+        ],
+        "hidden": false,
+        "conditions": []
       }
     }
   },
@@ -19,6 +50,7 @@ var db_map_sewer1_actions = {
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
         "type_unlock": "use",
+        "autoTrigger": "13",
         "item": null,
         "triggers": [
           {
@@ -80,6 +112,7 @@ var db_map_sewer1_actions = {
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
         "type_unlock": "use",
+        "autoTrigger": "13",
         "item": null,
         "triggers": [
           {
@@ -143,6 +176,7 @@ var db_map_sewer1_actions = {
         "name": "Subway/Cave Lock",
         "icon": "icon-townout0",
         "type_unlock": "use",
+        "autoTrigger": "13",
         "item": null,
         "triggers": [
           {
@@ -221,6 +255,7 @@ var db_map_sewer1_actions = {
         "name": "Enemies",
         "icon": "icon-battle0",
         "tile_icon": "icon-boss1",
+        "autoTrigger": "13",
         "cooldown": 20,
         "enemies": [
           "boss"
@@ -234,6 +269,7 @@ var db_map_sewer1_actions = {
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
         "type_unlock": "use",
+        "autoTrigger": "13",
         "item": null,
         "triggers": [
           {
@@ -295,6 +331,7 @@ var db_map_sewer1_actions = {
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
         "type_unlock": "use",
+        "autoTrigger": "13",
         "item": null,
         "triggers": [
           {
@@ -358,6 +395,7 @@ var db_map_sewer1_actions = {
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
         "type_unlock": "use",
+        "autoTrigger": "13",
         "item": null,
         "triggers": [
           {
@@ -419,6 +457,7 @@ var db_map_sewer1_actions = {
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
         "type_unlock": "use",
+        "autoTrigger": "13",
         "item": null,
         "triggers": [
           {
@@ -475,32 +514,6 @@ var db_map_sewer1_actions = {
           }
         ]
       }
-    },
-    "9": {
-      "undefined_7_9_0": {
-        "id": "enemies",
-        "name": "Enemies",
-        "icon": "icon-battle0",
-        "tile_icon": "icon-fly0",
-        "cooldown": 20,
-        "enemies": [
-          "fly",
-          "fly",
-          "fly"
-        ],
-        "hidden": false,
-        "conditions": []
-      },
-      "undefined_7_9_1": {
-        "id": "teleport",
-        "name": "Subway/Cave",
-        "icon": "icon-townout0",
-        "position": [
-          23,
-          -10
-        ],
-        "map": "sewer1"
-      }
     }
   },
   "-10": {
@@ -509,6 +522,7 @@ var db_map_sewer1_actions = {
         "id": "teleport",
         "name": "Subway/Cave",
         "icon": "icon-basement-door0",
+        "autoTrigger": "hover",
         "position": [
           9,
           7
@@ -540,6 +554,7 @@ var db_map_sewer1_actions = {
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
         "type_unlock": "use",
+        "autoTrigger": "13",
         "item": null,
         "triggers": [
           {
@@ -570,6 +585,7 @@ var db_map_sewer1_actions = {
         "id": "teleport",
         "name": "Subway/Cave",
         "icon": "icon-townout0",
+        "autoTrigger": "hover",
         "position": [
           2,
           1

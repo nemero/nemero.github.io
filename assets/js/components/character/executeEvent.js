@@ -1,28 +1,31 @@
-Vue.component('viewMapTileActionEvent', {
-	props: ['tile', 'config', 'tiles'],
-	template: ['<div class="view-map-tile-action" @click="actionLayer" v-if="isVisible()" @animationend="cant_use_action = false" :class="actionLayerClasses">',
-              '<span :class="getActionClass">',
-              '</span>',
-              '<div>{{ getTileDetails }}</div>',
-          '</div>'
-  ].join(""),
-  data: function() {
-    return {
-      cant_use_action: false,
-    }
-  },
+Vue.component('executeEvent', {
+  props: ['config'],
+  template: [
+      '<div>',
+        '<div style="display: none">{{ config.executeEvent }}</div>',
+      '</div>'
+	  	].join(''),
   updated: function () {
-    //console.log(this.tile)
-    // NOTE: work only for teleport actions because triggering each iteration
-    if (config.activeUI != "battle" && this.tile.autoTrigger == "hover" && !this.tile.hidden) {
-      //console.log('123')
-      //Vue.set(config, "executeEvent", event)
+    //console.log(config.executeEvent)
+    if (config.executeEvent) {
+      let events = config.activeEvents
+      // if exist enemis won't trigger action
+      for (idx in events) {
+        let event = events[idx]
+        if (config.executeEvent != event && event.id == "enemies" && event.cooldown && (!event["cooldown_left"] || (event["cooldown_left"] && event["cooldown_left"] <= config.step))) {
+          //Vue.set(config, "executeEvent", null)
+          Vue.set(config, "executeEvent", event)
+          return
+        }
+      }
       this.actionLayer()
     }
+
+    Vue.set(config, "executeEvent", null)
   },
   methods: {
-  	actionLayer: function () {
-		  let tile = this.tile
+    actionLayer: function () {
+      let tile = config.executeEvent
       if (tile.id == "enemies" || (tile.id == "enemies" && tile.cooldown && tile["cooldown_left"] <= config.step)) {
         let counter = 0
         config.activeEnemies = []
@@ -38,7 +41,7 @@ Vue.component('viewMapTileActionEvent', {
         // show ui battle
         config.activeUI = "battle"
         return
-  		}
+      }
 
       // we can use any item until enemies is exist/showing
       for (layer_idx in this.tiles) {
@@ -125,55 +128,6 @@ Vue.component('viewMapTileActionEvent', {
         // hide chest
         Vue.set(tile, "hidden", true)  
       }
- 	 },
-   isVisible: function () {
-    let tile = this.tile
-    if (tile.id == "player" && config.character.id == tile["player_id"]) {
-      return false
-    }
-
-
-    // check conditions if exist
-    if (tile.conditions) {
-      let is_showing = true
-      for (condition_idx in tile.conditions) {
-        let condition = tile.conditions[condition_idx]
-        if (condition.type_condition == "exist_tile") {
-          //console.log(condition.tile.id, config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id)
-          if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
-            Vue.set(tile, "hidden", false)  
-            return
-          }
-          //let checking_tile = config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id]
-        }
-      }
-    }
-
-    if (tile.hidden || tile["cooldown_left"] > config.step) {
-      return false
-    }
-    
-    return true
-   }
- 	},
-  computed: {
-    getActionClass: function () {
-      let data = {}
-
-      if (this.tile.icon) {
-        data[this.tile.icon] = true
-      }
-
-      return data
     },
-    getTileDetails: function () {
-      return this.tile.id
-    },
-    actionLayerClasses: function () {
-      let data = {}
-
-      data['cant_use_action'] = this.cant_use_action
-      return data
-    },
-  },
+  }
 })

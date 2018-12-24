@@ -8,8 +8,9 @@ Vue.component('viewMapTileActions', {
     computed: {
     	getEventLayers: function () {
         if (config.db.map[config.db.map.activeMap].layerEvents[this.position[1]] && config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]]) {
-		      let event_layer = config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]]
-		      return event_layer
+		      let events = config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]]
+          config.activeEvents = events
+		      return events
         }
 
         return 

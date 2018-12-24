@@ -76,6 +76,16 @@
 						</select>
 					</div>
 
+					<div class="field-row">
+						<label>Auto Trigger Event : </label>
+						<select v-model="config.activeLayerEvent.autoTrigger">
+							<option value="" selected="selected">---</option>
+							<option value="false">false</option>
+							<option value="hover">hover</option>
+							<option value="13">Enter</option>
+						</select>
+					</div>
+
 					<event-player :config="config"></event-player>
 					<event-enemies :config="config"></event-enemies>
 					<event-teleport :config="config"></event-teleport>

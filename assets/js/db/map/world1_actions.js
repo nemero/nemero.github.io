@@ -6,10 +6,11 @@ var db_map_world1_actions = {
         "name": "Subway/Cave",
         "icon": "icon-teleport0",
         "position": [
-          21,
-          -6
+          9,
+          7
         ],
-        "map": "sewer1"
+        "map": "sewer1",
+        "autoTrigger": "hover"
       }
     }
   },
@@ -23,7 +24,8 @@ var db_map_world1_actions = {
           4,
           4
         ],
-        "map": "cave1"
+        "map": "cave1",
+        "autoTrigger": "13"
       }
     },
     "6": {
@@ -36,7 +38,8 @@ var db_map_world1_actions = {
         "enemies": [
           "bear0"
         ],
-        "hidden": ""
+        "hidden": "",
+        "autoTrigger": "13"
       }
     }
   },
@@ -53,7 +56,8 @@ var db_map_world1_actions = {
           "wolf",
           "wolf1"
         ],
-        "hidden": ""
+        "hidden": "",
+        "autoTrigger": "13"
       }
     }
   },
@@ -68,7 +72,8 @@ var db_map_world1_actions = {
         "enemies": [
           "boss2"
         ],
-        "hidden": ""
+        "hidden": "",
+        "autoTrigger": "13"
       }
     }
   },
@@ -89,7 +94,8 @@ var db_map_world1_actions = {
           "zomby",
           "zomby"
         ],
-        "hidden": ""
+        "hidden": "",
+        "autoTrigger": "13"
       }
     }
   }

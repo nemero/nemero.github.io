@@ -83,7 +83,10 @@ Vue.component('characterBag', {
     getIcon: function() {
       let obj = config.db.items[this.item]
       let data = {}
-      data['background'] =  'url(' + obj.icon + ') center center/cover'
+      console.log(this.item)
+      if (obj && obj.icon) {
+        data['background'] =  'url(' + obj.icon + ') center center/cover'
+      }
 
       return data
     },

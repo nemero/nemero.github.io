@@ -9,7 +9,7 @@ var stop_tiles = {
 			"tile-map4_8_6", "tile-map4_8_7",
 			"tile-map4_9_6", "tile-map4_9_7",
 			"tile-map4_9_2", "tile-map4_8_2", "tile-map4_7_2",
-			"tile-map4_5_3", "tile-map4_5_4", "tile-map4_5_5",
+			"tile-map4_5_3", "tile-map4_5_5",
 			"tile-map4_2_12", "tile-map4_2_13", "tile-map4_2_14", "tile-map4_2_15",
 			"tile-map4_5_6", "tile-map4_5_7", "tile-map4_5_8",
 			"tile-map4_6_6", "tile-map4_6_8", "tile-map4_7_6", "tile-map4_7_7", "tile-map4_7_8",

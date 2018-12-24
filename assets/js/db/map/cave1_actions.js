@@ -1,10 +1,11 @@
 var db_map_cave1_actions = {
-  "4": {
+  "3": {
     "4": {
       "undefined_4_4_0": {
         "id": "teleport",
         "name": "Subway/Cave",
         "icon": "icon-teleport0",
+        "autoTrigger": "hover",
         "position": [
           5,
           3
@@ -21,6 +22,7 @@ var db_map_cave1_actions = {
         "icon": "icon-battle0",
         "tile_icon": "icon-angry_bear1",
         "cooldown": 20,
+        "autoTrigger": "13",
         "enemies": [
           "bear1"
         ],

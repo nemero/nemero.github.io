@@ -344,10 +344,10 @@ var db_map_sewer1 = {
     },
     "9": {
       "1": {
-        "id": "tile-map5_4_1",
+        "id": "tile-map5_1_1",
         "offset": [
           1,
-          4
+          1
         ],
         "map": "tile-map5"
       },
