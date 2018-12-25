@@ -22,167 +22,78 @@ Vue.component('characterControl', {
   },
   methods: {
     moveAction: function (e) {
-        if (config.activeUI !== "world") {
-          return
-        }
+      if (config.activeUI !== "world") {
+        return
+      }
 
-        // Todo: refactor with movePlayer virwMapTile component
-        let position = this.character.position
-        let previous_pos = [...position]
-        let new_position = [...position]
-
-        //console.log(this.isVisible(), e.keyCode, this.tile)
-        if (13 == e.keyCode) {
-         let events = config.activeEvents
-         for (idx in events) {
-          let event = events[idx]
-          if (!event.hidden && event.autoTrigger == "13") {
-            console.log(event.hidden)
-            Vue.set(config, "executeEvent", event)
-            return
-          }
-         }
-        }
-
-        //console.log(e.keyCode)
-        if ([37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
-          pauseEvent(e);
-        }
-
+      // move actions
+      if ([37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
         let directions = []
         if (37 == e.keyCode) {
-          new_position[0] = parseInt(new_position[0] - 1)
           directions.push("left")
         }
         if (39 == e.keyCode) {
-          new_position[0] = parseInt(new_position[0] + 1)
           directions.push("right")
         }
         if (38 == e.keyCode) {
-          new_position[1] = parseInt(new_position[1] - 1)
           directions.push("up")
         }
         if (40 == e.keyCode) {
-          new_position[1] = parseInt(new_position[1] + 1)
           directions.push("down")
         }
-        
-        // check if can character move on new position
-        let cell_tiles = config.db.map[config.db.map.activeMap].map
-        // user cant move on not exist tiles
-        if (!cell_tiles[new_position[1]] || !cell_tiles[new_position[1]][new_position[0]]) {
-          return
-        }
 
-        //let cant_move = true
-        for (tile_idx in cell_tiles[new_position[1]][new_position[0]]) {
-          let tile = cell_tiles[new_position[1]][new_position[0]][tile_idx]
+        Vue.set(config, "executeEvent", {
+          id: "move",
+          position: this.character.position,
+          player_id: this.character.id,
+          directions: directions
+        })
 
-          //let exclude_list = ['tile-map3']
-          if (tile.map == "tile-map3" || (config.db.map.stop_tiles[tile.map] && config.db.map.stop_tiles[tile.map].indexOf(tile.id) >= 0)) {
+        return
+      }
+
+      // enter actions
+      if (13 == e.keyCode) {
+        let events = config.activeEvents
+        for (idx in events) {
+          let event = events[idx]
+          if (event.autoTrigger == "13" && this.isAvailable(event) && !event.hidden) {
+            Vue.set(config, "executeEvent", {
+              id: "enter",
+              event: event
+            })
+
             return
           }
         }
-
-        // check direction from current postition
-        for (tile_idx in cell_tiles[position[1]][position[0]]) {
-          let tile = cell_tiles[position[1]][position[0]][tile_idx]
-
-          // checking available direction 
-          if (config.db.map.directions_tiles[tile.map] && config.db.map.directions_tiles[tile.map][tile.id]) {
-            let can_move = true
-            for (idx in directions) {
-              let direction = directions[idx]
-              if (!config.db.map.directions_tiles[tile.map][tile.id][direction]) {
-                return // we cant move 
-              }
-
-            }
-          }
-        }        
-
-        // check direction to new postition
-        for (tile_idx in cell_tiles[new_position[1]][new_position[0]]) {
-          let tile = cell_tiles[new_position[1]][new_position[0]][tile_idx]
-
-          // checking available direction 
-          if (config.db.map.directions_tiles[tile.map] && config.db.map.directions_tiles[tile.map][tile.id]) {
-            let can_move = true
-            for (idx in directions) {
-              let direction = directions[idx]
-              let new_direction = ""
-              if (direction == "left") {
-                new_direction = "right"
-                if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
-                  return // we cant move 
-                }
-              }
-
-              if (direction == "right") {
-                new_direction = "left"
-                if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
-                  return // we cant move 
-                }
-              }
-
-              if (direction == "up") {
-                new_direction = "down"
-                if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
-                  return // we cant move 
-                }
-              }
-
-              if (direction == "down") {
-                new_direction = "up"
-                if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
-                  return // we cant move 
-                }
-              }
-            }
-          }
-        }
-
-        if (37 == e.keyCode) {
-          Vue.set(position, 0, parseInt(position[0] - 1))
-        }
-        if (39 == e.keyCode) {
-          Vue.set(position, 0, parseInt(position[0] + 1))
-        }
-        if (38 == e.keyCode) {
-          Vue.set(position, 1, parseInt(position[1] - 1))
-        }
-        if (40 == e.keyCode) {
-          Vue.set(position, 1, parseInt(position[1] + 1))
-        }
-
-        this.changedCharacterPostiton(previous_pos)
+      }
     },
-
-    changedCharacterPostiton: function (previous_pos) {
-      let position = this.character.position
-
-      if (!config.db.map[config.db.map.activeMap].layerEvents[position[1]]) {
-        Vue.set(config.db.map[config.db.map.activeMap].layerEvents, position[1], {})  
-      }
-      if (!config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]]) {
-        Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]], position[0], {})  
+    isAvailable: function (event) {
+      if (event.id == "player" && config.character.id == event["player_id"]) {
+        return false
       }
 
-      //console.log(previous_pos, position)
-      if (config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]] && config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]][previous_pos[0]]) {
-        Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]][previous_pos[0]], config.character.id)  
+
+      // check conditions if exist
+      if (event.conditions) {
+        let is_showing = true
+        for (condition_idx in event.conditions) {
+          let condition = event.conditions[condition_idx]
+          if (condition.type_condition == "exist_tile") {
+            if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
+              is_showing = false
+            }
+          }
+        }
+
+        return is_showing
       }
 
-      Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]], config.character.id, {
-              id: "player",
-              name: "Player Kokoko",
-              player_id: this.character.id,
-              icon: "icon-player0",
-              tile_icon: "icon-player0",
-      })
+      if (event.hidden || event.cooldown_left > config.step) {
+        return false
+      }
 
-      // track steps
-      config.step++
-    }
+      return true
+   }
   }
 })

@@ -15,11 +15,7 @@ Vue.component('viewMapTileLayerDefault', {
   	},
   	getTileMapClass: function () {
   		let data = {}
-  		//let tile = this.tile
-
-  		//if (tile['map']) {
-  			data[this.zone.default_tile.map_class] = true
-  		//}
+  		data[this.zone.default_tile.map_class] = true
 
   		return data
   	},

@@ -6,10 +6,11 @@ var db_map_sewer1_actions = {
         "name": "Chest open",
         "icon": "icon-paper0",
         "tile_icon": "icon-paper0",
-        "autoTrigger": "13",
+        "autoTrigger": "hover",
         "items": [
           "paper0"
-        ]
+        ],
+        "hidden": false
       }
     }
   },
@@ -244,6 +245,23 @@ var db_map_sewer1_actions = {
               "position": [
                 0,
                 0
+              ],
+              "map": "tile-map5"
+            }
+          },
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              2,
+              6
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_1_8",
+              "offset": [
+                8,
+                1
               ],
               "map": "tile-map5"
             }

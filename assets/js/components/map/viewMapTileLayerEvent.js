@@ -1,30 +1,8 @@
 Vue.component('viewMapTileLayerEvent', {
   props: ['layer', 'tiles'],
-  template: ['<span class="layer-event" :class="getTileMapClass" @click="selectLayerEvent" v-if="isVisible">',
+  template: ['<span class="layer-event" :class="getTileMapClass" v-if="isVisible">',
           //'<span class="layer-event-details" v-show="getLayerEventDetails.length > 0">{{ getLayerEventDetails }}</span>',
       '</span>'].join(""),
-  methods: {
-    selectLayerEvent: function () {
-      let tile = this.layer
-      if (tile.type == "enemies" || (tile.type == "enemies" && tile.cooldown && tile["cooldown_left"] <= config.step)) {
-        // we can select enemies only in same tile
-        if (!this.tiles[config.character.id]) {
-          return
-        }
-
-        let counter = 0
-        config.activeEnemies = []
-        for (enemy_idx in tile.enemies) {
-          let enemy = config.db.enemies[tile.enemies[enemy_idx]]
-
-          // indexing creating enemies 
-          enemy['object_idx'] = counter
-          config.activeEnemies.push(JSON.parse(JSON.stringify(enemy)))
-          counter += 1
-        }
-      }
-    }
-  },
   computed: {
     isVisible: function () {
       let tile = this.layer

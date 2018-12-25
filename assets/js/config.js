@@ -27,7 +27,7 @@ var config = {
 		hpScroll: [],
 		dies: 0,
 
-		position: [5, 6],
+		position: [0, 0], // will replacing afgter init component
 
 		activeEquipment: {
 			head: "head0",
@@ -93,6 +93,10 @@ var config = {
 			"strength0": {
 				id: "strength0",
 				key: 54
+			},
+			"escape0": {
+				id: "escape0",
+				key: 48
 			},
 		},
 	},
