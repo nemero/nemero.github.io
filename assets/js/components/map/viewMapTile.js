@@ -13,6 +13,7 @@ Vue.component('viewMapTile', {
         }
         
         let position = config.character.position
+        let position_prev = [...position]
         let directions = []
         if (this.getRowId > position[1]) {
           directions.push("down")
@@ -35,7 +36,7 @@ Vue.component('viewMapTile', {
         })
 
         return
-    }
+    },
   },
   computed: {
     getRowId: function () {

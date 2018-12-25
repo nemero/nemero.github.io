@@ -1,5 +1,10 @@
 Vue.component('executeEvent', {
   props: ['event'],
+  data: function () {
+    return {
+      new_position: false
+    }
+  },
   template: [
       '<div>',
         '<div style="display: none">{{ event }}</div>',
@@ -7,14 +12,36 @@ Vue.component('executeEvent', {
 	  	].join(''),
   updated: function () {
     if (this.event) {
-      if (this.event.id == "move") {
-        this.move()
+      let _event = this.event
+
+      if (_event.id == "move") {
+        // if we cant move on next cell will trigger event on next cell
+        let test = this.move()
+        if (!test && this.new_position) {
+          let objects = config.db.map[config.db.map.activeMap].layerEvents
+          let events = null
+          if (objects[this.new_position[1]] && objects[this.new_position[1]][this.new_position[0]]) {
+            events = objects[this.new_position[1]][this.new_position[0]]
+          }
+
+          for (idx in events) {
+            let new_event = events[idx]
+            if (this.isAvailable(new_event) && !new_event.hidden) {
+              _event = {
+                id: "enter",
+                event: new_event
+              }
+
+              break
+            }
+          }
+        }
       }
 
-      if (this.event.id == "enter") {
-        let event = this.event.event
+      let event = _event.event
+      if (_event.id == "enter") {
         // trigger only enemies event if exist
-        if (event.id !== "enemies") {
+        if (_event.id !== "enemies") {
           for (layer_idx in config.activeEvents) {
             let layer = config.activeEvents[layer_idx]
             if (layer.id == "enemies" && layer.cooldown 
@@ -29,7 +56,7 @@ Vue.component('executeEvent', {
       }
     }
 
-    //Vue.set(this.event, null) // changed variable can't be root element of component, so instead use next
+    //Vue.set(this.event, null) // changed variable can't be root element of component, so instead use next code
     Vue.set(config, "executeEvent", null)
   },
   methods: {
@@ -50,6 +77,11 @@ Vue.component('executeEvent', {
       if (this.event.directions.indexOf("down") >= 0) {
         new_position[1] = parseInt(new_position[1] + 1)
       }
+
+      // set new_position for trigger event if cant move on cell
+      this.new_position = []
+      this.new_position[0] = new_position[0]
+      this.new_position[1] = new_position[1]
 
       // check if can character move on new position
       let cell_tiles = config.db.map[config.db.map.activeMap].map
@@ -154,6 +186,7 @@ Vue.component('executeEvent', {
 
       // track steps
       config.step++
+      return true
     },
     enter: function (event) {
       //let event = this.event.event
@@ -240,6 +273,33 @@ Vue.component('executeEvent', {
         // hide chest
         Vue.set(event, "hidden", true)  
       }
-    }
+    },
+    isAvailable: function (event) {
+      if (event.id == "player" && config.character.id == event["player_id"]) {
+        return false
+      }
+
+
+      // check conditions if exist
+      if (event.conditions) {
+        let is_showing = true
+        for (condition_idx in event.conditions) {
+          let condition = event.conditions[condition_idx]
+          if (condition.type_condition == "exist_tile") {
+            if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
+              is_showing = false
+            }
+          }
+        }
+
+        return is_showing
+      }
+
+      if (event.hidden || event.cooldown_left > config.step) {
+        return false
+      }
+
+      return true
+   }
   }
 })
