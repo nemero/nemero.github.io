@@ -13,30 +13,73 @@ Vue.component('viewMapTile', {
         }
         
         let position = config.character.position
-        let position_prev = [...position]
-        let directions = []
-        if (this.getRowId > position[1]) {
-          directions.push("down")
-        }
-        if (this.getRowId < position[1]) {
-          directions.push("up")
-        }
-        if (this.getColId > position[0]) {
-          directions.push("right")
-        }
-        if (this.getColId < position[0]) {
-          directions.push("left")
-        }
+        if (position[0] == this.getColId && position[1] == this.getRowId) {
+          // if click on same cell trigger event
+          let events = this.getLayerEvents
+          for (idx in events) {
+            let event = events[idx]
+            if (this.isAvailable(event) && !event.hidden) {
+              Vue.set(config, "executeEvent", {
+                id: "enter",
+                event: event
+              })
 
-        Vue.set(config, "executeEvent", {
-          id: "move",
-          position: position,
-          player_id: config.character.id,
-          directions: directions
-        })
+              return
+            }
+          }
+        } else {
+          let position_prev = [...position]
+          let directions = []
+          if (this.getRowId > position[1]) {
+            directions.push("down")
+          }
+          if (this.getRowId < position[1]) {
+            directions.push("up")
+          }
+          if (this.getColId > position[0]) {
+            directions.push("right")
+          }
+          if (this.getColId < position[0]) {
+            directions.push("left")
+          }
+
+          Vue.set(config, "executeEvent", {
+            id: "move",
+            position: position,
+            player_id: config.character.id,
+            directions: directions
+          })
+        }
 
         return
     },
+    isAvailable: function (event) {
+      if (event.id == "player" && config.character.id == event["player_id"]) {
+        return false
+      }
+
+
+      // check conditions if exist
+      if (event.conditions) {
+        let is_showing = true
+        for (condition_idx in event.conditions) {
+          let condition = event.conditions[condition_idx]
+          if (condition.type_condition == "exist_tile") {
+            if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
+              is_showing = false
+            }
+          }
+        }
+
+        return is_showing
+      }
+
+      if (event.hidden || event.cooldown_left > config.step) {
+        return false
+      }
+
+      return true
+    }
   },
   computed: {
     getRowId: function () {
