@@ -577,7 +577,7 @@ a:hover {
 	border: 1px solid #444;
 	padding: 2px;
 	border-radius: 2px;
-	margin-right: 10px;
+	//margin-right: 10px;
 	margin-bottom: 10px;
 	cursor: pointer;
 	text-align: center;
@@ -594,9 +594,11 @@ a:hover {
 
 .tile-actions {
 	position: absolute;
-	right: -7px;
+	right: 0;
 	z-index: 10;
-	top: -16px;
+	//top: -16px;
+	top: 25%;
+	transform: translate(0, -50%);
 }
 .character-stats {
 	font-size: 10px;
@@ -668,4 +670,8 @@ a:hover {
 	text-decoration: underline;	
 	color: wheat;
 }
-
+.view-map-tile-actions {
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+}
