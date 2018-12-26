@@ -2,7 +2,7 @@ var db_loot = {
 	fly: {
 		id: "fly",
 		items: {
-			blow: 20,
+			bow0: 20,
 			sword1: 8,
 			sword0: 30,
 			cane0: 12,
@@ -25,7 +25,7 @@ var db_loot = {
 	zomby: {
 		id: "zomby",
 		items: {
-			blow: 20,
+			bow0: 20,
 			sword1: 10,
 			sword0: 20,
 			cane0: 10,
