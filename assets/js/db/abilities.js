@@ -22,7 +22,7 @@ var db_abilities = {
 		icon: "assets/regrown.png"
 	},
 	potatos: {
-		id: "popatos",
+		id: "potatos",
 		name: "POWER POTATOS!!!!",
 		level: 10,
 		cooldown: 10,

@@ -14,6 +14,22 @@ var db_map_cave1_actions = {
       }
     }
   },
+  "4": {
+    "2": {
+      "undefined_4_2_0": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-battle0",
+        "autoTrigger": "13",
+        "cooldown": 20,
+        "enemies": [
+          "fly1"
+        ],
+        "hidden": false
+      }
+    }
+  },
   "5": {
     "1": {
       "undefined_5_1_0": {

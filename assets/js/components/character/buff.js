@@ -1,4 +1,4 @@
-Vue.component('characteBuff', {
+Vue.component('characterBuff', {
   props: ['buff'],
   template: [
       '<span class="game-icon game-icon-small" :style="getIcon" v-if="buff">',

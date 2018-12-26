@@ -31,7 +31,7 @@
 
 				<div class="ui-battle">
 					<div class="ui-list-enemies">
-						<active-enemies v-for="item in config.activeEnemies" :enemy="item" :config="config"></active-enemies>
+						<active-enemy v-for="item in config.activeEnemies" :enemy="item" :config="config"></active-enemy>
 					</div>
 
 					<div class="ui-abilities">
@@ -61,9 +61,6 @@
 	<script type="text/javascript" src="assets/js/db/map/world1_actions.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/sewer1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/sewer1_actions.js"></script>
-	<script type="text/javascript" src="assets/js/db/map/battle1.js"></script>
-	<script type="text/javascript" src="assets/js/db/map/battle2.js"></script>
-	<script type="text/javascript" src="assets/js/db/map/battle3.js"></script>
 
 	<script type="text/javascript" src="assets/js/db/map/tile_maps.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/stop_tiles.js"></script>
@@ -75,7 +72,7 @@
 	<script type="text/javascript" src="assets/js/db/abilities.js"></script>
 
 	<script type="text/javascript" src="assets/js/config.js"></script>
-	<script type="text/javascript" src="assets/js/components/activeEnemies.js"></script>
+	<script type="text/javascript" src="assets/js/components/activeEnemy.js"></script>
 	<script type="text/javascript" src="assets/js/components/character.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/buff.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/debuff.js"></script>

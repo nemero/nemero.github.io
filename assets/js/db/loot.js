@@ -14,6 +14,14 @@ var db_loot = {
 			key_old_tower0: 3
 		}
 	},
+	fly1: {
+		id: "fly1",
+		items: {
+			sword1: 8,
+			sword0: 30,
+			knife2: 3,
+		}
+	},
 	zomby: {
 		id: "zomby",
 		items: {

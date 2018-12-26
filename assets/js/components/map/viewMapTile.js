@@ -58,7 +58,6 @@ Vue.component('viewMapTile', {
         return false
       }
 
-
       // check conditions if exist
       if (event.conditions) {
         let is_showing = true

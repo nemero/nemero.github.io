@@ -107,28 +107,28 @@ Vue.component('characterStats', {
         
       }
 
-      for (buff_idx in this.character.debugg) {
-        let buff = this.character.debuff[buff_idx]
+      for (debuff_idx in this.character.debuff) {
+        let debuff = this.character.debuff[debuff_idx]
         
-        if (!buff) {
+        if (!debuff) {
           continue
         }
 
-        buff = config.db.abilities[buff.id]
-        if (buff.stamina) {
-          stamina += buff.stamina
+        debuff = config.db.abilities[debuff.id]
+        if (debuff.stamina) {
+          stamina += debuff.stamina
         }
 
-        if (buff.strength) {
-          strength += buff.strength
+        if (debuff.strength) {
+          strength += debuff.strength
         }
 
-        if (buff.agility) {
-          agility += buff.agility
+        if (debuff.agility) {
+          agility += debuff.agility
         }
 
-        if (buff.defence) {
-          defence += buff.defence
+        if (debuff.defence) {
+          defence += debuff.defence
         }
         
       }

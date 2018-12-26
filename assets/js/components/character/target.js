@@ -41,11 +41,9 @@ Vue.component('characterTarget', {
       }
     },
     getHP: function () {
-      let item = this.character.activeTarget
-      if (item && item['health']) {
-        let parent = config.db.enemies[item.id]
-
-        return '' + item.health + '/' + parent.health
+      let enemy = this.character.activeTarget
+      if (enemy && enemy.health) {
+        return '' + enemy.health + '/' + enemy.max_health
       }
     },
     keyDown: function(e) {
@@ -105,11 +103,10 @@ Vue.component('characterTarget', {
   },
   computed: {
     getLeftHP: function() {
-      let item = this.character.activeTarget
+      let enemy = this.character.activeTarget
       let data = {}
-      if (item && item['health']) {
-        let parent = config.db.enemies[item.id]
-        let percent = Math.round(item.health*100/parent.health)
+      if (enemy && enemy.health) {
+        let percent = Math.round(enemy.health*100/enemy.max_health)
         data['width'] = percent + '%'
       }
 

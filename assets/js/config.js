@@ -12,9 +12,9 @@ var config = {
 	character: {
 		id: "player0",
 		name: "kokoko",
-		level: 1, // calculating from experience 1 = 100 exp.
+		level: 500, // calculating from experience 1 = 100 exp.
 		experience: 10,
-		health: 37,
+		health: 2100,
 		max_health: 37,
 		base_health: 37,
 		stamina: 0,
@@ -165,7 +165,6 @@ var config = {
 				},
 				map: db_map_cave1,
 				layerEvents: db_map_cave1_actions,
-				defaultBattleMap: "battle2",
 			},
 			sewer1: {
 				name: "Instance test",
@@ -178,7 +177,6 @@ var config = {
 				},
 				map: db_map_sewer1,
 				layerEvents: db_map_sewer1_actions,
-				defaultBattleMap: "battle1",
 			},
 			world1: {
 				name: "World 1",
@@ -191,44 +189,6 @@ var config = {
 				},
 				map: db_map_world1,
 				layerEvents: db_map_world1_actions,
-				defaultBattleMap: "battle3",
-			},
-
-			battle1: {
-				name: "Battle Town",
-				height: 15,
-				width: 15,
-				default_tile: {
-					map_class: "tile-map5",
-					position: [0, 8],
-					size: [48, 48]
-				},
-				map: db_map_battle1,
-				layerEvents: {}
-			},
-			battle2: {
-				name: "Battle Cave",
-				height: 15,
-				width: 15,
-				default_tile: {
-					map_class: "tile-map5",
-					position: [11, 1],
-					size: [48, 48]
-				},
-				map: db_map_battle2,
-				layerEvents: {}
-			},
-			battle3: {
-				name: "Battle World",
-				height: 15,
-				width: 15,
-				default_tile: {
-					map_class: "tile-map3",
-					position: [0, 0],
-					size: [48, 48]
-				},
-				map: db_map_battle3,
-				layerEvents: {}
 			},
 		}
 	}
