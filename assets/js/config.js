@@ -12,9 +12,9 @@ var config = {
 	character: {
 		id: "player0",
 		name: "kokoko",
-		level: 500, // calculating from experience 1 = 100 exp.
+		level: 1, // calculating from experience 1 = 100 exp.
 		experience: 10,
-		health: 2100,
+		health: 37,
 		max_health: 37,
 		base_health: 37,
 		stamina: 0,
@@ -54,7 +54,7 @@ var config = {
 		],
 
 		bag: [
-			"head0", "chest0",
+			"head0", "chest_test0", "chest0"
 		],
 
 		activeTarget: null,

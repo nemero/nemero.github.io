@@ -340,5 +340,20 @@ var db_items = {
 		price: 266,
 		icon: "assets/bow.png"
 	},
+
+	chest_test0: {
+		id: "chest_test0",
+		name: "Chest of Boom",
+		level: 1,
+		defence: 50,
+		strength: 0,
+		agility: 0,
+		stamina: 3400,
+		type: "gear",
+		quality: "legendary",
+		class: "chest",
+		price: 26,
+		icon: "assets/chest.png"
+	},
 	
 }
