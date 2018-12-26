@@ -107,8 +107,8 @@ Vue.component('characterStats', {
         
       }
 
-      for (debuff_idx in this.character.debuff) {
-        let debuff = this.character.debuff[debuff_idx]
+      for (debuff_idx in this.character.debuffs) {
+        let debuff = this.character.debuffs[debuff_idx]
         
         if (!debuff) {
           continue

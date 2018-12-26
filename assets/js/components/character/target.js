@@ -106,6 +106,10 @@ Vue.component('characterTarget', {
       let enemy = this.character.activeTarget
       let data = {}
       if (enemy && enemy.health) {
+        if (enemy.health > enemy.max_health) {
+          enemy.health = enemy.max_health
+        }
+        
         let percent = Math.round(enemy.health*100/enemy.max_health)
         data['width'] = percent + '%'
       }

@@ -50,7 +50,7 @@ var config = {
 		},
 
 		abilities: [
-			"attack", "range_shot", "regrown", "nekro_aoe", "stamina0", "strength0", "escape0"
+			"attack", "range_shot", "regrown", "nekro_aoe", "stamina0", "strength0", "lose_stamina0", "escape0"
 		],
 
 		bag: [
@@ -93,6 +93,10 @@ var config = {
 			"strength0": {
 				id: "strength0",
 				key: 54
+			},
+			"lose_stamina0": {
+				id: "lose_stamina0",
+				key: 55
 			},
 			"escape0": {
 				id: "escape0",

@@ -180,7 +180,7 @@ var db_enemies = {
 		avatar: 'assets/fly.png',
 		model: 'icon-fly0',
 		script: {
-			50: ["attack", "attack", "range_shot"],
+			50: ["attack", "attack", "range_shot", "lose_stamina0"],
 			20: ["attack", "attack", "attack", "attack", "attack", "attack", "attack", "attack", "regrown", "strength0"],
 			0: ["potatos", "attack", "attack", "attack", "attack", "attack", "attack", "regrown"]
 		},

@@ -76,7 +76,6 @@ Vue.component('activeEnemy', {
         }
 
         buff = config.db.abilities[buff.id]
-        console.log(buff, buff.stamina)
         if (buff.stamina) {
           stamina += buff.stamina
         }
@@ -95,8 +94,8 @@ Vue.component('activeEnemy', {
         
       }
 
-      for (debuff_idx in this.enemy.debuff) {
-        let debuff = this.enemy.debuff[debuff_idx]
+      for (debuff_idx in this.enemy.debuffs) {
+        let debuff = this.enemy.debuffs[debuff_idx]
         
         if (!debuff) {
           continue
@@ -104,6 +103,7 @@ Vue.component('activeEnemy', {
 
         debuff = config.db.abilities[debuff.id]
         if (debuff.stamina) {
+          console.log(debuff.stamina)
           stamina += debuff.stamina
         }
 

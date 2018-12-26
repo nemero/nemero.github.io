@@ -145,7 +145,8 @@ Vue.component('characterAbilities', {
       }
 
       // applying buff ability
-      this.useBuff(ability_item, enemy)      
+      this.useBuff(ability_item, enemy)
+      this.useDebuff(ability_item, enemy)
 
       // character use damage ability
       if (ability_item.type == "damage" && ability_item.id != "attack") {
@@ -217,6 +218,19 @@ Vue.component('characterAbilities', {
         }
       }
     },
+    useDebuff: function (ability_item, enemy) {
+      // apply/refresh debuff
+      if (ability_item.type == "debuff") {
+        if (!enemy.activeTarget.debuffs[ability_item.id]) {
+          Vue.set(enemy.activeTarget.debuffs, ability_item.id, {
+            id: ability_item.id, 
+            time: ability_item.time
+          })
+        } else {
+          enemy.activeTarget.debuffs[ability_item.id]["time"] = ability_item.time
+        }
+      }
+    },
     buffsTick: function (enemy) {
       for (buff_idx in enemy.buffs) {
         let buff = enemy.buffs[buff_idx]
@@ -243,7 +257,10 @@ Vue.component('characterAbilities', {
     debuffsTick: function (enemy) {
       for (debuff_idx in enemy.debuffs) {
         let debuff = enemy.debuffs[debuff_idx]
-        if (debuff.time > 0) {
+
+        if (debuff && debuff.time > 0) {
+          debuff.time -= 1  
+
           // execute debuff
           let ability_item = config.db.abilities[debuff_idx]
           if (ability_item.type == "damage_dot") {
@@ -256,9 +273,10 @@ Vue.component('characterAbilities', {
             let damage = (damage_tick) * critical_damage
             this.kick(damage, enemy)
           }
-          debuff.time -= 1  
-        } else {
-          debuff = null
+        } 
+
+        if (debuff && debuff.time <= 0) {
+          enemy.debuffs[debuff_idx] = null
         }
       }
     },
@@ -456,8 +474,11 @@ Vue.component('characterAbilities', {
 
           // applying buff ability
           this.useBuff(ability_item, enemy)
+          this.useDebuff(ability_item, enemy)
+
           // buff controll ticks
-          this.buffsTick(enemy)  
+          this.buffsTick(enemy)
+          this.debuffsTick(enemy)  
           
           console.log(ability_item.id, ability_item.type)
           if (target.health <= 0) {
@@ -470,6 +491,7 @@ Vue.component('characterAbilities', {
       }
     },
     enemyTick: function () {
+      return 
       for (enemy_idx in config.activeEnemies) {
         let enemy = config.activeEnemies[enemy_idx]
         for (debuff_idx in enemy.debuffs) {
