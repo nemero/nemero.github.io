@@ -149,7 +149,7 @@
 			</div>
 		</div>
 
-		<div class="map-config">
+		<div class="map-config" v-show="config.activeTab == 'tiles' || config.activeTab == 'events'">
 			<div>
 				Map:
 				<textarea style="width: 300px;" rows="20">{{ config.map }}</textarea>
@@ -161,6 +161,12 @@
 			<div>
 				Layer Event:
 				<textarea style="width: 300px;" rows="20">{{ config.activeLayerEvent }}</textarea>
+			</div>
+		</div>
+		<div class="map-config">
+			<div>
+				General config (you can copy/past config here for load/save states):
+				<config-textarea :db="config.db"></config-textarea>
 			</div>
 		</div>
 	</div>
@@ -229,6 +235,29 @@
 	<script type="text/javascript" src="assets/js/components/map/editor/enemies.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/items.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/abilities.js"></script>
+
+	<script type="text/javascript">
+		Vue.component('configTextarea', {
+		  props: ['db'],
+		  template: ['<div class="config">',
+		      	'<div class="flex">',
+		      		'<textarea rows="5" cols="100" v-model="db_config"></textarea>',
+		      	'</div>',
+		    '</div>'
+		  ].join(""),
+		  computed: {
+		  	db_config: {
+		  		get: function () {
+		  			return JSON.stringify(config.db)
+		  		},
+		  		set: function (text) {
+		  			Vue.set(config, "db", JSON.parse(text))
+		  			//return 
+		  		}
+		  	}
+		  }
+		})
+	</script>
 
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
