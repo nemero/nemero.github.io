@@ -21,6 +21,15 @@
 						<li @click="config.activeTab = 'events'" :class="{ active : config.activeTab == 'events'}">
 							Layer Events
 						</li>
+						<li @click="config.activeTab = 'enemies'" :class="{ active : config.activeTab == 'enemies'}">
+							Enemies
+						</li>
+						<li @click="config.activeTab = 'items'" :class="{ active : config.activeTab == 'items'}">
+							Items
+						</li>
+						<li @click="config.activeTab = 'abilities'" :class="{ active : config.activeTab == 'abilities'}">
+							Abilities
+						</li>
 					</ul>
 					<div class="field-row">
 						<label>Active Tile:</label>
@@ -40,6 +49,24 @@
 					Select Tile:
 					<div class="tile-list">
 						<tile v-for="tile in config.tiles" :tile="tile" :config="config"></tile>
+					</div>
+				</div>
+				<div v-show="config.activeTab == 'enemies'" class="section">
+					<h4>Enemies: </h4>
+					<div class="field-row">
+						<enemies :enemies="config.db.enemies"></enemies>
+					</div>
+				</div>
+				<div v-show="config.activeTab == 'items'" class="section">
+					<h4>Items: </h4>
+					<div class="field-row">
+						<items :items="config.db.items"></items>
+					</div>
+				</div>
+				<div v-show="config.activeTab == 'abilities'" class="section">
+					<h4>Abilities: </h4>
+					<div class="field-row">
+						<abilities :abilities="config.db.abilities"></abilities>
 					</div>
 				</div>
 				<div v-show="config.activeTab == 'events'" class="section">
@@ -93,7 +120,8 @@
 					<event-loot-box :config="config"></event-loot-box>
 				</div>
 			</div>
-			<div class="ui-right">
+
+			<div class="ui-right" v-show="config.activeTab == 'tiles' || config.activeTab == 'events'">
 				<div>
 					<!-- <div class="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">Start dragging here</div> -->
   					<!-- <div>X: {{x}}, Y: {{y}}</div> -->
@@ -156,6 +184,11 @@
 
 	<script type="text/javascript" src="assets/js/db/enemies.js"></script>
 	<script type="text/javascript" src="assets/js/db/items.js"></script>
+	<script type="text/javascript" src="assets/js/db/item/types.js"></script>
+	<script type="text/javascript" src="assets/js/db/item/qualities.js"></script>
+	<script type="text/javascript" src="assets/js/db/abilities.js"></script>
+	<script type="text/javascript" src="assets/js/db/factions.js"></script>
+	<script type="text/javascript" src="assets/js/db/loot.js"></script>
 
 	<script type="text/javascript" src="assets/js/map/config.js"></script>
 
@@ -193,6 +226,9 @@
 	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileEvent.js"></script>
 
 	<script type="text/javascript" src="assets/js/components/map/editor/chooseSavedMap.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/enemies.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/items.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/abilities.js"></script>
 
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>

@@ -130,15 +130,6 @@ var config = {
 		shield: "Shield"
 	},
 
-	factions: {
-		wolf: "Wolf",
-		undead: "Undead",
-		zomby: "Zomby",
-		human: "Human",
-		elf: "Elf",
-		dwarf: "Dwarf"
-	},
-
 	activeEnemies: [],
 	activeUI: "world", // battle, battle-finish, game-over, menu, prefix active-ui-
 
@@ -148,6 +139,7 @@ var config = {
 		loot: db_loot,
 		abilities: db_abilities,
 		tileMaps: db_tile_maps,
+		factions: db_factions,
 
 		map: {
 			//tiles: db_map_draw_tiles,

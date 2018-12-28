@@ -32,7 +32,12 @@ var config = {
 	db: {
 		eventTemplates: db_map_event_templates,
 		enemies: db_enemies,
+		abilities: db_abilities,
 		items: db_items,
+		item_types: db_item_types,
+		item_qualities: db_item_qualities,
+		factions: db_factions,
+		loot: db_loot,
 		eventTriggers: ["hide_event", "show_event", "replace_tile"],
 		// 256x336 auto tiling by 16px
 		tileMaps: db_tile_maps,

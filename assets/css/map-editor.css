@@ -57,6 +57,9 @@ h5 {
 	justify-content: space-between;
 	align-items: center;
 }
+.flex-top {
+	align-items: start;
+}
 .field-row, .info {
 	margin-bottom: 5px;
 }

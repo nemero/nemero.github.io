@@ -268,52 +268,6 @@ a:hover {
 	text-shadow: 1px 0px 1px black;
 }
 
-.sword {
-	background: url(assets/sword.png) center center/cover;
-}
-.knife {
-	background: url(assets/knife.png) center center/cover;
-}
-.heal {
-	background: url(assets/regrown.png) center center/cover;
-}
-.scrap {
-	background: url(assets/scrap.png) center center/cover;
-}
-
-
-.poor {
-	color: #d2d2d2;
-	border: 1px solid #d2d2d2;
-	box-shadow: 0px 0px 0px 2px #d2d2d2 inset;
-}
-.common {
-	color: #fff;
-	border: 1px solid #fff;
-	box-shadow: 0px 0px 0px 2px #fff inset;
-}
-.uncommon {
-	color: #5ee76c;
-	border: 1px solid #5ee76c;
-	box-shadow: 0px 0px 0px 2px #5ee76c inset;
-}
-.rare {
-	color: #68b8ff;
-	border: 1px solid #68b8ff;
-	box-shadow: 0px 0px 0px 2px #68b8ff inset;
-}
-.epic {
-	color: #c984ff;
-	border: 1px solid #c984ff;
-	box-shadow: 0px 0px 0px 2px #c984ff inset;
-}
-.legendary {
-	color: #ff9a34;
-	border: 1px solid #ff9a34;
-	box-shadow: 0px 0px 0px 2px #ff9a34 inset;
-}
-
-
 @keyframes gotItem {
 	0% {
 		box-shadow: 0px 0px 4px 4px yellow;
