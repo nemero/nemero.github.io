@@ -46,7 +46,7 @@ select {
 	background: #743674;
 }
 span, label {
-	vertical-align: middle;
+	vertical-align: top;
 }
 h5 {
 	padding: 0;

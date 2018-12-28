@@ -86,32 +86,32 @@ Vue.component('activeEnemy', {
 
 				        '<div class="field-row">',
 				          '<label>Experience:</label> ',
-				          '<input type="number" v-model="enemy.experience" />',
+				          '<input type="number" v-model.number="enemy.experience" />',
 				        '</div>',
 
 				        '<div class="field-row">',
 				          '<label>Level:</label> ',
-				          '<input type="number" v-model="enemy.level" />',
+				          '<input type="number" v-model.number="enemy.level" />',
 				        '</div>',
 
 				        '<div class="field-row">',
 				          '<label>Health:</label> ',
-				          '<input type="number" v-model="enemy.health" />',
+				          '<input type="number" v-model.number="enemy.health" />',
 				        '</div>',
 
 				        '<div class="field-row">',
 				          '<label>Damage:</label> ',
-				          '<input type="number" v-model="enemy.damage" />',
+				          '<input type="number" v-model.number="enemy.damage" />',
 				        '</div>',
 
 				        '<div class="field-row">',
 				          '<label>Defence:</label> ',
-				          '<input type="number" v-model="enemy.defence" />',
+				          '<input type="number" v-model.number="enemy.defence" />',
 				        '</div>',
 
 				        '<div class="field-row">',
 				          '<label>Agility:</label> ',
-				          '<input type="number" v-model="enemy.agility" />',
+				          '<input type="number" v-model.number="enemy.agility" />',
 				        '</div>',
 
 				        '<div class="field-row">',
@@ -219,7 +219,7 @@ Vue.component('enemyLootItem', {
   template: ['<div class="enemy-loot-item">',
   		'<div class="field-row">',
   			'<label>{{ idx }}</label>',
-      	'<input type="number" v-model="item_percent" />',
+      	'<input type="number" v-model.number="item_percent" />',
       	'<input type="button" @click="removeItem()" value="-" />',
       '</div>',
   	'</div>'
@@ -259,7 +259,7 @@ Vue.component('enemyScript', {
 
   		'<div class="field-row">',
         '<label>Add Stage To:</label> ',
-        '<input type="number" v-model="to" />',
+        '<input type="number" v-model.number="to" />',
         '<input type="button" @click="addStage()" value="+" />', 
       '</div>',
   		'<enemy-script-stage v-for="(stage, idx) in script" :script="script" :stage="stage" :idx="idx"></enemy-script-stage>',

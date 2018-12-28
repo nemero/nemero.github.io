@@ -114,7 +114,7 @@
 					</div>
 
 					<event-player :config="config"></event-player>
-					<event-enemies :config="config"></event-enemies>
+					<event-enemies :enemy="config.activeLayerEvent" :config="config"></event-enemies>
 					<event-teleport :config="config"></event-teleport>
 					<event-unlock :config="config"></event-unlock>
 					<event-loot-box :config="config"></event-loot-box>
@@ -132,12 +132,12 @@
 					</select>
 
 					Dimensions:
-					<input type="number" v-model="config.width" name="" value="config.width" />
-					<input type="number" v-model="config.height" name="" value="config.height" />
+					<input type="number" v-model.number="config.width" name="" value="config.width" />
+					<input type="number" v-model.number="config.height" name="" value="config.height" />
 
 					Offset: 
-					<input type="number" v-model="config.mapOffset[0]" name="" value="config.mapOffset[0]" />
-					<input type="number" v-model="config.mapOffset[1]" name="" value="config.mapOffset[1]" />
+					<input type="number" v-model.number="config.mapOffset[0]" name="" value="config.mapOffset[0]" />
+					<input type="number" v-model.number="config.mapOffset[1]" name="" value="config.mapOffset[1]" />
 
 					<view-map-clear></view-map-clear>
 					<choose-saved-map :config="config"></choose-saved-map>
@@ -192,6 +192,7 @@
 	<script type="text/javascript" src="assets/js/db/items.js"></script>
 	<script type="text/javascript" src="assets/js/db/item/types.js"></script>
 	<script type="text/javascript" src="assets/js/db/item/qualities.js"></script>
+	<script type="text/javascript" src="assets/js/db/item/classes.js"></script>
 	<script type="text/javascript" src="assets/js/db/abilities.js"></script>
 	<script type="text/javascript" src="assets/js/db/factions.js"></script>
 	<script type="text/javascript" src="assets/js/db/loot.js"></script>

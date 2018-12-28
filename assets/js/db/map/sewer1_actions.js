@@ -702,7 +702,49 @@ var db_map_sewer1_actions = {
           "fly"
         ],
         "hidden": false,
-        "conditions": []
+        "conditions": [],
+        "seller": {
+          "sword0": 55,
+          "sword1": 155,
+          "monomate": 15,
+        }, 
+        "interactions": {
+          "dialog_1": {
+            id: "dialog_1",
+            type: "dialog", 
+            text: "what do you need from us?", choices: [
+              {answer: "1. give me russian vodka!", type: "dialog", next: "dialog_2"},
+              {answer: "2. i want your $ byustra! (attack)", type: "attack"}, 
+              {answer: "3. I will boom you!!! meowmeowfuker!", type: "dialog", next: "dialog_3"},
+              {answer: "4. I give you 10 cash, need badroom!", type: "rest", next: "dialog_4"},
+            ]
+          },
+          "dialog_2": {
+            id: "dialog_2",
+            type: "dialog", 
+            text: "10 cash!", choices: [
+              {answer: "1. I take it! (attack)", type: "attack"},
+              {answer: "2. Yes take 10 cash!", type: "auto_trade", take: ["vodka0"], give: [10], next: "dialog_4"}, // if number then it cash 
+              {answer: "3. Not intresting. (bye)", type: "exit"},
+              {answer: "4. Let see that you can sell. (trade)", type: "trade", next: "dialog_4"},
+            ]
+          },
+          "dialog_3": {
+            id: "dialog_3",
+            type: "dialog", 
+            text: "Oh you crazy fakir! lets try!", choices: [
+              {answer: "1. (attack)", type: "attack"},
+            ]
+          },
+          "dialog_4": {
+            id: "dialog_4",
+            type: "dialog", 
+            text: "something else?", choices: [
+              {answer: "1. Yes", type: "dialog", next: "dialog_1"},
+              {answer: "2. No, Thanks!", type: "exit"},
+            ]
+          }
+        },
       }
     }
   },

@@ -31,22 +31,30 @@ Vue.component('characterBag', {
       // load item from db
       var bag_item = config.db.items[id]
 
+      if (bag_item && bag_item.level < config.character.level) {
+        this.cant_equip = true
+        return
+      }
+
       if (bag_item && bag_item.type == "weapon") {
-        if (bag_item.level <= config.character.level) {
-      	  config.character.activeEquipment.weapon = id 
-        } else {
-          // animate box
-          this.cant_equip = true
-        }
+    	  config.character.activeEquipment.weapon = id 
       }
 
       if (bag_item && bag_item.type == "gear" && bag_item.class) {
-        if (bag_item.level <= config.character.level) {
-          config.character.activeEquipment[bag_item.class] = id
-        } else {
-          // animate box
-          this.cant_equip = true
+        config.character.activeEquipment[bag_item.class] = id
+      }
+
+      if (bag_item && bag_item.type == "consumable" && bag_item.class) { 
+        if (bag_item.class == "potion") {
+          if (config.character.health + bag_item.health > config.character.max_health) {
+            config.character.health = config.character.max_health
+          } else {
+            config.character.health += bag_item.health
+          }
         }
+
+        // remove item after using
+        config.character.bag.splice(config.character.bag.indexOf(this.item), 1)
       }
     },
     getOption(id, option, label) {

@@ -36,6 +36,7 @@ var config = {
 		items: db_items,
 		item_types: db_item_types,
 		item_qualities: db_item_qualities,
+		item_classes: db_item_classes,
 		factions: db_factions,
 		loot: db_loot,
 		eventTriggers: ["hide_event", "show_event", "replace_tile"],

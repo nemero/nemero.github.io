@@ -14,14 +14,14 @@ var config = {
 		name: "kokoko",
 		level: 1, // calculating from experience 1 = 100 exp.
 		experience: 10,
-		health: 37,
-		max_health: 37,
-		base_health: 37,
+		health: 20,
+		max_health: 20,
+		base_health: 20,
 		stamina: 0,
 		agility: 0,
 		strength: 0,
-		defence: 10,
-		base_defence: 10,
+		defence: 5,
+		base_defence: 5,
 		faction: 'aliance',
 		avatar: 'assets/hero.png',
 		hpScroll: [],
@@ -42,19 +42,13 @@ var config = {
 			ring2: null,
 			weapon: "fists0"
 		},
-		activeEquipmentStats: {
-			stamina: 0,
-			agility: 0,
-			strength: 0,
-			defence: 0
-		},
 
 		abilities: [
 			"attack", "range_shot", "regrown", "nekro_aoe", "stamina0", "strength0", "lose_stamina0", "escape0"
 		],
 
 		bag: [
-			"head0", "chest_test0", "chest0"
+			"head0", "chest_test0", "chest0", "monomate"
 		],
 
 		activeTarget: null,
@@ -62,12 +56,6 @@ var config = {
 		
 		buffs: {},
 		debuffs: {},
-		activeBuffStats: {
-			stamina: 0,
-			agility: 0,
-			strength: 0,
-			defence: 0
-		},
 
 		keyBindings: {
 			"attack": {

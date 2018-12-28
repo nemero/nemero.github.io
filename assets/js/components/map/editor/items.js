@@ -86,7 +86,7 @@ Vue.component('activeItem', {
 
         '<div class="field-row">',
           '<label>Level:</label> ',
-          '<input type="number" v-model="item.level" />',
+          '<input type="number" v-model.number="item.level" />',
         '</div>',
 
         '<div class="tiles-map">',
@@ -95,11 +95,6 @@ Vue.component('activeItem', {
             '<input type="text" v-model="item.icon" />',
           '</div>',
           '<span class="layer-event" style="zoom: 3; border: 0.2px solid #cecece;" :class="getIconClass" :style="getIconStyle"></span>',
-        '</div>',
-
-        '<div class="field-row">',
-          '<label>Price:</label> ',
-          '<input type="number" v-model="item.price" />',
         '</div>',
 
         // NOTE
@@ -113,31 +108,42 @@ Vue.component('activeItem', {
         '<div v-if="item.type == \'weapon\'">',
           '<div class="field-row">',
             '<label>Damage:</label> ',
-            '<input type="number" v-model="item.damage" />',
+            '<input type="number" v-model.number="item.damage" />',
           '</div>',
         '</div>',
 
+        '<div v-if="item.class == \'potion\'">',
+          '<div class="field-row">',
+            '<label>Health:</label> ',
+            '<input type="number" v-model.number="item.health" />',
+          '</div>',
+        '</div>',
 
         '<div v-if="item.type == \'weapon\' || item.type == \'gear\'">',
           '<div class="field-row">',
             '<label>Defence:</label> ',
-            '<input type="number" v-model="item.defence" />',
+            '<input type="number" v-model.number="item.defence" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Strength:</label> ',
-            '<input type="number" v-model="item.strength" />',
+            '<input type="number" v-model.number="item.strength" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Agility:</label> ',
-            '<input type="number" v-model="item.agility" />',
+            '<input type="number" v-model.number="item.agility" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Stamina:</label> ',
-            '<input type="number" v-model="item.stamina" />',
+            '<input type="number" v-model.number="item.stamina" />',
           '</div>',
+        '</div>',
+
+        '<div class="field-row">',
+          '<label>Price:</label> ',
+          '<input type="number" v-model.number="item.price" />',
         '</div>',
 
       '</div>',
@@ -151,11 +157,7 @@ Vue.component('activeItem', {
       return config.db.item_qualities
     },
     getItemClasses: function () {
-      return [
-        "bow", "fists", "sword_one", "knife", 
-        "head", "neck", "shoulders", "cloak", "chest", "hands", "legs", "boots", "ring1", "ring2",
-        "garbage"
-      ]
+      return config.db.item_classes
     },
     getIconStyle: function () {
       let data = {}
