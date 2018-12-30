@@ -15,7 +15,26 @@ Vue.component('activeInteractions', {
        	'</div>',
       '</div>'
       ].join(''),
+  created: function () {
+    window.addEventListener('keydown', this.selectChoiceKey)
+  },
   methods: {
+  	selectChoiceKey: function (e) {
+      if (config.activeUI != "dialog") {
+        return
+      }
+
+      let choice_id = null
+      if (e.keyCode - 49 >= 0) {
+      	choice_id = e.keyCode - 49
+      } else {
+      	return
+      }
+      
+      if (this.interaction.choices && this.interaction.choices[choice_id]) {
+      	this.selectChoice(this.interaction.choices[choice_id])
+      }
+    },
   	selectChoice: function (choice) {
   		if (choice.type == "dialog") {
   			this.active_interaction_id = choice.next

@@ -16,7 +16,15 @@ Vue.component('activeTrade', {
         '<span class="pointer" @click="finish">1. Back</span>',
       '</div>'
       ].join(''),
+  created: function () {
+    window.addEventListener('keydown', this.back)
+  },
   methods: {
+    back: function (e) {
+      if (e.keyCode == 49 && config.activeUI == "trade") {
+        this.finish()
+      }
+    },
     finish: function () {
       config.activeUI = "dialog"
     }

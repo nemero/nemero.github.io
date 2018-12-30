@@ -27,11 +27,12 @@ Vue.component('characterAbilities', {
   },
   methods: {
     testest: function(e) {
+
         let key = e.key // char
         let ability_item = config.db.abilities[this.ability]
         let key_binding = config.character.keyBindings[this.ability]
 
-        if (config.activeUI == "game-over") {
+        if (config.activeUI != "battle") {
           return
         }
         if (key_binding && key_binding.key == e.keyCode) {
