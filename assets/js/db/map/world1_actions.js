@@ -98,5 +98,33 @@ var db_map_world1_actions = {
         "autoTrigger": "13"
       }
     }
+  },
+  "13": {
+    "-2": {
+      "undefined_13_-2_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-teleport0",
+        "position": [
+          8,
+          13
+        ],
+        "map": "city1",
+        "autoTrigger": "hover"
+      }
+    },
+    "-3": {
+      "undefined_13_-3_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-teleport0",
+        "position": [
+          8,
+          13
+        ],
+        "map": "city1",
+        "autoTrigger": "hover"
+      }
+    }
   }
 }

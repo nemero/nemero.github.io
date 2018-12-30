@@ -126,7 +126,7 @@ html, body {
 	background: url(../tileset_1.png);
 }
 .tile-map2 {
-	background: url(../mountains_0.png);
+	background: url(../tileset_mountains_0.png);
 }
 .tile-map3 {
 	background: url(../tileset_water.png);
@@ -136,7 +136,9 @@ html, body {
 }
 .tile-map5 {
 	background: url(../tileset_sewer_1_48.png);
-	//background: url(../tileset_sewer_1_ext.png);
+}
+.tile-map6 {
+	background: url(../tileset_magecity_1.png);
 }
 
 

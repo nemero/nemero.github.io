@@ -175,6 +175,18 @@ var config = {
 				map: db_map_world1,
 				layerEvents: db_map_world1_actions,
 			},
+			city1: {
+				name: "City 1",
+				height: 15,
+				width: 15,
+				default_tile: {
+					map_class: "tile-map6",
+					position: [6, 40],
+					size: [48, 48]
+				},
+				map: db_map_city1,
+				layerEvents: db_map_city1_actions,
+			},
 		}
 	}
 }

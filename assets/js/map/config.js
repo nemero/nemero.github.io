@@ -59,6 +59,11 @@ var config = {
 				"map": db_map_world1,
 				"layerEvents": db_map_world1_actions,
 			},
+			"city1": {
+				"name": "city1",
+				"map": db_map_city1,
+				"layerEvents": db_map_city1_actions,
+			},
 		},
 	},
 }

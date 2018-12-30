@@ -9,9 +9,9 @@ var db_tile_maps = [
 	{
 		id: 'mountains_0',
 		class: 'tile-map2',
-		width: 196,
-		height: 160,
-		tileSize: [16, 16]
+		width: 576,
+		height: 480,
+		tileSize: [48, 48]
 	},
 	{
 		id: 'water_1',
@@ -23,17 +23,24 @@ var db_tile_maps = [
 		frame_time: 1000 // miliseconds
 	},
     {
-      id: 'cave_1',
-      class: 'tile-map4',
-      width: 256,
-      height: 336,
-      tileSize: [16, 16],
+		id: 'cave_1',
+		class: 'tile-map4',
+		width: 768,
+		height: 1008,
+		tileSize: [48, 48],
     },
     {
-      id: 'sewer_1',
-      class: 'tile-map5',
-      width: 816, //272,
-      height: 768, //336,
-      tileSize: [48, 48], // [16, 16],
+		id: 'sewer_1',
+		class: 'tile-map5',
+		width: 816, //272,
+		height: 768, //336,
+		tileSize: [48, 48], // [16, 16],
+    },
+    {
+		id: 'city_1',
+		class: 'tile-map6',
+		width: 384, //272,
+		height: 2175, //336,
+		tileSize: [48, 48], // [16, 16],
     },
 ]
