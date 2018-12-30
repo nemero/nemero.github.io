@@ -353,5 +353,16 @@ var db_items = {
     "quality": "common",
     "level": 1,
     "icon": "assets/heart-bottle.png"
+  },
+  "vodka0": {
+    "id": "vodka0",
+    "name": "vodka0",
+    "type": "consumable",
+    "class": "potion",
+    "quality": "rare",
+    "level": 1,
+    "health": 200,
+    "price": 10,
+    "icon": "assets/heart-bottle.png"
   }
 }

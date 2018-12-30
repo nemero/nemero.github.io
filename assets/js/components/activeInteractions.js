@@ -10,7 +10,7 @@ Vue.component('activeInteractions', {
        	'<div class="dialog">',
        		'<span class="text">{{ interaction.text }}</span>',
        		'<div class="answer" v-for="(choice, idx) in interaction.choices" @click="selectChoice(choice)">',
-       			'{{ idx }}. {{ choice.answer }}',
+       			'{{ idx + 1 }}. {{ choice.answer }} ({{ choice.type }})',
        		'</div>',
        	'</div>',
       '</div>'
@@ -37,14 +37,49 @@ Vue.component('activeInteractions', {
   		}
 
   		if (choice.type == "auto_trade") {
-  			// todo implement
+  			// check needed items
+  			let can_trade = true
+  			for (item_id in choice.give) {
+  				let item = choice.give[item_id]
+  				if (Number.isInteger(item) && config.character.money < item) {
+  					can_trade = false
+  					break
+  				}
+
+  				if (!Number.isInteger(item) && config.character.bag.indexOf(item) < 0) {
+  					can_trade = false
+  					break
+  				}
+  			}
+
+  			if (can_trade) {
+  				// take from player
+					for (item_id in choice.give) {
+	  				let item = choice.give[item_id]
+	  				if (Number.isInteger(item)) {
+	  					config.character.money -= item
+	  				} else {
+	  					config.character.bag.splice(item_id, 1)
+	  				}
+	  			}
+
+	  			// give player
+	  			for (item_id in choice.take) {
+	  				let item = choice.take[item_id]
+	  				if (Number.isInteger(item)) {
+	  					config.character.money += item
+	  				} else {
+	  					config.character.bag.push(item)
+	  				}	
+	  			}
+  			}
+
   			this.active_interaction_id = choice.next
   		}
 
   		if (choice.type == "rest") {
-  			// todo: move in config
-  			if (config.character.money - 10 >= 0) {
-  				config.character.money -= 10
+  			if (config.character.money - choice.cost >= 0) {
+  				config.character.money -= choice.cost
   			} else {
   				// apply cant use effect
   				return

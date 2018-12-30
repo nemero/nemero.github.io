@@ -16,8 +16,9 @@ Vue.component('characterBag', {
               '<li>{{ getOption(item, "stamina", "Stamina: ") }}</li>',
               '<li>{{ getOption(item, "agility", "Agility: ") }}</li>',
               '<li>{{ getOption(item, "defence", "Defence: ") }}</li>',
-              '<li>{{ getOption(item, "price", "Price: ") }}</li>',
+              '<li>{{ getOption(item, "health", "Health: ") }}</li>',
               '<li>{{ getOption(item, "text", "Note: ") }}</li>',
+              '<li>{{ getOption(item, "price", "Price: ") }}</li>',
               '<li>{{ item }}</li>',
             '</ul>',
           '</div>',
@@ -31,7 +32,7 @@ Vue.component('characterBag', {
       // load item from db
       var bag_item = config.db.items[id]
 
-      if (bag_item && bag_item.level < config.character.level) {
+      if (bag_item && bag_item.level > config.character.level) {
         this.cant_equip = true
         return
       }
@@ -44,7 +45,12 @@ Vue.component('characterBag', {
         config.character.activeEquipment[bag_item.class] = id
       }
 
-      if (bag_item && bag_item.type == "consumable" && bag_item.class) { 
+      if (bag_item && bag_item.type == "consumable" && bag_item.class) {
+        if (config.character.health == config.character.max_health) {
+          this.cant_equip = true
+          return
+        }
+        
         if (bag_item.class == "potion") {
           if (config.character.health + bag_item.health > config.character.max_health) {
             config.character.health = config.character.max_health

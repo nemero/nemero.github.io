@@ -202,6 +202,13 @@ Vue.component('eventInteractionChoice', {
           '<textarea v-model="choice.answer" rows=5 cols=30></textarea>',
         '</div>',
 
+        '<div v-if="choice.type == \'rest\'">',
+          '<div class="field-row">',
+            '<label>Cost:</label> ',
+            '<input type="text" v-model.number="choice.cost"/>',
+          '</div>',
+        '</div>',
+
         '<div v-if="choice.type != \'attack\' && choice.type != \'exit\'">',
           '<div class="field-row">',
             '<label>Next Dialog:</label> ',

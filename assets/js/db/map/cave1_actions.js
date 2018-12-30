@@ -39,22 +39,23 @@ var db_map_cave1_actions = {
             "text": "what do you need from us?",
             "choices": [
               {
-                "answer": "1. give me russian vodka!",
+                "answer": "give me russian vodka!",
                 "type": "dialog",
                 "next": "dialog_2"
               },
               {
-                "answer": "2. i want your $ byustra! (attack)",
+                "answer": "i want your $ byustra!",
                 "type": "attack"
               },
               {
-                "answer": "3. I will boom you!!! meowmeowfuker!",
+                "answer": "I will boom you!!! meowmeowfuker!",
                 "type": "dialog",
                 "next": "dialog_3"
               },
               {
-                "answer": "4. I give you 10 cash, need badroom!",
+                "answer": "I give you 10 cash, need badroom!",
                 "type": "rest",
+                "cost": 10,
                 "next": "dialog_4"
               }
             ]
@@ -65,11 +66,11 @@ var db_map_cave1_actions = {
             "text": "10 cash!",
             "choices": [
               {
-                "answer": "1. I take it! (attack)",
+                "answer": "I take it!",
                 "type": "attack"
               },
               {
-                "answer": "2. Yes take 10 cash!",
+                "answer": "Yes take 10 cash! (auto trade vodka on 10 cash)",
                 "type": "auto_trade",
                 "take": [
                   "vodka0"
@@ -80,11 +81,11 @@ var db_map_cave1_actions = {
                 "next": "dialog_4"
               },
               {
-                "answer": "3. Not intresting. (bye)",
+                "answer": "Not intresting. (bye)",
                 "type": "exit"
               },
               {
-                "answer": "4. Let see that you can sell. (trade)",
+                "answer": "Let see that you can sell.",
                 "type": "trade",
                 "next": "dialog_4"
               }
@@ -96,7 +97,7 @@ var db_map_cave1_actions = {
             "text": "Oh you crazy fakir! lets try!",
             "choices": [
               {
-                "answer": "1. (attack)",
+                "answer": "(attack)",
                 "type": "attack"
               }
             ]
@@ -107,12 +108,12 @@ var db_map_cave1_actions = {
             "text": "something else?",
             "choices": [
               {
-                "answer": "1. Yes",
+                "answer": "Yes",
                 "type": "dialog",
                 "next": "dialog_1"
               },
               {
-                "answer": "2. No, Thanks!",
+                "answer": "No, Thanks!",
                 "type": "exit"
               }
             ]
