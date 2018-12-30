@@ -6,7 +6,7 @@ Vue.component('activeInteractions', {
 		}
 	},
   template: [
-      '<div class="">',
+      '<div class="" v-if="event">',
        	'<div class="dialog">',
        		'<span class="text">{{ interaction.text }}</span>',
        		'<div class="answer" v-for="(choice, idx) in interaction.choices" @click="selectChoice(choice)">',
@@ -20,7 +20,7 @@ Vue.component('activeInteractions', {
   },
   methods: {
   	selectChoiceKey: function (e) {
-      if (config.activeUI != "dialog") {
+      if (config.activeUI != "dialog" || !this.event) {
         return
       }
 
@@ -30,7 +30,8 @@ Vue.component('activeInteractions', {
       } else {
       	return
       }
-      
+      console.log(choice_id, this.interaction.choices[choice_id].answer)
+
       if (this.interaction.choices && this.interaction.choices[choice_id]) {
       	this.selectChoice(this.interaction.choices[choice_id])
       }
@@ -115,7 +116,7 @@ Vue.component('activeInteractions', {
   		}
 
   		if (choice.type == "exit" || choice.type == "attack") {
-  		  Vue.delete(config, "activeInteractions")
+  		  Vue.set(config, "activeInteractions", null)
   			this.active_interaction_id = null
   		}
   	}

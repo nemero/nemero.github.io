@@ -1,7 +1,7 @@
 Vue.component('activeTrade', {
 	props: ['seller'],
   template: [
-      '<div class="">',
+      '<div class="" v-if="config.activeTrade">',
         '<span class="money">Cash: {{ getCharacter.money }}</span>',
        	
         '<div class="flex flex-top">',
