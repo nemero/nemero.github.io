@@ -154,9 +154,6 @@ Vue.component('characterAbilities', {
         this.kick(damage, enemy.activeTarget)
       }
 
-      // cooldown for enemies debuffs buffs
-      this.enemyTick()
-
       // buff controll ticks
       this.buffsTick(enemy)
       // debuff controll ticks
@@ -168,6 +165,8 @@ Vue.component('characterAbilities', {
       // cooldown controll
       this.cooldownTick(ability_item, enemy)
 
+      // enemies buff/debuf tick
+      this.enemiesTick()
       // check is enemy down & get loot if down
       this.enemyDownCheck()
 
@@ -477,8 +476,8 @@ Vue.component('characterAbilities', {
           this.useDebuff(ability_item, enemy)
 
           // buff controll ticks
-          this.buffsTick(enemy)
-          this.debuffsTick(enemy)  
+          //this.buffsTick(enemy)
+          //this.debuffsTick(enemy) 
           
           //console.log(ability_item.id, ability_item.type)
           if (target.health <= 0) {
@@ -490,31 +489,12 @@ Vue.component('characterAbilities', {
         } 
       }
     },
-    enemyTick: function () {
-      return 
+    enemiesTick: function () {
       for (enemy_idx in config.activeEnemies) {
         let enemy = config.activeEnemies[enemy_idx]
-        for (debuff_idx in enemy.debuffs) {
-          let debuff = enemy.debuffs[debuff_idx]
-          if (debuff.time > 0) {
-            // execute debuff
-            let ability_item = config.db.abilities[debuff_idx]
-            if (ability_item.type == "damage_dot") {
-              let critical_damage = getRandomArbitrary(1, 100) <= config.character.agility ? 2 : 1
-              let scaling = ability_item.strength_scaling ? ability_item.strength_scaling : 0
-              let strength = config.character.strength
-              // recalculate character stats
-              let damage_tick = ability_item.damage_tick + Math.trunc((scaling/100) * strength) // 0.2 * 4 -> 4 + 0.8 = 4.8
-              //console.log(scaling, strength, damage_tick)
-              let damage = (damage_tick) * critical_damage
-              this.kick(damage, enemy)
-            }
-            debuff.time -= 1  
-          } else {
-            debuff = null
-          }
-        }
-        
+        // buff controll ticks
+        this.buffsTick(enemy)
+        this.debuffsTick(enemy) 
       }
     },
     getCooldown: function (item) {

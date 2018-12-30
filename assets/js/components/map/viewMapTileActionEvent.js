@@ -34,7 +34,7 @@ Vue.component('viewMapTileActionEvent', {
       }
 
       // check conditions if exist
-      if (tile.conditions) {
+      if (tile.conditions && tile.length > 0) {
         let is_showing = true
         for (condition_idx in tile.conditions) {
           let condition = tile.conditions[condition_idx]

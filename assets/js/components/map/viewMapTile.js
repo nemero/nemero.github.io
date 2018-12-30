@@ -59,7 +59,7 @@ Vue.component('viewMapTile', {
       }
 
       // check conditions if exist
-      if (event.conditions) {
+      if (event.conditions && event.length > 0) {
         let is_showing = true
         for (condition_idx in event.conditions) {
           let condition = event.conditions[condition_idx]
