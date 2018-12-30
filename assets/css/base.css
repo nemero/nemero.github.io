@@ -15,6 +15,9 @@ html, body {
 .icon-battle0 {
 	background: url(../battle.png) center center/cover;
 }
+.icon-speak0 {
+	background: url(../speak.png) center center/cover;
+}
 .icon-angry_bear1 {
 	background: url(../angry_bear1.png) center center/cover;
 }

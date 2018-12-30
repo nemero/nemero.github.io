@@ -2,7 +2,12 @@ var stop_tiles = {
 		"tile-map1": [
 			"tile-map1_0_0", "tile-map1_0_1", "tile-map1_0_2", "tile-map1_1_0", "tile-map1_1_2", "tile-map1_2_0", "tile-map1_2_1",
 			"tile-map1_2_2", "tile-map1_3_0", "tile-map1_3_1", "tile-map1_4_0", "tile-map1_4_1", "tile-map1_10_13", "tile-map1_10_15",
-			"tile-map1_14_13", "tile-map1_14_15", "tile-map1_9_0", "tile-map1_9_1", "tile-map1_8_0", "tile-map1_8_1"
+			"tile-map1_14_13", "tile-map1_14_15", "tile-map1_9_0", "tile-map1_9_1", "tile-map1_8_0", "tile-map1_8_1",
+			"tile-map1_0_3", "tile-map1_0_4", "tile-map1_0_5",
+			"tile-map1_1_3", "tile-map1_1_5",
+			"tile-map1_2_3", "tile-map1_2_4", "tile-map1_2_5",
+			"tile-map1_3_3", "tile-map1_3_4",
+			"tile-map1_4_3", "tile-map1_4_4",
 		],
 		"tile-map4": [
 			"tile-map4_0_0", "tile-map4_0_1", "tile-map4_0_2",
