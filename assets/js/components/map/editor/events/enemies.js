@@ -36,6 +36,12 @@ Vue.component('eventEnemies', {
           '<input type="text" v-model="add_interaction_id" placeholder="unique id"/>',
           '<input type="button" @click="addInteraction()" value="+" />',
         '</div>',
+        '<div class="field-row">',
+          '<label>Default Interaction:</label> ',
+          '<select v-model="enemy.default_interaction_id">',
+            '<option v-for="interaction in enemy.interactions" :value="interaction.id">{{ interaction.id }}</option>',
+          '</select>',
+        '</div>',
 
         '<event-interaction v-for="(interaction, idx) in enemy.interactions" :interactions="enemy.interactions" :interaction="interaction" :idx="idx"></event-interaction>',
 

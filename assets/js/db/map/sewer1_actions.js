@@ -708,6 +708,7 @@ var db_map_sewer1_actions = {
           "sword1": 155,
           "monomate": 15,
         }, 
+        "default_interaction_id": "dialog_1",
         "interactions": {
           "dialog_1": {
             id: "dialog_1",

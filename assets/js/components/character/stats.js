@@ -10,6 +10,7 @@ Vue.component('characterStats', {
         '<div class="character-stats">',
           '<span @click="showStats()">Show/Hide Stats</span>',
           '<ul v-show="isShowStats">',
+            '<li>Money: {{ character.money }}</li>',
           	'<li>{{ getEquipment() }}</li>',
             '<li>Defence: {{ character.defence }}</li>',
             '<li>Stamina: {{ character.stamina }}</li>',

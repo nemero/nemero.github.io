@@ -210,6 +210,15 @@ a:hover {
 	bottom: 2px;
 	left: 5px;
 }
+
+.game-icon .price {
+	text-shadow: 1px 1px 1px #000000;
+	position: absolute;
+	bottom: -15px;
+	left: 0;
+	font-size: 150%;
+}
+
 .game-icon .name {
 	text-shadow: 1px 1px 1px #000000;
 	position: absolute;
@@ -585,7 +594,7 @@ a:hover {
 }
 
 
-.ui-battle, .ui-battle-finish, .ui-game-over {
+.ui-battle, .ui-battle-finish, .ui-game-over, .ui-dialog, .ui-trade {
 	display: none;
 }
 .active-ui-battle .ui-battle {
@@ -619,6 +628,33 @@ a:hover {
 	color: wheat;
 	align-items: center;
 }
+.active-ui-dialog .ui-dialog {
+	display: flex;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	background: rgba(26, 26, 26, 0.85);
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	color: wheat;
+	align-items: center;
+}
+
+.active-ui-trade .ui-trade {
+	display: flex;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	background: rgba(26, 26, 26, 0.85);
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	color: wheat;
+	align-items: center;
+}
 .active-ui-game-over .ui-game-over a {
 	cursor: pointer;
 	text-decoration: underline;	
@@ -628,4 +664,28 @@ a:hover {
 	display: flex;
 	flex-direction: column;
 	margin: 10px;
+}
+
+.dialog .text {
+	margin-bottom: 10px;
+	font-size: 120%;
+	display: inline-block;
+}
+.dialog .answer {
+	cursor: pointer;
+	margin: 5px 0;
+}
+.dialog .answer:hover {
+	color: #fff;
+}
+
+.bag, .seller {
+	padding: 10px;
+	border: 1px solid wheat;
+	margin: 10px;
+	max-width: 290px;
+	overflow: auto;
+}
+.bag .game-icon, .seller .game-icon {
+	margin-bottom: 12px;
 }

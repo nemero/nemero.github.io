@@ -52,21 +52,6 @@ h5 {
 	padding: 0;
 	margin: 5px 0 10px;
 }
-.flex {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.flex-top {
-	align-items: start;
-}
-.field-row, .info {
-	margin-bottom: 5px;
-}
-.field-row label {
-	min-width: 140px;
-	display: inline-block;
-}
 
 .ui {
 	display: flex;

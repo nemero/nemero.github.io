@@ -26,6 +26,7 @@ var config = {
 		avatar: 'assets/hero.png',
 		hpScroll: [],
 		dies: 0,
+		money: 100,
 
 		position: [0, 0], // will replacing afgter init component
 

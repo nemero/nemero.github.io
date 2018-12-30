@@ -41,10 +41,10 @@ Vue.component('executeEvent', {
       let event = _event.event
       if (_event.id == "enter") {
         // trigger only enemies event if exist
-        if (_event.id !== "enemies") {
+        if (event.id !== "enemies") {
           for (layer_idx in config.activeEvents) {
             let layer = config.activeEvents[layer_idx]
-            if (layer.id == "enemies" && layer.cooldown 
+            if (layer.id == "enemies" && !_event.interactions && layer.cooldown 
                 && (!layer["cooldown_left"] || (layer["cooldown_left"] && layer["cooldown_left"] <= config.step))
               ) {
               event = layer
@@ -191,6 +191,12 @@ Vue.component('executeEvent', {
     enter: function (event) {
       //let event = this.event.event
       if (event.id == "enemies" || (event.id == "enemies" && event.cooldown && event["cooldown_left"] <= config.step)) {
+        if (event.interactions && config.activeUI !== "dialog") {
+          config.activeInteractions = event // copy link on object
+          config.activeUI = "dialog"
+          return
+        }
+
         let counter = 0
         config.activeEnemies = []
         for (enemy_idx in event.enemies) {

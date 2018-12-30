@@ -480,7 +480,7 @@ Vue.component('characterAbilities', {
           this.buffsTick(enemy)
           this.debuffsTick(enemy)  
           
-          console.log(ability_item.id, ability_item.type)
+          //console.log(ability_item.id, ability_item.type)
           if (target.health <= 0) {
             logger('Hero is OWN! PZZZZZ RESURRECT! VIUUVIUU... ')
             config.activeUI = "game-over"
