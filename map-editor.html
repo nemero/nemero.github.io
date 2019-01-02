@@ -50,6 +50,11 @@
 					<div class="tile-list">
 						<tile v-for="tile in config.tiles" :tile="tile" :config="config"></tile>
 					</div>
+
+					<div class="flex flex-top">
+						Config Tiles:
+						<textarea style="width: 300px;" rows="20">{{ config.db.config_tiles }}</textarea>
+					</div>
 				</div>
 				<div v-show="config.activeTab == 'enemies'" class="section">
 					<h4>Enemies: </h4>
@@ -178,6 +183,7 @@
 
 	<!-- Map Data -->
 	<script type="text/javascript" src="assets/js/db/map/tile_maps.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/config_tiles.js"></script>
 
 	<script type="text/javascript" src="assets/js/db/map/indoor1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/indoor1_actions.js"></script>

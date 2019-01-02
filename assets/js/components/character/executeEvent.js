@@ -109,7 +109,7 @@ Vue.component('executeEvent', {
           let can_move = true
           for (idx in this.event.directions) {
             let direction = this.event.directions[idx]
-            if (!config.db.map.directions_tiles[tile.map][tile.id][direction]) {
+            if (config.db.map.directions_tiles[tile.map][tile.id].indexOf(direction) < 0) {
               return // we cant move 
             }
 
@@ -129,28 +129,28 @@ Vue.component('executeEvent', {
             let new_direction = ""
             if (direction == "left") {
               new_direction = "right"
-              if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
+              if (config.db.map.directions_tiles[tile.map][tile.id].indexOf(new_direction) < 0) {
                 return // we cant move 
               }
             }
 
             if (direction == "right") {
               new_direction = "left"
-              if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
+              if (config.db.map.directions_tiles[tile.map][tile.id].indexOf(new_direction) < 0) {
                 return // we cant move 
               }
             }
 
             if (direction == "up") {
               new_direction = "down"
-              if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
+              if (config.db.map.directions_tiles[tile.map][tile.id].indexOf(new_direction) < 0) {
                 return // we cant move 
               }
             }
 
             if (direction == "down") {
               new_direction = "up"
-              if (!config.db.map.directions_tiles[tile.map][tile.id][new_direction]) {
+              if (config.db.map.directions_tiles[tile.map][tile.id].indexOf(new_direction) < 0) {
                 return // we cant move 
               }
             }

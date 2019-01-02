@@ -39,6 +39,7 @@ var config = {
 		item_classes: db_item_classes,
 		factions: db_factions,
 		loot: db_loot,
+		config_tiles: config_tiles,
 		eventTriggers: ["hide_event", "show_event", "replace_tile"],
 		// 256x336 auto tiling by 16px
 		tileMaps: db_tile_maps,

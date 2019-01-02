@@ -133,9 +133,9 @@ var config = {
 		map: {
 			//tiles: db_map_draw_tiles,
 			viewport: [15, 10],
-			stop_tiles: stop_tiles,
-			directions_tiles: directions_tiles,
-			z_tiles: z_tiles,
+			stop_tiles: config_tiles.stop,
+			directions_tiles: config_tiles.directions,
+			z_tiles: config_tiles.z,
 			activeMap: "cave1",
 			tileSize: [48, 48],
 

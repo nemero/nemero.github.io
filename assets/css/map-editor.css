@@ -70,6 +70,15 @@ h5 {
 	width: 100%;
 	overflow-x: scroll;
 }
+.tile-list .field-row {
+	margin-bottom: 0;
+}
+.tile-list h4 {
+	margin: 0;
+}
+.tile-list .field-row label {
+	min-width: 50px;
+}
 .tile-list .tile {
 	display: inline-block;
 	margin-right: 2px;
@@ -77,6 +86,7 @@ h5 {
 	border: 1px solid #bababa;
 	font-size: 0;
 	background: #542754;
+	position: relative;
 }
 .tile-list .tile.active {
 	border: 1px solid #408080;
@@ -88,8 +98,19 @@ h5 {
 	display: inline-block;
 }
 .tile-list .tile .tile-details {
+	display: none;
+}
+.tile-list .tile:hover .tile-details {
 	font-size: 10px;
 	display: block;
+	position: absolute;
+	background: #fff;
+	border-radius: 3px;
+	padding: 2px;
+	left: 0;
+	min-width: 100px;
+	border: 1px solid #cecece;
+	z-index: 9;
 }
 
 .view-map-row {
