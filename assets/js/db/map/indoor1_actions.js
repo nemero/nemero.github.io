@@ -36,6 +36,12 @@ var db_map_indoor1_actions = {
                 "type": "dialog",
                 "answer": "ti cho here delaesh?",
                 "next": "dialog_3"
+              },
+              {
+                "type": "rest",
+                "answer": "nada rest! (10 cash)",
+                "cost": 10,
+                "next": "dialog_2"
               }
             ]
           },

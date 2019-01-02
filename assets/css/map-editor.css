@@ -96,6 +96,7 @@ h5 {
 	width: 32px;
 	zoom: .7;
 	display: inline-block;
+	cursor: pointer;
 }
 .tile-list .tile .tile-details {
 	display: none;

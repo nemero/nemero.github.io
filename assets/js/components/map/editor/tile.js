@@ -11,7 +11,7 @@ Vue.component('tile', {
     }
   },
   template: ['<span class="tile" :class="isSelected" @click="selectTile">',
-  				'<span class="tile-picture" :style="getTileStyle" :class="getTileMapClass" :title="getTileDetails"></span>',
+  				'<span class="tile-picture" :style="getTileStyle" :class="getTileMapClass"></span>',
 				  '<div class="tile-details">',
 					 '<h4>{{ tile.id }}</h4>',
            '<div class="field-row">',
@@ -27,107 +27,71 @@ Vue.component('tile', {
            '<h4>Accept directions</h4> ',
             '<div class="field-row">',
               '<label>Up</label> ',
-              '<input type="checkbox" v-model="up_direction" @change="setUpDirection"/>',
+              '<input type="checkbox" v-model="up_direction" @change="changeDirection"/>',
             '</div>',
             '<div class="field-row">',
               '<label>Down</label> ',
-              '<input type="checkbox" v-model="down_direction" @change="setDownDirection"/>',
+              '<input type="checkbox" v-model="down_direction" @change="changeDirection"/>',
             '</div>',
             '<div class="field-row">',
               '<label>Left</label> ',
-              '<input type="checkbox" v-model="left_direction" @change="setLeftDirection"/>',
+              '<input type="checkbox" v-model="left_direction" @change="changeDirection"/>',
             '</div>',
             '<div class="field-row">',
               '<label>Right</label> ',
-              '<input type="checkbox" v-model="right_direction" @change="setRightDirection"/>',
+              '<input type="checkbox" v-model="right_direction" @change="changeDirection"/>',
             '</div>',
           '</div>',
     '</span>'].join(""),
   created: function () {
-    // init options
-    let stop_tiles = config.db.config_tiles.stop[this.tile.map]
-    if (stop_tiles && stop_tiles.indexOf(this.tile.id) >= 0) {
-      this.stop_tile = true
-    } else {
-      this.stop_tile = false
-    }
-
-    // z tile 
-    let z_tiles = config.db.config_tiles.z[this.tile.map]
-    if (z_tiles && z_tiles.indexOf(this.tile.id) >= 0) {
-      this.z_tile = true
-    } else {
-      this.z_tile = false
-    }
-
-    // direction tile 
-    let direction_tiles = config.db.config_tiles.directions[this.tile.map]
-    if (direction_tiles && direction_tiles[this.tile.id]) {
-      if (direction_tiles[this.tile.id].indexOf('up') >= 0) {
-        this.up_direction = true
-      } else {
-        this.up_direction = false
-      }
-      if (direction_tiles[this.tile.id].indexOf('down') >= 0) {
-        this.down_direction = true
-      } else {
-        this.down_direction = false
-      }
-      if (direction_tiles[this.tile.id].indexOf('left') >= 0) {
-        this.left_direction = true
-      } else {
-        this.left_direction = false
-      }
-      if (direction_tiles[this.tile.id].indexOf('right') >= 0) {
-        this.right_direction = true
-      } else {
-        this.right_direction = false
-      }
-    }
+    this.initOptions()
   },
   updated: function () {
-    // init options
-    let stop_tiles = config.db.config_tiles.stop[this.tile.map]
-    if (stop_tiles && stop_tiles.indexOf(this.tile.id) >= 0) {
-      this.stop_tile = true
-    } else {
-      this.stop_tile = false
-    }
-
-    // z tile 
-    let z_tiles = config.db.config_tiles.z[this.tile.map]
-    if (z_tiles && z_tiles.indexOf(this.tile.id) >= 0) {
-      this.z_tile = true
-    } else {
-      this.z_tile = false
-    }
-
-    // direction tile 
-    let direction_tiles = config.db.config_tiles.directions[this.tile.map]
-    if (direction_tiles && direction_tiles[this.tile.id]) {
-      if (direction_tiles[this.tile.id].indexOf('up') >= 0) {
-        this.up_direction = true
-      } else {
-        this.up_direction = false
-      }
-      if (direction_tiles[this.tile.id].indexOf('down') >= 0) {
-        this.down_direction = true
-      } else {
-        this.down_direction = false
-      }
-      if (direction_tiles[this.tile.id].indexOf('left') >= 0) {
-        this.left_direction = true
-      } else {
-        this.left_direction = false
-      }
-      if (direction_tiles[this.tile.id].indexOf('right') >= 0) {
-        this.right_direction = true
-      } else {
-        this.right_direction = false
-      }
-    }
+    this.initOptions()
   },
   methods: {
+    initOptions: function () {
+      // init options
+      let stop_tiles = config.db.config_tiles.stop[this.tile.map]
+      if (stop_tiles && stop_tiles.indexOf(this.tile.id) >= 0) {
+        this.stop_tile = true
+      } else {
+        this.stop_tile = false
+      }
+
+      // z tile 
+      let z_tiles = config.db.config_tiles.z[this.tile.map]
+      if (z_tiles && z_tiles.indexOf(this.tile.id) >= 0) {
+        this.z_tile = true
+      } else {
+        this.z_tile = false
+      }
+
+      // direction tile 
+      let directions = config.db.config_tiles.directions[this.tile.map]
+      if (directions && directions[this.tile.map] && directions[this.tile.map][this.tile.id]) {
+        if (directions[this.tile.map][this.tile.id].indexOf('up') >= 0) {
+          this.up_direction = true
+        } else {
+          this.up_direction = false
+        }
+        if (directions[this.tile.map][this.tile.id].indexOf('down') >= 0) {
+          this.down_direction = true
+        } else {
+          this.down_direction = false
+        }
+        if (directions[this.tile.map][this.tile.id].indexOf('left') >= 0) {
+          this.left_direction = true
+        } else {
+          this.left_direction = false
+        }
+        if (directions[this.tile.map][this.tile.id].indexOf('right') >= 0) {
+          this.right_direction = true
+        } else {
+          this.right_direction = false
+        }
+      }
+    },
   	selectTile: function () {
   		config.activeTile = this.tile
   	},
@@ -147,101 +111,43 @@ Vue.component('tile', {
         }
       }
     },
-    setUpDirection: function () {
-      let direction_tiles = config.db.config_tiles.directions[this.tile.map]
-      if (!direction_tiles) {
-        Vue.set(config.db.config_tiles.directions, this.tile.map, [])
+    updateTileDirections: function (directions) {
+      let direction_tiles = config.db.config_tiles.directions
+
+      // remove tile direction if not set
+      if (directions.length == 0) {
+        if (direction_tiles[this.tile.map] && direction_tiles[this.tile.map][this.tile.id]) {
+          Vue.delete(direction_tiles[this.tile.map], this.tile.id)
+        }
+
+        return
       }
 
-      if (!direction_tiles[this.tile.id]) {
-        Vue.set(config.db.config_tiles.directions[this.tile.map], this.tile.id, []) 
+      // create map direction if not exist
+      if (!direction_tiles[this.tile.map]) {
+        Vue.set(direction_tiles, this.tile.map, {})
       }
+
+      // set tile directions
+      Vue.set(direction_tiles[this.tile.map], this.tile.id, directions) 
+    },
+    changeDirection: function () {
+      let directions = []
 
       if (this.up_direction) {
-        // set as stop tile
-        direction_tiles[this.tile.id].push('up')
-      } else {
-        // unset as stop tile
-        if (direction_tiles[this.tile.id].indexOf('up') >= 0) {
-          direction_tiles[this.tile.id].splice(direction_tiles[this.tile.id].indexOf('up'), 1)
-        }
+        directions.push('up')
       }
-
-      if (direction_tiles[this.tile.id].lenght < 0) {
-        Vue.delete(direction_tiles[this.tile.id])
-      }
-    },
-    setDownDirection: function () {
-      let direction_tiles = config.db.config_tiles.directions[this.tile.map]
-      if (!direction_tiles) {
-        Vue.set(config.db.config_tiles.directions, this.tile.map, [])
-      }
-
-      if (!direction_tiles[this.tile.id]) {
-        Vue.set(config.db.config_tiles.directions[this.tile.map], this.tile.id, []) 
-      }
-
       if (this.down_direction) {
-        // set as stop tile
-        direction_tiles[this.tile.id].push('down')
-      } else {
-        // unset as stop tile
-        if (direction_tiles[this.tile.id].indexOf('down') >= 0) {
-          direction_tiles[this.tile.id].splice(direction_tiles[this.tile.id].indexOf('down'), 1)
-        }
+        directions.push('down')
       }
-
-      if (direction_tiles[this.tile.id].lenght < 0) {
-        Vue.delete(direction_tiles[this.tile.id])
-      }
-    },
-    setLeftDirection: function () {
-      let direction_tiles = config.db.config_tiles.directions[this.tile.map]
-      if (!direction_tiles) {
-        Vue.set(config.db.config_tiles.directions, this.tile.map, [])
-      }
-
-      if (!direction_tiles[this.tile.id]) {
-        Vue.set(config.db.config_tiles.directions[this.tile.map], this.tile.id, []) 
-      }
-
       if (this.left_direction) {
-        // set as stop tile
-        direction_tiles[this.tile.id].push('left')
-      } else {
-        // unset as stop tile
-        if (direction_tiles[this.tile.id].indexOf('left') >= 0) {
-          direction_tiles[this.tile.id].splice(direction_tiles[this.tile.id].indexOf('left'), 1)
-        }
+        directions.push('left')
       }
-
-      if (direction_tiles[this.tile.id].lenght < 0) {
-        Vue.delete(direction_tiles[this.tile.id])
-      }
-    },
-    setRightDirection: function () {
-      let direction_tiles = config.db.config_tiles.directions[this.tile.map]
-      if (!direction_tiles) {
-        Vue.set(config.db.config_tiles.directions, this.tile.map, [])
-      }
-
-      if (!direction_tiles[this.tile.id]) {
-        Vue.set(config.db.config_tiles.directions[this.tile.map], this.tile.id, []) 
-      }
-
       if (this.right_direction) {
-        // set as stop tile
-        direction_tiles[this.tile.id].push('right')
-      } else {
-        // unset as stop tile
-        if (direction_tiles[this.tile.id].indexOf('right') >= 0) {
-          direction_tiles[this.tile.id].splice(direction_tiles[this.tile.id].indexOf('right'), 1)
-        }
+        directions.push('right')
       }
 
-      if (direction_tiles[this.tile.id].lenght < 0) {
-        Vue.delete(direction_tiles[this.tile.id])
-      }
+      this.updateTileDirections(directions)
     },
     setZTile: function () {
       let z_tiles = config.db.config_tiles.z[this.tile.map]

@@ -32,7 +32,13 @@ var config_tiles = {
       "tile-map1_3_3",
       "tile-map1_3_4",
       "tile-map1_4_3",
-      "tile-map1_4_4"
+      "tile-map1_4_4",
+      "tile-map1_10_4",
+      "tile-map1_11_4",
+      "tile-map1_13_4",
+      "tile-map1_13_5",
+      "tile-map1_14_4",
+      "tile-map1_14_5"
     ],
     "tile-map4": [
       "tile-map4_0_0",
@@ -82,6 +88,111 @@ var config_tiles = {
       "tile-map5_1_8",
       "tile-map5_1_7",
       "tile-map5_13_0"
+    ],
+    "tile-map6": [
+      "tile-map6_3_7",
+      "tile-map6_2_7",
+      "tile-map6_2_6",
+      "tile-map6_1_6",
+      "tile-map6_1_5",
+      "tile-map6_0_6",
+      "tile-map6_0_5",
+      "tile-map6_4_0",
+      "tile-map6_4_1",
+      "tile-map6_4_2",
+      "tile-map6_4_3",
+      "tile-map6_4_4",
+      "tile-map6_4_5",
+      "tile-map6_4_6",
+      "tile-map6_4_7",
+      "tile-map6_5_0",
+      "tile-map6_5_1",
+      "tile-map6_5_2",
+      "tile-map6_5_3",
+      "tile-map6_5_4",
+      "tile-map6_5_5",
+      "tile-map6_5_6",
+      "tile-map6_5_7",
+      "tile-map6_6_4",
+      "tile-map6_23_0",
+      "tile-map6_23_1",
+      "tile-map6_23_2",
+      "tile-map6_23_3",
+      "tile-map6_23_4",
+      "tile-map6_23_5",
+      "tile-map6_23_6",
+      "tile-map6_23_7",
+      "tile-map6_24_0",
+      "tile-map6_24_1",
+      "tile-map6_24_2",
+      "tile-map6_24_3",
+      "tile-map6_24_4",
+      "tile-map6_24_5",
+      "tile-map6_24_6",
+      "tile-map6_24_7",
+      "tile-map6_25_0",
+      "tile-map6_25_1",
+      "tile-map6_25_2",
+      "tile-map6_25_3",
+      "tile-map6_25_4",
+      "tile-map6_25_5",
+      "tile-map6_25_6",
+      "tile-map6_25_7",
+      "tile-map6_26_4",
+      "tile-map6_26_5",
+      "tile-map6_26_6",
+      "tile-map6_27_4",
+      "tile-map6_27_5",
+      "tile-map6_27_6",
+      "tile-map6_28_4",
+      "tile-map6_28_5",
+      "tile-map6_28_6",
+      "tile-map6_35_0",
+      "tile-map6_35_1",
+      "tile-map6_36_0",
+      "tile-map6_36_1",
+      "tile-map6_37_0",
+      "tile-map6_37_1",
+      "tile-map6_37_2",
+      "tile-map6_37_3",
+      "tile-map6_38_0",
+      "tile-map6_38_1",
+      "tile-map6_38_2",
+      "tile-map6_38_3",
+      "tile-map6_39_0",
+      "tile-map6_39_1",
+      "tile-map6_40_0",
+      "tile-map6_40_1",
+      "tile-map6_3_3",
+      "tile-map6_16_0",
+      "tile-map6_16_1",
+      "tile-map6_43_7",
+      "tile-map6_18_1",
+      "tile-map6_17_1",
+      "tile-map6_13_2",
+      "tile-map6_14_1",
+      "tile-map6_14_2",
+      "tile-map6_3_0",
+      "tile-map6_2_5",
+      "tile-map6_1_4"
+    ],
+    "tile-map7": [
+      "tile-map7_4_0",
+      "tile-map7_6_0",
+      "tile-map7_6_1",
+      "tile-map7_4_2",
+      "tile-map7_4_1",
+      "tile-map7_6_2",
+      "tile-map7_11_1",
+      "tile-map7_11_2",
+      "tile-map7_11_3",
+      "tile-map7_9_4",
+      "tile-map7_11_4",
+      "tile-map7_11_0",
+      "tile-map7_10_4",
+      "tile-map7_10_0",
+      "tile-map7_9_0",
+      "tile-map7_14_0"
     ]
   },
   "z": {
@@ -92,6 +203,70 @@ var config_tiles = {
       "tile-map5_0_5",
       "tile-map5_2_5",
       "tile-map5_9_15"
+    ],
+    "tile-map6": [
+      "tile-map6_16_6",
+      "tile-map6_16_5",
+      "tile-map6_16_4",
+      "tile-map6_14_6",
+      "tile-map6_14_5",
+      "tile-map6_14_4",
+      "tile-map6_15_7",
+      "tile-map6_15_6",
+      "tile-map6_15_5",
+      "tile-map6_15_4",
+      "tile-map6_15_3",
+      "tile-map6_15_2",
+      "tile-map6_14_7",
+      "tile-map6_12_0",
+      "tile-map6_30_0",
+      "tile-map6_30_1",
+      "tile-map6_30_2",
+      "tile-map6_30_3",
+      "tile-map6_30_4",
+      "tile-map6_30_5",
+      "tile-map6_31_0",
+      "tile-map6_31_1",
+      "tile-map6_31_2",
+      "tile-map6_31_3",
+      "tile-map6_31_4",
+      "tile-map6_31_5",
+      "tile-map6_32_0",
+      "tile-map6_32_1",
+      "tile-map6_32_4",
+      "tile-map6_32_5",
+      "tile-map6_32_2",
+      "tile-map6_2_4",
+      "tile-map6_15_0",
+      "tile-map6_15_1",
+      "tile-map6_42_7",
+      "tile-map6_6_7",
+      "tile-map6_6_6",
+      "tile-map6_12_2",
+      "tile-map6_18_0",
+      "tile-map6_19_7",
+      "tile-map6_19_4",
+      "tile-map6_16_2",
+      "tile-map6_16_3",
+      "tile-map6_2_1",
+      "tile-map6_2_2"
+    ],
+    "tile-map7": [
+      "tile-map7_11_1",
+      "tile-map7_11_2",
+      "tile-map7_11_3",
+      "tile-map7_8_4",
+      "tile-map7_8_0",
+      "tile-map7_6_3",
+      "tile-map7_6_4",
+      "tile-map7_13_0",
+      "tile-map7_12_0",
+      "tile-map7_5_2",
+      "tile-map7_5_0"
+    ],
+    "tile-map1": [
+      "tile-map1_10_5",
+      "tile-map1_10_3"
     ]
   },
   "directions": {
@@ -175,6 +350,62 @@ var config_tiles = {
         "up",
         "down",
         "left"
+      ]
+    },
+    "tile-map7": {
+      "tile-map7_5_0": [
+        "up",
+        "down",
+        "right"
+      ],
+      "tile-map7_5_2": [
+        "up",
+        "down",
+        "left"
+      ],
+      "tile-map7_8_0": [
+        "up",
+        "left",
+        "right"
+      ],
+      "tile-map7_8_4": [
+        "up",
+        "left",
+        "right"
+      ]
+    },
+    "tile-map6": {
+      "tile-map6_15_0": [
+        "up",
+        "left",
+        "right"
+      ],
+      "tile-map6_15_1": [
+        "up",
+        "left",
+        "right"
+      ]
+    },
+    "tile-map1": {
+      "tile-map1_12_4": [
+        "down",
+        "left",
+        "right"
+      ],
+      "tile-map1_11_5": [
+        "up",
+        "down",
+        "right"
+      ],
+      "tile-map1_11_3": [
+        "up",
+        "down",
+        "left"
+      ],
+      "tile-map1_13_3": [
+        "down",
+        "left",
+        "right"
       ]
     }
   }
