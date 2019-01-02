@@ -39,8 +39,15 @@ var db_tile_maps = [
     {
 		id: 'city_1',
 		class: 'tile-map6',
-		width: 384, //272,
-		height: 2175, //336,
-		tileSize: [48, 48], // [16, 16],
+		width: 384,
+		height: 2175,
+		tileSize: [48, 48],
+    },
+    {
+		id: 'indoor_1',
+		class: 'tile-map7',
+		width: 336,
+		height: 772,
+		tileSize: [48, 48],
     },
 ]

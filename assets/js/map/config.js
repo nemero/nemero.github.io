@@ -1,8 +1,8 @@
 var config = {
 	theme: "",
-	width: 10,
-	height: 10,
-	layers: 9,
+	width: 13,
+	height: 12,
+	layers: 15,
 
 	activeTab: 'events', // 'tiles',
 	activeTile: null,
@@ -63,6 +63,11 @@ var config = {
 				"name": "city1",
 				"map": db_map_city1,
 				"layerEvents": db_map_city1_actions,
+			},
+			"indoor1": {
+				"name": "indoor1",
+				"map": db_map_indoor1,
+				"layerEvents": db_map_indoor1_actions,
 			},
 		},
 	},

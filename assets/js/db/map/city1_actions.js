@@ -1,4 +1,19 @@
 var db_map_city1_actions = {
+  "9": {
+    "4": {
+      "undefined_9_4_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-teleport0",
+        "position": [
+          5,
+          5
+        ],
+        "map": "indoor1",
+        "autoTrigger": "hover"
+      }
+    }
+  },
   "16": {
     "7": {
       "undefined_16_7_0": {

@@ -140,7 +140,9 @@ html, body {
 .tile-map6 {
 	background: url(../tileset_magecity_1.png);
 }
-
+.tile-map7 {
+	background: url(../tileset_indoor_1.png);
+}
 
 
 .sword {
