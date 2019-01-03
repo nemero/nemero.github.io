@@ -114,6 +114,14 @@ var db_map_indoor1 = {
         "map": "tile-map7"
       },
       "2": {
+        "id": "tile-map7_6_5",
+        "offset": [
+          5,
+          6
+        ],
+        "map": "tile-map7"
+      },
+      "3": {
         "id": "tile-map7_5_0",
         "offset": [
           0,
