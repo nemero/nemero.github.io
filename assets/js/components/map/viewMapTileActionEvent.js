@@ -15,7 +15,7 @@ Vue.component('viewMapTileActionEvent', {
     // NOTE: work only for teleport actions because triggering each iteration
     // nextick need for correct set executeEvent because current event will flush to null
     this.$nextTick(function () {
-      if (config.activeUI != "battle" && this.tile.autoTrigger == "hover" && !this.tile.hidden) {
+      if (config.activeUI != "battle" && this.tile.autoTrigger == "hover" && this.isVisible()) {
         this.actionLayer()
       }
     })
