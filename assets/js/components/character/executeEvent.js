@@ -12,6 +12,9 @@ Vue.component('executeEvent', {
 	  	].join(''),
   updated: function () {
     if (this.event) {
+      if (config.activeUI == "game-over") {
+        return
+      }
       let _event = this.event
 
       if (_event.id == "move") {

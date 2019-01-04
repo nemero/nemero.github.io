@@ -36,7 +36,7 @@ var db_map_cave1_actions = {
           "dialog_1": {
             "id": "dialog_1",
             "type": "dialog",
-            "text": "what do you need from us?",
+            "text": "I bear!",
             "choices": [
               {
                 "answer": "give me russian vodka!",
@@ -51,12 +51,6 @@ var db_map_cave1_actions = {
                 "answer": "I will boom you!!! meowmeowfuker!",
                 "type": "dialog",
                 "next": "dialog_3"
-              },
-              {
-                "answer": "I give you 10 cash, need badroom!",
-                "type": "rest",
-                "cost": 10,
-                "next": "dialog_4"
               }
             ]
           },
@@ -81,7 +75,7 @@ var db_map_cave1_actions = {
                 "next": "dialog_4"
               },
               {
-                "answer": "Not intresting. (bye)",
+                "answer": "paka! (bye)",
                 "type": "exit"
               },
               {
@@ -135,7 +129,29 @@ var db_map_cave1_actions = {
         "enemies": [
           "bear1"
         ],
-        "hidden": ""
+        "hidden": "",
+        "interactions": {
+          "start": {
+            "id": "start",
+            "type": "dialog",
+            "text": "ARRRGGG ;( Ti cho nastupaesh na hvost!!?!!",
+            "choices": [
+              {
+                "type": "attack",
+                "answer": "a ny tikay medved paka cel!"
+              },
+              {
+                "type": "exit",
+                "answer": "paka!"
+              },
+              {
+                "type": "attack",
+                "answer": "very temno nichego ne see!"
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "start"
       }
     }
   },

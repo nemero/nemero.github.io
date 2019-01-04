@@ -57,7 +57,25 @@ var db_map_world1_actions = {
           "wolf1"
         ],
         "hidden": "",
-        "autoTrigger": "13"
+        "autoTrigger": "hover",
+        "interactions": {
+          "start": {
+            "id": "start",
+            "type": "dialog",
+            "text": "Ya tebya eat!",
+            "choices": [
+              {
+                "type": "exit",
+                "answer": "paka!"
+              },
+              {
+                "type": "attack",
+                "answer": "a nu try!"
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "start"
       }
     }
   },
@@ -73,7 +91,25 @@ var db_map_world1_actions = {
           "boss2"
         ],
         "hidden": "",
-        "autoTrigger": "13"
+        "autoTrigger": "hover",
+        "interactions": {
+          "start": {
+            "id": "start",
+            "type": "dialog",
+            "text": "Moya krushit!!!",
+            "choices": [
+              {
+                "type": "attack",
+                "answer": "Net moya!"
+              },
+              {
+                "type": "exit",
+                "answer": "PAKA!"
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "start"
       }
     }
   },
@@ -95,7 +131,25 @@ var db_map_world1_actions = {
           "zomby"
         ],
         "hidden": "",
-        "autoTrigger": "13"
+        "autoTrigger": "hover",
+        "interactions": {
+          "start": {
+            "id": "start",
+            "type": "dialog",
+            "text": "OOOOOAAAAAAAAAAAAAAA...",
+            "choices": [
+              {
+                "type": "exit",
+                "answer": "UAAA!!!"
+              },
+              {
+                "type": "attack",
+                "answer": "KIAAAAAA!!!!"
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "start"
       }
     }
   },

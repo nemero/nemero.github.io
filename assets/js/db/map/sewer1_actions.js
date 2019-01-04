@@ -684,12 +684,71 @@ var db_map_sewer1_actions = {
         "name": "Enemies",
         "icon": "icon-battle0",
         "tile_icon": "icon-boss1",
-        "autoTrigger": "13",
-        "cooldown": 20,
+        "autoTrigger": "hover",
+        "cooldown": "",
         "enemies": [
           "boss"
         ],
-        "hidden": ""
+        "hidden": "",
+        "interactions": {
+          "start": {
+            "id": "start",
+            "type": "dialog",
+            "text": "Sho nado?",
+            "choices": [
+              {
+                "type": "dialog",
+                "answer": "Puti!",
+                "next": "d2"
+              },
+              {
+                "type": "exit",
+                "answer": "Nicho!"
+              }
+            ]
+          },
+          "d2": {
+            "id": "d2",
+            "type": "dialog",
+            "text": "Ni Putyu!",
+            "choices": [
+              {
+                "answer": "Paluchay!",
+                "type": "attack"
+              },
+              {
+                "type": "dialog",
+                "answer": "Puty!",
+                "next": "d3"
+              },
+              {
+                "type": "exit",
+                "answer": "Paka!"
+              }
+            ]
+          },
+          "d3": {
+            "id": "d3",
+            "type": "dialog",
+            "text": "Nu Ni Putyu!!!",
+            "choices": [
+              {
+                "type": "attack",
+                "answer": "paluchay!!"
+              },
+              {
+                "type": "dialog",
+                "answer": "Ny PUTI!!!",
+                "next": "d2"
+              },
+              {
+                "type": "exit",
+                "answer": "Paka!"
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "start"
       }
     },
     "9": {
@@ -699,7 +758,7 @@ var db_map_sewer1_actions = {
         "icon": "icon-battle0",
         "tile_icon": "icon-fly0",
         "cooldown": 20,
-        "autoTrigger": "13",
+        "autoTrigger": "hover",
         "enemies": [
           "fly",
           "fly",
@@ -711,7 +770,25 @@ var db_map_sewer1_actions = {
           "sword0": 55,
           "sword1": 155,
           "monomate": 15
-        }
+        },
+        "interactions": {
+          "start": {
+            "id": "start",
+            "type": "dialog",
+            "text": "VZZZZZZZZZZZZ!!!!!!!",
+            "choices": [
+              {
+                "type": "exit",
+                "answer": "Paka!"
+              },
+              {
+                "answer": "Kia!",
+                "type": "attack"
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "start"
       }
     }
   },
