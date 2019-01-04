@@ -18,7 +18,11 @@ Vue.component('viewMapTileLayerEvent', {
       let tile = this.layer
 
       if (tile.tile_icon) {
-        data[tile.tile_icon] = true
+        if (tile.direction) {
+          data[tile.tile_icon + "-" + tile.direction] = true
+        } else {
+          data[tile.tile_icon] = true
+        }
       }
 
       return data

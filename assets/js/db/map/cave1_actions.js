@@ -131,7 +131,7 @@ var db_map_cave1_actions = {
         "icon": "icon-battle0",
         "tile_icon": "icon-angry_bear1",
         "cooldown": 20,
-        "autoTrigger": "13",
+        "autoTrigger": "hover",
         "enemies": [
           "bear1"
         ],
@@ -144,9 +144,10 @@ var db_map_cave1_actions = {
       "player0": {
         "id": "player",
         "name": "Player",
+        "direction": "down",
         "player_id": "player0",
-        "icon": "icon-player0",
-        "tile_icon": "icon-player0"
+        "icon": "icon-player",
+        "tile_icon": "icon-player"
       }
     }
   }

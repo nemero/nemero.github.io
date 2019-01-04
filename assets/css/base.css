@@ -58,9 +58,19 @@ html, body {
 	position: relative;
 	left: 9px;
 }
-.icon-player0 {
+.icon-player-up {
 	background: url(../player.png) center center/cover;
 }
+.icon-player-down {
+	background: url(../player-down.png) center center/cover;
+}
+.icon-player-left {
+	background: url(../player-left.png) center center/cover;
+}
+.icon-player-right {
+	background: url(../player-right.png) center center/cover;
+}
+
 .view-map-row .layer-event.icon-player0 {
 	width: 48px;
 	height: 48px;

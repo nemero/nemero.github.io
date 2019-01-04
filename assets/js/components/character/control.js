@@ -54,9 +54,24 @@ Vue.component('characterControl', {
 
       // enter actions
       if (13 == e.keyCode) {
+        // check current tile events
         let events = config.activeEvents
         for (idx in events) {
           let event = events[idx]
+          if (event.autoTrigger == "13" && this.isAvailable(event) && !event.hidden) {
+            Vue.set(config, "executeEvent", {
+              id: "enter",
+              event: event
+            })
+
+            return
+          }
+        }
+
+        // check direction events
+        let direction_events = config.activeDirectionEvents
+        for (idx in direction_events) {
+          let event = direction_events[idx]
           if (event.autoTrigger == "13" && this.isAvailable(event) && !event.hidden) {
             Vue.set(config, "executeEvent", {
               id: "enter",

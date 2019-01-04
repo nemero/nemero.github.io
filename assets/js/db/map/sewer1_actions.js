@@ -1,7 +1,7 @@
 var db_map_sewer1_actions = {
-  "3": {
+  "2": {
     "2": {
-      "undefined_3_2_0": {
+      "undefined_2_2_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -55,7 +55,7 @@ var db_map_sewer1_actions = {
           }
         ]
       },
-      "undefined_3_2_1": {
+      "undefined_2_2_1": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -109,7 +109,9 @@ var db_map_sewer1_actions = {
           }
         ]
       }
-    },
+    }
+  },
+  "3": {
     "4": {
       "undefined_3_4_0": {
         "id": "loot_box",
@@ -125,23 +127,8 @@ var db_map_sewer1_actions = {
     }
   },
   "6": {
-    "9": {
-      "undefined_6_9_0": {
-        "id": "teleport",
-        "name": "Subway/Cave",
-        "icon": "icon-townout0",
-        "autoTrigger": "hover",
-        "position": [
-          2,
-          2
-        ],
-        "map": "world1"
-      }
-    }
-  },
-  "7": {
     "1": {
-      "undefined_7_1_0": {
+      "undefined_6_1_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -203,7 +190,7 @@ var db_map_sewer1_actions = {
           }
         ]
       },
-      "undefined_7_1_1": {
+      "undefined_6_1_1": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -267,19 +254,7 @@ var db_map_sewer1_actions = {
       }
     },
     "2": {
-      "undefined_7_2_0": {
-        "id": "enemies",
-        "name": "Enemies",
-        "icon": "icon-battle0",
-        "tile_icon": "icon-boss1",
-        "autoTrigger": "13",
-        "cooldown": 20,
-        "enemies": [
-          "boss"
-        ],
-        "hidden": ""
-      },
-      "undefined_7_2_1": {
+      "undefined_6_2_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-townout0",
@@ -327,7 +302,7 @@ var db_map_sewer1_actions = {
       }
     },
     "3": {
-      "undefined_7_3_0": {
+      "undefined_6_3_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -389,7 +364,7 @@ var db_map_sewer1_actions = {
           }
         ]
       },
-      "undefined_7_3_1": {
+      "undefined_6_3_1": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -453,7 +428,7 @@ var db_map_sewer1_actions = {
       }
     },
     "6": {
-      "undefined_7_6_0": {
+      "undefined_6_6_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -507,7 +482,7 @@ var db_map_sewer1_actions = {
           }
         ]
       },
-      "undefined_7_6_1": {
+      "undefined_6_6_1": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -563,7 +538,7 @@ var db_map_sewer1_actions = {
       }
     },
     "8": {
-      "undefined_7_8_0": {
+      "undefined_6_8_0": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -625,7 +600,7 @@ var db_map_sewer1_actions = {
           }
         ]
       },
-      "undefined_7_8_1": {
+      "undefined_6_8_1": {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-basement-door0",
@@ -689,6 +664,35 @@ var db_map_sewer1_actions = {
       }
     },
     "9": {
+      "undefined_6_9_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-townout0",
+        "autoTrigger": "hover",
+        "position": [
+          2,
+          2
+        ],
+        "map": "world1"
+      }
+    }
+  },
+  "7": {
+    "2": {
+      "undefined_7_2_0": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-boss1",
+        "autoTrigger": "13",
+        "cooldown": 20,
+        "enemies": [
+          "boss"
+        ],
+        "hidden": ""
+      }
+    },
+    "9": {
       "undefined_7_9_0": {
         "id": "enemies",
         "name": "Enemies",
@@ -706,8 +710,8 @@ var db_map_sewer1_actions = {
         "seller": {
           "sword0": 55,
           "sword1": 155,
-          "monomate": 15,
-        }, 
+          "monomate": 15
+        }
       }
     }
   },

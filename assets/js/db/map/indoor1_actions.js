@@ -1,7 +1,7 @@
 var db_map_indoor1_actions = {
-  "4": {
+  "3": {
     "3": {
-      "undefined_4_3_0": {
+      "undefined_3_3_0": {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
