@@ -685,7 +685,7 @@ var db_map_sewer1_actions = {
         "icon": "icon-battle0",
         "tile_icon": "icon-boss1",
         "autoTrigger": "hover",
-        "cooldown": "",
+        "cooldown": 2000,
         "enemies": [
           "boss"
         ],

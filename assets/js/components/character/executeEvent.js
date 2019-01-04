@@ -20,17 +20,32 @@ Vue.component('executeEvent', {
       if (_event.id == "move") {
         let test = this.move()
         // just rotate if cant move
-        if (!test && config.db.map[config.db.map.activeMap].layerEvents[this.event.position[1]][this.event.position[0]][this.event.player_id].direction !== this.event.directions[0]) {
-          this.setPlayerDirection(this.event.position, this.event.player_id, this.event.directions[0])
-          return
-        }
-        
-        // if we cant move on next cell will trigger event on next cell
-        if (!test && this.new_position) {
+        if (!test) {
+          if (config.db.map[config.db.map.activeMap].layerEvents[this.event.position[1]][this.event.position[0]][this.event.player_id].direction !== this.event.directions[0]) {
+            this.setPlayerDirection(this.event.position, this.event.player_id, this.event.directions[0])
+            return
+          }
+
+          // if we cant move on next cell will trigger event on next cell
+          // NOTE: it used for trigger action when clicking tile by mouse
+          let direction_position = [...this.event.position]
+          if (this.event.directions[0] == "up") {
+            direction_position[1]--
+          }
+          if (this.event.directions[0] == "down") {
+            direction_position[1]++
+          }
+          if (this.event.directions[0] == "left") {
+            direction_position[0]--
+          }
+          if (this.event.directions[0] == "right") {
+            direction_position[0]++
+          }
+
           let objects = config.db.map[config.db.map.activeMap].layerEvents
           let events = null
-          if (objects[this.new_position[1]] && objects[this.new_position[1]][this.new_position[0]]) {
-            events = objects[this.new_position[1]][this.new_position[0]]
+          if (objects[direction_position[1]] && objects[direction_position[1]][direction_position[0]]) {
+            events = objects[direction_position[1]][direction_position[0]]
           }
 
           for (idx in events) {
@@ -44,7 +59,9 @@ Vue.component('executeEvent', {
               break
             }
           }
+
         }
+
       }
 
       let event = _event.event
@@ -53,9 +70,13 @@ Vue.component('executeEvent', {
         if (event.id !== "enemies") {
           for (layer_idx in config.activeEvents) {
             let layer = config.activeEvents[layer_idx]
-            if (layer.id == "enemies" && !_event.interactions && layer.cooldown 
-                && (!layer["cooldown_left"] || (layer["cooldown_left"] && layer["cooldown_left"] <= config.step))
-              ) {
+            if (layer.id == "enemies" /*&& !_event.interactions*/ && 
+                (
+                  layer.cooldown == undefined || 
+                  layer.cooldown_left == undefined || 
+                  layer.cooldown_left <= config.step
+                )
+            ) {
               event = layer
             }
           }
@@ -193,7 +214,15 @@ Vue.component('executeEvent', {
     },
     enter: function (event) {
       //let event = this.event.event
-      if (event.id == "enemies" || (event.id == "enemies" && event.cooldown && event["cooldown_left"] <= config.step)) {
+      console.log(event.id, event.cooldown, event.cooldown_left, config.step)
+      // variable can be undefined or null or 0......
+      if (event.id == "enemies" && 
+            (
+              event.cooldown == undefined || 
+              event.cooldown_left == undefined ||
+              event.cooldown_left <= config.step
+            )
+        ) {
         if (event.interactions && config.activeUI !== "dialog") {
           config.activeInteractions = event // copy link on object
           config.activeUI = "dialog"

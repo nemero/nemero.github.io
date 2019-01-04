@@ -58,7 +58,7 @@ Vue.component('characterControl', {
         let events = config.activeEvents
         for (idx in events) {
           let event = events[idx]
-          if (event.autoTrigger == "13" && this.isAvailable(event) && !event.hidden) {
+          if ((event.autoTrigger == "13" || event.autoTrigger == "hover") && this.isAvailable(event) && !event.hidden) {
             Vue.set(config, "executeEvent", {
               id: "enter",
               event: event

@@ -30,7 +30,6 @@ Vue.component('activeInteractions', {
       } else {
       	return
       }
-      console.log(choice_id, this.interaction.choices[choice_id].answer)
 
       if (this.interaction.choices && this.interaction.choices[choice_id]) {
       	this.selectChoice(this.interaction.choices[choice_id])

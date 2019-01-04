@@ -3,7 +3,7 @@ Vue.component('viewMapTileActions', {
   	template: ['<div class="view-map-tile-actions">',
               	//'<view-map-tile-action v-for="tile in getTileLayers" :tile="tile"></view-map-tile-action>',
                 '<view-map-tile-action-event v-for="tile in getEventLayers" :tile="tile" :tiles="getEventLayers"></view-map-tile-action-event>',
-              	'<view-map-tile-action-event v-for="tile in getDirectionEventLayers" :tile="tile" :tiles="getEventLayers"></view-map-tile-action-event>',
+              	'<view-map-tile-action-direction-event v-for="tile in getDirectionEventLayers" :tile="tile" :tiles="getEventLayers"></view-map-tile-action-direction-event>',
             '</div>'
     ].join(""),
     computed: {
