@@ -55,7 +55,7 @@ Vue.component('eventEnemies', {
           '<input @click="removeEnemy" type="button" value="-"/>',
         '</div>',
 
-        '<div class="info">Enemies: {{ enemy.enemies }}</div>',
+        '<div class="info" v-show="enemy.enemies">Enemies: {{ enemy.enemies }}</div>',
   		  
         '<event-conditions :conditions="enemy.conditions" :config="config"></event-conditions>',
       '</div>'
@@ -220,14 +220,14 @@ Vue.component('eventInteractionCondition', {
             '<label>Has:</label> ',
             '<input type="button" @click="addHasState" value="+" />',
             '<input type="button" @click="removeHasState" value="-" />',
-            '<div class="info">{{ condition.has }}</div>',
+            '<div class="info" v-show="condition.has">{{ condition.has }}</div>',
           '</div>',
 
           '<div class="field-row">',
             '<label>Not Has:</label> ',
             '<input type="button" @click="addNotHasState" value="+" />',
             '<input type="button" @click="removeNotHasState" value="-" />',
-            '<div class="info">{{ condition.not }}</div>',
+            '<div class="info" v-show="condition.not">{{ condition.not }}</div>',
           '</div>',
         '</div>',
 
@@ -319,7 +319,7 @@ Vue.component('eventInteractionChoice', {
           '<input type="text" v-model="world_state"/>',
           '<input type="button" @click="addWorldState" value="+" />',
           '<input type="button" @click="removeWorldState" value="-" />',
-          '<div class="info">{{ choice.state }}</div>',
+          '<div class="info" v-show="choice.state">{{ choice.state }}</div>',
         '</div>',
 
         '<div v-if="choice.type == \'rest\'">',
@@ -339,7 +339,7 @@ Vue.component('eventInteractionChoice', {
           '</div>',
         '</div>',
 
-        '<div v-if="choice.type == \'auto_trade\'">',
+        '<div class="box" v-if="choice.type == \'auto_trade\'">',
           '<div class="field-row">',
             '<label>Auto Trade:</label> ',
             '<select v-model="item_id">',
@@ -353,14 +353,14 @@ Vue.component('eventInteractionChoice', {
             '<label>Take Items:</label> ',
             '<input type="button" @click="addTakeItem" value="+" />',
             '<input type="button" @click="removeTakeItem" value="-" />',
-            '<div class="info">{{ choice.take }}</div>',
+            '<div class="info" v-show="choice.take">{{ choice.take }}</div>',
           '</div>',
 
           '<div class="field-row">',
             '<label>Give Items:</label> ',
             '<input type="button" @click="addGiveItem" value="+" />',
             '<input type="button" @click="removeGiveItem" value="-" />',
-            '<div class="info">{{ choice.give }}</div>',
+            '<div class="info" v-show="choice.give">{{ choice.give }}</div>',
           '</div>',
         '</div>',
 
