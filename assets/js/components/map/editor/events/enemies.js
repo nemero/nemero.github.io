@@ -198,6 +198,7 @@ Vue.component('eventInteractionCondition', {
   data: function () {
     return {
       state_id: null,
+      item_id: null
     }
   },
   template: [
@@ -228,6 +229,18 @@ Vue.component('eventInteractionCondition', {
             '<input type="button" @click="addNotHasState" value="+" />',
             '<input type="button" @click="removeNotHasState" value="-" />',
             '<div class="info" v-show="condition.not">{{ condition.not }}</div>',
+          '</div>',
+        '</div>',
+
+        '<div v-if="condition.type == \'items\'">',
+          '<div class="field-row">',
+            '<label>Items: </label> ',
+            '<select v-model="item_id">',
+              '<option v-for="item in getItems" :value="item.id">{{ item.id }}</option>',
+            '</select>',
+            '<input type="button" @click="addItem" value="+" />',
+            '<input type="button" @click="removeItem" value="-" />',
+            '<div class="info" v-show="condition.items">{{ condition.items }}</div>',
           '</div>',
         '</div>',
 
@@ -273,10 +286,29 @@ Vue.component('eventInteractionCondition', {
         this.condition.not.pop()
       }
     },
+    addItem: function () {
+      if (!this.item_id) {
+        return
+      }
+
+      if (!this.condition.items) {
+        Vue.set(this.condition, "items", [])
+      }
+
+      this.condition.items.push(this.item_id)
+    },
+    removeItem: function () {
+      if (this.condition.items) {
+        this.condition.items.pop()
+      }
+    },
   },
   computed: {
     getTypes: function () {
-      return ["world_state"]
+      return ["world_state", "items"]
+    },
+    getItems: function () {
+      return config.db.items
     }
   }
 })
@@ -288,6 +320,7 @@ Vue.component('eventInteractionChoice', {
       item_id: null,
       cash: null,
       world_state: null,
+      event_change: null,
     }
   },
   template: [
@@ -312,6 +345,18 @@ Vue.component('eventInteractionChoice', {
 
         '<div>',
           '<event-interaction-condition v-for="(condition, idx) in choice.conditions" :condition="condition" :conditions="choice.conditions" :idx="idx"></event-interaction-condition>',
+        '</div>',
+
+        '<div class="field-row">',
+          '<label>Event change</label>',
+          '<select v-model="event_change">',
+            '<option v-for="type in getEventChangeTypes" :value="type">{{ type }}</option>',
+          '</select>',
+          '<input type="button" @click="addEventChange" value="+" />',
+        '</div>',
+
+        '<div>',
+          '<event-interaction-action v-for="(action, idx) in choice.events" :action="action" :events="choice.events" :idx="idx"></event-interaction-action>',
         '</div>',
 
         '<div class="field-row">',
@@ -441,6 +486,21 @@ Vue.component('eventInteractionChoice', {
         this.choice.state.pop()
       }
     },
+    addEventChange: function () {
+      if (!this.event_change) {
+        return
+      }
+
+      if (!this.choice.events) {
+        Vue.set(this.choice, "events", [])
+      }
+
+      this.choice.events.push({
+        "type": this.event_change,
+        "map": "",
+        "position": [0, 0]
+      })
+    }
   },
   computed: {
     getTypes: function () {
@@ -448,7 +508,67 @@ Vue.component('eventInteractionChoice', {
     },
     getItems: function () {
       return config.db.items
+    },
+    getEventChangeTypes: function () {
+      return ["move", "hide", "show"]
     }
   }
 })
 
+
+Vue.component('eventInteractionAction', {
+  props: ['action', 'events', 'idx'],
+  created: function () {
+    if (this.action.type == "move") {
+      this.action.new_position = [0, 0]
+    }
+  },
+  template: [
+      '<div class="box">',
+        '<h5>Action {{ idx }} <input type="button" @click="removeAction" value="-" /></h5>',
+
+        '<div class="field-row">',
+          '<label>Type:</label> ',
+          '<select v-model="action.type">',
+            '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
+          '</select>',
+        '</div>',
+
+        '<div class="field-row">',
+            '<label>Event Id: </label> ',
+            '<input type="text" v-model="action.id"/>',
+        '</div>',
+        '<div class="field-row">',
+          '<label>Map Id: </label> ',
+          '<input type="text" v-model="action.map"/>',
+        '</div>',
+        '<div class="field-row">',
+          '<label>Position: </label> ',
+          'X: <input type="number" v-model="action.position[0]"/>',
+          'Y: <input type="number" v-model="action.position[1]"/>',
+        '</div>',
+
+        '<div v-if="action.type == \'move\'">',
+          '<div class="field-row">',
+            '<label>To Map Id: </label> ',
+            '<input type="text" v-model="action.to_map"/>',
+          '</div>',
+          '<div class="field-row">',
+            '<label>New Position: </label> ',
+            'X: <input type="number" v-model="action.new_position[0]"/>',
+            'Y: <input type="number" v-model="action.new_position[1]"/>',
+          '</div>',
+        '</div>',
+      '</div>'
+      ].join(''),
+  methods: {
+    removeAction: function () {
+      this.events.splice(this.idx, 1)
+    },
+  },
+  computed: {
+    getTypes: function () {
+      return ["move", "hide", "show"]
+    },
+  }
+})

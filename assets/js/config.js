@@ -27,6 +27,7 @@ var config = {
 		hpScroll: [],
 		dies: 0,
 		money: 100,
+		world_state: [],
 
 		position: [0, 0], // will replacing afgter init component
 

@@ -75,7 +75,8 @@ Vue.component('executeEvent', {
                   layer.cooldown == undefined || 
                   layer.cooldown_left == undefined || 
                   layer.cooldown_left <= config.step
-                )
+                ) && 
+                !layer.hidden
             ) {
               event = layer
             }

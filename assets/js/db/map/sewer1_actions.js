@@ -685,7 +685,7 @@ var db_map_sewer1_actions = {
         "icon": "icon-battle0",
         "tile_icon": "icon-boss1",
         "autoTrigger": "hover",
-        "cooldown": 2000,
+        "cooldown": "",
         "enemies": [
           "boss"
         ],
@@ -724,6 +724,35 @@ var db_map_sewer1_actions = {
               {
                 "type": "exit",
                 "answer": "Paka!"
+              },
+              {
+                "type": "auto_trade",
+                "answer": "I give you 10 cash!",
+                "take": [
+                  10
+                ],
+                "events": [
+                  // {
+                  //   id: "undefined_7_2_0",
+                  //   type: "move",
+                  //   map: "sewer1",
+                  //   position: [2, 7],
+                  //   to_map: "sewer1",
+                  //   new_position: [2, 8],
+                  // },
+                  {
+                    id: "undefined_7_2_0",
+                    type: "hide",
+                    map: "sewer1",
+                    position: [2, 7],
+                  },
+                  // {
+                  //   id: "undefined_7_2_0",
+                  //   type: "show",
+                  //   map: "sewer1",
+                  //   position: [2, 7],
+                  // },
+                ]
               }
             ]
           },

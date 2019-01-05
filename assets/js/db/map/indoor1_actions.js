@@ -31,10 +31,13 @@ var db_map_indoor1_actions = {
                     "type": "world_state",
                     "has": [
                       "quest_1_progress"
+                    ],
+                    "not": [
+                      "quest_1_done"
                     ]
                   }
                 ],
-                "next": "quest_1"
+                "next": "quest_1_progress_help"
               },
               {
                 "type": "trade",
@@ -56,15 +59,7 @@ var db_map_indoor1_actions = {
               {
                 "type": "dialog",
                 "answer": "ti cho here delaesh?",
-                "next": "dialog_3",
-                "conditions": [
-                  {
-                    "type": "world_state",
-                    "has": [
-                      "quest_1_done"
-                    ]
-                  }
-                ]
+                "next": "dialog_3"
               },
               {
                 "type": "rest",
@@ -112,6 +107,17 @@ var db_map_indoor1_actions = {
               {
                 "type": "attack",
                 "answer": "ARRRGGHH!!!!"
+              }
+            ]
+          },
+          "quest_1_progress_help": {
+            "id": "quest_1_progress_help",
+            "type": "dialog",
+            "text": "In subway tower on sever!",
+            "choices": [
+              {
+                "type": "exit",
+                "answer": "Yasna Paka!"
               }
             ]
           },
@@ -166,25 +172,6 @@ var db_map_indoor1_actions = {
                 "type": "dialog",
                 "conditions": [
                   {
-                    "type": "world_state",
-                    "has": [
-                      "quest_1_progress_decide"
-                    ]
-                  }
-                ],
-                "answer": "Big bob not enter me in dungeon..",
-                "next": "quest_1_2"
-              },
-              {
-                "type": "dialog",
-                "conditions": [
-                  {
-                    "type": "world_state",
-                    "has": [
-                      "quest_1_progress_accept"
-                    ]
-                  },
-                  {
                     "type": "items",
                     "items": [
                       "paper0"
@@ -196,7 +183,7 @@ var db_map_indoor1_actions = {
               },
               {
                 "type": "exit",
-                "answer": "yasna paka!!"
+                "answer": "nit paka!!"
               }
             ]
           },
@@ -232,7 +219,7 @@ var db_map_indoor1_actions = {
             ],
             "choices": [
               {
-                "type": "quest",
+                "type": "exit",
                 "state": [
                   "quest_2_progress"
                 ],
@@ -241,6 +228,17 @@ var db_map_indoor1_actions = {
               {
                 "type": "exit",
                 "answer": "yasna paka!!"
+              }
+            ],
+            "conditions": [
+              {
+                "type": "world_state",
+                "has": [
+                  "quest_1_done"
+                ],
+                "not": [
+                  "quest_2_progress"
+                ]
               }
             ]
           },
@@ -275,7 +273,7 @@ var db_map_indoor1_actions = {
               },
               {
                 "type": "exit",
-                "answer": "yasna paka!!"
+                "answer": "niyasna paka!!"
               }
             ]
           },
