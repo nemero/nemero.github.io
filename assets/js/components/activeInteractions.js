@@ -211,6 +211,17 @@ Vue.component('activeInteractions', {
                 }
               }
             }
+
+            if (condition.type == "items") {
+              let bag = config.character.bag
+              for (idx in condition.items) {
+                let item = condition.items[idx]
+                if (bag.indexOf(item) < 0) {
+                  is_showing = false
+                  break
+                }
+              }
+            }
           }
         }
 
