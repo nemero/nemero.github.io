@@ -156,6 +156,14 @@ Vue.component('eventInteraction', {
         '</div>',
 
         '<div class="field-row">',
+          '<h5>Create Show Conditions <input type="button" @click="createCondition" value="+" /></h5>',
+        '</div>',
+
+        '<div>',
+          '<event-interaction-condition v-for="(condition, idx) in interaction.conditions" :condition="condition" :conditions="interaction.conditions" :idx="idx"></event-interaction-condition>',
+        '</div>',
+
+        '<div class="field-row">',
           '<h5>Create Choice <input type="button" @click="createChoice" value="+" /></h5>',
         '</div>',
 
@@ -174,6 +182,101 @@ Vue.component('eventInteraction', {
       }
       
       this.interaction.choices.push({})
+    },
+    createCondition: function () {
+      if (!this.interaction.conditions) {
+        Vue.set(this.interaction, "conditions", [])
+      }
+      
+      this.interaction.conditions.push({})
+    }
+  }
+})
+
+Vue.component('eventInteractionCondition', {
+  props: ['condition', 'conditions', 'idx'],
+  data: function () {
+    return {
+      state_id: null,
+    }
+  },
+  template: [
+      '<div class="box">',
+        '<h5>Condition {{ idx }} <input type="button" @click="removeCondition" value="-" /></h5>',
+
+        '<div class="field-row">',
+          '<label>Type:</label> ',
+          '<select v-model="condition.type">',
+            '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
+          '</select>',
+        '</div>',
+
+        '<div v-if="condition.type == \'world_state\'">',
+          '<div class="field-row">',
+            '<label>State Id: </label> ',
+            '<input type="text" v-model="state_id" placeholder="world state id"/>',
+          '</div>',
+          '<div class="field-row">',
+            '<label>Has:</label> ',
+            '<input type="button" @click="addHasState" value="+" />',
+            '<input type="button" @click="removeHasState" value="-" />',
+            '<div class="info">{{ condition.has }}</div>',
+          '</div>',
+
+          '<div class="field-row">',
+            '<label>Not Has:</label> ',
+            '<input type="button" @click="addNotHasState" value="+" />',
+            '<input type="button" @click="removeNotHasState" value="-" />',
+            '<div class="info">{{ condition.not }}</div>',
+          '</div>',
+        '</div>',
+
+      '</div>'
+      ].join(''),
+  methods: {
+    removeCondition: function () {
+      this.conditions.splice(this.idx, 1)
+    },
+    addHasState: function () {
+      if (!this.state_id) {
+        return
+      }
+
+      if (!this.condition.has) {
+        Vue.set(this.condition, "has", [])
+      }
+
+      if (this.condition.has.indexOf(this.state_id) < 0) {
+        this.condition.has.push(this.state_id)
+      }
+    },
+    addNotHasState: function () {
+      if (!this.state_id) {
+        return
+      }
+
+      if (!this.condition.not) {
+        Vue.set(this.condition, "not", [])
+      }
+
+      if (this.condition.not.indexOf(this.state_id) < 0) {
+        this.condition.not.push(this.state_id)
+      }
+    },
+    removeHasState: function () {
+      if (this.condition.has) {
+        this.condition.has.pop()
+      }
+    },
+    removeNotHasState: function () {
+      if (this.condition.not) {
+        this.condition.not.pop()
+      }
+    },
+  },
+  computed: {
+    getTypes: function () {
+      return ["world_state"]
     }
   }
 })
@@ -184,6 +287,7 @@ Vue.component('eventInteractionChoice', {
     return {
       item_id: null,
       cash: null,
+      world_state: null,
     }
   },
   template: [
@@ -200,6 +304,22 @@ Vue.component('eventInteractionChoice', {
         '<div class="field-row">',
           '<label>Answer:</label> ',
           '<textarea v-model="choice.answer" rows=5 cols=30></textarea>',
+        '</div>',
+
+        '<div class="field-row">',
+          '<h5>Create Show Conditions <input type="button" @click="createCondition" value="+" /></h5>',
+        '</div>',
+
+        '<div>',
+          '<event-interaction-condition v-for="(condition, idx) in choice.conditions" :condition="condition" :conditions="choice.conditions" :idx="idx"></event-interaction-condition>',
+        '</div>',
+
+        '<div class="field-row">',
+          '<label>Set World State (if choose the answer)</label> ',
+          '<input type="text" v-model="world_state"/>',
+          '<input type="button" @click="addWorldState" value="+" />',
+          '<input type="button" @click="removeWorldState" value="-" />',
+          '<div class="info">{{ choice.state }}</div>',
         '</div>',
 
         '<div v-if="choice.type == \'rest\'">',
@@ -250,6 +370,13 @@ Vue.component('eventInteractionChoice', {
     removeChoice: function () {
       this.choices.splice(this.idx, 1)
     },
+    createCondition: function () {
+      if (!this.choice.conditions) {
+        Vue.set(this.choice, "conditions", [])
+      }
+      
+      this.choice.conditions.push({})
+    },
     addTakeItem: function () {
       if (!this.choice.take) {
         Vue.set(this.choice, "take", [])
@@ -294,6 +421,24 @@ Vue.component('eventInteractionChoice', {
     removeGiveItem: function () {
       if (this.choice.give) {
         this.choice.give.pop()
+      }
+    },
+    addWorldState: function () {
+      if (!this.world_state) {
+        return
+      }
+
+      if (!this.choice.state) {
+        Vue.set(this.choice, "state", [])
+      }
+
+      if (this.choice.state.indexOf(this.world_state) < 0) {
+        this.choice.state.push(this.world_state)
+      }
+    },
+    removeWorldState: function () {
+      if (this.choice.state) {
+        this.choice.state.pop()
       }
     },
   },

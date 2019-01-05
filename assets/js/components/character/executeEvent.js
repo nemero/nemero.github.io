@@ -214,7 +214,7 @@ Vue.component('executeEvent', {
     },
     enter: function (event) {
       //let event = this.event.event
-      console.log(event.id, event.cooldown, event.cooldown_left, config.step)
+      // console.log(event.id, event.cooldown, event.cooldown_left, config.step)
       // variable can be undefined or null or 0......
       if (event.id == "enemies" && 
             (
