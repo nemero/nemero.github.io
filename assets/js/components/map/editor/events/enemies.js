@@ -26,7 +26,18 @@ Vue.component('eventEnemies', {
             '<event-sell-item v-for="(price, idx) in enemy.seller" :price="price" :idx="idx" :seller="enemy.seller"></event-sell-item>',
           '</div>',
         '</div>',
-        
+
+        '<div class="field-row">',
+          '<label>Select Enemy:</label> ',
+          '<select v-model="selected_enemy_id">',
+            '<option value="" selected="selected">---</option>',
+            '<option v-for="enemy in config.db.enemies" :value="enemy.id">{{ enemy.id }}</option>',
+          '</select>',
+          '<input @click="addEnemy" type="button" value="+"/>',
+          '<input @click="removeEnemy" type="button" value="-"/>',
+        '</div>',
+
+        '<div class="info" v-show="enemy.enemies">Enemies: {{ enemy.enemies }}</div>',
 
         '<div class="field-row">',
           '<label>Create Interaction:</label> ',
@@ -44,18 +55,6 @@ Vue.component('eventEnemies', {
         '</div>',
 
         '<event-interaction v-for="(interaction, idx) in enemy.interactions" :interactions="enemy.interactions" :interaction="interaction" :idx="idx"></event-interaction>',
-
-    		'<div class="field-row">',
-          '<label>Select Enemy:</label> ',
-    			'<select v-model="selected_enemy_id">',
-    				'<option value="" selected="selected">---</option>',
-    				'<option v-for="enemy in config.db.enemies" :value="enemy.id">{{ enemy.id }}</option>',
-    			'</select>',
-          '<input @click="addEnemy" type="button" value="+"/>',
-          '<input @click="removeEnemy" type="button" value="-"/>',
-        '</div>',
-
-        '<div class="info" v-show="enemy.enemies">Enemies: {{ enemy.enemies }}</div>',
   		  
         '<event-conditions :conditions="enemy.conditions" :config="config"></event-conditions>',
       '</div>'
@@ -140,35 +139,34 @@ Vue.component('eventInteraction', {
   data: function () {
     return {
       selected_choice_type: null,
+      collapse: false,
     }
   },
   template: [
       '<div class="box">',
-        '<h5>Dialog id: {{ interaction.id }} <input type="button" @click="removeInteraction" value="-" /></h5>',
-        '<div class="field-row">',
-          '<label>Type:</label> ',
-          '{{ interaction.type }}', //<input type="text" v-model="interaction.type" />',
-        '</div>',
+        '<h5 @click="collapse = collapse ? false : true">{{ interaction.id }} - ({{ interaction.text }})<input type="button" @click="removeInteraction" value="-" /></h5>',
+        '<div v-show="collapse">',
+          '<div class="field-row">',
+            '<label>Type:</label> ',
+            '{{ interaction.type }}', //<input type="text" v-model="interaction.type" />',
+          '</div>',
 
-        '<div class="field-row">',
-          '<label>Text:</label> ',
-          '<textarea v-model="interaction.text" rows=5 cols=30></textarea>',
-        '</div>',
+          '<div class="field-row">',
+            '<label>Text:</label> ',
+            '<textarea v-model="interaction.text" rows=5 cols=30></textarea>',
+          '</div>',
 
-        '<div class="field-row">',
-          '<h5>Create Show Conditions <input type="button" @click="createCondition" value="+" /></h5>',
-        '</div>',
-
-        '<div>',
-          '<event-interaction-condition v-for="(condition, idx) in interaction.conditions" :condition="condition" :conditions="interaction.conditions" :idx="idx"></event-interaction-condition>',
-        '</div>',
-
-        '<div class="field-row">',
-          '<h5>Create Choice <input type="button" @click="createChoice" value="+" /></h5>',
-        '</div>',
-
-        '<div>',
+          '<div class="field-row">',
+            '<label>Create Choice</label> ',
+            '<input type="button" @click="createChoice" value="+" />',
+          '</div>',
           '<event-interaction-choice v-for="(choice, idx) in interaction.choices" :choice="choice" :choices="interaction.choices" :idx="idx"></event-interaction-choice>',
+
+          '<div class="field-row">',
+            '<label>Add Condition</label> ',
+            '<input type="button" @click="createCondition" value="+" />',
+          '</div>',
+          '<event-interaction-condition v-for="(condition, idx) in interaction.conditions" :condition="condition" :conditions="interaction.conditions" :idx="idx"></event-interaction-condition>',
         '</div>',
       '</div>'
       ].join(''),
@@ -198,49 +196,51 @@ Vue.component('eventInteractionCondition', {
   data: function () {
     return {
       state_id: null,
-      item_id: null
+      item_id: null,
+      collapse: false,
     }
   },
   template: [
       '<div class="box">',
-        '<h5>Condition {{ idx }} <input type="button" @click="removeCondition" value="-" /></h5>',
-
-        '<div class="field-row">',
-          '<label>Type:</label> ',
-          '<select v-model="condition.type">',
-            '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
-          '</select>',
-        '</div>',
-
-        '<div v-if="condition.type == \'world_state\'">',
+        '<h5 @click="collapse = collapse ? false : true">{{ idx }} - ({{ condition.type }}) <input type="button" @click="removeCondition" value="-" /></h5>',
+        '<div v-show="collapse">',
           '<div class="field-row">',
-            '<label>State Id: </label> ',
-            '<input type="text" v-model="state_id" placeholder="world state id"/>',
-          '</div>',
-          '<div class="field-row">',
-            '<label>Has:</label> ',
-            '<input type="button" @click="addHasState" value="+" />',
-            '<input type="button" @click="removeHasState" value="-" />',
-            '<div class="info" v-show="condition.has">{{ condition.has }}</div>',
-          '</div>',
-
-          '<div class="field-row">',
-            '<label>Not Has:</label> ',
-            '<input type="button" @click="addNotHasState" value="+" />',
-            '<input type="button" @click="removeNotHasState" value="-" />',
-            '<div class="info" v-show="condition.not">{{ condition.not }}</div>',
-          '</div>',
-        '</div>',
-
-        '<div v-if="condition.type == \'items\'">',
-          '<div class="field-row">',
-            '<label>Items: </label> ',
-            '<select v-model="item_id">',
-              '<option v-for="item in getItems" :value="item.id">{{ item.id }}</option>',
+            '<label>Type:</label> ',
+            '<select v-model="condition.type">',
+              '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
             '</select>',
-            '<input type="button" @click="addItem" value="+" />',
-            '<input type="button" @click="removeItem" value="-" />',
-            '<div class="info" v-show="condition.items">{{ condition.items }}</div>',
+          '</div>',
+
+          '<div v-if="condition.type == \'world_state\'">',
+            '<div class="field-row">',
+              '<label>State Id: </label> ',
+              '<input type="text" v-model="state_id" placeholder="world state id"/>',
+            '</div>',
+            '<div class="field-row">',
+              '<label>Has:</label> ',
+              '<input type="button" @click="addHasState" value="+" />',
+              '<input type="button" @click="removeHasState" value="-" />',
+              '<div class="info" v-show="condition.has">{{ condition.has }}</div>',
+            '</div>',
+
+            '<div class="field-row">',
+              '<label>Not Has:</label> ',
+              '<input type="button" @click="addNotHasState" value="+" />',
+              '<input type="button" @click="removeNotHasState" value="-" />',
+              '<div class="info" v-show="condition.not">{{ condition.not }}</div>',
+            '</div>',
+          '</div>',
+
+          '<div v-if="condition.type == \'items\'">',
+            '<div class="field-row">',
+              '<label>Items: </label> ',
+              '<select v-model="item_id">',
+                '<option v-for="item in getItems" :value="item.id">{{ item.id }}</option>',
+              '</select>',
+              '<input type="button" @click="addItem" value="+" />',
+              '<input type="button" @click="removeItem" value="-" />',
+              '<div class="info" v-show="condition.items">{{ condition.items }}</div>',
+            '</div>',
           '</div>',
         '</div>',
 
@@ -321,92 +321,89 @@ Vue.component('eventInteractionChoice', {
       cash: null,
       world_state: null,
       event_change: null,
+      collapse: false,
     }
   },
   template: [
       '<div class="box">',
-        '<h5>Choice {{ idx }} <input type="button" @click="removeChoice" value="-" /></h5>',
-
-        '<div class="field-row">',
-          '<label>Type:</label> ',
-          '<select v-model="choice.type">',
-            '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
-          '</select>',
-        '</div>',
-
-        '<div class="field-row">',
-          '<label>Answer:</label> ',
-          '<textarea v-model="choice.answer" rows=5 cols=30></textarea>',
-        '</div>',
-
-        '<div class="field-row">',
-          '<h5>Create Show Conditions <input type="button" @click="createCondition" value="+" /></h5>',
-        '</div>',
-
-        '<div>',
-          '<event-interaction-condition v-for="(condition, idx) in choice.conditions" :condition="condition" :conditions="choice.conditions" :idx="idx"></event-interaction-condition>',
-        '</div>',
-
-        '<div class="field-row">',
-          '<label>Event change</label>',
-          '<select v-model="event_change">',
-            '<option v-for="type in getEventChangeTypes" :value="type">{{ type }}</option>',
-          '</select>',
-          '<input type="button" @click="addEventChange" value="+" />',
-        '</div>',
-
-        '<div>',
-          '<event-interaction-action v-for="(action, idx) in choice.events" :action="action" :events="choice.events" :idx="idx"></event-interaction-action>',
-        '</div>',
-
-        '<div class="field-row">',
-          '<label>Set World State (if choose the answer)</label> ',
-          '<input type="text" v-model="world_state"/>',
-          '<input type="button" @click="addWorldState" value="+" />',
-          '<input type="button" @click="removeWorldState" value="-" />',
-          '<div class="info" v-show="choice.state">{{ choice.state }}</div>',
-        '</div>',
-
-        '<div v-if="choice.type == \'rest\'">',
+        '<h5 @click="collapse = collapse ? false : true">{{ idx }} - {{ choice.type }}, next: ({{ choice.next }}), ({{ choice.answer }}) <input type="button" @click="removeChoice" value="-" /></h5>',
+        '<div v-show="collapse">',
           '<div class="field-row">',
-            '<label>Cost:</label> ',
-            '<input type="text" v-model.number="choice.cost"/>',
-          '</div>',
-        '</div>',
-
-        '<div v-if="choice.type != \'attack\' && choice.type != \'exit\'">',
-          '<div class="field-row">',
-            '<label>Next Dialog:</label> ',
-            // '<select v-model="choice.next">',
-            //   '<option v-for="next in choices" :value="next.id">{{ next.id }}</option>',
-            // '</select>',
-            '<input type="text" v-model="choice.next" placeholder="next dialog_id"/>',
-          '</div>',
-        '</div>',
-
-        '<div class="box" v-if="choice.type == \'auto_trade\'">',
-          '<div class="field-row">',
-            '<label>Auto Trade:</label> ',
-            '<select v-model="item_id">',
-              '<option value="cash">Cash</option>',
-              '<option v-for="item in getItems" :value="item.id">{{ item.id }}</option>',
+            '<label>Type:</label> ',
+            '<select v-model="choice.type">',
+              '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
             '</select>',
-            '<input type="number" v-model.number="cash" v-show="item_id == \'cash\'"/>',
           '</div>',
 
           '<div class="field-row">',
-            '<label>Take Items:</label> ',
-            '<input type="button" @click="addTakeItem" value="+" />',
-            '<input type="button" @click="removeTakeItem" value="-" />',
-            '<div class="info" v-show="choice.take">{{ choice.take }}</div>',
+            '<label>Answer:</label> ',
+            '<textarea v-model="choice.answer" rows=5 cols=30></textarea>',
           '</div>',
 
           '<div class="field-row">',
-            '<label>Give Items:</label> ',
-            '<input type="button" @click="addGiveItem" value="+" />',
-            '<input type="button" @click="removeGiveItem" value="-" />',
-            '<div class="info" v-show="choice.give">{{ choice.give }}</div>',
+            '<label>Set World State</label> ',
+            '<input type="text" v-model="world_state"/>',
+            '<input type="button" @click="addWorldState" value="+" />',
+            '<input type="button" @click="removeWorldState" value="-" />',
+            '<div class="info" v-show="choice.state">{{ choice.state }}</div>',
           '</div>',
+
+          '<div v-if="choice.type == \'rest\'">',
+            '<div class="field-row">',
+              '<label>Cost:</label> ',
+              '<input type="text" v-model.number="choice.cost"/>',
+            '</div>',
+          '</div>',
+
+          '<div v-if="choice.type != \'attack\' && choice.type != \'exit\'">',
+            '<div class="field-row">',
+              '<label>Next Dialog:</label> ',
+              // '<select v-model="choice.next">',
+              //   '<option v-for="next in choices" :value="next.id">{{ next.id }}</option>',
+              // '</select>',
+              '<input type="text" v-model="choice.next" placeholder="next dialog_id"/>',
+            '</div>',
+          '</div>',
+
+          '<div v-if="choice.type == \'auto_trade\'">',
+            '<div class="field-row">',
+              '<label>Auto Trade:</label> ',
+              '<select v-model="item_id">',
+                '<option value="cash">Cash</option>',
+                '<option v-for="item in getItems" :value="item.id">{{ item.id }}</option>',
+              '</select>',
+              '<input type="number" v-model.number="cash" v-show="item_id == \'cash\'"/>',
+            '</div>',
+
+            '<div class="field-row">',
+              '<label>Take Items:</label> ',
+              '<input type="button" @click="addTakeItem" value="+" />',
+              '<input type="button" @click="removeTakeItem" value="-" />',
+              '<div class="info" v-show="choice.take">{{ choice.take }}</div>',
+            '</div>',
+
+            '<div class="field-row">',
+              '<label>Give Items:</label> ',
+              '<input type="button" @click="addGiveItem" value="+" />',
+              '<input type="button" @click="removeGiveItem" value="-" />',
+              '<div class="info" v-show="choice.give">{{ choice.give }}</div>',
+            '</div>',
+          '</div>',
+
+          '<div class="field-row">',
+            '<label>Event change</label> ',
+            '<select v-model="event_change">',
+              '<option v-for="type in getEventChangeTypes" :value="type">{{ type }}</option>',
+            '</select>',
+            '<input type="button" @click="addEventChange" value="+" />',
+          '</div>',
+          '<event-interaction-action v-for="(action, idx) in choice.events" :action="action" :events="choice.events" :idx="idx"></event-interaction-action>',
+
+          '<div class="field-row">',
+            '<label>Add Condition</label> ',
+            '<input type="button" @click="createCondition" value="+" />',
+          '</div>',
+          '<event-interaction-condition v-for="(condition, idx) in choice.conditions" :condition="condition" :conditions="choice.conditions" :idx="idx"></event-interaction-condition>',
         '</div>',
 
       '</div>'
@@ -518,6 +515,11 @@ Vue.component('eventInteractionChoice', {
 
 Vue.component('eventInteractionAction', {
   props: ['action', 'events', 'idx'],
+  data: function () {
+    return {
+      collapse: false,
+    }
+  },
   created: function () {
     if (this.action.type == "move") {
       this.action.new_position = [0, 0]
@@ -525,38 +527,39 @@ Vue.component('eventInteractionAction', {
   },
   template: [
       '<div class="box">',
-        '<h5>Action {{ idx }} <input type="button" @click="removeAction" value="-" /></h5>',
-
-        '<div class="field-row">',
-          '<label>Type:</label> ',
-          '<select v-model="action.type">',
-            '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
-          '</select>',
-        '</div>',
-
-        '<div class="field-row">',
-            '<label>Event Id: </label> ',
-            '<input type="text" v-model="action.id"/>',
-        '</div>',
-        '<div class="field-row">',
-          '<label>Map Id: </label> ',
-          '<input type="text" v-model="action.map"/>',
-        '</div>',
-        '<div class="field-row">',
-          '<label>Position: </label> ',
-          'X: <input type="number" v-model="action.position[0]"/>',
-          'Y: <input type="number" v-model="action.position[1]"/>',
-        '</div>',
-
-        '<div v-if="action.type == \'move\'">',
+        '<h5 @click="collapse = collapse ? false : true">{{ idx }} - ({{ action.type }}) {{ action.id }} <input type="button" @click="removeAction" value="-" /></h5>',
+        '<div v-show="collapse">',
           '<div class="field-row">',
-            '<label>To Map Id: </label> ',
-            '<input type="text" v-model="action.to_map"/>',
+            '<label>Type:</label> ',
+            '<select v-model="action.type" @change="prepareType">',
+              '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
+            '</select>',
+          '</div>',
+
+          '<div class="field-row">',
+              '<label>Event Id: </label> ',
+              '<input type="text" v-model="action.id"/>',
           '</div>',
           '<div class="field-row">',
-            '<label>New Position: </label> ',
-            'X: <input type="number" v-model="action.new_position[0]"/>',
-            'Y: <input type="number" v-model="action.new_position[1]"/>',
+            '<label>Map Id: </label> ',
+            '<input type="text" v-model="action.map"/>',
+          '</div>',
+          '<div class="field-row">',
+            '<label>Position: </label> ',
+            'X: <input type="number" v-model="action.position[0]"/>',
+            'Y: <input type="number" v-model="action.position[1]"/>',
+          '</div>',
+
+          '<div v-if="action.type == \'move\'">',
+            '<div class="field-row">',
+              '<label>To Map Id: </label> ',
+              '<input type="text" v-model="action.to_map"/>',
+            '</div>',
+            '<div class="field-row">',
+              '<label>New Position: </label> ',
+              'X: <input type="number" v-model="action.new_position[0]"/>',
+              'Y: <input type="number" v-model="action.new_position[1]"/>',
+            '</div>',
           '</div>',
         '</div>',
       '</div>'
@@ -565,6 +568,11 @@ Vue.component('eventInteractionAction', {
     removeAction: function () {
       this.events.splice(this.idx, 1)
     },
+    prepareType: function () {
+      if (this.action.type == "move" && !this.action.new_position) {
+        this.action.new_position = [0, 0]
+      }
+    }
   },
   computed: {
     getTypes: function () {
