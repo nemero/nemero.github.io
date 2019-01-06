@@ -2582,10 +2582,10 @@ var db_map_city1 = {
         "map": "tile-map6"
       },
       "2": {
-        "id": "tile-map6_40_6",
+        "id": "tile-map6_0_8",
         "offset": [
-          6,
-          40
+          8,
+          0
         ],
         "map": "tile-map6"
       }
@@ -2782,10 +2782,10 @@ var db_map_city1 = {
         "map": "tile-map6"
       },
       "2": {
-        "id": "tile-map6_40_6",
+        "id": "tile-map6_0_8",
         "offset": [
-          6,
-          40
+          8,
+          0
         ],
         "map": "tile-map6"
       }
@@ -4030,6 +4030,14 @@ var db_map_city1 = {
           36
         ],
         "map": "tile-map6"
+      },
+      "2": {
+        "id": "tile-map7_7_5",
+        "offset": [
+          5,
+          7
+        ],
+        "map": "tile-map7"
       }
     },
     "6": {
@@ -4040,6 +4048,14 @@ var db_map_city1 = {
           36
         ],
         "map": "tile-map6"
+      },
+      "2": {
+        "id": "tile-map7_7_6",
+        "offset": [
+          6,
+          7
+        ],
+        "map": "tile-map7"
       }
     },
     "7": {
@@ -4430,6 +4446,14 @@ var db_map_city1 = {
           36
         ],
         "map": "tile-map6"
+      },
+      "2": {
+        "id": "tile-map7_8_5",
+        "offset": [
+          5,
+          8
+        ],
+        "map": "tile-map7"
       }
     },
     "6": {
@@ -4440,6 +4464,14 @@ var db_map_city1 = {
           36
         ],
         "map": "tile-map6"
+      },
+      "2": {
+        "id": "tile-map7_8_6",
+        "offset": [
+          6,
+          8
+        ],
+        "map": "tile-map7"
       }
     },
     "7": {
@@ -5118,10 +5150,10 @@ var db_map_city1 = {
         "map": "tile-map6"
       },
       "3": {
-        "id": "tile-map6_40_6",
+        "id": "tile-map6_0_8",
         "offset": [
-          6,
-          40
+          8,
+          0
         ],
         "map": "tile-map6"
       }

@@ -7,8 +7,8 @@ var db_map_cave1_actions = {
         "icon": "icon-teleport0",
         "autoTrigger": "hover",
         "position": [
-          5,
-          3
+          2,
+          12
         ],
         "map": "world1"
       }

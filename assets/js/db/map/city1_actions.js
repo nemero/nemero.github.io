@@ -14,6 +14,38 @@ var db_map_city1_actions = {
       }
     }
   },
+  "13": {
+    "6": {
+      "undefined_13_6_0": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "",
+        "cooldown": "",
+        "enemies": [],
+        "hidden": false,
+        "autoTrigger": "13",
+        "interactions": {
+          "callboard": {
+            "id": "callboard",
+            "type": "dialog",
+            "text": "Доска объявлений",
+            "choices": [
+              {
+                "type": "exit",
+                "answer": "Приемная города закрыта на реставрацию."
+              },
+              {
+                "type": "exit",
+                "answer": "В связи с беспорядками в северной части острова крайне не рекомендуется ходить к маяку без сопровождения."
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "callboard"
+      }
+    }
+  },
   "16": {
     "7": {
       "undefined_16_7_0": {
@@ -21,8 +53,8 @@ var db_map_city1_actions = {
         "name": "Subway/Cave",
         "icon": "icon-teleport0",
         "position": [
-          -2,
-          12
+          -1,
+          13
         ],
         "map": "world1",
         "autoTrigger": "hover"
@@ -34,8 +66,8 @@ var db_map_city1_actions = {
         "name": "Subway/Cave",
         "icon": "icon-teleport0",
         "position": [
-          -2,
-          12
+          -1,
+          13
         ],
         "map": "world1",
         "autoTrigger": "hover"

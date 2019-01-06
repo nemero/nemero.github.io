@@ -732,26 +732,26 @@ var db_map_sewer1_actions = {
                   10
                 ],
                 "events": [
-                  // {
-                  //   id: "undefined_7_2_0",
-                  //   type: "move",
-                  //   map: "sewer1",
-                  //   position: [2, 7],
-                  //   to_map: "sewer1",
-                  //   new_position: [2, 8],
-                  // },
                   {
-                    id: "undefined_7_2_0",
-                    type: "hide",
-                    map: "sewer1",
-                    position: [2, 7],
-                  },
-                  // {
-                  //   id: "undefined_7_2_0",
-                  //   type: "show",
-                  //   map: "sewer1",
-                  //   position: [2, 7],
-                  // },
+                    "id": "undefined_7_2_0",
+                    "type": "hide",
+                    "map": "sewer1",
+                    "position": [
+                      2,
+                      7
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "world_state",
+                    "has": [
+                      "quest_1_progress"
+                    ],
+                    "not": [
+                      "quest_1_done"
+                    ]
+                  }
                 ]
               }
             ]
@@ -786,7 +786,7 @@ var db_map_sewer1_actions = {
         "name": "Enemies",
         "icon": "icon-battle0",
         "tile_icon": "icon-fly0",
-        "cooldown": 20,
+        "cooldown": 50,
         "autoTrigger": "hover",
         "enemies": [
           "fly",
@@ -807,12 +807,12 @@ var db_map_sewer1_actions = {
             "text": "VZZZZZZZZZZZZ!!!!!!!",
             "choices": [
               {
-                "type": "exit",
-                "answer": "Paka!"
-              },
-              {
                 "answer": "Kia!",
                 "type": "attack"
+              },
+              {
+                "type": "exit",
+                "answer": "PAKA!!"
               }
             ]
           }

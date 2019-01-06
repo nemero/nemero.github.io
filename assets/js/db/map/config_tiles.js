@@ -173,7 +173,6 @@ var config_tiles = {
       "tile-map6_14_1",
       "tile-map6_14_2",
       "tile-map6_3_0",
-      "tile-map6_2_5",
       "tile-map6_1_4"
     ],
     "tile-map7": [
@@ -192,7 +191,9 @@ var config_tiles = {
       "tile-map7_10_4",
       "tile-map7_10_0",
       "tile-map7_9_0",
-      "tile-map7_14_0"
+      "tile-map7_14_0",
+      "tile-map7_8_5",
+      "tile-map7_8_6"
     ]
   },
   "z": {
@@ -249,7 +250,9 @@ var config_tiles = {
       "tile-map6_16_2",
       "tile-map6_16_3",
       "tile-map6_2_1",
-      "tile-map6_2_2"
+      "tile-map6_2_2",
+      "tile-map6_2_5",
+      "tile-map6_13_1"
     ],
     "tile-map7": [
       "tile-map7_11_1",
@@ -262,7 +265,9 @@ var config_tiles = {
       "tile-map7_13_0",
       "tile-map7_12_0",
       "tile-map7_5_2",
-      "tile-map7_5_0"
+      "tile-map7_5_0",
+      "tile-map7_7_5",
+      "tile-map7_7_6"
     ],
     "tile-map1": [
       "tile-map1_10_5",
@@ -372,6 +377,16 @@ var config_tiles = {
         "up",
         "left",
         "right"
+      ],
+      "tile-map7_7_5": [
+        "up",
+        "left",
+        "right"
+      ],
+      "tile-map7_7_6": [
+        "up",
+        "left",
+        "right"
       ]
     },
     "tile-map6": {
@@ -381,6 +396,16 @@ var config_tiles = {
         "right"
       ],
       "tile-map6_15_1": [
+        "up",
+        "left",
+        "right"
+      ],
+      "tile-map6_2_5": [
+        "up",
+        "left",
+        "right"
+      ],
+      "tile-map6_13_1": [
         "up",
         "left",
         "right"

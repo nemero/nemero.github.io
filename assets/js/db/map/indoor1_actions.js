@@ -24,29 +24,13 @@ var db_map_indoor1_actions = {
             "text": "Privet!",
             "choices": [
               {
-                "type": "dialog",
-                "answer": "where I can find big bob?",
-                "conditions": [
-                  {
-                    "type": "world_state",
-                    "has": [
-                      "quest_1_progress"
-                    ],
-                    "not": [
-                      "quest_1_done"
-                    ]
-                  }
-                ],
-                "next": "quest_1_progress_help"
-              },
-              {
                 "type": "trade",
                 "answer": "I hochu buy chonibud",
                 "conditions": [
                   {
                     "type": "world_state",
                     "has": [
-                      "quest_2_done"
+                      "quest_1_done"
                     ]
                   }
                 ],
@@ -66,20 +50,6 @@ var db_map_indoor1_actions = {
                 "answer": "nada rest! (10 cash)",
                 "cost": 10,
                 "next": "dialog_2"
-              },
-              {
-                "type": "dialog",
-                "answer": "give me many! (requirement >20 strenght)",
-                "conditions": [
-                  {
-                    "type": "strenght",
-                    "compare": "more",
-                    "value": 20
-                  }
-                ],
-                "next": "quest_1",
-                "change": 40,
-                "extra_next": "dialog_2"
               }
             ]
           },
@@ -113,7 +83,7 @@ var db_map_indoor1_actions = {
           "quest_1_progress_help": {
             "id": "quest_1_progress_help",
             "type": "dialog",
-            "text": "In subway tower on sever!",
+            "text": "По дороге на север есть маяк, он обитает там. Под маяком расположены казематы, если не найдешь его в холе, наверняка найдешь его в казематах.\nОн не особо сговорчив, но может тебе получится убедить его отвести тебя к персоне.",
             "choices": [
               {
                 "type": "exit",
@@ -124,7 +94,7 @@ var db_map_indoor1_actions = {
           "quest_1": {
             "id": "quest_1",
             "type": "dialog",
-            "text": "can you help? need talk with big bob in subway tower? need dude in dungeon.",
+            "text": "Я раньше не видел тебя здесь, на тебе доспехи, а на севере сейчас не безопасно. Не удобно просить, но я заплачу и у меня тут магазин, сможешь купить если что нибудь захочешь. \nНужна помощь, сможешь поговоришь с big bob в маяке на севере от сюда? Нужно по проведывать некую персону и по интересоваться хорошо ли с ним обращаются и все, ну как?",
             "reward": [
               "vodka0",
               10
@@ -143,19 +113,19 @@ var db_map_indoor1_actions = {
                 "state": [
                   "quest_1_progress"
                 ],
-                "answer": "havasho ;)",
+                "answer": "HARASHO!!!!",
                 "conditions": []
               },
               {
                 "type": "exit",
-                "answer": "nit paka!!"
+                "answer": "NIT PAKA!!!"
               }
             ]
           },
           "quest_1_progress": {
             "id": "quest_1_progress",
             "type": "dialog",
-            "text": "Any news with Big bob?",
+            "text": "Есть новости о персоне?",
             "conditions": [
               {
                 "type": "world_state",
@@ -178,22 +148,38 @@ var db_map_indoor1_actions = {
                     ]
                   }
                 ],
-                "answer": "I didn found dude but there lay a note",
+                "answer": "Я побывал в казематах, но в темнице не оказалось никакой персоны, я нашел только какую-то записку..",
                 "next": "quest_1_done"
               },
               {
                 "type": "exit",
-                "answer": "nit paka!!"
+                "answer": "NIT PAKA!!"
+              },
+              {
+                "type": "dialog",
+                "answer": "А где найти не коего big bob?",
+                "conditions": [
+                  {
+                    "type": "world_state",
+                    "has": [
+                      "quest_1_progress"
+                    ],
+                    "not": [
+                      "quest_1_done"
+                    ]
+                  }
+                ],
+                "next": "quest_1_progress_help"
               }
             ]
           },
           "quest_1_done": {
             "id": "quest_1_done",
             "type": "dialog",
-            "text": "so sorry to hear it! give reward!",
+            "text": "Ох что-то произошло! Можешь дать мне эту записку? Да и как я обещала вот твоя награда.",
             "choices": [
               {
-                "answer": "(take reward)",
+                "answer": "(отдать записку)",
                 "type": "auto_trade",
                 "state": [
                   "quest_1_done"
@@ -212,7 +198,7 @@ var db_map_indoor1_actions = {
           "quest_2": {
             "id": "quest_2",
             "type": "dialog",
-            "text": "the paper contain chiper, I know man who can help us with it, he arriwed in left house",
+            "text": "Хмм, похоже на какой-то шифр, я знаю одно существо которое может нам помочь расшифровать это, он проживает справа от дома, возле него находится маленький фонтан. Сможешь пойти и узнать что ни будь про эту записку? Скажи ему что от Kavavi",
             "reward": [
               "monomate",
               4
@@ -223,11 +209,11 @@ var db_map_indoor1_actions = {
                 "state": [
                   "quest_2_progress"
                 ],
-                "answer": "I try ;)"
+                "answer": "OK!!!!"
               },
               {
                 "type": "exit",
-                "answer": "yasna paka!!"
+                "answer": "YASNA PAKA!!"
               }
             ],
             "conditions": [
@@ -245,7 +231,7 @@ var db_map_indoor1_actions = {
           "quest_2_progress": {
             "id": "quest_2_progress",
             "type": "dialog",
-            "text": "Any news about note?",
+            "text": "Ну как узнал что ни будь о содержимом записки?",
             "conditions": [
               {
                 "type": "world_state",
@@ -273,7 +259,7 @@ var db_map_indoor1_actions = {
               },
               {
                 "type": "exit",
-                "answer": "niyasna paka!!"
+                "answer": "NICHO NYASNA PAKA!!!!"
               }
             ]
           },

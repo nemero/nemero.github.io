@@ -689,3 +689,6 @@ a:hover {
 .bag .game-icon, .seller .game-icon {
 	margin-bottom: 12px;
 }
+.ui-dialog div {
+	max-width: 50vw;
+}
