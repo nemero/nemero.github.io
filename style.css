@@ -25,13 +25,18 @@ a:hover {
 	color: #EF233C;
 }
 
+.app {
+	width: 100vw;
+	height: 100vh;
+}
+
 .red {
 	background: #D90429;
 }
 .map-canvas {
 	position: absolute;
-	height: 100%;
-	width: 100%;
+	/*height: 100%;
+	width: 100%;*/
 }
 
 .ui-enemies, .ui-list-enemies, .ui-character-bag, .ui-abilities, .ui {
@@ -566,7 +571,7 @@ a:hover {
 	z-index: 2;
 	//top: -16px;
 	top: 25%;
-	transform: translate(0, -50%);
+	transform: translate(0, 50%);
 }
 .character-stats {
 	font-size: 10px;

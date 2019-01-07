@@ -26,9 +26,9 @@
 				</div>
 				
 				<div class="map">
-					<canvas id="map" class="map-canvas">
-					</canvas>
-					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map[config.db.map.activeMap]" :viewport="config.db.map.viewport"></view-map-row>
+					<canvas id="map" class="map-canvas"></canvas>
+					<!-- make logic map for render canvas map -->
+					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map[config.db.map.activeMap]" :viewport="config.db.map.viewport" :key="row_id"></view-map-row>
 				</div>
 
 
@@ -59,10 +59,10 @@
 			</div>
 		</div>
 
-		<div style="display:none; ">
-			<span v-for="(map, idx) in config.db.tileMaps">
-				<img :id="map.class" :src="map.src" :style="{width: map.width + 'px', height: map.height + 'px'}"/>
-			</span>
+		<!-- texture loader -->
+		<div style="display:none;">
+			<span id="tile_maps"></span>
+			<span id="tile_events"></span>
 	   </div>
 	</div>
 
@@ -84,6 +84,7 @@
 	<script type="text/javascript" src="assets/js/db/map/sewer1_actions.js"></script>
 
 	<script type="text/javascript" src="assets/js/db/map/tile_maps.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/tile_events.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/config_tiles.js"></script>
 
 	<!-- DB Data -->
@@ -129,6 +130,24 @@
 			pauseEvent(e);
 		}
 		window.addEventListener('mousedown', cancelSelect);
+
+		var tile_maps = config.db.tileMaps
+		var html = ""
+		for (idx in tile_maps) {
+			let tile = tile_maps[idx]
+			html += '<img id="' + tile.class + '" src="' + tile.src + '" style="width: ' + tile.width + 'px; height: ' + tile.height + 'px"/>'
+		}
+
+		document.getElementById("tile_maps").innerHTML = html
+
+		var tile_events = config.db.tileEvents
+		var html = ""
+		for (idx in tile_events) {
+			let tile = tile_events[idx]
+			html += '<img id="' + tile.id + '" src="' + tile.src + '" style="width: ' + tile.width + 'px; height: ' + tile.height + 'px"/>'
+		}
+
+		document.getElementById("tile_events").innerHTML = html
 	</script>
 </body>
 </html>

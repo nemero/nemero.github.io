@@ -130,6 +130,7 @@ var config = {
 		loot: db_loot,
 		abilities: db_abilities,
 		tileMaps: db_tile_maps,
+		tileEvents: db_tile_events,
 		factions: db_factions,
 
 		map: {
