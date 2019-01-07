@@ -23,6 +23,9 @@
 					<div class="ui-actions">
 						<view-map-tile-actions :position="config.character.position" :config="config"></view-map-tile-actions>
 					</div>
+					<div class="ui-move" v-show="config.moveUi">
+						<move-ui :config="config"></move-ui>
+					</div>
 				</div>
 				
 				<div class="map">
@@ -102,6 +105,7 @@
 	<script type="text/javascript" src="assets/js/components/character/buff.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/debuff.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/control.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/moveUi.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/abilities.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/stats.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/bag.js"></script>

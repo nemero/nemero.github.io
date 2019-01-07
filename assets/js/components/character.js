@@ -43,6 +43,8 @@ Vue.component('character', {
         '<div class="ui-main-bag" v-show="logs">',
           '{{ performance }}',
         '</div>',
+
+        '<span @click="moveUi" class="button">Move UI</span>',
       '</div>'
 	  	].join(''),
   methods: {
@@ -69,6 +71,9 @@ Vue.component('character', {
         this.show_bag = true
       }
     },
+    moveUi: function () {
+      config.moveUi = config.moveUi ? false : true
+    }
   },
   computed: {
     getLeftHP: function() {

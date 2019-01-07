@@ -2,6 +2,7 @@ var config = {
 	performance: [],
 	step: 0,
 	holdKeys: [], // shift, ctrl, alt
+	moveUi: true,
 
 	level: {
 		experience: 10,

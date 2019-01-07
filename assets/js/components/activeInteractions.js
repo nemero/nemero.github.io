@@ -3,18 +3,24 @@ Vue.component('activeInteractions', {
 	data: function () {
 		return {
 			active_interaction_id: null,
+      font_size: 100, // percent
 		}
 	},
   template: [
       '<div class="" v-if="event">',
-        '<div class="dialogs dialog" v-if="!active_interaction_id">',
+        '<div class="font-size-control">',
+          'Font size: ',
+          '<span @click="increaseFontSize" class="button">+</span>',
+          '<span @click="decreaseFontSize" class="button">-</span>',
+        '</div>',
+        '<div class="dialogs dialog" v-if="!active_interaction_id" :style="fontSize()">',
           '<span class="text">{{ event.name }} says:</span>',
           '<div class="answer" v-for="(_interaction, idx) in getActiveInteractions" @click="selectInteraction(idx)">',
             '{{ idx + 1 }}. {{ getActiveInteractions[idx].text }}',
           '</div>',
         '</div>',
 
-       	'<div class="dialog" v-if="active_interaction_id">',
+       	'<div class="dialog" v-if="active_interaction_id" :style="fontSize()">',
        		'<span class="text">{{ interaction.text }}</span>',
        		'<div class="answer" v-for="(choice, idx) in getChoices(interaction)" @click="selectChoice(choice)">',
        			'{{ idx + 1 }}. {{ choice.answer }} ({{ choice.type }})',
@@ -26,6 +32,19 @@ Vue.component('activeInteractions', {
     window.addEventListener('keydown', this.selectKey)
   },
   methods: {
+    fontSize: function () {
+      let data = {}
+      data['font-size'] = this.font_size + '%'
+      return data
+    },
+    increaseFontSize: function () {
+      this.font_size += 25
+    },
+    decreaseFontSize: function () {
+      if (this.font_size > 0) {
+        this.font_size -= 25
+      }
+    },
     selectInteraction: function (idx) {
       let interaction = this.getActiveInteractions[idx]
       this.active_interaction_id = interaction.id
