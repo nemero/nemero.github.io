@@ -27,18 +27,18 @@ Vue.component('characterControl', {
       }
 
       // move actions
-      if ([37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
+      if ([37, 38, 39, 40, 65, 68, 87, 83].indexOf(e.keyCode) >= 0) {
         let directions = []
-        if (37 == e.keyCode) {
+        if (37 == e.keyCode || 65 == e.keyCode) {
           directions.push("left")
         }
-        if (39 == e.keyCode) {
+        if (39 == e.keyCode || 68 == e.keyCode) {
           directions.push("right")
         }
-        if (38 == e.keyCode) {
+        if (38 == e.keyCode || 87 == e.keyCode) {
           directions.push("up")
         }
-        if (40 == e.keyCode) {
+        if (40 == e.keyCode || 83 == e.keyCode) {
           directions.push("down")
         }
 
