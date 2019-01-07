@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/base.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body onload="run();">
 	<div id="play" class="app" :class="getGameUI">
 		<!-- Iteration: {{ config.step }} -->
 
@@ -26,6 +26,8 @@
 				</div>
 				
 				<div class="map">
+					<canvas id="map" class="map-canvas">
+					</canvas>
 					<view-map-row v-for="(row, row_id) in parseInt(config.db.map.viewport[1])" :row="row" :row_id="row_id" :zone="config.db.map[config.db.map.activeMap]" :viewport="config.db.map.viewport"></view-map-row>
 				</div>
 
@@ -56,6 +58,12 @@
 				<a href="/">restart</a>
 			</div>
 		</div>
+
+		<div style="display:none; ">
+			<span v-for="(map, idx) in config.db.tileMaps">
+				<img :id="map.class" :src="map.src" :style="{width: map.width + 'px', height: map.height + 'px'}"/>
+			</span>
+	   </div>
 	</div>
 
 

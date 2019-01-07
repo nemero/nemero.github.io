@@ -1,4 +1,5 @@
 var config = {
+	performance: [],
 	step: 0,
 	holdKeys: [], // shift, ctrl, alt
 

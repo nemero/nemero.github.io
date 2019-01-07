@@ -3,6 +3,7 @@ Vue.component('character', {
   data: function () {
     return {
       show_bag: true,
+      logs: false,
     }
   },
   template: [
@@ -36,6 +37,11 @@ Vue.component('character', {
         '<span @click="showBag" class="button">Bag</span>',
         '<div class="ui-main-bag" v-show="show_bag">',
           '<character-bag v-for="item in this.character.bag" :item="item"></character-bag>',
+        '</div>',
+
+        '<span @click="logs = logs ? false : true" class="button">Logs</span>',
+        '<div class="ui-main-bag" v-show="logs">',
+          '{{ performance }}',
         '</div>',
       '</div>'
 	  	].join(''),
@@ -106,6 +112,9 @@ Vue.component('character', {
           value: differentHP
         })
       }
+    },
+    performance: function () {
+      return config.performance
     }
   }
 })

@@ -59,7 +59,6 @@ Vue.component('executeEvent', {
               break
             }
           }
-
         }
 
       }
@@ -86,7 +85,6 @@ Vue.component('executeEvent', {
         this.enter(event)
       }
     }
-
     //Vue.set(this.event, null) // changed variable can't be root element of component, so instead use next code
     Vue.set(config, "executeEvent", null)
   },
@@ -193,6 +191,8 @@ Vue.component('executeEvent', {
       Vue.set(position, 0, parseInt(new_position[0]))
       Vue.set(position, 1, parseInt(new_position[1]))
 
+
+      console.time('change_map_pos')
       // set map position
       if (!config.db.map[config.db.map.activeMap].layerEvents[position[1]]) {
         Vue.set(config.db.map[config.db.map.activeMap].layerEvents, position[1], {})
@@ -200,6 +200,9 @@ Vue.component('executeEvent', {
       if (!config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]]) {
         Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]], position[0], {})
       }
+      this.$nextTick(function () {
+        console.timeEnd('change_map_pos')
+      })
 
       // remove old indication position
       if (config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]] && config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]][previous_pos[0]]) {
@@ -286,12 +289,17 @@ Vue.component('executeEvent', {
         // change map 
         config.db.map.activeMap = event.map
 
+        console.time('change_map_pos_event')
         if (!config.db.map[config.db.map.activeMap].layerEvents[event.position[1]]) {
           Vue.set(config.db.map[config.db.map.activeMap].layerEvents, event.position[1], {})  
         }
         if (!config.db.map[config.db.map.activeMap].layerEvents[event.position[1]][event.position[0]]) {
           Vue.set(config.db.map[config.db.map.activeMap].layerEvents[event.position[1]], event.position[0], {})  
         }
+        this.$nextTick(function () {
+          console.timeEnd('change_map_pos_event')
+        })
+
         this.setPlayerDirection(event.position, config.character.id, "down")
 
         config.character.position = [...event.position]

@@ -2,6 +2,9 @@ html, body {
   margin: 0;
   padding: 0;
 }
+[v-cloak] {
+  display: none;
+}
 .view-map-row .layer-event {
 	position: absolute;
 	width: 80%;

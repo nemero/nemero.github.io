@@ -1,13 +1,64 @@
 Vue.component('viewMapTile', {
   props: ['row_id', 'col_id', 'zone'],
   template: ['<span class="tile" @click="movePlayer">',
-      '<view-map-tile-layer-default :zone="zone"></view-map-tile-layer-default>',
-      '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
+      //'<view-map-tile-layer-default :zone="zone"></view-map-tile-layer-default>',
+      //'<canvas :id="getCellId" style="width: 48px; height: 48px;"></canvas>',
+      //'<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
       '<view-map-tile-layer-event v-for="layer in getLayerEvents" :layer="layer" :tiles="getLayerEvents"></view-map-tile-layer-event>',
-      '<span class="service">{{ getRowId }}/{{ getColId }} {{ getTileName }}</span>',
+      //'<span class="service">{{ getRowId }}/{{ getColId }} {{ getTileName }}</span>',
     '</span>'].join(""),
+  updated: function () {
+      // draw canvas
+      //this.$nextTick(function () {
+        let canvas = document.getElementById("map");
+        let ctx = canvas.getContext('2d');
+        let width = config.db.map.tileSize[0]
+        let height = config.db.map.tileSize[1]
+
+        // default tile
+        if (this.zone.default_tile) {
+          let tile = this.zone.default_tile
+          let offset_x = 0
+          let offset_y = 0
+
+          if (tile['position']) {
+            offset_x = tile['position'][0]*config.db.map.tileSize[0]
+            offset_y = tile['position'][1]*config.db.map.tileSize[1]  
+          }
+          
+          //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
+          ctx.drawImage(document.getElementById(tile.map_class),
+              offset_x, offset_y, width, height,
+              this.col_id*width, this.row_id*height, width, height
+          );
+        }
+
+        // draw tiles
+        for (idx in this.getTiles) {
+          let tile = this.getTiles[idx]
+          let offset_x = 0
+          let offset_y = 0
+
+          if (tile['offset']) {
+            offset_x = tile['offset'][0]*config.db.map.tileSize[0]
+            offset_y = tile['offset'][1]*config.db.map.tileSize[1]  
+          }
+          
+          //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
+          ctx.drawImage(document.getElementById(tile.map),
+              offset_x, offset_y, width, height,
+              this.col_id*width, this.row_id*height, width, height
+          );
+          //canvas.style.width = width*6 + 'px';
+          //canvas.style.height = height*3 + 'px';
+          //scaleCanvas(canvas, ctx, width*2, height*2)
+          //ctx.drawImage(document.getElementById(tile.map), 0, 0);
+        }
+      //})
+  },
   methods: {
     movePlayer: function () {
+        //this.renderer()
         if (config.activeUI !== "world") {
           return
         }
@@ -86,6 +137,7 @@ Vue.component('viewMapTile', {
       let height = Math.trunc(config.db.map.viewport[1]/2)
       let row_idx = this.row_id + parseInt(offset_y) - height 
 
+      //return this.row_id
       return row_idx
     },
     getColId: function () {
@@ -93,6 +145,7 @@ Vue.component('viewMapTile', {
       let width = Math.trunc(config.db.map.viewport[0]/2)
       let col_idx = this.col_id + parseInt(offset_x) - width
 
+      //return this.col_id
       return col_idx
     },
   	getTiles: function () {
@@ -119,5 +172,8 @@ Vue.component('viewMapTile', {
 
       return null
     },
+    getCellId: function () {
+      return 'cell_' + this.getRowId + '_' + this.getColId
+    }
   }
 })

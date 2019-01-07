@@ -4,14 +4,16 @@ var db_tile_maps = [
 		class: 'tile-map1',
 		width: 768, //256,
 		height: 1008, //336,
-		tileSize: [48, 48]
+		tileSize: [48, 48],
+		src: "assets/tileset_1.png"
 	},
 	{
 		id: 'mountains_0',
 		class: 'tile-map2',
 		width: 576,
 		height: 480,
-		tileSize: [48, 48]
+		tileSize: [48, 48],
+		src: "assets/tileset_mountains_0.png",
 	},
 	{
 		id: 'water_1',
@@ -20,7 +22,8 @@ var db_tile_maps = [
 		height: 96,
 		tileSize: [48, 48],
 		animation: true,
-		frame_time: 1000 // miliseconds
+		frame_time: 1000, // miliseconds
+		src: "assets/tileset_water.png",
 	},
     {
 		id: 'cave_1',
@@ -28,6 +31,7 @@ var db_tile_maps = [
 		width: 768,
 		height: 1008,
 		tileSize: [48, 48],
+		src: "assets/tileset_cave1.png",
     },
     {
 		id: 'sewer_1',
@@ -35,6 +39,7 @@ var db_tile_maps = [
 		width: 816, //272,
 		height: 768, //336,
 		tileSize: [48, 48], // [16, 16],
+		src: "assets/tileset_sewer_1_48.png",
     },
     {
 		id: 'city_1',
@@ -42,6 +47,7 @@ var db_tile_maps = [
 		width: 432,
 		height: 2175,
 		tileSize: [48, 48],
+		src: "assets/tileset_magecity_1.png",
     },
     {
 		id: 'indoor_1',
@@ -49,5 +55,6 @@ var db_tile_maps = [
 		width: 336,
 		height: 772,
 		tileSize: [48, 48],
+		src: "assets/tileset_indoor_1.png",
     },
 ]

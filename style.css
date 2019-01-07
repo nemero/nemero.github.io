@@ -28,6 +28,11 @@ a:hover {
 .red {
 	background: #D90429;
 }
+.map-canvas {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
 
 .ui-enemies, .ui-list-enemies, .ui-character-bag, .ui-abilities, .ui {
 	display: flex;
@@ -495,8 +500,8 @@ a:hover {
 	position: relative;
 	//width: 16px;
 	//height: 16px;
-	width: 47.5px;
-	height: 47.5px;
+	width: 48px;
+	height: 48px;
 	display: inline-block;
 	//border-right: 1px solid #cecece;
 	font-size: 5px;
@@ -525,7 +530,7 @@ a:hover {
 .view-map-row .tile > span.service {
 	display: none;
 }
-.view-map-row .tile > span {
+.view-map-row .tile > span, .view-map-row .tile > canvas {
 	position: absolute;
 	left: 0;
 	top: 0;
