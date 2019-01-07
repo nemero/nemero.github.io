@@ -370,26 +370,26 @@ Vue.component('characterAbilities', {
 
       // todo refact
       if (all_enemies_down) {
-        // change map
-        config.activeUI = "world"
-
         // bug: checking only player position, need also check direction player cell
         // TODO: add enemies position in battle mode
         let layers = config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]
         for (layer_idx in layers) {
           let layer = layers[layer_idx]
-          if (layer.id == "enemies" && layer.cooldown !== undefined) {
+          if (layer.id == "enemies" && layer.cooldown) {
             // set cooldown for first enemies layer
             Vue.set(layer, "cooldown_left", config.step + layer.cooldown)
             break
           }
 
-          if (layer.id == "enemies" && layer.cooldown == undefined) {
+          if (layer.id == "enemies" && !layer.cooldown) {
             // remove first enemies layer
-            layers.splice(layer_idx, 1)
+            Vue.delete(layers, layer_idx)
             break
           }
         }
+
+        // change map
+        config.activeUI = "world"
       }
     },
     enemyAttack: function () {

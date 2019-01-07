@@ -687,7 +687,7 @@ var db_map_sewer1_actions = {
         "autoTrigger": "hover",
         "cooldown": "",
         "enemies": [
-          "boss"
+          "fly"
         ],
         "hidden": "",
         "interactions": {
@@ -752,6 +752,9 @@ var db_map_sewer1_actions = {
                       "quest_1_done"
                     ]
                   }
+                ],
+                "state": [
+                  "quest_1_progress_10_cash_bob"
                 ]
               }
             ]
