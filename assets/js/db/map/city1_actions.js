@@ -1,4 +1,58 @@
 var db_map_city1_actions = {
+  "8": {
+    "8": {
+      "undefined_8_8_1": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-battle0",
+        "cooldown": "",
+        "enemies": [],
+        "hidden": false,
+        "interactions": {
+          "dialog_1": {
+            "id": "dialog_1",
+            "type": "dialog",
+            "text": "ЫАААААА..... ФЛЮП.. ФЛЮП..",
+            "choices": [
+              {
+                "type": "exit",
+                "answer": ".."
+              },
+              {
+                "answer": "Слушай это ты самое оно? Можешь посмотреть эту записку? Я от Kivava",
+                "next": "dialog_2",
+                "conditions": [
+                  {
+                    "type": "world_state",
+                    "has": [
+                      "quest_2_progress"
+                    ],
+                    "not": [
+                      "quest_2_done"
+                    ]
+                  }
+                ],
+                "type": "dialog"
+              }
+            ]
+          },
+          "dialog_2": {
+            "id": "dialog_2",
+            "type": "dialog",
+            "text": "ЫЫАААААА... ",
+            "choices": [
+              {
+                "answer": "YASNA!!!!!",
+                "type": "exit"
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "dialog_1"
+      }
+    }
+  },
   "9": {
     "4": {
       "undefined_9_4_0": {
