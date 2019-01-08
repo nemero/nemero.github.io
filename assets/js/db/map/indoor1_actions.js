@@ -4,8 +4,8 @@ var db_map_indoor1_actions = {
       "undefined_3_3_0": {
         "id": "enemies",
         "name": "Enemies",
-        "icon": "icon-battle0",
-        "tile_icon": "icon-vendor0",
+        "icon": "icon-speak0",
+        "tile_icon": "",
         "cooldown": "",
         "enemies": [
           "fly"

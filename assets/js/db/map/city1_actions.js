@@ -4,8 +4,8 @@ var db_map_city1_actions = {
       "undefined_8_8_1": {
         "id": "enemies",
         "name": "Enemies",
-        "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "icon": "icon-speak0",
+        "tile_icon": "icon-chel0",
         "cooldown": "",
         "enemies": [],
         "hidden": false,
@@ -73,7 +73,7 @@ var db_map_city1_actions = {
       "undefined_13_6_0": {
         "id": "enemies",
         "name": "Enemies",
-        "icon": "icon-battle0",
+        "icon": "icon-speak0",
         "tile_icon": "",
         "cooldown": "",
         "enemies": [],

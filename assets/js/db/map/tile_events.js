@@ -97,4 +97,18 @@ var db_tile_events = [
 		tileSize: [48, 48],
 		src: "assets/fly.png"
 	},
+	{
+		id: 'icon-chel0',
+		width: 48,
+		height: 48,
+		tileSize: [48, 48],
+		src: "assets/chel.png"
+	},
+	{
+		id: 'icon-quest0',
+		width: 48,
+		height: 48,
+		tileSize: [48, 48],
+		src: "assets/quest.png"
+	},
 ]

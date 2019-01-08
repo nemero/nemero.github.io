@@ -91,8 +91,6 @@ var config_tiles = {
     ],
     "tile-map6": [
       "tile-map6_3_7",
-      "tile-map6_2_7",
-      "tile-map6_2_6",
       "tile-map6_1_6",
       "tile-map6_1_5",
       "tile-map6_0_6",
@@ -173,7 +171,8 @@ var config_tiles = {
       "tile-map6_14_1",
       "tile-map6_14_2",
       "tile-map6_3_0",
-      "tile-map6_1_4"
+      "tile-map6_1_4",
+      "tile-map6_3_6"
     ],
     "tile-map7": [
       "tile-map7_4_0",
@@ -252,7 +251,9 @@ var config_tiles = {
       "tile-map6_2_1",
       "tile-map6_2_2",
       "tile-map6_2_5",
-      "tile-map6_13_1"
+      "tile-map6_13_1",
+      "tile-map6_2_6",
+      "tile-map6_2_7"
     ],
     "tile-map7": [
       "tile-map7_11_1",
@@ -406,6 +407,16 @@ var config_tiles = {
         "right"
       ],
       "tile-map6_13_1": [
+        "up",
+        "left",
+        "right"
+      ],
+      "tile-map6_2_7": [
+        "up",
+        "left",
+        "right"
+      ],
+      "tile-map6_2_6": [
         "up",
         "left",
         "right"

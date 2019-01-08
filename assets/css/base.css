@@ -18,6 +18,12 @@ html, body {
 .icon-battle0 {
 	background: url(../battle.png) center center/cover;
 }
+.icon-chel0 {
+	background: url(../chel.png) center center/cover;
+}
+.icon-quest0 {
+	background: url(../quest.png) center center/cover;
+}
 .icon-speak0 {
 	background: url(../speak.png) center center/cover;
 }
