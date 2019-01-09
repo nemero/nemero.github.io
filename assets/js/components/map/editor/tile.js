@@ -69,23 +69,24 @@ Vue.component('tile', {
 
       // direction tile 
       let directions = config.db.config_tiles.directions[this.tile.map]
-      if (directions && directions[this.tile.map] && directions[this.tile.map][this.tile.id]) {
-        if (directions[this.tile.map][this.tile.id].indexOf('up') >= 0) {
+      if (directions && directions[this.tile.id]) {
+        //console.log(config.db.config_tiles.directions[this.tile.map][this.tile.id])
+        if (directions[this.tile.id].indexOf('up') >= 0) {
           this.up_direction = true
         } else {
           this.up_direction = false
         }
-        if (directions[this.tile.map][this.tile.id].indexOf('down') >= 0) {
+        if (directions[this.tile.id].indexOf('down') >= 0) {
           this.down_direction = true
         } else {
           this.down_direction = false
         }
-        if (directions[this.tile.map][this.tile.id].indexOf('left') >= 0) {
+        if (directions[this.tile.id].indexOf('left') >= 0) {
           this.left_direction = true
         } else {
           this.left_direction = false
         }
-        if (directions[this.tile.map][this.tile.id].indexOf('right') >= 0) {
+        if (directions[this.tile.id].indexOf('right') >= 0) {
           this.right_direction = true
         } else {
           this.right_direction = false
