@@ -45,6 +45,7 @@ Vue.component('character', {
         '</div>',
 
         '<span @click="moveUi" class="button">Move UI</span>',
+        '<span @click="mainMenu" class="button">Menu</span>',
       '</div>'
 	  	].join(''),
   methods: {
@@ -73,6 +74,10 @@ Vue.component('character', {
     },
     moveUi: function () {
       config.moveUi = config.moveUi ? false : true
+    },
+    mainMenu: function () {
+      config.previousUI = config.activeUI
+      config.activeUI = "game-menu"
     }
   },
   computed: {

@@ -123,7 +123,7 @@ var config = {
 	},
 
 	activeEnemies: [],
-	activeUI: "world", // battle, battle-finish, game-over, menu, prefix active-ui-
+	activeUI: "game-menu", // battle, battle-finish, game-over, menu, prefix active-ui-
 
 	db: {
 		items: db_items,

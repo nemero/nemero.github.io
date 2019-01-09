@@ -60,6 +60,14 @@
 				<h1>GAME OVER...</h1>
 				<a href="/">restart</a>
 			</div>
+			<div class="ui-loading">
+				<h1>Loading...</h1>
+			</div>
+
+			<div class="ui-game-menu">
+				<h1>Menu</h1>
+				<main-menu></main-menu>
+			</div>
 		</div>
 
 		<!-- texture loader -->
@@ -98,6 +106,7 @@
 	<script type="text/javascript" src="assets/js/db/factions.js"></script>
 
 	<script type="text/javascript" src="assets/js/config.js"></script>
+	<script type="text/javascript" src="assets/js/components/mainMenu.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeEnemy.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeInteractions.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeTrade.js"></script>
@@ -152,6 +161,10 @@
 		}
 
 		document.getElementById("tile_events").innerHTML = html
+
+		if (config.activeUI == "loading") {
+			document.getElementById("play").className += " active-loading-ui"
+		}
 	</script>
 </body>
 </html>
