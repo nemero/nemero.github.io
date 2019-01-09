@@ -268,7 +268,13 @@ var config_tiles = {
       "tile-map7_5_2",
       "tile-map7_5_0",
       "tile-map7_7_5",
-      "tile-map7_7_6"
+      "tile-map7_7_6",
+      "tile-map7_4_4",
+      "tile-map7_2_4",
+      "tile-map7_2_5",
+      "tile-map7_2_1",
+      "tile-map7_2_2",
+      "tile-map7_2_3"
     ],
     "tile-map1": [
       "tile-map1_10_5",
@@ -386,6 +392,16 @@ var config_tiles = {
       ],
       "tile-map7_7_6": [
         "up",
+        "left",
+        "right"
+      ],
+      "tile-map7_4_4": [
+        "up",
+        "left",
+        "right"
+      ],
+      "tile-map7_5_4": [
+        "down",
         "left",
         "right"
       ]

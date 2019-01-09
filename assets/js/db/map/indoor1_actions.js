@@ -1,4 +1,19 @@
 var db_map_indoor1_actions = {
+  "2": {
+    "2": {
+      "undefined_2_2_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-teleport0",
+        "position": [
+          -22,
+          3
+        ],
+        "map": "indoor1",
+        "autoTrigger": "hover"
+      }
+    }
+  },
   "3": {
     "3": {
       "undefined_3_3_0": {
@@ -279,11 +294,14 @@ var db_map_indoor1_actions = {
                   {
                     "type": "world_state",
                     "has": [
-                      "quest_2_progress_accept"
+                      "quest_2_progress_1"
+                    ],
+                    "not": [
+                      "quest_2_done"
                     ]
                   }
                 ],
-                "answer": "Very strange!",
+                "answer": "Оно чет говорит, не понимаю, оно вообще умеет разговаривать?",
                 "next": "quest_2_done"
               },
               {
@@ -295,7 +313,7 @@ var db_map_indoor1_actions = {
           "quest_2_done": {
             "id": "quest_2_done",
             "type": "dialog",
-            "text": "Oh great hear it! It all what I can give you! Also you can buy any what you want in my shop!",
+            "text": "Вот это да, должно быть его застали не в духе, обычно оно говорит понятно, чтоже придется разбираться самой",
             "choices": [
               {
                 "answer": "(take reward)",
@@ -314,6 +332,19 @@ var db_map_indoor1_actions = {
         },
         "default_interaction_id": "dialog_1",
         "autoTrigger": "13"
+      }
+    },
+    "-23": {
+      "undefined_3_-23_0": {
+        "id": "teleport",
+        "name": "Subway/Cave",
+        "icon": "icon-teleport0",
+        "position": [
+          3,
+          2
+        ],
+        "map": "indoor1",
+        "autoTrigger": "hover"
       }
     }
   },

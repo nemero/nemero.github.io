@@ -214,6 +214,9 @@ Vue.component('eventInteractionCondition', {
           '<div v-if="condition.type == \'world_state\'">',
             '<div class="field-row">',
               '<label>State Id: </label> ',
+              '<select v-model="state_id">',
+                '<option v-for="state in getWorldStates" :value="state">{{ state }}</option>',
+              '</select>',
               '<input type="text" v-model="state_id" placeholder="world state id"/>',
             '</div>',
             '<div class="field-row">',
@@ -309,7 +312,44 @@ Vue.component('eventInteractionCondition', {
     },
     getItems: function () {
       return config.db.items
-    }
+    },
+    getWorldStates: function () {
+      let world_states = []
+
+      for (layer_id in config.db.mapList) {
+        let layer = config.db.mapList[layer_id].layerEvents
+
+        for (row_id in layer) {
+          let rows = layer[row_id]
+
+          for (col_id in rows) {
+            let cols = rows[col_id]
+
+            for (event_id in cols) {
+              let event = cols[event_id]
+              if (event.interactions) {
+                for (interaction_id in event.interactions) {
+                  let interaction = event.interactions[interaction_id]
+                  for (choice_id in interaction.choices) {
+                    let choice = interaction.choices[choice_id]
+                    if (choice.state) {
+                      for (state_id in choice.state) {
+                        let state = choice.state[state_id]
+                        if (world_states.indexOf(state) < 0) {
+                          world_states.push(state)
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      return world_states.sort()
+    },
   }
 })
 
@@ -342,6 +382,9 @@ Vue.component('eventInteractionChoice', {
 
           '<div class="field-row">',
             '<label>Set World State</label> ',
+            '<select v-model="world_state">',
+              '<option v-for="state in getWorldStates" :value="state">{{ state }}</option>',
+            '</select>',
             '<input type="text" v-model="world_state"/>',
             '<input type="button" @click="addWorldState" value="+" />',
             '<input type="button" @click="removeWorldState" value="-" />',
@@ -508,7 +551,44 @@ Vue.component('eventInteractionChoice', {
     },
     getEventChangeTypes: function () {
       return ["move", "hide", "show"]
-    }
+    },
+    getWorldStates: function () {
+      let world_states = []
+
+      for (layer_id in config.db.mapList) {
+        let layer = config.db.mapList[layer_id].layerEvents
+
+        for (row_id in layer) {
+          let rows = layer[row_id]
+
+          for (col_id in rows) {
+            let cols = rows[col_id]
+
+            for (event_id in cols) {
+              let event = cols[event_id]
+              if (event.interactions) {
+                for (interaction_id in event.interactions) {
+                  let interaction = event.interactions[interaction_id]
+                  for (choice_id in interaction.choices) {
+                    let choice = interaction.choices[choice_id]
+                    if (choice.state) {
+                      for (state_id in choice.state) {
+                        let state = choice.state[state_id]
+                        if (world_states.indexOf(state) < 0) {
+                          world_states.push(state)
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      return world_states.sort()
+    },
   }
 })
 

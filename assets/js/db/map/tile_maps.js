@@ -53,7 +53,7 @@ var db_tile_maps = [
 		id: 'indoor_1',
 		class: 'tile-map7',
 		width: 336,
-		height: 772,
+		height: 768,
 		tileSize: [48, 48],
 		src: "assets/tileset_indoor_1.png",
     },

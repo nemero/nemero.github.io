@@ -44,7 +44,10 @@ var db_map_city1_actions = {
             "choices": [
               {
                 "answer": "YASNA!!!!!",
-                "type": "exit"
+                "type": "exit",
+                "state": [
+                  "quest_2_progress_1"
+                ]
               }
             ]
           }
