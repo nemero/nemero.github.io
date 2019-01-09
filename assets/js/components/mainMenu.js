@@ -44,6 +44,10 @@ Vue.component('mainMenu', {
     loadGame: function () {
       let map = getCookie("map")
       if (map) {
+        // remove old indication position
+        if (config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]] && config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]) {
+          Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]], config.character.id)
+        }
         Vue.set(config.db.map, "activeMap", map)
       }
 
@@ -57,7 +61,6 @@ Vue.component('mainMenu', {
         if (!config.db.map[map].layerEvents[player.position[1]][player.position[0]]) {
           Vue.set(config.db.map[map].layerEvents[player.position[1]], player.position[0], {})  
         }
-
         Vue.set(config.db.map[map].layerEvents[player.position[1]][player.position[0]], player.id, {
           id: "player",
           name: "Player Kokoko",
