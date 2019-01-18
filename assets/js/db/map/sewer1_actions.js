@@ -126,6 +126,244 @@ var db_map_sewer1_actions = {
       }
     }
   },
+  "4": {
+    "3": {
+      "undefined_4_3_0": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "autoTrigger": "13",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "position": [
+              3,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_4",
+              "offset": [
+                4,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              3,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_3_4",
+              "offset": [
+                4,
+                3
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      },
+      "undefined_4_3_1": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "autoTrigger": "13",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "position": [
+              3,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_3_4",
+              "offset": [
+                4,
+                3
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              3,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_4",
+              "offset": [
+                4,
+                4
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      }
+    },
+    "6": {
+      "undefined_4_6_0": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "autoTrigger": "13",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "position": [
+              6,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_5",
+              "offset": [
+                5,
+                4
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              6,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_3_4",
+              "offset": [
+                4,
+                3
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      },
+      "undefined_4_6_1": {
+        "id": "unlock",
+        "name": "Subway/Cave Lock",
+        "icon": "icon-basement-door0",
+        "type_unlock": "use",
+        "autoTrigger": "13",
+        "item": null,
+        "triggers": [
+          {
+            "type_trigger": "replace_tile",
+            "position": [
+              6,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_3_4",
+              "offset": [
+                4,
+                3
+              ],
+              "size": [
+                16,
+                16
+              ],
+              "position": [
+                0,
+                0
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ],
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              6,
+              4
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_4_5",
+              "offset": [
+                5,
+                4
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
+      }
+    }
+  },
   "6": {
     "1": {
       "undefined_6_1_0": {
@@ -258,9 +496,9 @@ var db_map_sewer1_actions = {
         "id": "unlock",
         "name": "Subway/Cave Lock",
         "icon": "icon-townout0",
-        "type_unlock": "use",
+        "type_unlock": "item",
         "autoTrigger": "13",
-        "item": null,
+        "item": "key_old_tower0",
         "triggers": [
           {
             "type_trigger": "replace_tile",
@@ -294,242 +532,6 @@ var db_map_sewer1_actions = {
               "offset": [
                 8,
                 1
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ]
-      }
-    },
-    "3": {
-      "undefined_6_3_0": {
-        "id": "unlock",
-        "name": "Subway/Cave Lock",
-        "icon": "icon-basement-door0",
-        "type_unlock": "use",
-        "autoTrigger": "13",
-        "item": null,
-        "triggers": [
-          {
-            "type_trigger": "replace_tile",
-            "position": [
-              3,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_4_4",
-              "offset": [
-                4,
-                4
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ],
-        "conditions": [
-          {
-            "type_condition": "exist_tile",
-            "position": [
-              3,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_3_4",
-              "offset": [
-                4,
-                3
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ]
-      },
-      "undefined_6_3_1": {
-        "id": "unlock",
-        "name": "Subway/Cave Lock",
-        "icon": "icon-basement-door0",
-        "type_unlock": "use",
-        "autoTrigger": "13",
-        "item": null,
-        "triggers": [
-          {
-            "type_trigger": "replace_tile",
-            "position": [
-              3,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_3_4",
-              "offset": [
-                4,
-                3
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ],
-        "conditions": [
-          {
-            "type_condition": "exist_tile",
-            "position": [
-              3,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_4_4",
-              "offset": [
-                4,
-                4
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ]
-      }
-    },
-    "6": {
-      "undefined_6_6_0": {
-        "id": "unlock",
-        "name": "Subway/Cave Lock",
-        "icon": "icon-basement-door0",
-        "type_unlock": "use",
-        "autoTrigger": "13",
-        "item": null,
-        "triggers": [
-          {
-            "type_trigger": "replace_tile",
-            "position": [
-              6,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_4_5",
-              "offset": [
-                5,
-                4
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ],
-        "conditions": [
-          {
-            "type_condition": "exist_tile",
-            "position": [
-              6,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_3_4",
-              "offset": [
-                4,
-                3
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ]
-      },
-      "undefined_6_6_1": {
-        "id": "unlock",
-        "name": "Subway/Cave Lock",
-        "icon": "icon-basement-door0",
-        "type_unlock": "use",
-        "autoTrigger": "13",
-        "item": null,
-        "triggers": [
-          {
-            "type_trigger": "replace_tile",
-            "position": [
-              6,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_3_4",
-              "offset": [
-                4,
-                3
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ],
-        "conditions": [
-          {
-            "type_condition": "exist_tile",
-            "position": [
-              6,
-              6
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_4_5",
-              "offset": [
-                5,
-                4
               ],
               "map": "tile-map5"
             }
@@ -670,121 +672,16 @@ var db_map_sewer1_actions = {
         "icon": "icon-townout0",
         "autoTrigger": "hover",
         "position": [
-          2,
-          2
+          23,
+          -9
         ],
-        "map": "world1"
+        "map": "sewer1"
       }
     }
   },
-  "7": {
-    "2": {
-      "undefined_7_2_0": {
-        "id": "enemies",
-        "name": "Enemies",
-        "icon": "icon-battle0",
-        "tile_icon": "icon-boss1",
-        "autoTrigger": "hover",
-        "cooldown": "",
-        "enemies": [
-          "fly"
-        ],
-        "hidden": "",
-        "interactions": {
-          "start": {
-            "id": "start",
-            "type": "dialog",
-            "text": "Sho nado?",
-            "choices": [
-              {
-                "type": "dialog",
-                "answer": "Puti!",
-                "next": "d2"
-              },
-              {
-                "type": "exit",
-                "answer": "Nicho!"
-              }
-            ]
-          },
-          "d2": {
-            "id": "d2",
-            "type": "dialog",
-            "text": "Ni Putyu!",
-            "choices": [
-              {
-                "answer": "Paluchay!",
-                "type": "attack"
-              },
-              {
-                "type": "dialog",
-                "answer": "Puty!",
-                "next": "d3"
-              },
-              {
-                "type": "exit",
-                "answer": "Paka!"
-              },
-              {
-                "type": "auto_trade",
-                "answer": "I give you 10 cash!",
-                "take": [
-                  10
-                ],
-                "events": [
-                  {
-                    "id": "undefined_7_2_0",
-                    "type": "hide",
-                    "map": "sewer1",
-                    "position": [
-                      2,
-                      7
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "world_state",
-                    "has": [
-                      "quest_1_progress"
-                    ],
-                    "not": [
-                      "quest_1_done"
-                    ]
-                  }
-                ],
-                "state": [
-                  "quest_1_progress_10_cash_bob"
-                ]
-              }
-            ]
-          },
-          "d3": {
-            "id": "d3",
-            "type": "dialog",
-            "text": "Nu Ni Putyu!!!",
-            "choices": [
-              {
-                "type": "attack",
-                "answer": "paluchay!!"
-              },
-              {
-                "type": "dialog",
-                "answer": "Ny PUTI!!!",
-                "next": "d2"
-              },
-              {
-                "type": "exit",
-                "answer": "Paka!"
-              }
-            ]
-          }
-        },
-        "default_interaction_id": "start"
-      }
-    },
-    "9": {
-      "undefined_7_9_0": {
+  "8": {
+    "3": {
+      "undefined_8_3_0": {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
@@ -825,6 +722,105 @@ var db_map_sewer1_actions = {
     }
   },
   "-10": {
+    "19": {
+      "undefined_-10_19_0": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-boss1",
+        "autoTrigger": "hover",
+        "cooldown": "",
+        "enemies": [
+          "boss"
+        ],
+        "hidden": "",
+        "interactions": {
+          "start": {
+            "id": "start",
+            "type": "dialog",
+            "text": "Sho nado?",
+            "choices": [
+              {
+                "type": "dialog",
+                "answer": "Ti Kto?",
+                "next": "d2"
+              },
+              {
+                "type": "exit",
+                "answer": "Nicho!"
+              }
+            ]
+          },
+          "d2": {
+            "id": "d2",
+            "type": "dialog",
+            "text": "YA BIG BOB!",
+            "choices": [
+              {
+                "answer": "Paluchay!",
+                "type": "attack"
+              },
+              {
+                "type": "dialog",
+                "answer": "Nichosy, Sho v podvale?",
+                "next": "d3"
+              },
+              {
+                "type": "exit",
+                "answer": "Paka!"
+              },
+              {
+                "type": "auto_trade",
+                "answer": "I give you 10 cash!",
+                "take": [
+                  "key_old_tower0"
+                ],
+                "events": [],
+                "conditions": [
+                  {
+                    "type": "world_state",
+                    "has": [
+                      "quest_1_progress"
+                    ],
+                    "not": [
+                      "quest_1_done",
+                      "quest_1_progress_10_cash_bob"
+                    ]
+                  }
+                ],
+                "state": [
+                  "quest_1_progress_10_cash_bob"
+                ],
+                "give": [
+                  10
+                ]
+              }
+            ]
+          },
+          "d3": {
+            "id": "d3",
+            "type": "dialog",
+            "text": "NICHO!!!1111",
+            "choices": [
+              {
+                "type": "attack",
+                "answer": "paluchay!!"
+              },
+              {
+                "type": "dialog",
+                "answer": "A Ti Kto? ",
+                "next": "d2"
+              },
+              {
+                "type": "exit",
+                "answer": "Paka!"
+              }
+            ]
+          }
+        },
+        "default_interaction_id": "start"
+      }
+    },
     "23": {
       "undefined_-10_23_0": {
         "id": "teleport",
@@ -883,22 +879,40 @@ var db_map_sewer1_actions = {
             }
           }
         ],
-        "conditions": []
+        "conditions": [
+          {
+            "type_condition": "exist_tile",
+            "position": [
+              23,
+              -10
+            ],
+            "layer_id": "2",
+            "map": "sewer1",
+            "tile": {
+              "id": "tile-map5_5_15",
+              "offset": [
+                15,
+                5
+              ],
+              "map": "tile-map5"
+            }
+          }
+        ]
       }
     }
   },
-  "-6": {
+  "-5": {
     "21": {
-      "undefined_-6_21_0": {
+      "undefined_-5_21_0": {
         "id": "teleport",
         "name": "Subway/Cave",
-        "icon": "icon-townout0",
-        "autoTrigger": "hover",
+        "icon": "icon-teleport0",
         "position": [
           2,
-          1
+          2
         ],
-        "map": "world1"
+        "map": "world1",
+        "autoTrigger": "hover"
       }
     }
   }

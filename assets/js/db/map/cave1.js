@@ -486,50 +486,50 @@ var db_map_cave1 = {
   "6": {
     "0": {
       "1": {
-        "id": "tile-map4_7_6",
+        "id": "tile-map4_6_6",
         "offset": [
           6,
-          7
+          6
         ],
         "map": "tile-map4"
       }
     },
     "1": {
       "1": {
-        "id": "tile-map4_7_7",
+        "id": "tile-map4_14_7",
         "offset": [
           7,
-          7
+          14
         ],
         "map": "tile-map4"
       }
     },
     "2": {
       "1": {
-        "id": "tile-map4_7_7",
+        "id": "tile-map4_14_7",
         "offset": [
           7,
-          7
+          14
         ],
         "map": "tile-map4"
       }
     },
     "3": {
       "1": {
-        "id": "tile-map4_7_7",
+        "id": "tile-map4_14_7",
         "offset": [
           7,
-          7
+          14
         ],
         "map": "tile-map4"
       }
     },
     "4": {
       "1": {
-        "id": "tile-map4_9_6",
+        "id": "tile-map4_14_7",
         "offset": [
-          6,
-          9
+          7,
+          14
         ],
         "map": "tile-map4"
       }
@@ -576,11 +576,51 @@ var db_map_cave1 = {
     }
   },
   "7": {
-    "4": {
+    "0": {
       "1": {
         "id": "tile-map4_7_6",
         "offset": [
           6,
+          7
+        ],
+        "map": "tile-map4"
+      }
+    },
+    "1": {
+      "1": {
+        "id": "tile-map4_7_7",
+        "offset": [
+          7,
+          7
+        ],
+        "map": "tile-map4"
+      }
+    },
+    "2": {
+      "1": {
+        "id": "tile-map4_7_7",
+        "offset": [
+          7,
+          7
+        ],
+        "map": "tile-map4"
+      }
+    },
+    "3": {
+      "1": {
+        "id": "tile-map4_7_7",
+        "offset": [
+          7,
+          7
+        ],
+        "map": "tile-map4"
+      }
+    },
+    "4": {
+      "1": {
+        "id": "tile-map4_7_7",
+        "offset": [
+          7,
           7
         ],
         "map": "tile-map4"
@@ -627,6 +667,4 @@ var db_map_cave1 = {
       }
     }
   },
-  "8": {},
-  "9": {}
 }

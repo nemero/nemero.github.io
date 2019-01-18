@@ -1,109 +1,218 @@
 var db_loot = {
-  "fly": {
-    "id": "fly",
-    "items": {
-      "cane0": 5,
-      "monomate": 35
-    }
-  },
-  "fly1": {
-    "id": "fly1",
-    "items": {
-      "sword1": 8,
-      "sword0": 30,
-      "knife2": 3
-    }
-  },
-  "zomby": {
-    "id": "zomby",
-    "items": {
-      "bow0": 20,
-      "sword1": 10,
-      "sword0": 20,
-      "cane0": 10,
-      "cane1": 8,
-      "cane2": 12,
-      "garbage0": 20,
-      "sword3": 6,
-      "sword4": 1
-    }
-  },
-  "wolf": {
-    "id": "wolf",
-    "items": {
-      "garbage0": 20,
-      "garbage1": 20,
-      "sword3": 15,
-      "sword4": 2,
-      "sword01": 19
-    }
-  },
-  "wolf1": {
-    "id": "wolf1",
-    "items": {
-      "garbage0": 20,
-      "garbage1": 20,
-      "sword3": 15,
-      "sword4": 2,
-      "sword02": 10
-    }
-  },
-  "bear0": {
-    "id": "bear0",
-    "items": {
-      "garbage0": 20,
-      "garbage1": 20,
-      "sword11": 2,
-      "sword4": 2,
-      "sword03": 15,
-      "knife2": 1
-    }
-  },
-  "bear1": {
-    "id": "bear1",
-    "items": {
-      "garbage0": 20,
-      "garbage1": 20,
-      "sword03": 2,
-      "sword4": 2,
-      "sword21": 21,
-      "knife2": 1
-    }
-  },
-  "boss": {
-    "id": "boss",
-    "items": {
-      "garbage0": 10,
-      "garbage1": 20,
-      "cane2": 30,
-      "sword3": 20,
-      "sword4": 2,
-      "sword0": 10
-    }
+  "boss2": {
+    "id": "boss2",
+    "name": "Titan KOKO",
+    "experience": 13,
+    "health": 3190,
+    "damage": 150,
+    "speed": 10,
+    "defence": 20,
+    "agility": 0,
+    "faction": "wolf",
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "model": "icon-boss2",
+    "hpScroll": []
   },
   "boss1": {
     "id": "boss1",
-    "items": {
-      "garbage0": 11,
-      "garbage1": 10,
-      "cane2": 12,
-      "sword3": 30,
-      "sword4": 1,
-      "knife1": 2,
-      "sword0": 15,
-      "bow1": 2,
-      "key_old_tower0": 90
-    }
+    "name": "Big Juice",
+    "experience": 13,
+    "health": 325,
+    "damage": 15,
+    "speed": 10,
+    "defence": 20,
+    "agility": 0,
+    "faction": "wolf",
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "model": "icon-boss1",
+    "hpScroll": []
   },
-  "boss2": {
-    "id": "boss2",
-    "items": {
-      "garbage0": 11,
-      "garbage1": 10,
-      "cane2": 12,
-      "sword21": 15,
-      "bow2": 30,
-      "knife2": 3
-    }
+  "boss": {
+    "id": "boss",
+    "name": "Big Bob",
+    "experience": 10,
+    "health": 190,
+    "damage": 10,
+    "speed": 10,
+    "defence": 20,
+    "agility": 0,
+    "faction": "wolf",
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "model": "icon-boss1",
+    "hpScroll": [],
+    "script": {}
+  },
+  "bear0": {
+    "id": "bear0",
+    "name": "Angry Bear",
+    "experience": 7,
+    "level": 4,
+    "health": 125,
+    "damage": 3,
+    "speed": 10,
+    "defence": 20,
+    "agility": 7,
+    "faction": "animal",
+    "avatar": "assets/angry_bear.png",
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "model": "icon-angry_bear1",
+    "hpScroll": [],
+    "script": {}
+  },
+  "bear1": {
+    "id": "bear1",
+    "name": "White Bear",
+    "experience": 7,
+    "level": 4,
+    "health": 112,
+    "damage": 3,
+    "speed": 10,
+    "defence": 20,
+    "agility": 7,
+    "faction": "animal",
+    "avatar": "assets/bear.png",
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "model": "icon-angry_bear1",
+    "hpScroll": []
+  },
+  "wolf": {
+    "id": "wolf",
+    "name": "Black wolf",
+    "experience": 5,
+    "level": 4,
+    "health": 85,
+    "damage": 3,
+    "speed": 10,
+    "defence": 10,
+    "agility": 7,
+    "faction": "wolf",
+    "avatar": "assets/wolf.png",
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "model": "icon-wolf1",
+    "hpScroll": []
+  },
+  "wolf1": {
+    "id": "wolf1",
+    "name": "Night wolf",
+    "experience": 4,
+    "level": 3,
+    "health": 62,
+    "damage": 3,
+    "speed": 10,
+    "defence": 10,
+    "agility": 7,
+    "faction": "wolf",
+    "avatar": "assets/wolf.png",
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "model": "icon-wolf1",
+    "hpScroll": []
+  },
+  "zomby": {
+    "id": "zomby",
+    "name": "Zomby",
+    "experience": 3,
+    "level": 6,
+    "health": 50,
+    "damage": 6,
+    "speed": 1,
+    "defence": 10,
+    "agility": 0,
+    "faction": "undead",
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "model": "icon-zombie1",
+    "hpScroll": [],
+    "script": {}
+  },
+  "fly": {
+    "id": "fly",
+    "name": "Quick Fly",
+    "experience": 1,
+    "level": 1,
+    "health": 10,
+    "damage": 1,
+    "speed": 8,
+    "defence": 5,
+    "agility": 25,
+    "faction": "fly",
+    "avatar": "assets/fly.png",
+    "model": "icon-fly0",
+    "script": {
+      "0": [
+        "attack",
+        "attack",
+        "attack",
+        "fly_touch",
+        "attack",
+        "attack"
+      ]
+    },
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "hpScroll": []
+  },
+  "fly1": {
+    "id": "fly1",
+    "name": "MEGA Fly",
+    "experience": 200,
+    "level": 1,
+    "health": 200,
+    "damage": 1,
+    "speed": 8,
+    "defence": 5,
+    "agility": 5,
+    "faction": "fly",
+    "avatar": "assets/fly.png",
+    "model": "icon-fly0",
+    "script": {
+      "0": [
+        "potatos",
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "regrown"
+      ],
+      "20": [
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "regrown",
+        "strength0"
+      ],
+      "50": [
+        "attack",
+        "attack",
+        "range_shot",
+        "lose_stamina0"
+      ]
+    },
+    "debuffs": {},
+    "buffs": {},
+    "activeTarget": null,
+    "hpScroll": []
   }
 }

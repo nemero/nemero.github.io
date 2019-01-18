@@ -8,8 +8,8 @@ Vue.component('viewMapTileActions', {
     ].join(""),
     computed: {
     	getEventLayers: function () {
-        if (config.db.map[config.db.map.activeMap].layerEvents[this.position[1]] && config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]]) {
-          let events = config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]]
+        if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(this.position[1])] && config.db.map[config.db.map.activeMap].layerEvents[Math.round(this.position[1])][Math.round(this.position[0])]) {
+          let events = config.db.map[config.db.map.activeMap].layerEvents[Math.round(this.position[1])][Math.round(this.position[0])]
           config.activeEvents = events
           return events
         }
@@ -17,7 +17,7 @@ Vue.component('viewMapTileActions', {
         return 
     	},
       getDirectionEventLayers: function () {
-        let player = config.db.map[config.db.map.activeMap].layerEvents[this.position[1]][this.position[0]][config.character.id]
+        let player = config.db.map[config.db.map.activeMap].layerEvents[Math.round(this.position[1])][Math.round(this.position[0])][config.character.id]
         let direction_position = [...this.position]
 
         if (player.direction == "up") {
@@ -42,7 +42,7 @@ Vue.component('viewMapTileActions', {
         return 
       },
     	getTileLayers: function () {
-		    let cell_tiles = config.db.map[config.db.map.activeMap].map[this.position[1]][this.position[0]]
+		    let cell_tiles = config.db.map[config.db.map.activeMap].map[Math.round(this.position[1])][Math.round(this.position[0])]
 		    return cell_tiles
     	},
     }

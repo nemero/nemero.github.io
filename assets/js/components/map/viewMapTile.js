@@ -127,12 +127,38 @@ Vue.component('viewMapTile', {
           offset_x = Math.round((width - (width/100)*80)/2)
           offset_y = Math.round((height - (height/100)*80)/2)
           // get source image size
-          ctx.drawImage(source,
-            0, 0, source.naturalWidth, source.naturalHeight,
-            this.col_id*width + offset_x, 
-            this.row_id*height + offset_y, 
-            or_width, or_height
-          )
+
+          // if (tile.tile_position) {
+          //   console.log(this.col_id, this.row_id, tile.tile_position[0], tile.tile_position[1], this.getColId, this.getRowId)
+          //   // tile_position
+          //   let col_id = 0
+          //   let row_id = 0
+          //   if (tile.tile_position[0] % 1 >= 0.5) {
+          //     col_id = this.col_id - 1 + tile.tile_position[0] % 1
+          //   } else {
+          //     col_id = this.col_id + tile.tile_position[0] % 1
+          //   }
+
+          //   if (tile.tile_position[1] % 1 >= 0.5) {
+          //     row_id = this.row_id - 1 + tile.tile_position[1] % 1
+          //   } else {
+          //     row_id = this.row_id + tile.tile_position[1] % 1
+          //   }
+
+          //   ctx.drawImage(source,
+          //     0, 0, source.naturalWidth, source.naturalHeight,
+          //     col_id*width + offset_x, 
+          //     row_id*height + offset_y, 
+          //     or_width, or_height
+          //   )
+          // } else {
+            ctx.drawImage(source,
+              0, 0, source.naturalWidth, source.naturalHeight,
+              this.col_id*width + offset_x, 
+              this.row_id*height + offset_y, 
+              or_width, or_height
+            )
+          //}
         }
       }
 

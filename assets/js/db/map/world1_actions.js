@@ -6,8 +6,8 @@ var db_map_world1_actions = {
         "name": "Subway/Cave",
         "icon": "icon-teleport0",
         "position": [
-          9,
-          7
+          21,
+          -6
         ],
         "map": "sewer1",
         "autoTrigger": "hover"

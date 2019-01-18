@@ -2588,6 +2588,14 @@ var db_map_city1 = {
           0
         ],
         "map": "tile-map6"
+      },
+      "3": {
+        "id": "tile-map6_2_4",
+        "offset": [
+          4,
+          2
+        ],
+        "map": "tile-map6"
       }
     },
     "-11": {
@@ -3076,6 +3084,14 @@ var db_map_city1 = {
         "offset": [
           1,
           11
+        ],
+        "map": "tile-map6"
+      },
+      "2": {
+        "id": "tile-map6_3_4",
+        "offset": [
+          4,
+          3
         ],
         "map": "tile-map6"
       }
@@ -5140,24 +5156,6 @@ var db_map_city1 = {
         "map": "tile-map6"
       }
     },
-    "-10": {
-      "1": {
-        "id": "tile-map6_36_2",
-        "offset": [
-          2,
-          36
-        ],
-        "map": "tile-map6"
-      },
-      "3": {
-        "id": "tile-map6_0_8",
-        "offset": [
-          8,
-          0
-        ],
-        "map": "tile-map6"
-      }
-    },
     "-11": {
       "1": {
         "id": "tile-map6_36_2",
@@ -5254,6 +5252,24 @@ var db_map_city1 = {
         "offset": [
           0,
           24
+        ],
+        "map": "tile-map6"
+      }
+    },
+    "-10": {
+      "1": {
+        "id": "tile-map6_0_8",
+        "offset": [
+          8,
+          0
+        ],
+        "map": "tile-map6"
+      },
+      "2": {
+        "id": "tile-map6_2_4",
+        "offset": [
+          4,
+          2
         ],
         "map": "tile-map6"
       }
@@ -5574,24 +5590,6 @@ var db_map_city1 = {
         "map": "tile-map6"
       }
     },
-    "-10": {
-      "1": {
-        "id": "tile-map6_36_2",
-        "offset": [
-          2,
-          36
-        ],
-        "map": "tile-map6"
-      },
-      "4": {
-        "id": "tile-map6_11_1",
-        "offset": [
-          1,
-          11
-        ],
-        "map": "tile-map6"
-      }
-    },
     "-9": {
       "1": {
         "id": "tile-map6_36_2",
@@ -5662,6 +5660,24 @@ var db_map_city1 = {
         "offset": [
           0,
           24
+        ],
+        "map": "tile-map6"
+      }
+    },
+    "-10": {
+      "1": {
+        "id": "tile-map6_11_1",
+        "offset": [
+          1,
+          11
+        ],
+        "map": "tile-map6"
+      },
+      "2": {
+        "id": "tile-map6_3_4",
+        "offset": [
+          4,
+          3
         ],
         "map": "tile-map6"
       }

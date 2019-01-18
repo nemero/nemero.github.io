@@ -21,7 +21,7 @@ Vue.component('executeEvent', {
         let test = this.move()
         // just rotate if cant move
         if (!test) {
-          if (config.db.map[config.db.map.activeMap].layerEvents[this.event.position[1]][this.event.position[0]][this.event.player_id].direction !== this.event.directions[0]) {
+          if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(this.event.position[1])][Math.round(this.event.position[0])][this.event.player_id].direction !== this.event.directions[0]) {
             this.setPlayerDirection(this.event.position, this.event.player_id, this.event.directions[0])
             return
           }
@@ -90,27 +90,31 @@ Vue.component('executeEvent', {
   },
   methods: {
     move: function () {
-      let position = this.event.position
-      let previous_pos = [...position]
-      let new_position = [...position]
+      let position = this.event.position // float coordinate
+      let previous_pos = []
+      let new_position = [] // event position
+      let float_position = [...position]
+      let speed = 1
+
+      previous_pos[0] = Math.round(position[0])
+      previous_pos[1] = Math.round(position[1])
       
       if (this.event.directions.indexOf("left") >= 0) {
-        new_position[0] = parseInt(new_position[0] - 1)
+        float_position[0] = parseFloat(float_position[0] - speed)
       }
       if (this.event.directions.indexOf("right") >= 0) {
-        new_position[0] = parseInt(new_position[0] + 1)
+        float_position[0] = parseFloat(float_position[0] + speed)
       }
       if (this.event.directions.indexOf("up") >= 0) {
-        new_position[1] = parseInt(new_position[1] - 1)
+        float_position[1] = parseFloat(float_position[1] - speed)
       }
       if (this.event.directions.indexOf("down") >= 0) {
-        new_position[1] = parseInt(new_position[1] + 1)
+        float_position[1] = parseFloat(float_position[1] + speed)
       }
 
       // set new_position for trigger event if cant move on cell
-      this.new_position = []
-      this.new_position[0] = new_position[0]
-      this.new_position[1] = new_position[1]
+      new_position[0] = Math.round(float_position[0])
+      new_position[1] = Math.round(float_position[1])
 
       // check if can character move on new position
       let cell_tiles = config.db.map[config.db.map.activeMap].map
@@ -130,8 +134,8 @@ Vue.component('executeEvent', {
       }
 
       // check direction from current postition
-      for (tile_idx in cell_tiles[position[1]][position[0]]) {
-        let tile = cell_tiles[position[1]][position[0]][tile_idx]
+      for (tile_idx in cell_tiles[Math.round(position[1])][Math.round(position[0])]) {
+        let tile = cell_tiles[Math.round(position[1])][Math.round(position[0])][tile_idx]
 
         // checking available direction 
         if (config.db.map.directions_tiles[tile.map] && config.db.map.directions_tiles[tile.map][tile.id]) {
@@ -188,25 +192,24 @@ Vue.component('executeEvent', {
       }
 
       // set player position
-      Vue.set(position, 0, parseInt(new_position[0]))
-      Vue.set(position, 1, parseInt(new_position[1]))
-
+      Vue.set(position, 0, float_position[0])
+      Vue.set(position, 1, float_position[1])
 
       console.time('change_map_pos')
       // set map position
-      if (!config.db.map[config.db.map.activeMap].layerEvents[position[1]]) {
-        Vue.set(config.db.map[config.db.map.activeMap].layerEvents, position[1], {})
+      if (!config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])]) {
+        Vue.set(config.db.map[config.db.map.activeMap].layerEvents, Math.round(position[1]), {})
       }
-      if (!config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]]) {
-        Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]], position[0], {})
+      if (!config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])][Math.round(position[0])]) {
+        Vue.set(config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])], Math.round(position[0]), {})
       }
       this.$nextTick(function () {
         console.timeEnd('change_map_pos')
       })
 
       // remove old indication position
-      if (config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]] && config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]][previous_pos[0]]) {
-        Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[previous_pos[1]][previous_pos[0]], this.event.player_id)
+      if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(previous_pos[1])] && config.db.map[config.db.map.activeMap].layerEvents[Math.round(previous_pos[1])][Math.round(previous_pos[0])]) {
+        Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[Math.round(previous_pos[1])][Math.round(previous_pos[0])], this.event.player_id)
       }
 
       // add new indication position
@@ -282,8 +285,8 @@ Vue.component('executeEvent', {
       if (event.id == "teleport") {
         // set character position
         // remove old player position on old map
-        if (config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]] && config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]) {
-          Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]], config.character.id)  
+        if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(config.character.position[1])] && config.db.map[config.db.map.activeMap].layerEvents[Math.round(config.character.position[1])][Math.round(config.character.position[0])]) {
+          Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[Math.round(config.character.position[1])][Math.round(config.character.position[0])], config.character.id)  
         }
 
         // change map 
@@ -343,13 +346,14 @@ Vue.component('executeEvent', {
       return true
     },
     setPlayerDirection: function (position, player_id, direction) {
-      Vue.set(config.db.map[config.db.map.activeMap].layerEvents[position[1]][position[0]], player_id, {
+      Vue.set(config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])][Math.round(position[0])], player_id, {
         id: "player",
         name: "Player Kokoko",
         player_id: player_id,
         direction: direction ? direction : "",
         icon: "icon-player",
         tile_icon: "icon-player",
+        //tile_position: position
       })
     }
   }
