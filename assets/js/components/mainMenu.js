@@ -83,7 +83,7 @@ Vue.component('mainMenu', {
       let player = JSON.stringify(config.character)
       let map = config.db.map.activeMap
       let control = config.moveUi
-      let date = new Date(new Date().getTime() + 60 * 100000);
+      let date = new Date(new Date().getTime() + 60 * 3600000 * 1000);
 
       document.cookie = "player=" + player + "; path=/; expires=" + date.toUTCString();
       document.cookie = "map=" + map + "; path=/; expires=" + date.toUTCString();
