@@ -13,6 +13,8 @@ Vue.component('eventConditions', {
           '<select v-model="activeCondition">',
             '<option value="" selected="selected">---</option>',
             '<option value="exist_tile">tile id is exist</option>',
+            '<option value="world_state">world state</option>',
+            '<option value="items">items</option>',
             //'<option value="exist_tile_id">tile id exist</option>',
             //'<option value="not_exist_tile_id">tile id not exist</option>',
 
@@ -24,8 +26,10 @@ Vue.component('eventConditions', {
           '<input type="button" @click="removeCondition" value="-"/>',
         '</div>',
 
-        '<div v-for="condition in conditions" :condition="condition" :config="config">',
-          '<event-condition-exist-tile :condition="condition" :config="config"></event-condition-exist-tile>',
+        '<div v-for="(condition, idx ) in conditions" :condition="condition">',
+          '<condition-exist-tile :condition="condition" :config="config" :conditions="conditions" :idx="idx"></condition-exist-tile>',
+          '<condition-world-state :condition="condition" :config="config" :conditions="conditions" :idx="idx"></condition-world-state>',
+          '<condition-items :condition="condition" :config="config" :conditions="conditions" :idx="idx"></condition-items>',
         '</div>',
       '</div>'
       ].join(''),
@@ -37,11 +41,14 @@ Vue.component('eventConditions', {
       
 
       let conditions = config.activeLayerEvent.conditions
+      let condition = {}
       if (this.activeCondition) {
-        conditions.push({
-          type_condition: this.activeCondition,
-          position: [0, 0],
-        })
+        condition['type'] = this.activeCondition
+        if (this.activeCondition == "exist_tile") {
+          condition['position'] = [0, 0]
+        }
+
+        conditions.push(condition)
       }
     },
     removeCondition: function () {

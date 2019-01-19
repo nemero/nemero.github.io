@@ -172,7 +172,7 @@ a:hover {
 	display: inline-block;
 	border: 1px solid #333;
 	border-radius: 3px;
-	background: url(assets/default.png) center center/cover;
+	background: url(assets/images/default.png) center center/cover;
 	transition: all .1s linear;
 	cursor: pointer;
 	position: relative;
@@ -187,7 +187,7 @@ a:hover {
 	display: inline-block;
 	border: 1px solid #333;
 	border-radius: 3px;
-	background: url(assets/default.png) center center/cover;
+	background: url(assets/images/default.png) center center/cover;
 	transition: all .1s linear;
 	cursor: pointer;
 	position: relative;
@@ -247,7 +247,7 @@ a:hover {
 	text-shadow: 1px 1px 2px #000;
 	line-height: 2em;
 	background: rgba(255, 46, 5, 0.23);
-	//background: url(assets/default.png) center center/cover;
+	//background: url(assets/images/default.png) center center/cover;
 }
 .game-icon.game-icon-small .cooldown { 
 	font-size: 12px;
@@ -337,7 +337,7 @@ a:hover {
 	display: inline-block;
 	width: 50px;
 	height: 50px;
-	background: url(assets/enemy.png) center center/cover;
+	background: url(assets/images/enemy.png) center center/cover;
 	border-radius: 50%;
 	border: 2px solid #b0b0b0;
 	vertical-align: middle;

@@ -29,7 +29,7 @@ Vue.component('viewMapTileActionDirectionEvent', {
         let is_showing = true
         for (condition_idx in tile.conditions) {
           let condition = tile.conditions[condition_idx]
-          if (condition.type_condition == "exist_tile") {
+          if (condition.type == "exist_tile") {
             if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
               return false
             }

@@ -10,7 +10,7 @@ var db_items = {
     "quality": "poor",
     "class": "fists",
     "price": 0,
-    "icon": "assets/fists.png"
+    "icon": "assets/images/fists.png"
   },
   "bow0": {
     "id": "bow0",
@@ -23,7 +23,7 @@ var db_items = {
     "quality": "poor",
     "class": "bow",
     "price": 3,
-    "icon": "assets/bow.png"
+    "icon": "assets/images/bow.png"
   },
   "cane0": {
     "id": "cane0",
@@ -36,7 +36,7 @@ var db_items = {
     "quality": "poor",
     "class": "sword_one",
     "price": 1,
-    "icon": "assets/cane.png"
+    "icon": "assets/images/cane.png"
   },
   "cane1": {
     "id": "cane1",
@@ -49,7 +49,7 @@ var db_items = {
     "quality": "poor",
     "class": "sword_one",
     "price": 1,
-    "icon": "assets/cane.png"
+    "icon": "assets/images/cane.png"
   },
   "garbage0": {
     "id": "garbage0",
@@ -62,7 +62,7 @@ var db_items = {
     "quality": "poor",
     "class": "garbage",
     "price": 1,
-    "icon": "assets/scrap.png"
+    "icon": "assets/images/scrap.png"
   },
   "garbage1": {
     "id": "garbage1",
@@ -75,19 +75,19 @@ var db_items = {
     "quality": "poor",
     "class": "garbage",
     "price": 1,
-    "icon": "assets/scrap.png"
+    "icon": "assets/images/scrap.png"
   },
   "key_old_tower0": {
     "id": "key_old_tower0",
     "name": "Key From some lock",
     "type": "key",
-    "icon": "assets/key.png"
+    "icon": "assets/images/key.png"
   },
   "paper0": {
     "id": "paper0",
     "name": "Paper",
     "type": "note",
-    "icon": "assets/paper.png",
+    "icon": "assets/images/paper.png",
     "text": "Subtown lever: down up down"
   },
   "knife0": {
@@ -101,7 +101,7 @@ var db_items = {
     "quality": "common",
     "class": "knife",
     "price": 10,
-    "icon": "assets/knife.png"
+    "icon": "assets/images/knife.png"
   },
   "cane2": {
     "id": "cane2",
@@ -114,7 +114,7 @@ var db_items = {
     "quality": "poor",
     "class": "sword_one",
     "price": 4,
-    "icon": "assets/cane.png"
+    "icon": "assets/images/cane.png"
   },
   "head0": {
     "id": "head0",
@@ -128,7 +128,7 @@ var db_items = {
     "quality": "uncommon",
     "class": "head",
     "price": 24,
-    "icon": "assets/helm.png"
+    "icon": "assets/images/helm.png"
   },
   "chest0": {
     "id": "chest0",
@@ -142,7 +142,7 @@ var db_items = {
     "quality": "uncommon",
     "class": "chest",
     "price": 26,
-    "icon": "assets/chest.png"
+    "icon": "assets/images/chest.png"
   },
   "sword0": {
     "id": "sword0",
@@ -157,7 +157,7 @@ var db_items = {
     "quality": "uncommon",
     "class": "sword_one",
     "price": 24,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword01": {
     "id": "sword01",
@@ -170,7 +170,7 @@ var db_items = {
     "quality": "uncommon",
     "class": "sword_one",
     "price": 26,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword02": {
     "id": "sword02",
@@ -183,7 +183,7 @@ var db_items = {
     "quality": "uncommon",
     "class": "sword_one",
     "price": 28,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword03": {
     "id": "sword03",
@@ -197,7 +197,7 @@ var db_items = {
     "quality": "uncommon",
     "class": "sword_one",
     "price": 28,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword1": {
     "id": "sword1",
@@ -210,7 +210,7 @@ var db_items = {
     "quality": "rare",
     "class": "sword_one",
     "price": 37,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword11": {
     "id": "sword11",
@@ -223,7 +223,7 @@ var db_items = {
     "quality": "uncommon",
     "class": "sword_one",
     "price": 28,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword2": {
     "id": "sword2",
@@ -236,7 +236,7 @@ var db_items = {
     "quality": "rare",
     "class": "sword_one",
     "price": 37,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword3": {
     "id": "sword3",
@@ -249,7 +249,7 @@ var db_items = {
     "quality": "epic",
     "class": "sword_one",
     "price": 56,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword21": {
     "id": "sword21",
@@ -262,7 +262,7 @@ var db_items = {
     "quality": "uncommon",
     "class": "sword_one",
     "price": 28,
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "sword4": {
     "id": "sword4",
@@ -275,7 +275,7 @@ var db_items = {
     "quality": "legendary",
     "class": "sword_one",
     "price": 281,
-    "icon": "assets/sword-legendary.png"
+    "icon": "assets/images/sword-legendary.png"
   },
   "knife1": {
     "id": "knife1",
@@ -288,7 +288,7 @@ var db_items = {
     "quality": "legendary",
     "class": "knife",
     "price": 179,
-    "icon": "assets/knife.png"
+    "icon": "assets/images/knife.png"
   },
   "knife2": {
     "id": "knife2",
@@ -301,7 +301,7 @@ var db_items = {
     "quality": "legendary",
     "class": "knife",
     "price": 179,
-    "icon": "assets/knife.png"
+    "icon": "assets/images/knife.png"
   },
   "bow1": {
     "id": "bow1",
@@ -314,7 +314,7 @@ var db_items = {
     "quality": "legendary",
     "class": "bow",
     "price": 266,
-    "icon": "assets/bow.png"
+    "icon": "assets/images/bow.png"
   },
   "bow2": {
     "id": "bow2",
@@ -327,7 +327,7 @@ var db_items = {
     "quality": "legendary",
     "class": "bow",
     "price": 266,
-    "icon": "assets/bow.png"
+    "icon": "assets/images/bow.png"
   },
   "chest_test0": {
     "id": "chest_test0",
@@ -341,7 +341,7 @@ var db_items = {
     "quality": "legendary",
     "class": "chest",
     "price": 26,
-    "icon": "assets/chest.png"
+    "icon": "assets/images/chest.png"
   },
   "monomate": {
     "id": "monomate",
@@ -352,7 +352,7 @@ var db_items = {
     "price": 10,
     "quality": "common",
     "level": 1,
-    "icon": "assets/heart-bottle.png"
+    "icon": "assets/images/heart-bottle.png"
   },
   "vodka0": {
     "id": "vodka0",
@@ -363,6 +363,6 @@ var db_items = {
     "level": 1,
     "health": 200,
     "price": 10,
-    "icon": "assets/heart-bottle.png"
+    "icon": "assets/images/heart-bottle.png"
   }
 }

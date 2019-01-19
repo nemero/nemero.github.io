@@ -16,19 +16,19 @@ html, body {
 	position: relative;
 }
 .icon-battle0 {
-	background: url(../battle.png) center center/cover;
+	background: url(../images/battle.png) center center/cover;
 }
 .icon-chel0 {
-	background: url(../chel.png) center center/cover;
+	background: url(../images/chel.png) center center/cover;
 }
 .icon-quest0 {
-	background: url(../quest.png) center center/cover;
+	background: url(../images/quest.png) center center/cover;
 }
 .icon-speak0 {
-	background: url(../speak.png) center center/cover;
+	background: url(../images/speak.png) center center/cover;
 }
 .icon-angry_bear1 {
-	background: url(../angry_bear1.png) center center/cover;
+	background: url(../images/angry_bear1.png) center center/cover;
 }
 .view-map-row .layer-event.icon-angry_bear1 {
 	width: 27px;
@@ -36,7 +36,7 @@ html, body {
 	left: 9px;
 }
 .icon-wolf1 {
-	background: url(../wolf1.png) center center/cover;
+	background: url(../images/wolf1.png) center center/cover;
 }
 .view-map-row .layer-event.icon-wolf1 {
 	width: 27px;
@@ -44,7 +44,7 @@ html, body {
 	left: 9px;
 }
 .icon-zombie1 {
-	background: url(../zombie1.png) center center/cover;
+	background: url(../images/zombie1.png) center center/cover;
 }
 .view-map-row .layer-event.icon-zombie1 {
 	width: 27px;
@@ -52,7 +52,7 @@ html, body {
 	left: 9px;
 }
 .icon-boss2 {
-	background: url(../boss2.png) center center/cover;
+	background: url(../images/boss2.png) center center/cover;
 }
 .view-map-row .layer-event.icon-boss2 {
 	width: 27px;
@@ -60,7 +60,7 @@ html, body {
 	left: 9px;
 }
 .icon-boss1 {
-	background: url(../boss1.png) center center/cover;
+	background: url(../images/boss1.png) center center/cover;
 }
 .view-map-row .layer-event.icon-boss1 {
 	width: 27px;
@@ -68,16 +68,16 @@ html, body {
 	left: 9px;
 }
 .icon-player-up {
-	background: url(../player.png) center center/cover;
+	background: url(../images/player.png) center center/cover;
 }
 .icon-player-down {
-	background: url(../player-down.png) center center/cover;
+	background: url(../images/player-down.png) center center/cover;
 }
 .icon-player-left {
-	background: url(../player-left.png) center center/cover;
+	background: url(../images/player-left.png) center center/cover;
 }
 .icon-player-right {
-	background: url(../player-right.png) center center/cover;
+	background: url(../images/player-right.png) center center/cover;
 }
 
 .view-map-row .layer-event.icon-player0 {
@@ -88,10 +88,10 @@ html, body {
 }
 
 .icon-chest-open0 {
-	background: url(../chest-locked.png) center center/cover;
+	background: url(../images/chest-locked.png) center center/cover;
 }
 .icon-chest-locked0 {
-	background: url(../chest-locked.png) center center/cover;
+	background: url(../images/chest-locked.png) center center/cover;
 }
 .view-map-row .layer-event.icon-chest-locked0 {
 	width: 28px;
@@ -101,24 +101,24 @@ html, body {
 }
 
 .icon-basement-door0 {
-	background: url(../basement_door.jpg) center center/cover;
+	background: url(../images/basement_door.jpg) center center/cover;
 }
 .view-map-row .layer-event.icon-question0 {
-	background: url(../question.png) center center/cover;	
+	background: url(../images/question.png) center center/cover;	
 	width: 20px;
 	height: 20px;
 	left: 24px;
 	top: 3px;
 }
 .icon-townout0 {
-	background: url(../town_out.jpg) center center/cover;	
+	background: url(../images/town_out.jpg) center center/cover;	
 }
 .icon-teleport0 {
-	background: url(../town_in.jpg) center center/cover;	
+	background: url(../images/town_in.jpg) center center/cover;	
 }
 
 .icon-paper0 {
-	background: url(../paper.png) center center/cover;	
+	background: url(../images/paper.png) center center/cover;	
 }
 .view-map-row .layer-event.icon-paper0 {
 	width: 20px;
@@ -129,52 +129,52 @@ html, body {
 }
 
 .icon-raven0 {
-	background: url(../raven.png) center center/cover;
+	background: url(../images/raven.png) center center/cover;
 }
 .view-map-row .layer-event.icon-raven0 {
 	top: -7px;
 }
 .icon-fly0 {
-	background: url(../fly.png) center center/cover;
+	background: url(../images/fly.png) center center/cover;
 }
 .view-map-row .layer-event.icon-fly0 {
 	top: -7px;
 }
 
 .tile-map1 {
-	background: url(../tileset_1.png);
+	background: url(../images/tileset_1.png);
 }
 .tile-map2 {
-	background: url(../tileset_mountains_0.png);
+	background: url(../images/tileset_mountains_0.png);
 }
 .tile-map3 {
-	background: url(../tileset_water.png);
+	background: url(../images/tileset_water.png);
 }
 .tile-map4 {
-	background: url(../tileset_cave1.png);
+	background: url(../images/tileset_cave1.png);
 }
 .tile-map5 {
-	background: url(../tileset_sewer_1_48.png);
+	background: url(../images/tileset_sewer_1_48.png);
 }
 .tile-map6 {
-	background: url(../tileset_magecity_1.png);
+	background: url(../images/tileset_magecity_1.png);
 }
 .tile-map7 {
-	background: url(../tileset_indoor_1.png);
+	background: url(../images/tileset_indoor_1.png);
 }
 
 
 .sword {
-	background: url(assets/sword.png) center center/cover;
+	background: url(../images/sword.png) center center/cover;
 }
 .knife {
-	background: url(assets/knife.png) center center/cover;
+	background: url(../images/knife.png) center center/cover;
 }
 .heal {
-	background: url(assets/regrown.png) center center/cover;
+	background: url(../images/regrown.png) center center/cover;
 }
 .scrap {
-	background: url(assets/scrap.png) center center/cover;
+	background: url(../images/scrap.png) center center/cover;
 }
 
 

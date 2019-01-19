@@ -7,7 +7,7 @@ var db_abilities = {
     "heal": 0,
     "damage": 0,
     "type": "damage",
-    "icon": "assets/sword.png"
+    "icon": "assets/images/sword.png"
   },
   "regrown": {
     "id": "regrown",
@@ -19,7 +19,7 @@ var db_abilities = {
     "heal_tick": 3,
     "damage": 0,
     "type": "heal_buff",
-    "icon": "assets/regrown.png"
+    "icon": "assets/images/regrown.png"
   },
   "potatos": {
     "id": "potatos",
@@ -29,7 +29,7 @@ var db_abilities = {
     "heal": 0,
     "damage": 200,
     "type": "damage",
-    "icon": "assets/powerpotatos.png"
+    "icon": "assets/images/powerpotatos.png"
   },
   "lightflesh": {
     "id": "lightflesh",
@@ -39,7 +39,7 @@ var db_abilities = {
     "heal": 8,
     "damage": 0,
     "type": "heal",
-    "icon": "assets/regrown.png"
+    "icon": "assets/images/regrown.png"
   },
   "range_shot": {
     "id": "range_shot",
@@ -49,7 +49,7 @@ var db_abilities = {
     "heal": 0,
     "damage": 0,
     "type": "damage_dot",
-    "icon": "assets/knife-dot.png",
+    "icon": "assets/images/knife-dot.png",
     "time": 6,
     "damage_tick": 1,
     "strength_scaling": 20
@@ -62,7 +62,7 @@ var db_abilities = {
     "heal": 0,
     "damage": 1,
     "type": "damage_aoe",
-    "icon": "assets/powerpotatos.png",
+    "icon": "assets/images/powerpotatos.png",
     "damage_aoe": 1,
     "damage_count": 4,
     "strength_scaling": 20
@@ -75,7 +75,7 @@ var db_abilities = {
     "stamina": 10,
     "time": 120,
     "type": "buff",
-    "icon": "assets/stamina.png"
+    "icon": "assets/images/stamina.png"
   },
   "strength0": {
     "id": "strength0",
@@ -85,7 +85,7 @@ var db_abilities = {
     "strength": 4,
     "time": 60,
     "type": "buff",
-    "icon": "assets/strength.png"
+    "icon": "assets/images/strength.png"
   },
   "lose_stamina0": {
     "id": "lose_stamina0",
@@ -95,7 +95,7 @@ var db_abilities = {
     "stamina": -20,
     "time": 7,
     "type": "debuff",
-    "icon": "assets/knife.png"
+    "icon": "assets/images/knife.png"
   },
   "escape0": {
     "id": "escape0",
@@ -103,7 +103,7 @@ var db_abilities = {
     "cooldown": 1,
     "chance": 75,
     "type": "escape",
-    "icon": "assets/escape.png"
+    "icon": "assets/images/escape.png"
   },
   "fly_touch": {
     "id": "fly_touch",
@@ -111,7 +111,7 @@ var db_abilities = {
     "type": "damage",
     "cooldown": 5,
     "damage": 3,
-    "icon": "assets/powerpotatos.png",
+    "icon": "assets/images/powerpotatos.png",
     "level": 1
   }
 }

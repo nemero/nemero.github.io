@@ -25,7 +25,7 @@ var config = {
 		defence: 5,
 		base_defence: 5,
 		faction: 'aliance',
-		avatar: 'assets/hero.png',
+		avatar: 'assets/images/hero.png',
 		hpScroll: [],
 		dies: 0,
 		money: 100,

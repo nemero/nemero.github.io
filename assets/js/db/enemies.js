@@ -58,7 +58,7 @@ var db_enemies = {
     "defence": 20,
     "agility": 7,
     "faction": "animal",
-    "avatar": "assets/angry_bear.png",
+    "avatar": "assets/images/angry_bear.png",
     "debuffs": {},
     "buffs": {},
     "activeTarget": null,
@@ -77,7 +77,7 @@ var db_enemies = {
     "defence": 20,
     "agility": 7,
     "faction": "animal",
-    "avatar": "assets/bear.png",
+    "avatar": "assets/images/bear.png",
     "debuffs": {},
     "buffs": {},
     "activeTarget": null,
@@ -95,7 +95,7 @@ var db_enemies = {
     "defence": 10,
     "agility": 7,
     "faction": "wolf",
-    "avatar": "assets/wolf.png",
+    "avatar": "assets/images/wolf.png",
     "debuffs": {},
     "buffs": {},
     "activeTarget": null,
@@ -113,7 +113,7 @@ var db_enemies = {
     "defence": 10,
     "agility": 7,
     "faction": "wolf",
-    "avatar": "assets/wolf.png",
+    "avatar": "assets/images/wolf.png",
     "debuffs": {},
     "buffs": {},
     "activeTarget": null,
@@ -149,7 +149,7 @@ var db_enemies = {
     "defence": 5,
     "agility": 25,
     "faction": "fly",
-    "avatar": "assets/fly.png",
+    "avatar": "assets/images/fly.png",
     "model": "icon-fly0",
     "script": {
       "0": [
@@ -177,7 +177,7 @@ var db_enemies = {
     "defence": 5,
     "agility": 5,
     "faction": "fly",
-    "avatar": "assets/fly.png",
+    "avatar": "assets/images/fly.png",
     "model": "icon-fly0",
     "script": {
       "0": [

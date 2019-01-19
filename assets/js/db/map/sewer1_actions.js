@@ -29,7 +29,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               2,
               2
@@ -91,7 +91,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               2,
               2
@@ -122,137 +122,19 @@ var db_map_sewer1_actions = {
         "items": [
           "paper0"
         ],
-        "hidden": false
+        "hidden": false,
+        "conditions": [
+          {
+            "type": "items",
+            "not": [
+              "paper0"
+            ]
+          }
+        ]
       }
     }
   },
   "4": {
-    "3": {
-      "undefined_4_3_0": {
-        "id": "unlock",
-        "name": "Subway/Cave Lock",
-        "icon": "icon-basement-door0",
-        "type_unlock": "use",
-        "autoTrigger": "13",
-        "item": null,
-        "triggers": [
-          {
-            "type_trigger": "replace_tile",
-            "position": [
-              3,
-              4
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_4_4",
-              "offset": [
-                4,
-                4
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ],
-        "conditions": [
-          {
-            "type_condition": "exist_tile",
-            "position": [
-              3,
-              4
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_3_4",
-              "offset": [
-                4,
-                3
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ]
-      },
-      "undefined_4_3_1": {
-        "id": "unlock",
-        "name": "Subway/Cave Lock",
-        "icon": "icon-basement-door0",
-        "type_unlock": "use",
-        "autoTrigger": "13",
-        "item": null,
-        "triggers": [
-          {
-            "type_trigger": "replace_tile",
-            "position": [
-              3,
-              4
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_3_4",
-              "offset": [
-                4,
-                3
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ],
-        "conditions": [
-          {
-            "type_condition": "exist_tile",
-            "position": [
-              3,
-              4
-            ],
-            "layer_id": "2",
-            "map": "sewer1",
-            "tile": {
-              "id": "tile-map5_4_4",
-              "offset": [
-                4,
-                4
-              ],
-              "size": [
-                16,
-                16
-              ],
-              "position": [
-                0,
-                0
-              ],
-              "map": "tile-map5"
-            }
-          }
-        ]
-      }
-    },
     "6": {
       "undefined_4_6_0": {
         "id": "unlock",
@@ -282,7 +164,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               6,
               4
@@ -344,7 +226,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               6,
               4
@@ -402,7 +284,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               1,
               6
@@ -464,7 +346,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               1,
               6
@@ -520,7 +402,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               2,
               6
@@ -576,7 +458,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               8,
               6
@@ -638,7 +520,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               8,
               6
@@ -835,7 +717,7 @@ var db_map_sewer1_actions = {
         "hidden": "",
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               23,
               -10
@@ -881,7 +763,7 @@ var db_map_sewer1_actions = {
         ],
         "conditions": [
           {
-            "type_condition": "exist_tile",
+            "type": "exist_tile",
             "position": [
               23,
               -10
