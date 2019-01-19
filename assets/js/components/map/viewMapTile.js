@@ -2,7 +2,6 @@ Vue.component('viewMapTile', {
   props: ['row_id', 'col_id', 'zone'],
   template: ['<span style="display: none;" class="tile">', //' @click="movePlayer">',
     '{{ isChangedCheck() }}',
-      //'<view-map-tile-layer-event v-for="layer in getLayerEvents" :layer="layer" :tiles="getLayerEvents"></view-map-tile-layer-event>',
     '</span>'].join(""),
   created: function () {
     this.$nextTick(function () {
