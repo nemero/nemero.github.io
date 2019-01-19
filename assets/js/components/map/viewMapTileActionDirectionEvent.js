@@ -20,24 +20,7 @@ Vue.component('viewMapTileActionDirectionEvent', {
  	  },
     isVisible: function () {
       let tile = this.tile
-      if (tile.id == "player" && config.character.id == tile["player_id"]) {
-        return false
-      }
-
-      // check conditions if exist
-      if (tile.conditions && tile.conditions.length > 0) {
-        let is_showing = true
-        for (condition_idx in tile.conditions) {
-          let condition = tile.conditions[condition_idx]
-          if (condition.type == "exist_tile") {
-            if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
-              return false
-            }
-          }
-        }
-      }
-
-      if (tile.hidden || tile["cooldown_left"] > config.step) {
+      if (!isVisibleTileEvent(tile)) {
         return false
       }
       

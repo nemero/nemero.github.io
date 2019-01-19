@@ -319,27 +319,7 @@ Vue.component('executeEvent', {
       }
     },
     isAvailable: function (event) {
-      if (event.id == "player" && config.character.id == event["player_id"]) {
-        return false
-      }
-
-
-      // check conditions if exist
-      if (event.conditions) {
-        let is_showing = true
-        for (condition_idx in event.conditions) {
-          let condition = event.conditions[condition_idx]
-          if (condition.type == "exist_tile") {
-            if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
-              is_showing = false
-            }
-          }
-        }
-
-        return is_showing
-      }
-
-      if (event.hidden || event.cooldown_left > config.step) {
+      if (!isVisibleTileEvent(event)) {
         return false
       }
 

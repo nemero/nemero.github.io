@@ -114,71 +114,10 @@ Vue.component('viewMapTile', {
             console.log('missed texture', width, height, source_id)
             continue
           }
+
           // checking is visible event
-          if (tile.hidden || tile["cooldown_left"] > config.step) {
+          if (!this.isAvailable(tile)) {
             continue
-          }
-
-          // check conditions if exist
-          if (tile.conditions && tile.conditions.length > 0) {
-            let is_showing = true
-            for (condition_idx in tile.conditions) {
-              let condition = tile.conditions[condition_idx]
-              if (condition.type == "exist_tile") {
-                if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
-                  is_showing = false
-                  break
-                }
-              }
-
-              if (condition.type == 'world_state') {
-                if (condition.has) {
-                  for (state_id in condition.has) {
-                    let state = condition.has[state_id]
-                    if (world_state.indexOf(state) < 0) {
-                      is_showing = false
-                      break
-                    }
-                  }
-                }
-                if (condition.not) {
-                  for (state_id in condition.not) {
-                    let state = condition.not[state_id]
-                    if (world_state.indexOf(state) >= 0) {
-                      is_showing = false
-                      break
-                    }
-                  }
-                }
-              }
-
-              if (condition.type == "items") {
-                let bag = config.character.bag
-
-                if (condition.has) {
-                  for (item_id in condition.has) {
-                    let item = condition.has[item_id]
-                    if (bag.indexOf(item) < 0) {
-                      is_showing = false
-                      break
-                    }
-                  }
-                }
-                if (condition.not) {
-                  for (item_id in condition.not) {
-                    let item = condition.not[item_id]
-                    if (bag.indexOf(item) >= 0) {
-                      is_showing = false
-                      break
-                    }
-                  }
-                }
-              }
-            }
-
-            if (!is_showing) {
-              continue
-            }
           }
 
           let source = document.getElementById(source_id);
@@ -292,26 +231,11 @@ Vue.component('viewMapTile', {
         return
     },
     isAvailable: function (event) {
-      if (event.id == "player" && config.character.id == event["player_id"]) {
-        return false
+      if (event.id == "player") {
+        return true
       }
 
-      // check conditions if exist
-      if (event.conditions && event.conditions.length > 0) {
-        let is_showing = true
-        for (condition_idx in event.conditions) {
-          let condition = event.conditions[condition_idx]
-          if (condition.type == "exist_tile") {
-            if (config.db.map[condition.map].map[condition.position[1]][condition.position[0]][condition.layer_id].id != condition.tile.id) {
-              is_showing = false
-            }
-          }
-        }
-
-        return is_showing
-      }
-
-      if (event.hidden || event.cooldown_left > config.step) {
+      if (!isVisibleTileEvent(event)) {
         return false
       }
 
