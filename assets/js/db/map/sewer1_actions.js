@@ -464,7 +464,15 @@ var db_map_sewer1_actions = {
           "fly"
         ],
         "hidden": false,
-        "conditions": [],
+        "conditions": [
+          {
+            "type": "world_state",
+            "has": [],
+            "not": [
+              "quest_1_done"
+            ]
+          }
+        ],
         "seller": {
           "sword0": 55,
           "sword1": 155,

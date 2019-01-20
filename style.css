@@ -253,38 +253,28 @@ a:hover {
 	font-size: 12px;
 	background: transparent;
 }
-.game-icon .tooltip, .game-icon:hover .tooltip:hover {
-	display: none;
-	z-index: 11;
-}
 .game-icon:hover {
 	border: 1px solid #9f55fc;
 	box-shadow: 0 0 3px 1px #fcf4b9 inset;
 }
-.game-icon:hover .tooltip {
+
+.tooltip {
+	z-index: 11;
 	display: block;
 	position: absolute;
-	left: 44px;
-	top: 64px;
-}
-.game-icon.game-icon-small:hover .tooltip {
-	left: 24px;
-	top: 24px;
-}
-
-.ui-abilities .game-icon:hover .tooltip {
-	display: none;
+	top: 20px;
+	right: 20px;
+	background: rgba(54, 54, 54, .8);
+	padding: 5px 10px;
+	border: 1px solid #cecece;
+	border-radius: 4px;
+	min-width: 100px;
+	text-shadow: 1px 0px 1px black;
+	color: #fff;
 }
 .tooltip ul {
-	background: rgba(54, 54, 54, .8);
-	/*color: #fff;*/
-	border-radius: 4px;
 	list-style: none;
 	margin: 5px;
-	padding: 5px 10px;
-	min-width: 100px;
-	border: 1px solid #cecece;
-	text-shadow: 1px 0px 1px black;
 }
 
 @keyframes gotItem {

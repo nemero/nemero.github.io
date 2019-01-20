@@ -47,7 +47,7 @@ Vue.component('eventUnlock', {
 	        '<event-trigger-replace-tile :trigger="trigger" :config="config"></event-trigger-replace-tile>',
 		'</div>',
 
-		'<event-conditions :conditions="config.activeLayerEvent.conditions" :config="config"></event-conditions>',
+		'<event-conditions :conditions="config.activeLayerEvent.conditions" :parent="config.activeLayerEvent"></event-conditions>',
       '</div>'
       ].join(''),
   methods: {

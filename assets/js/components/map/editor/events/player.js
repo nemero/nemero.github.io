@@ -7,7 +7,7 @@ Vue.component('eventPlayer', {
     		  '<input type="text" v-model="config.activeLayerEvent.player_id" />',
         '</div>',
     		
-        '<event-conditions :conditions="config.activeLayerEvent.conditions" :config="config"></event-conditions>',
+        //'<event-conditions :conditions="config.activeLayerEvent.conditions" :config="config"></event-conditions>',
       '</div>'
       ].join(''),
   computed: {

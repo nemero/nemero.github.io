@@ -1,16 +1,16 @@
 Vue.component('characterAbilities', {
   props: ['ability', 'config', 'cooldowns'],
   template: [
-      '<span class="game-icon" :class="typeAbility" @click="useAbility(ability, config.character)" @animationend="cant_use = false" :style="getIcon">',
-            '<div class="tooltip">',
-              '<ul>',
-                '<li><b>{{ getOption(ability, "name", "") }}</b></li>',
-                '<li>{{ getOption(ability, "level", "Level: ") }}</li>',
-                '<li>{{ getOption(ability, "damage", "Damage: ") }}</li>',
-                '<li>{{ getOption(ability, "heal", "Heal: ") }}</li>',
-                '<li>{{ getCooldown(ability) }}</li>',
-              '</ul>',
-            '</div>',
+      '<span class="game-icon" :class="typeAbility" @click="useAbility(ability, config.character)" @animationend="cant_use = false" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
+            // '<div class="tooltip">',
+            //   '<ul>',
+            //     '<li><b>{{ getOption(ability, "name", "") }}</b></li>',
+            //     '<li>{{ getOption(ability, "level", "Level: ") }}</li>',
+            //     '<li>{{ getOption(ability, "damage", "Damage: ") }}</li>',
+            //     '<li>{{ getOption(ability, "heal", "Heal: ") }}</li>',
+            //     '<li>{{ getCooldown(ability) }}</li>',
+            //   '</ul>',
+            // '</div>',
             '<span class="bind">{{ getBind() }}</span>',
             '<span class="label">{{ getOption(ability, "damage", "") }} {{ getOption(ability, "heal", "") }}</span>',
             '<span class="level">{{ getOption(ability, "level", "lvl: ") }}</span>',
@@ -523,6 +523,13 @@ Vue.component('characterAbilities', {
       //if (config.character.cooldown[item] !== undefined/* && config.character.cooldown[item] > 0*/) {
         return cooldown
       //}
+    },
+    setTooltip: function () {
+      let ability_item = config.db.abilities[this.ability]
+      Vue.set(config, 'tooltip', ability_item)
+    },
+    unsetTooltip: function () {
+      Vue.delete(config, 'tooltip')
     }
   },
 

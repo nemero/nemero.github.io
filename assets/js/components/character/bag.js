@@ -6,22 +6,22 @@ Vue.component('characterBag', {
     }
   },
   template: [
-        '<span class="game-icon" :class="infoItem" @click="useItem(item)" @animationend="cant_equip = false" :style="getIcon">',
-          '<div class="tooltip">',
-            '<ul>',
-              '<li><b>{{ getOption(item, "name", "") }}</b></li>',
-              '<li>{{ getOption(item, "level", "Level: ") }}</li>',
-              '<li>{{ getOption(item, "damage", "Damage: ") }}</li>',
-              '<li>{{ getOption(item, "strength", "Strength: ") }}</li>',
-              '<li>{{ getOption(item, "stamina", "Stamina: ") }}</li>',
-              '<li>{{ getOption(item, "agility", "Agility: ") }}</li>',
-              '<li>{{ getOption(item, "defence", "Defence: ") }}</li>',
-              '<li>{{ getOption(item, "health", "Health: ") }}</li>',
-              '<li>{{ getOption(item, "text", "Note: ") }}</li>',
-              '<li>{{ getOption(item, "price", "Price: ") }}</li>',
-              '<li>{{ item }}</li>',
-            '</ul>',
-          '</div>',
+        '<span class="game-icon" :class="infoItem" @click="useItem(item)" @animationend="cant_equip = false" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
+          // '<div class="tooltip">',
+          //   '<ul>',
+          //     '<li><b>{{ getOption(item, "name", "") }}</b></li>',
+          //     '<li>{{ getOption(item, "level", "Level: ") }}</li>',
+          //     '<li>{{ getOption(item, "damage", "Damage: ") }}</li>',
+          //     '<li>{{ getOption(item, "strength", "Strength: ") }}</li>',
+          //     '<li>{{ getOption(item, "stamina", "Stamina: ") }}</li>',
+          //     '<li>{{ getOption(item, "agility", "Agility: ") }}</li>',
+          //     '<li>{{ getOption(item, "defence", "Defence: ") }}</li>',
+          //     '<li>{{ getOption(item, "health", "Health: ") }}</li>',
+          //     '<li>{{ getOption(item, "text", "Note: ") }}</li>',
+          //     '<li>{{ getOption(item, "price", "Price: ") }}</li>',
+          //     '<li>{{ item }}</li>',
+          //   '</ul>',
+          // '</div>',
           '<span class="name"><b>{{ getOption(item, "name", "") }}</b></span>',
           '<span class="level">{{ getOption(item, "level", "lvl: ") }}</span>',
         '</span>'
@@ -68,9 +68,15 @@ Vue.component('characterBag', {
       if (item && item[option]) {
         return label + item[option]
       }
+    },
+    setTooltip: function () {
+      let item = config.db.items[this.item]
+      Vue.set(config, 'tooltip', item)
+    },
+    unsetTooltip: function () {
+      Vue.delete(config, 'tooltip')
     }
   },
-
   computed: {
     infoItem: function () {
       let html = config.db.items[this.item]

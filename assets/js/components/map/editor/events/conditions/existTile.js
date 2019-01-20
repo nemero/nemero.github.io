@@ -1,5 +1,5 @@
 Vue.component('conditionExistTile', {
-  props: ['condition', 'conditions', 'config', 'idx'],
+  props: ['condition', 'conditions', 'idx'],
   data: function () {
     return {
       collapse: false,
@@ -13,7 +13,7 @@ Vue.component('conditionExistTile', {
             '<label>Map:</label> ',
             '<select v-model="condition.map">',
               '<option value="" selected="selected">---</option>',
-              '<option v-for="map in config.db.mapList" :value="map.name">{{ map.name }}</option>',
+              '<option v-for="map in getMapList" :value="map.name">{{ map.name }}</option>',
             '</select>',
           '</div>',
 
@@ -95,5 +95,8 @@ Vue.component('conditionExistTile', {
 
       return data
     },
+    getMapList: function () {
+      return config.db.mapList
+    }
   }
 })

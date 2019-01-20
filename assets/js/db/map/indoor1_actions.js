@@ -157,15 +157,15 @@ var db_map_indoor1_actions = {
                 "type": "dialog",
                 "conditions": [
                   {
-                    "type": "items",
-                    "items": [
-                      "paper0"
-                    ]
-                  },
-                  {
                     "type": "world_state",
                     "not": [
                       "quest_1_progress_10_cash_bob"
+                    ]
+                  },
+                  {
+                    "type": "items",
+                    "has": [
+                      "paper0"
                     ]
                   }
                 ],
@@ -205,7 +205,7 @@ var db_map_indoor1_actions = {
                   },
                   {
                     "type": "items",
-                    "items": [
+                    "has": [
                       "paper0"
                     ]
                   }
@@ -325,7 +325,10 @@ var db_map_indoor1_actions = {
                   "monomate",
                   4
                 ],
-                "next": "dialog_1"
+                "next": "dialog_1",
+                "give": [
+                  "paper0"
+                ]
               }
             ]
           }

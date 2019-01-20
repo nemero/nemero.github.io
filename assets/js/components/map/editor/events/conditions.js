@@ -1,5 +1,5 @@
 Vue.component('eventConditions', {
-  props: ['conditions', 'config'],
+  props: ['parent', 'conditions'],
   data: function () {
     return {
       "activeCondition": null,
@@ -27,20 +27,20 @@ Vue.component('eventConditions', {
         '</div>',
 
         '<div v-for="(condition, idx ) in conditions" :condition="condition">',
-          '<condition-exist-tile :condition="condition" :config="config" :conditions="conditions" :idx="idx"></condition-exist-tile>',
-          '<condition-world-state :condition="condition" :config="config" :conditions="conditions" :idx="idx"></condition-world-state>',
-          '<condition-items :condition="condition" :config="config" :conditions="conditions" :idx="idx"></condition-items>',
+          '<condition-exist-tile :condition="condition" :conditions="conditions" :idx="idx"></condition-exist-tile>',
+          '<condition-world-state :condition="condition" :conditions="conditions" :idx="idx"></condition-world-state>',
+          '<condition-items :condition="condition" :conditions="conditions" :idx="idx"></condition-items>',
         '</div>',
       '</div>'
       ].join(''),
   methods: {
     addCondition: function () {
-      if (!config.activeLayerEvent.conditions) {
-        Vue.set(config.activeLayerEvent, "conditions", [])
+      if (!this.parent.conditions) {
+        Vue.set(this.parent, "conditions", [])
       }
       
 
-      let conditions = config.activeLayerEvent.conditions
+      let conditions = this.parent.conditions
       let condition = {}
       if (this.activeCondition) {
         condition['type'] = this.activeCondition
@@ -52,7 +52,7 @@ Vue.component('eventConditions', {
       }
     },
     removeCondition: function () {
-      let conditions = config.activeLayerEvent.conditions
+      let conditions = this.parent.conditions
       conditions.pop()
     },
   }

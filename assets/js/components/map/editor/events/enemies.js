@@ -56,7 +56,7 @@ Vue.component('eventEnemies', {
 
         '<event-interaction v-for="(interaction, idx) in enemy.interactions" :interactions="enemy.interactions" :interaction="interaction" :idx="idx"></event-interaction>',
   		  
-        '<event-conditions :conditions="enemy.conditions" :config="config"></event-conditions>',
+        '<event-conditions :conditions="enemy.conditions" :parent="enemy"></event-conditions>',
       '</div>'
       ].join(''),
   methods: {
@@ -166,7 +166,7 @@ Vue.component('eventInteraction', {
             '<label>Add Condition</label> ',
             '<input type="button" @click="createCondition" value="+" />',
           '</div>',
-          '<event-interaction-condition v-for="(condition, idx) in interaction.conditions" :condition="condition" :conditions="interaction.conditions" :idx="idx"></event-interaction-condition>',
+          '<event-conditions :conditions="interaction.conditions" :parent="interaction"></event-conditions>',
         '</div>',
       '</div>'
       ].join(''),
@@ -188,168 +188,6 @@ Vue.component('eventInteraction', {
       
       this.interaction.conditions.push({})
     }
-  }
-})
-
-Vue.component('eventInteractionCondition', {
-  props: ['condition', 'conditions', 'idx'],
-  data: function () {
-    return {
-      state_id: null,
-      item_id: null,
-      collapse: false,
-    }
-  },
-  template: [
-      '<div class="box">',
-        '<h5 @click="collapse = collapse ? false : true">{{ idx }} - ({{ condition.type }}) <input type="button" @click="removeCondition" value="-" /></h5>',
-        '<div v-show="collapse">',
-          '<div class="field-row">',
-            '<label>Type:</label> ',
-            '<select v-model="condition.type">',
-              '<option v-for="type in getTypes" :value="type">{{ type }}</option>',
-            '</select>',
-          '</div>',
-
-          '<div v-if="condition.type == \'world_state\'">',
-            '<div class="field-row">',
-              '<label>State Id: </label> ',
-              '<select v-model="state_id">',
-                '<option v-for="state in getWorldStates" :value="state">{{ state }}</option>',
-              '</select>',
-              '<input type="text" v-model="state_id" placeholder="world state id"/>',
-            '</div>',
-            '<div class="field-row">',
-              '<label>Has:</label> ',
-              '<input type="button" @click="addHasState" value="+" />',
-              '<input type="button" @click="removeHasState" value="-" />',
-              '<div class="info" v-show="condition.has">{{ condition.has }}</div>',
-            '</div>',
-
-            '<div class="field-row">',
-              '<label>Not Has:</label> ',
-              '<input type="button" @click="addNotHasState" value="+" />',
-              '<input type="button" @click="removeNotHasState" value="-" />',
-              '<div class="info" v-show="condition.not">{{ condition.not }}</div>',
-            '</div>',
-          '</div>',
-
-          '<div v-if="condition.type == \'items\'">',
-            '<div class="field-row">',
-              '<label>Items: </label> ',
-              '<select v-model="item_id">',
-                '<option v-for="item in getItems" :value="item.id">{{ item.id }}</option>',
-              '</select>',
-              '<input type="button" @click="addItem" value="+" />',
-              '<input type="button" @click="removeItem" value="-" />',
-              '<div class="info" v-show="condition.items">{{ condition.items }}</div>',
-            '</div>',
-          '</div>',
-        '</div>',
-
-      '</div>'
-      ].join(''),
-  methods: {
-    removeCondition: function () {
-      this.conditions.splice(this.idx, 1)
-    },
-    addHasState: function () {
-      if (!this.state_id) {
-        return
-      }
-
-      if (!this.condition.has) {
-        Vue.set(this.condition, "has", [])
-      }
-
-      if (this.condition.has.indexOf(this.state_id) < 0) {
-        this.condition.has.push(this.state_id)
-      }
-    },
-    addNotHasState: function () {
-      if (!this.state_id) {
-        return
-      }
-
-      if (!this.condition.not) {
-        Vue.set(this.condition, "not", [])
-      }
-
-      if (this.condition.not.indexOf(this.state_id) < 0) {
-        this.condition.not.push(this.state_id)
-      }
-    },
-    removeHasState: function () {
-      if (this.condition.has) {
-        this.condition.has.pop()
-      }
-    },
-    removeNotHasState: function () {
-      if (this.condition.not) {
-        this.condition.not.pop()
-      }
-    },
-    addItem: function () {
-      if (!this.item_id) {
-        return
-      }
-
-      if (!this.condition.items) {
-        Vue.set(this.condition, "items", [])
-      }
-
-      this.condition.items.push(this.item_id)
-    },
-    removeItem: function () {
-      if (this.condition.items) {
-        this.condition.items.pop()
-      }
-    },
-  },
-  computed: {
-    getTypes: function () {
-      return ["world_state", "items"]
-    },
-    getItems: function () {
-      return config.db.items
-    },
-    getWorldStates: function () {
-      let world_states = []
-
-      for (layer_id in config.db.mapList) {
-        let layer = config.db.mapList[layer_id].layerEvents
-
-        for (row_id in layer) {
-          let rows = layer[row_id]
-
-          for (col_id in rows) {
-            let cols = rows[col_id]
-
-            for (event_id in cols) {
-              let event = cols[event_id]
-              if (event.interactions) {
-                for (interaction_id in event.interactions) {
-                  let interaction = event.interactions[interaction_id]
-                  for (choice_id in interaction.choices) {
-                    let choice = interaction.choices[choice_id]
-                    if (choice.state) {
-                      for (state_id in choice.state) {
-                        let state = choice.state[state_id]
-                        if (world_states.indexOf(state) < 0) {
-                          world_states.push(state)
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-
-      return world_states.sort()
-    },
   }
 })
 
@@ -446,7 +284,7 @@ Vue.component('eventInteractionChoice', {
             '<label>Add Condition</label> ',
             '<input type="button" @click="createCondition" value="+" />',
           '</div>',
-          '<event-interaction-condition v-for="(condition, idx) in choice.conditions" :condition="condition" :conditions="choice.conditions" :idx="idx"></event-interaction-condition>',
+          '<event-conditions :conditions="choice.conditions" :parent="choice"></event-conditions>',
         '</div>',
 
       '</div>'

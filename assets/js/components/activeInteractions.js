@@ -205,46 +205,12 @@ Vue.component('activeInteractions', {
 
       for (idx in interaction.choices) {
         let choice = interaction.choices[idx]
-        let is_showing = true
         
-        if (choice.conditions) {
-          for (condition_idx in choice.conditions) {
-            let condition = choice.conditions[condition_idx]
-            if (condition.type == 'world_state') {
-              if (condition.has) {
-                for (state_id in condition.has) {
-                  let state = condition.has[state_id]
-                  if (world_state.indexOf(state) < 0) {
-                    is_showing = false
-                    break
-                  }
-                }
-              }
-              if (condition.not) {
-                for (state_id in condition.not) {
-                  let state = condition.not[state_id]
-                  if (world_state.indexOf(state) >= 0) {
-                    is_showing = false
-                    break
-                  }
-                }
-              }
-            }
-
-            if (condition.type == "items") {
-              let bag = config.character.bag
-              for (idx in condition.items) {
-                let item = condition.items[idx]
-                if (bag.indexOf(item) < 0) {
-                  is_showing = false
-                  break
-                }
-              }
-            }
-          }
+        if (!choice.conditions) {
+          active_choices.push(choice) 
         }
 
-        if (is_showing) {
+        if (choice.conditions && isTrueConditions(choice.conditions)) {
           active_choices.push(choice)
         }
       }
@@ -261,55 +227,16 @@ Vue.component('activeInteractions', {
     getActiveInteractions: function () {
       let active_interactions = []
       let world_state = config.character.world_state
+
       for (idx in this.event.interactions) {
         let interaction = this.event.interactions[idx]
-        let is_showing = false
         // is default interaction? (showing always)
         if (this.event.default_interaction_id == interaction.id) {
           active_interactions.push(this.event.interactions[this.event.default_interaction_id])
         }
 
-        if (interaction.conditions) {
-          is_showing = true
-
-          for (condition_idx in interaction.conditions) {
-            let condition = interaction.conditions[condition_idx]
-            if (condition.type == 'world_state') {
-              if (condition.has) {
-                for (state_id in condition.has) {
-                  let state = condition.has[state_id]
-                  if (world_state.indexOf(state) < 0) {
-                    is_showing = false
-                    break
-                  }
-                }
-              }
-              if (condition.not) {
-                for (state_id in condition.not) {
-                  let state = condition.not[state_id]
-                  if (world_state.indexOf(state) >= 0) {
-                    is_showing = false
-                    break
-                  }
-                }
-              }
-            }
-
-            if (condition.type == "items") {
-              let bag = config.character.bag
-              for (idx in condition.items) {
-                let item = condition.items[idx]
-                if (bag.indexOf(item) < 0) {
-                  is_showing = false
-                  break
-                }
-              }
-            }
-          }
-
-          if (is_showing) {
-            active_interactions.push(interaction)
-          }
+        if (interaction.conditions && isTrueConditions(interaction.conditions)) {
+          active_interactions.push(interaction)
         }
       }
 

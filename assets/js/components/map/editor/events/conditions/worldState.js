@@ -77,41 +77,7 @@ Vue.component('conditionWorldState', {
   },
   computed: {
     getWorldStates: function () {
-      let world_states = []
-
-      for (layer_id in config.db.mapList) {
-        let layer = config.db.mapList[layer_id].layerEvents
-
-        for (row_id in layer) {
-          let rows = layer[row_id]
-
-          for (col_id in rows) {
-            let cols = rows[col_id]
-
-            for (event_id in cols) {
-              let event = cols[event_id]
-              if (event.interactions) {
-                for (interaction_id in event.interactions) {
-                  let interaction = event.interactions[interaction_id]
-                  for (choice_id in interaction.choices) {
-                    let choice = interaction.choices[choice_id]
-                    if (choice.state) {
-                      for (state_id in choice.state) {
-                        let state = choice.state[state_id]
-                        if (world_states.indexOf(state) < 0) {
-                          world_states.push(state)
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-
-      return world_states.sort()
+      return activeWorldStates()
     },
   }
 })

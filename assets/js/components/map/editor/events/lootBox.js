@@ -15,7 +15,7 @@ Vue.component('eventLootBox', {
 
   			'<div class="info">Items: {{ config.activeLayerEvent.items }}</div>',
 
-        '<event-conditions :conditions="config.activeLayerEvent.conditions" :config="config"></event-conditions>',
+        '<event-conditions :conditions="config.activeLayerEvent.conditions" :parent="config.activeLayerEvent"></event-conditions>',
       '</div>'
       ].join(''),
   methods: {

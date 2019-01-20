@@ -17,7 +17,7 @@ Vue.component('eventTeleport', {
   				'<input type="button" @click="selectOnMap" value="select on map"/>',
   			'</div>',
 
-        '<event-conditions :conditions="config.activeLayerEvent.conditions" :config="config"></event-conditions>',
+        '<event-conditions :conditions="config.activeLayerEvent.conditions" :parent="config.activeLayerEvent"></event-conditions>',
       '</div>'
       ].join(''),
   methods: {
