@@ -217,6 +217,10 @@ Vue.component('executeEvent', {
 
       // track steps
       config.step++
+
+      // check battle chance
+      this.randomBattle()
+
       return true
     },
     enter: function (event) {
@@ -335,6 +339,73 @@ Vue.component('executeEvent', {
         tile_icon: "icon-player",
         //tile_position: position
       })
+    },
+    randomBattle: function () {
+      let position = this.event.position // float coordinate
+      let battle = config.db.map[config.db.map.activeMap].battle
+      let enemies = []
+      
+      if (battle && battle.zone && battle.zone[position[1]] && battle.zone[position[1]][position[0]]) {
+        let item = battle.zone[position[1]][position[0]]
+        enemies = this.generateEnemies(item)
+      } else if (battle && battle.zoneDefault) {
+        let item = battle.zoneDefault
+        enemies = this.generateEnemies(item)
+      }
+
+      if (enemies.length > 0) {
+        let counter = 0
+        config.activeEnemies = []
+        for (enemy_idx in enemies) {
+          let enemy = config.db.enemies[enemies[enemy_idx]]
+
+          // indexing creating enemies 
+          enemy['object_idx'] = counter
+          config.activeEnemies.push(JSON.parse(JSON.stringify(enemy)))
+          counter += 1
+        }
+
+        // show ui battle
+        config.activeUI = "battle"
+      }
+    },
+    generateEnemies: function (item) {
+      let enemies = []
+      // if proc battle generate enemies list
+      if (item.percent && getRandomArbitrary(1, 100) <= item.percent) {
+        let count = 0
+        
+        for (idx in item.enemies) {
+          let enemy = item.enemies[idx]
+          let count_enemy = 0
+          let item_max = item.max ? item.max : 6
+
+          for (var i = count; i <= item_max; i++) { // 1, max 6
+            if (enemy.percent && getRandomArbitrary(1, 100) <= enemy.percent) {
+              enemies.push(enemy.id)
+              count_enemy++
+              count++
+            }
+
+            // adding at least one enemy if not set enemy.max
+            if (!enemy.max && i == item_max && count == 0) {
+              enemies.push(enemy.id)
+              count_enemy++
+              count++
+            }
+
+            if ((enemy.max && count_enemy == enemy.max) || (count >= item_max)) {
+              break
+            }
+          }
+
+          if (count >= item_max) {
+            break
+          }
+        }
+      }
+
+      return enemies
     }
-  }
+  },
 })
