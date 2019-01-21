@@ -48,13 +48,14 @@
 					</ul> -->
 				</div>	
 			</div>
+			<div class="ui-trade">
+				<h1>Trade</h1>
+				<!-- need register the component firstly than active-interaction for correct keydown events -->
+				<active-trade :seller="config.activeTrade"></active-trade>
+			</div>
 			<div class="ui-dialog">
 				<!-- <h1>Dialog with active enemy name</h1> -->
 				<active-interactions :event="config.activeInteractions"></active-interactions>
-			</div>
-			<div class="ui-trade">
-				<h1>Trade</h1>
-				<active-trade :seller="config.activeTrade"></active-trade>
 			</div>
 			<div class="ui-game-over">
 				<h1>GAME OVER...</h1>

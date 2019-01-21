@@ -39,21 +39,7 @@ Vue.component('activeTrade', {
 Vue.component('tradeSeller', {
   props: ['price', "idx"],
   template: [
-        '<span class="game-icon" :class="infoItem" @click="buyItem" @animationend="cant_equip = false" :style="getIcon">',
-          '<div class="tooltip">',
-            '<ul>',
-              '<li><b>{{ getOption("name", "") }}</b></li>',
-              '<li>{{ getOption("level", "Level: ") }}</li>',
-              '<li>{{ getOption("damage", "Damage: ") }}</li>',
-              '<li>{{ getOption("strength", "Strength: ") }}</li>',
-              '<li>{{ getOption("stamina", "Stamina: ") }}</li>',
-              '<li>{{ getOption("agility", "Agility: ") }}</li>',
-              '<li>{{ getOption("defence", "Defence: ") }}</li>',
-              '<li>Price {{ price }}</li>',
-              '<li>{{ getOption("text", "Note: ") }}</li>',
-              '<li>{{ idx }}</li>',
-            '</ul>',
-          '</div>',
+        '<span class="game-icon" :class="infoItem" @click="buyItem" @animationend="cant_equip = false" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
           '<span class="name"><b>{{ getOption("name", "") }}</b></span>',
           '<span class="level">{{ getOption("level", "Lvl:") }}</span>',
           '<span class="price">Price: {{ price }}</span>',
@@ -72,6 +58,13 @@ Vue.component('tradeSeller', {
       if (item && item[option]) {
         return label + item[option]
       }
+    },
+    setTooltip: function () {
+      let item = config.db.items[this.idx]
+      Vue.set(config, 'tooltip', item)
+    },
+    unsetTooltip: function () {
+      Vue.delete(config, 'tooltip')
     }
   },
   computed: {
@@ -121,21 +114,7 @@ Vue.component('tradeCharacter', {
 Vue.component('sellItem', {
   props: ['item_id', "idx"],
   template: [
-        '<span class="game-icon" :class="infoItem" @click="sellItem" @animationend="cant_equip = false" :style="getIcon">',
-          '<div class="tooltip">',
-            '<ul>',
-              '<li><b>{{ getOption("name", "") }}</b></li>',
-              '<li>{{ getOption("level", "Level: ") }}</li>',
-              '<li>{{ getOption("damage", "Damage: ") }}</li>',
-              '<li>{{ getOption("strength", "Strength: ") }}</li>',
-              '<li>{{ getOption("stamina", "Stamina: ") }}</li>',
-              '<li>{{ getOption("agility", "Agility: ") }}</li>',
-              '<li>{{ getOption("defence", "Defence: ") }}</li>',
-              '<li>{{ getOption("price", "Price: ") }}</li>',
-              '<li>{{ getOption("text", "Note: ") }}</li>',
-              '<li>{{ item_id }}</li>',
-            '</ul>',
-          '</div>',
+        '<span class="game-icon" :class="infoItem" @click="sellItem" @animationend="cant_equip = false" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
           '<span class="name"><b>{{ getOption("name", "") }}</b></span>',
           '<span class="level">{{ getOption("level", "Lvl:") }}</span>',
           '<span class="price">{{ getOption("price", "Price: ") }}</span>',
@@ -154,6 +133,13 @@ Vue.component('sellItem', {
       if (item && item[option]) {
         return label + item[option]
       }
+    },
+    setTooltip: function () {
+      let item = config.db.items[this.item_id]
+      Vue.set(config, 'tooltip', item)
+    },
+    unsetTooltip: function () {
+      Vue.delete(config, 'tooltip')
     }
   },
   computed: {

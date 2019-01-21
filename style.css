@@ -259,7 +259,7 @@ a:hover {
 }
 
 .tooltip {
-	z-index: 11;
+	z-index: 99;
 	display: block;
 	position: absolute;
 	top: 20px;
