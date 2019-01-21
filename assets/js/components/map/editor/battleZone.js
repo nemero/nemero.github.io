@@ -12,17 +12,17 @@ Vue.component('battleZone', {
           '<label>{{ config.activeBattleCell.id }}:</label> ',
           '<div class="field-row">',
             '<label>Percent proc:</label> ',
-            '<input type="number" v-model="config.activeBattleCell.percent" />',
+            '<input type="number" v-model.number="config.activeBattleCell.percent" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Max:</label> ',
-            '<input type="number" v-model="config.activeBattleCell.max" />',
+            '<input type="number" v-model.number="config.activeBattleCell.max" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Min:</label> ',
-            '<input type="number" v-model="config.activeBattleCell.min" />',
+            '<input type="number" v-model.number="config.activeBattleCell.min" />',
           '</div>',
 
           '<div class="field-row">',

@@ -11,17 +11,17 @@ Vue.component('battleZoneDefault', {
         '<div v-show="collapse">',
           '<div class="field-row">',
             '<label>Percent proc:</label> ',
-            '<input type="number" v-model="config.battleZone.zoneDefault.percent" />',
+            '<input type="number" v-model.number="config.battleZone.zoneDefault.percent" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Max:</label> ',
-            '<input type="number" v-model="config.battleZone.zoneDefault.max" />',
+            '<input type="number" v-model.number="config.battleZone.zoneDefault.max" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Min:</label> ',
-            '<input type="number" v-model="config.battleZone.zoneDefault.min" />',
+            '<input type="number" v-model.number="config.battleZone.zoneDefault.min" />',
           '</div>',
 
           '<div class="field-row">',
@@ -72,17 +72,17 @@ Vue.component('battleEnemies', {
         '<div v-show="collapse">',
           '<div class="field-row">',
             '<label>Percent proc:</label> ',
-            '<input type="number" v-model="enemy.percent" />',
+            '<input type="number" v-model.number="enemy.percent" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Max:</label> ',
-            '<input type="number" v-model="enemy.max" />',
+            '<input type="number" v-model.number="enemy.max" />',
           '</div>',
 
           '<div class="field-row">',
             '<label>Min:</label> ',
-            '<input type="number" v-model="enemy.min" />',
+            '<input type="number" v-model.number="enemy.min" />',
           '</div>',
         '</div>',
     '</div>'
