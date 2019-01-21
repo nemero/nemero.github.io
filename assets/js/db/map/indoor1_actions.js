@@ -232,9 +232,7 @@ var db_map_indoor1_actions = {
                   "vodka0",
                   10
                 ],
-                "give": [
-                  "paper0"
-                ],
+                "give": [],
                 "next": "quest_2"
               }
             ]
