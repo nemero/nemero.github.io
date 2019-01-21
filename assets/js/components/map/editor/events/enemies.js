@@ -162,10 +162,6 @@ Vue.component('eventInteraction', {
           '</div>',
           '<event-interaction-choice v-for="(choice, idx) in interaction.choices" :choice="choice" :choices="interaction.choices" :idx="idx"></event-interaction-choice>',
 
-          '<div class="field-row">',
-            '<label>Add Condition</label> ',
-            '<input type="button" @click="createCondition" value="+" />',
-          '</div>',
           '<event-conditions :conditions="interaction.conditions" :parent="interaction"></event-conditions>',
         '</div>',
       '</div>'
@@ -280,10 +276,6 @@ Vue.component('eventInteractionChoice', {
           '</div>',
           '<event-interaction-action v-for="(action, idx) in choice.events" :action="action" :events="choice.events" :idx="idx"></event-interaction-action>',
 
-          '<div class="field-row">',
-            '<label>Add Condition</label> ',
-            '<input type="button" @click="createCondition" value="+" />',
-          '</div>',
           '<event-conditions :conditions="choice.conditions" :parent="choice"></event-conditions>',
         '</div>',
 
