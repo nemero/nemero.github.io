@@ -15,10 +15,11 @@ Vue.component('executeEvent', {
       if (config.activeUI == "game-over") {
         return
       }
-      let _event = this.event
+      let test = false
+      let action = this.event
 
-      if (_event.id == "move") {
-        let test = this.move()
+      if (action.id == "move") {
+        test = this.move()
         // just rotate if cant move
         if (!test) {
           if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(this.event.position[1])][Math.round(this.event.position[0])][this.event.player_id].direction !== this.event.directions[0]) {
@@ -51,7 +52,7 @@ Vue.component('executeEvent', {
           for (idx in events) {
             let new_event = events[idx]
             if (this.isAvailable(new_event) && !new_event.hidden) {
-              _event = {
+              action = {
                 id: "enter",
                 event: new_event
               }
@@ -63,8 +64,8 @@ Vue.component('executeEvent', {
 
       }
 
-      let event = _event.event
-      if (_event.id == "enter") {
+      let event = action.event
+      if (action.id == "enter") {
         // trigger only enemies event if exist
         if (event.id !== "enemies") {
           for (layer_idx in config.activeEvents) {
@@ -83,7 +84,7 @@ Vue.component('executeEvent', {
         }
 
         this.enter(event)
-      }
+      }  
     }
     //Vue.set(this.event, null) // changed variable can't be root element of component, so instead use next code
     Vue.set(config, "executeEvent", null)
@@ -195,6 +196,28 @@ Vue.component('executeEvent', {
       Vue.set(position, 0, float_position[0])
       Vue.set(position, 1, float_position[1])
 
+      // TODO: need check is exist events on new cell?
+      if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])] 
+          && config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])][Math.round(position[0])]
+          && Object.keys(config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])][Math.round(position[0])]).length > 0
+      ) {
+        let all_hidden = true
+        for (idx in config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])][Math.round(position[0])]) {
+          let event = config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])][Math.round(position[0])][idx]
+          if (isVisibleTileEvent(event)) {
+            all_hidden = false
+            break
+          }
+        }
+
+        console.log(all_hidden)
+        if (all_hidden) {
+          this.randomBattle()  
+        }
+      } else {
+        this.randomBattle()
+      }
+
       console.time('change_map_pos')
       // set map position
       if (!config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])]) {
@@ -217,10 +240,6 @@ Vue.component('executeEvent', {
 
       // track steps
       config.step++
-
-      // check battle chance
-      this.randomBattle()
-
       return true
     },
     enter: function (event) {
