@@ -110,6 +110,13 @@ html, body {
 	left: 24px;
 	top: 3px;
 }
+.view-map-row .layer-event.icon-battle1 {
+	background: url(../images/battle.png) center center/cover;
+	width: 20px;
+	height: 20px;
+	left: 24px;
+	top: 3px;
+}
 .icon-townout0 {
 	background: url(../images/town_out.jpg) center center/cover;	
 }

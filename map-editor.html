@@ -20,7 +20,10 @@
 							Tiles 
 						</li>
 						<li @click="config.activeTab = 'events'" :class="{ active : config.activeTab == 'events'}">
-							Layer Events
+							Events
+						</li>
+						<li @click="config.activeTab = 'battle_zone'" :class="{ active : config.activeTab == 'battle_zone'}">
+							BattleZ
 						</li>
 						<li @click="config.activeTab = 'enemies'" :class="{ active : config.activeTab == 'enemies'}">
 							Enemies
@@ -125,9 +128,19 @@
 					<event-unlock :config="config"></event-unlock>
 					<event-loot-box :config="config"></event-loot-box>
 				</div>
+
+				<div v-show="config.activeTab == 'battle_zone'" class="section">
+					<h4>Battle Zone: </h4>
+					<div class="field-row">
+						<battle-zone-default :config="config"></battle-zone-default>
+					</div>
+					<div class="field-row">
+						<battle-zone :config="config"></battle-zone>
+					</div>
+				</div>
 			</div>
 
-			<div class="ui-right" v-show="config.activeTab == 'tiles' || config.activeTab == 'events'">
+			<div class="ui-right" v-show="config.activeTab == 'tiles' || config.activeTab == 'events' || config.activeTab == 'battle_zone'">
 				<div>
 					<!-- <div class="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">Start dragging here</div> -->
   					<!-- <div>X: {{x}}, Y: {{y}}</div> -->
@@ -155,18 +168,26 @@
 			</div>
 		</div>
 
-		<div class="map-config" v-show="config.activeTab == 'tiles' || config.activeTab == 'events'">
+		<div class="map-config" v-show="config.activeTab == 'tiles' || config.activeTab == 'events' || config.activeTab == 'battle_zone'">
 			<div>
 				Map:
-				<textarea style="width: 300px;" rows="20">{{ config.map }}</textarea>
+				<textarea rows="20">{{ config.map }}</textarea>
 			</div>
 			<div>
 				Layer Events:
-				<textarea style="width: 300px;" rows="20">{{ config.layerEvents }}</textarea>
+				<textarea rows="20">{{ config.layerEvents }}</textarea>
 			</div>
 			<div>
 				Layer Event:
-				<textarea style="width: 300px;" rows="20">{{ config.activeLayerEvent }}</textarea>
+				<textarea rows="20">{{ config.activeLayerEvent }}</textarea>
+			</div>
+			<div>
+				Battle Zone:
+				<textarea rows="20">{{ config.battleZone }}</textarea>
+			</div>
+			<div>
+				Battle Cell:
+				<textarea rows="20">{{ config.activeBattleCell }}</textarea>
 			</div>
 		</div>
 		<div class="map-config">
@@ -188,14 +209,19 @@
 
 	<script type="text/javascript" src="assets/js/db/map/indoor1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/indoor1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/indoor1_battle.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/city1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/city1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/city1_battle.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/cave1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/cave1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/cave1_battle.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/world1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/world1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/world1_battle.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/sewer1.js"></script>
 	<script type="text/javascript" src="assets/js/db/map/sewer1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/sewer1_battle.js"></script>
 
 	<script type="text/javascript" src="assets/js/db/map/event_templates.js"></script>
 
@@ -249,6 +275,8 @@
 	<script type="text/javascript" src="assets/js/components/map/editor/enemies.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/items.js"></script>
 	<script type="text/javascript" src="assets/js/components/map/editor/abilities.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/battleZone.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/battleZoneDefault.js"></script>
 
 	<script type="text/javascript">
 		Vue.component('configTextarea', {

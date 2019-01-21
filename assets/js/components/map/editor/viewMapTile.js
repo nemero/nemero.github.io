@@ -4,6 +4,7 @@ Vue.component('viewMapTile', {
   		'<span class="service">{{ getRowId }}/{{ getColId }} {{ getTileName }}</span>',
         '<view-map-tile-layer v-for="tile in getTiles" :tile="tile"></view-map-tile-layer>',
         '<view-map-tile-event v-for="event in getEvents" :event="event"></view-map-tile-event>',
+        '<view-map-tile-battle v-show="getBattleCell"></view-map-tile-battle>',
 
         '<span class="tile-layers-info">',
           '<div class="tile-map">',
@@ -18,6 +19,12 @@ Vue.component('viewMapTile', {
             '<div><label style="color: #fff;">Events</label></div>',
             '<view-map-tile-events-info v-for="(event, idx) in getEvents" :event="event" :idx="idx" :row_id="getRowId" :col_id="getColId"></view-map-tile-events-info>',
             '<input type="button" class="control" @click="addEvent" value="+" />',
+          '</div>',
+          '<div class="tile-battle">',
+            '<div><label style="color: #fff;">Battle Zone</label></div>',
+            '<view-map-tile-battle-info :battle="getBattleCell" v-if="getBattleCell"></view-map-tile-battle-info>',
+            '<input type="button" class="control" @click="addBattle" value="+" />',
+            '<input type="button" class="control" @click="removeBattle" value="-" />',
           '</div>',
         '</span>',
       '</span>',
@@ -137,6 +144,36 @@ Vue.component('viewMapTile', {
         Vue.delete(config.layerEvents, this.getRowId)
       }
     },
+    addBattle: function () {
+      if (!config.activeBattleCell) {
+        console.log(config.activeBattleCell)
+        return
+      }
+      
+
+      if (!config.battleZone) {
+        Vue.set(config, 'battleZone', {
+          'zoneDefault': {},
+          'zone': {}
+        })
+      }
+      if (!config.battleZone.zone) {
+        Vue.set(config.battleZone, 'zone', {})
+      }
+      if (!config.battleZone.zone[this.getRowId]) {
+        Vue.set(config.battleZone.zone, this.getRowId, {})
+      }
+      
+      Vue.set(config.battleZone.zone[this.getRowId], this.getColId, JSON.parse(JSON.stringify(config.activeBattleCell)))
+    },
+    removeBattle: function () {
+      Vue.delete(config.battleZone.zone[this.getRowId], this.getColId)
+
+      let count = Object.keys(config.battleZone.zone[this.getRowId]).length
+      if (count < 1) {
+        Vue.delete(config.battleZone.zone, this.getRowId)
+      }
+    },
   },
   computed: {
     getRowId: function () {
@@ -174,6 +211,55 @@ Vue.component('viewMapTile', {
   		}
 
   		return null
-  	}
+  	},
+    getBattleCell: function () {
+      if (config.battleZone && config.battleZone.zone && config.battleZone.zone[this.getRowId] && config.battleZone.zone[this.getRowId][this.getColId]) {
+        let battle = config.battleZone.zone[this.getRowId][this.getColId]
+        return battle
+      }
+
+      return null
+    },
+  }
+})
+
+Vue.component('viewMapTileBattleInfo', {
+  props: ['battle'],
+  template: ['<div :class="isActive" class="layer-event-box">',
+        '<div class="layer" @click="selectBattle">',
+          //'{{ idx }}',
+          '<span class="layer-event-info-icon icon-battle0"></span>',
+        '</div>',
+      '</div>',
+    ].join(""),
+  methods: {
+    selectBattle: function () {
+      config.activeBattleCell = this.battle
+    },
+  },
+  computed: {
+    isActive: function () {
+      let data = {}
+
+      if (config.activeBattleCell == this.battle) {
+        data['active'] = true
+      }
+
+      return data
+    },
+  }
+})
+
+Vue.component('viewMapTileBattle', {
+  props: ['battle'],
+  template: ['<span class="layer-event" :class="getTileMapClass"></span>',
+    ].join(""),
+  computed: {
+    getTileMapClass: function () {
+      let data = {}
+      data['icon-battle1'] = true
+
+      return data
+    },
   }
 })

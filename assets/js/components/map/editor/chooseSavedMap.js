@@ -9,6 +9,7 @@ Vue.component('choose-saved-map', {
   		// set map
   		config.map = config.db.mapList[config.activeMapId].map
       config.layerEvents = config.db.mapList[config.activeMapId].layerEvents
+      config.battleZone = config.db.mapList[config.activeMapId].battle
   	}
   }
 })
