@@ -5,9 +5,11 @@ var config = {
 	moveUi: true,
 
 	level: {
-		experience: 10,
+		experience: 30,
 		up: {
 			health: 4,
+			mp: 1,
+			//rage: 0,
 		}
 	},
 
@@ -16,10 +18,17 @@ var config = {
 		name: "kokoko",
 		level: 1, // calculating from experience 1 = 100 exp.
 		experience: 10,
+		
 		health: 20,
 		max_health: 20,
 		base_health: 20,
+
+		mp: 5,
+		max_mp: 5,
+		base_mp: 5,
+
 		stamina: 0,
+		intellect: 0,
 		agility: 0,
 		strength: 0,
 		defence: 5,

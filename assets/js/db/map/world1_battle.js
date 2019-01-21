@@ -1,7 +1,7 @@
 var db_map_world1_battle = {
   "zoneDefault": {
-    "percent": 20,
-    "max": 6,
+    "percent": 10,
+    "max": 12,
     "enemies": [
       {
         "id": "fly",
@@ -10,12 +10,12 @@ var db_map_world1_battle = {
       {
         "id": "wolf",
         "percent": 5,
-        "max": 1
+        "max": 2
       },
       {
         "id": "wolf1",
         "percent": 5,
-        "max": 1
+        "max": 2
       },
       {
         "id": "bear0",

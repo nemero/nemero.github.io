@@ -145,6 +145,7 @@ Vue.component('activeInteractions', {
   			}
 
   			config.character.health = config.character.max_health
+        config.character.mp = config.character.max_mp
 
   			// after rest call next interaction
   			this.active_interaction_id = choice.next

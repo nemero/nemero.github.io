@@ -3,7 +3,7 @@ var db_map_cave1_battle = {
     // enemies
     "max": 6,
     "min": 1,
-    "percent": 20, // chance random battle
+    "percent": 15, // chance random battle
     "enemies": [
       {
         id: "fly",

@@ -110,6 +110,15 @@ Vue.component('characterAbilities', {
           return false
         }
 
+        if (ability_item.mp_cost) {
+          if (enemy.mp >= ability_item.mp_cost) {
+            enemy.mp -= ability_item.mp_cost
+          } else {
+            this.cant_use = true
+            return false
+          }
+        }
+
         this.damageDot(ability_item, enemy)
       }
 
@@ -118,6 +127,15 @@ Vue.component('characterAbilities', {
         if (!enemy.activeTarget) {
           this.cant_use = true
           return false
+        }
+
+        if (ability_item.mp_cost) {
+          if (enemy.mp >= ability_item.mp_cost) {
+            enemy.mp -= ability_item.mp_cost
+          } else {
+            this.cant_use = true
+            return false
+          }
         }
 
         this.enemyDamageAoe(ability_item, enemy)
@@ -138,6 +156,16 @@ Vue.component('characterAbilities', {
       // default heal
       if (ability_item.type == "heal") {
         let heal = ability_item.heal
+
+        if (ability_item.mp_cost) {
+          if (enemy.mp >= ability_item.mp_cost) {
+            enemy.mp -= ability_item.mp_cost
+          } else {
+            this.cant_use = true
+            return false
+          }
+        }
+
         if (enemy.health + heal > enemy.max_health) {
           enemy.health = enemy.max_health
         } else {
@@ -146,8 +174,14 @@ Vue.component('characterAbilities', {
       }
 
       // applying buff ability
-      this.useBuff(ability_item, enemy)
-      this.useDebuff(ability_item, enemy)
+      if (!this.useBuff(ability_item, enemy)) {
+        this.cant_use = true
+        return false
+      }
+      if (!this.useDebuff(ability_item, enemy)) {
+        this.cant_use = true
+        return false
+      }
 
       // character use damage ability
       if (ability_item.type == "damage" && ability_item.id != "attack") {
@@ -196,6 +230,16 @@ Vue.component('characterAbilities', {
       }
     },
     useBuff: function (ability_item, enemy) {
+     if ((ability_item.type == "buff" || ability_item.type == "heal_buff") && ability_item.mp_cost) {
+        if (enemy.mp >= ability_item.mp_cost) {
+          enemy.mp -= ability_item.mp_cost
+        } else {
+          this.cant_use = true
+          return false
+        }
+      }
+
+
       // apply base effect for heal buf
       if (ability_item.type == "heal_buff") {
         let heal = ability_item.heal
@@ -217,8 +261,24 @@ Vue.component('characterAbilities', {
           enemy.buffs[ability_item.id]["time"] = ability_item.time
         }
       }
+
+      return true
     },
     useDebuff: function (ability_item, enemy) {
+      if (ability_item.type == "debuff" && ability_item.mp_cost) {
+        if (!enemy.activeTarget) {
+          this.cant_use = true
+          return false
+        }
+
+        if (enemy.mp >= ability_item.mp_cost) {
+          enemy.mp -= ability_item.mp_cost
+        } else {
+          this.cant_use = true
+          return false
+        }
+      }
+
       // apply/refresh debuff
       if (ability_item.type == "debuff") {
         if (!enemy.activeTarget.debuffs[ability_item.id]) {
@@ -230,6 +290,8 @@ Vue.component('characterAbilities', {
           enemy.activeTarget.debuffs[ability_item.id]["time"] = ability_item.time
         }
       }
+
+      return true
     },
     buffsTick: function (enemy) {
       for (buff_idx in enemy.buffs) {

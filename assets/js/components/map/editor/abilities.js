@@ -94,6 +94,16 @@ Vue.component('activeAbility', {
         '</div>',
 
         '<div class="field-row">',
+          '<label>MP Cost:</label> ',
+          '<input type="number" v-model.number="ability.mp_cost" />',
+        '</div>',
+
+        '<div class="field-row">',
+          '<label>Rage Cost:</label> ',
+          '<input type="number" v-model.number="ability.rage_cost" />',
+        '</div>',
+
+        '<div class="field-row">',
           '<label>Damage:</label> ',
           '<input type="number" v-model.number="ability.damage" />',
         '</div>',

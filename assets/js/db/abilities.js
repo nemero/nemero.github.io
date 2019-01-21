@@ -12,6 +12,7 @@ var db_abilities = {
   "regrown": {
     "id": "regrown",
     "name": "Regrown",
+    "mp_cost": 1, 
     "level": 1,
     "cooldown": 5,
     "heal": 0,

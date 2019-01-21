@@ -20,7 +20,11 @@ Vue.component('character', {
               '<span class="hp-left" :style="getLeftHP"></span>',
               '<span class="hp-left-border"></span>',
             '</span>',
-            '<span class="mp-bar"></span>',
+            '<span class="mp-bar">',
+              '<span class="mp-text">{{ getMP() }}</span>',
+              '<span class="mp-left" :style="getLeftMP"></span>',
+              '<span class="mp-left-border"></span>',
+            '</span>',
           '</div>',
 
           '<div class="">{{ takeDamageHeal }}',
@@ -65,6 +69,16 @@ Vue.component('character', {
 
       return '' + player.health + '/' + player.max_health
     },
+    getMP: function () {
+      let player = this.character
+
+      player.max_mp = player.base_mp + ((player.level - 1) * config.level.up.mp) + player.intellect
+      if (player.max_mp < player.mp) {
+        player.mp = player.max_mp
+      }
+
+      return '' + player.mp + '/' + player.max_mp
+    },
     showBag: function () {
       if (this.show_bag) {
         this.show_bag = false
@@ -86,6 +100,15 @@ Vue.component('character', {
       let data = {}
 
       let percent = Math.round(player.health*100/player.max_health)
+      data['width'] = percent + '%'
+
+      return data
+    },
+    getLeftMP: function() {
+      let player = this.character
+      let data = {}
+
+      let percent = Math.round(player.mp*100/player.max_mp)
       data['width'] = percent + '%'
 
       return data
