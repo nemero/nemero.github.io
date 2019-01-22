@@ -16,6 +16,7 @@ Vue.component('characterStats', {
             '<li>Stamina: {{ character.stamina }}</li>',
             '<li>Agility: {{ character.agility }}</li>',
             '<li>Strength: {{ character.strength }}</li>',
+            '<li>Intellect: {{ character.intellect }}</li>',
             '<li>EXP: {{ character.experience }}</li>',
             '<li>Map position: {{ character.position }}</li>',
             '<li>Resssrepecter: {{ character.dies }}</li>',
@@ -53,6 +54,7 @@ Vue.component('characterStats', {
     	let stamina = 0 // each stat can have default value depended on race or class hero
 	    let strength = 0
 	    let agility = 0
+      let intellect = 0
 	    let defence = this.character.base_defence
 
 	    // stats of equipment wears or wears of equip ..
@@ -77,6 +79,10 @@ Vue.component('characterStats', {
 
           if (wear.defence) {
             defence += wear.defence
+          }
+
+          if (wear.intellect) {
+            intellect += wear.intellect
           }
         }
       }
@@ -106,6 +112,9 @@ Vue.component('characterStats', {
           defence += buff.defence
         }
         
+        if (buff.intellect) {
+          intellect += buff.intellect
+        }
       }
 
       for (debuff_idx in this.character.debuffs) {
@@ -132,12 +141,16 @@ Vue.component('characterStats', {
           defence += debuff.defence
         }
         
+        if (debuff.intellect) {
+          intellect += debuff.intellect
+        }
       }
 
       this.character.stamina = stamina
       this.character.strength = strength
       this.character.agility = agility
       this.character.defence = defence
+      this.character.intellect = intellect
 
       //return this.character.activeEquipment
     },

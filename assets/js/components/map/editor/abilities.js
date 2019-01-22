@@ -138,6 +138,11 @@ Vue.component('activeAbility', {
             '<label>Damage Count:</label> ',
             '<input type="number" v-model.number="ability.damage_count" />',
           '</div>',
+
+          '<div class="field-row">',
+            '<label>Intellect Scaling:</label> ',
+            '<input type="number" v-model.number="ability.intellect_scaling" />',
+          '</div>',
         '</div>',
 
         '<div v-if="ability.type == \'buff\' || ability.type == \'debuff\'">',
@@ -159,6 +164,10 @@ Vue.component('activeAbility', {
           '<div class="field-row">',
             '<label>Defence:</label> ',
             '<input type="number" v-model.number="ability.defence" />',
+          '</div>',
+          '<div class="field-row">',
+            '<label>Intellect:</label> ',
+            '<input type="number" v-model.number="ability.intellect" />',
           '</div>',
         '</div>',
 

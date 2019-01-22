@@ -364,5 +364,63 @@ var db_items = {
     "health": 200,
     "price": 10,
     "icon": "assets/images/heart-bottle.png"
+  },
+  "manamate": {
+    "id": "manamate",
+    "name": "Manamate",
+    "type": "consumable",
+    "class": "potion",
+    "quality": "common",
+    "level": 1,
+    "icon": "assets/images/potion-mp.png",
+    "price": 18,
+    "mp": 5
+  },
+  "ring0": {
+    "id": "ring0",
+    "name": "ring0",
+    "type": "gear",
+    "class": "ring1",
+    "quality": "uncommon",
+    "level": 1,
+    "icon": "assets/images/ring.png",
+    "intellect": 2,
+    "price": 60
+  },
+  "ring0_s": {
+    "id": "ring0_s",
+    "name": "ring0_s",
+    "type": "gear",
+    "class": "ring2",
+    "quality": "uncommon",
+    "level": 1,
+    "icon": "assets/images/ring.png",
+    "strength": 2,
+    "price": 60
+  },
+  "neck0_i": {
+    "id": "neck0_i",
+    "name": "neck0_i",
+    "type": "gear",
+    "class": "neck",
+    "quality": "uncommon",
+    "level": 1,
+    "icon": "assets/images/neck.png",
+    "intellect": 1,
+    "price": 60,
+    "stamina": 1
+  },
+  "legs0_i": {
+    "id": "legs0_i",
+    "name": "legs0_i",
+    "type": "gear",
+    "class": "legs",
+    "quality": "uncommon",
+    "level": 1,
+    "icon": "assets/images/legs.png",
+    "defence": 1,
+    "intellect": 2,
+    "price": 55,
+    "stamina": 1
   }
 }

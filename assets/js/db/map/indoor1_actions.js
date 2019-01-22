@@ -30,7 +30,8 @@ var db_map_indoor1_actions = {
           "monomate": 15,
           "sword03": 80,
           "knife0": 30,
-          "sword02": 65
+          "sword02": 65,
+          "manamate": 30
         },
         "interactions": {
           "dialog_1": {

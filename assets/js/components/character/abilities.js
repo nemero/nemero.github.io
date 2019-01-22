@@ -155,8 +155,6 @@ Vue.component('characterAbilities', {
 
       // default heal
       if (ability_item.type == "heal") {
-        let heal = ability_item.heal
-
         if (ability_item.mp_cost) {
           if (enemy.mp >= ability_item.mp_cost) {
             enemy.mp -= ability_item.mp_cost
@@ -165,6 +163,14 @@ Vue.component('characterAbilities', {
             return false
           }
         }
+
+        let heal = ability_item.heal            
+        if (ability_item.intellect_scaling) {
+          let scaling = ability_item.intellect_scaling ? ability_item.intellect_scaling : 0
+          let intellect = enemy.intellect ? enemy.intellect : 0
+          // recalculate character stats
+          heal = ability_item.heal + Math.trunc((scaling/100) * intellect) // 0.2 * 4 -> 4 + 0.8 = 4.8
+        } 
 
         if (enemy.health + heal > enemy.max_health) {
           enemy.health = enemy.max_health
@@ -234,7 +240,6 @@ Vue.component('characterAbilities', {
         if (enemy.mp >= ability_item.mp_cost) {
           enemy.mp -= ability_item.mp_cost
         } else {
-          this.cant_use = true
           return false
         }
       }
@@ -243,6 +248,14 @@ Vue.component('characterAbilities', {
       // apply base effect for heal buf
       if (ability_item.type == "heal_buff") {
         let heal = ability_item.heal
+            
+        if (ability_item.intellect_scaling) {
+          let scaling = ability_item.intellect_scaling ? ability_item.intellect_scaling : 0
+          let intellect = enemy.intellect ? enemy.intellect : 0
+          // recalculate character stats
+          heal = ability_item.heal + Math.trunc((scaling/100) * intellect) // 0.2 * 4 -> 4 + 0.8 = 4.8
+        } 
+
         if (enemy.health + heal > enemy.max_health) {
           enemy.health = enemy.max_health
         } else {
@@ -303,8 +316,17 @@ Vue.component('characterAbilities', {
           // call extra property of buffs
           let ability = config.db.abilities[buff.id]
           if (ability.type == "heal_buff") {
-            if (enemy.health + ability.heal_tick < enemy.max_health) {
-              enemy.health += ability.heal_tick
+            let heal_tick = ability.heal_tick
+
+            if (ability.intellect_scaling) {
+              let scaling = ability.intellect_scaling ? ability.intellect_scaling : 0
+              let intellect = enemy.intellect ? enemy.intellect : 0
+              // recalculate character stats
+              heal_tick = ability.heal_tick + Math.trunc((scaling/100) * intellect) // 0.2 * 4 -> 4 + 0.8 = 4.8
+            } 
+
+            if (enemy.health + heal_tick < enemy.max_health) {
+              enemy.health += heal_tick
             } else {
               enemy.health = enemy.max_health
             }

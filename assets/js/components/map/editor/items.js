@@ -117,6 +117,10 @@ Vue.component('activeItem', {
             '<label>Health:</label> ',
             '<input type="number" v-model.number="item.health" />',
           '</div>',
+          '<div class="field-row">',
+            '<label>Mana:</label> ',
+            '<input type="number" v-model.number="item.mp" />',
+          '</div>',
         '</div>',
 
         '<div v-if="item.type == \'weapon\' || item.type == \'gear\'">',
@@ -138,6 +142,11 @@ Vue.component('activeItem', {
           '<div class="field-row">',
             '<label>Stamina:</label> ',
             '<input type="number" v-model.number="item.stamina" />',
+          '</div>',
+
+          '<div class="field-row">',
+            '<label>Intellect:</label> ',
+            '<input type="number" v-model.number="item.intellect" />',
           '</div>',
         '</div>',
 

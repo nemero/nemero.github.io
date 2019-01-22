@@ -61,7 +61,7 @@ var config = {
 		],
 
 		bag: [
-			"head0", "chest_test0", "chest0", "monomate"
+			"head0", "chest_test0", "chest0", "monomate", "ring0_s", "ring0", "neck0_i", "legs0_i"
 		],
 
 		activeTarget: null,

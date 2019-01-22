@@ -46,16 +46,28 @@ Vue.component('characterBag', {
       }
 
       if (bag_item && bag_item.type == "consumable" && bag_item.class) {
-        if (config.character.health == config.character.max_health) {
-          this.cant_equip = true
-          return
-        }
-        
         if (bag_item.class == "potion") {
-          if (config.character.health + bag_item.health > config.character.max_health) {
-            config.character.health = config.character.max_health
-          } else {
-            config.character.health += bag_item.health
+          if ((bag_item.health && config.character.health == config.character.max_health)
+            || (bag_item.mp && config.character.mp == config.character.max_mp)
+          ) {
+            this.cant_equip = true
+            return
+          }
+
+          if (bag_item.health) {
+            if (config.character.health + bag_item.health > config.character.max_health) {
+              config.character.health = config.character.max_health
+            } else {
+              config.character.health += bag_item.health
+            }
+          }
+
+          if (bag_item.mp) {
+            if (config.character.mp + bag_item.mp > config.character.max_mp) {
+              config.character.mp = config.character.max_mp
+            } else {
+              config.character.mp += bag_item.mp
+            }
           }
         }
 
