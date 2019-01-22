@@ -100,7 +100,8 @@ var db_enemies = {
     "buffs": {},
     "activeTarget": null,
     "model": "icon-wolf1",
-    "hpScroll": []
+    "hpScroll": [],
+    "script": {}
   },
   "wolf1": {
     "id": "wolf1",
@@ -117,8 +118,9 @@ var db_enemies = {
     "debuffs": {},
     "buffs": {},
     "activeTarget": null,
-    "model": "icon-wolf1",
-    "hpScroll": []
+    "model": "icon-wolf3",
+    "hpScroll": [],
+    "script": {}
   },
   "zomby": {
     "id": "zomby",
@@ -213,5 +215,32 @@ var db_enemies = {
     "buffs": {},
     "activeTarget": null,
     "hpScroll": []
+  },
+  "wolf_small": {
+    "id": "wolf_small",
+    "name": "Wolf Small",
+    "script": {
+      "0": [
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "wolf_small_dot",
+        "attack",
+        "attack"
+      ],
+      "80": [
+        "attack"
+      ]
+    },
+    "avatar": "assets/images/wolf.png",
+    "experience": 2,
+    "level": 2,
+    "health": 22,
+    "damage": 2,
+    "defence": 10,
+    "agility": 10,
+    "faction": "wolf",
+    "model": "icon-wolf2"
   }
 }

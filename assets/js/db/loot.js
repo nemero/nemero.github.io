@@ -106,5 +106,13 @@ var db_loot = {
       "bow2": 30,
       "knife2": 3
     }
+  },
+  "wolf_small": {
+    "id": "wolf_small",
+    "items": {
+      "ring0": 5,
+      "ring0_s": 5,
+      "manamate": 10
+    }
   }
 }

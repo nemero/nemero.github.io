@@ -8,6 +8,11 @@ var db_map_world1_battle = {
         "percent": 10
       },
       {
+        "id": "wolf_small",
+        "percent": 10,
+        "max": 5,
+      },
+      {
         "id": "wolf",
         "percent": 5,
         "max": 2
@@ -21,7 +26,7 @@ var db_map_world1_battle = {
         "id": "bear0",
         "percent": 3,
         "max": 1
-      }
+      },
     ]
   },
   "zone": {}

@@ -114,5 +114,16 @@ var db_abilities = {
     "damage": 3,
     "icon": "assets/images/powerpotatos.png",
     "level": 1
+  },
+  "wolf_small_dot": {
+    "id": "wolf_small_dot",
+    "name": "wolf_small_dot",
+    "type": "damage_dot",
+    "icon": "assets/images/powerpotatos.png",
+    "level": 1,
+    "damage": 1,
+    "damage_tick": 1,
+    "time": 5,
+    "strength_scaling": 20
   }
 }

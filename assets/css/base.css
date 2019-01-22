@@ -43,6 +43,14 @@ html, body {
 	position: relative;
 	left: 9px;
 }
+
+.icon-wolf2 {
+	background: url(../images/wolf2.png) center center/cover;
+}
+.icon-wolf3 {
+	background: url(../images/wolf3.png) center center/cover;
+}
+
 .icon-zombie1 {
 	background: url(../images/zombie1.png) center center/cover;
 }

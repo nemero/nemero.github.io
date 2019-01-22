@@ -31,7 +31,11 @@ var db_map_indoor1_actions = {
           "sword03": 80,
           "knife0": 30,
           "sword02": 65,
-          "manamate": 30
+          "manamate": 30,
+          "ring0": 80,
+          "ring0_s": 80,
+          "neck0_i": 100,
+          "legs0_i": 70
         },
         "interactions": {
           "dialog_1": {
