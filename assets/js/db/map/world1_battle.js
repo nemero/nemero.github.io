@@ -8,11 +8,6 @@ var db_map_world1_battle = {
         "percent": 10
       },
       {
-        "id": "wolf_small",
-        "percent": 10,
-        "max": 5,
-      },
-      {
         "id": "wolf",
         "percent": 5,
         "max": 2
@@ -27,7 +22,309 @@ var db_map_world1_battle = {
         "percent": 3,
         "max": 1
       },
+      {
+        "id": "wolf_small",
+        "percent": 10,
+        "max": 4
+      }
     ]
   },
-  "zone": {}
+  "zone": {
+    "2": {
+      "2": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "3": {
+      "2": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "4": {
+      "2": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "5": {
+      "2": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "6": {
+      "2": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      },
+      "3": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      },
+      "4": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "7": {
+      "2": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "8": {
+      "0": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      },
+      "1": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      },
+      "2": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      },
+      "-1": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "9": {
+      "-1": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "10": {
+      "-1": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "11": {
+      "-1": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "12": {
+      "-1": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    },
+    "13": {
+      "-1": {
+        "percent": 10,
+        "max": 5,
+        "min": 1,
+        "enemies": [
+          {
+            "id": "fly",
+            "percent": 10
+          },
+          {
+            "id": "wolf_small",
+            "percent": 5,
+            "max": 3
+          }
+        ]
+      }
+    }
+  }
 }

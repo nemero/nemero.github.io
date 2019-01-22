@@ -549,7 +549,7 @@ var db_map_sewer1_actions = {
               },
               {
                 "type": "auto_trade",
-                "answer": "I give you 10 cash!",
+                "answer": "Мне нужно к оной персоне, за 10 монет лады?",
                 "take": [
                   "key_old_tower0"
                 ],
