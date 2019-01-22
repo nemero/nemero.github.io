@@ -114,5 +114,31 @@ var db_loot = {
       "ring0_s": 5,
       "manamate": 10
     }
+  },
+  "scorpion_small": {
+    "id": "scorpion_small",
+    "items": {
+      "neck0_i": 5,
+      "bow0": 10
+    }
+  },
+  "scorpion": {
+    "id": "scorpion",
+    "items": {
+      "neck0_i": 10,
+      "sword0": 3,
+      "garbage1": 15,
+      "manamate": 20
+    }
+  },
+  "worm": {
+    "id": "worm",
+    "items": {
+      "legs0_i": 10,
+      "sword2": 10,
+      "garbage1": 15,
+      "knife1": 3,
+      "vodka0": 20
+    }
   }
 }

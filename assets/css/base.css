@@ -51,6 +51,15 @@ html, body {
 	background: url(../images/wolf3.png) center center/cover;
 }
 
+.icon-scorpion0 {
+	background: url(../images/scorpion0.png) center center/cover;
+}
+.icon-scorpion1 {
+	background: url(../images/scorpion1.png) center center/cover;
+}
+.icon-worm0 {
+	background: url(../images/worm.png) center center/cover;
+}
 .icon-zombie1 {
 	background: url(../images/zombie1.png) center center/cover;
 }

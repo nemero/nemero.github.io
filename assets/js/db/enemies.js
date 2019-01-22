@@ -242,6 +242,69 @@ var db_enemies = {
     "agility": 10,
     "faction": "wolf",
     "model": "icon-wolf2",
+    "debuffs": {},
+    "buffs": {},
+    "hpScroll": []
+  },
+  "scorpion_small": {
+    "id": "scorpion_small",
+    "name": "Scorpion small",
+    "script": {
+      "0": [
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "attack",
+        "wolf_small_dot",
+        "attack"
+      ]
+    },
+    "avatar": "assets/images/scorpion.png",
+    "model": "icon-scorpion0",
+    "experience": 3,
+    "level": 2,
+    "health": 15,
+    "damage": 1,
+    "defence": 10,
+    "agility": 20,
+    "faction": "animal",
+    "debuffs": {},
+    "buffs": {},
+    "hpScroll": []
+  },
+  "scorpion": {
+    "id": "scorpion",
+    "name": "Scorpion",
+    "script": {},
+    "avatar": "assets/images/scorpion.png",
+    "model": "icon-scorpion1",
+    "experience": 6,
+    "level": 3,
+    "health": 44,
+    "damage": 2,
+    "defence": 20,
+    "agility": 20,
+    "faction": "animal",
+    "debuffs": {},
+    "buffs": {},
+    "hpScroll": []
+  },
+  "worm": {
+    "id": "worm",
+    "name": "Worm",
+    "script": {},
+    "avatar": "assets/images/worm.png",
+    "experience": 10,
+    "level": 5,
+    "health": 80,
+    "damage": 4,
+    "defence": 10,
+    "agility": 5,
+    "faction": "animal",
+    "model": "icon-worm0",
+    "debuffs": {},
+    "buffs": {},
     "hpScroll": []
   }
 }

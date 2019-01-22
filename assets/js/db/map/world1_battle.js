@@ -234,6 +234,86 @@ var db_map_world1_battle = {
             "max": 3
           }
         ]
+      },
+      "-3": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
+      },
+      "-4": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
+      },
+      "-5": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
+      },
+      "-6": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
       }
     },
     "9": {
@@ -252,6 +332,86 @@ var db_map_world1_battle = {
             "max": 3
           }
         ]
+      },
+      "-6": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
+      },
+      "-5": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
+      },
+      "-3": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
+      },
+      "-4": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
       }
     },
     "10": {
@@ -268,6 +428,46 @@ var db_map_world1_battle = {
             "id": "wolf_small",
             "percent": 5,
             "max": 3
+          }
+        ]
+      },
+      "-5": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
+          }
+        ]
+      },
+      "-6": {
+        "percent": 10,
+        "max": 6,
+        "enemies": [
+          {
+            "id": "scorpion_small",
+            "percent": 10
+          },
+          {
+            "id": "scorpion",
+            "max": 3,
+            "percent": 5
+          },
+          {
+            "id": "worm",
+            "max": 2,
+            "percent": 5
           }
         ]
       }
