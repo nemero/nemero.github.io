@@ -129,6 +129,12 @@ var db_map_sewer1_actions = {
             "not": [
               "paper0"
             ]
+          },
+          {
+            "type": "world_state",
+            "not": [
+              "quest_2_done"
+            ]
           }
         ]
       }
