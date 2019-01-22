@@ -241,6 +241,7 @@ var db_enemies = {
     "defence": 10,
     "agility": 10,
     "faction": "wolf",
-    "model": "icon-wolf2"
+    "model": "icon-wolf2",
+    "hpScroll": []
   }
 }
