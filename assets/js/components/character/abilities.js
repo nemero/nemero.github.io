@@ -96,6 +96,24 @@ Vue.component('characterAbilities', {
         this.cant_use = true
       }
 
+      // auto select first enemy
+      if (!enemy.activeTarget) {
+        // select next alive enemy
+        let enemies = config.activeEnemies // TODO: refactor for enemies for current character
+        let target = null
+
+        for (enemy_id in enemies) {
+          let enemy = enemies[enemy_id]
+
+          if (enemy.health > 0) {
+            target = enemy
+            break
+          }
+        }
+
+        enemy.activeTarget = target
+      }
+
 
       // if cant use ability
       if (ability_item.level > character_level || (enemy.cooldown[item] && enemy.cooldown[item] > 0) ) {
@@ -105,11 +123,6 @@ Vue.component('characterAbilities', {
 
       // apply/refresh buff
       if (ability_item.type == "damage_dot") {
-        if (!enemy.activeTarget) {
-          this.cant_use = true
-          return false
-        }
-
         if (ability_item.mp_cost) {
           if (enemy.mp >= ability_item.mp_cost) {
             enemy.mp -= ability_item.mp_cost
@@ -124,11 +137,6 @@ Vue.component('characterAbilities', {
 
       // aoe damage
       if (ability_item.type == "damage_aoe") {
-        if (!enemy.activeTarget) {
-          this.cant_use = true
-          return false
-        }
-
         if (ability_item.mp_cost) {
           if (enemy.mp >= ability_item.mp_cost) {
             enemy.mp -= ability_item.mp_cost
@@ -143,11 +151,6 @@ Vue.component('characterAbilities', {
 
       // default attack
       if (ability_item.id == "attack") {
-        if (!enemy.activeTarget) {
-          this.cant_use = true
-          return false
-        }
-
         let bag_item = config.db.items[enemy.activeEquipment.weapon]
         damage = (bag_item.damage + strength) * critical_damage
         this.kick(damage, enemy.activeTarget)
