@@ -266,6 +266,10 @@ Vue.component('eventInteractionChoice', {
               '<div class="info" v-show="choice.give">{{ choice.give }}</div>',
             '</div>',
           '</div>',
+          
+          '<div v-if="choice.type == \'teleport\'">',
+            '<event-teleport :event="choice"></event-teleport>',
+          '</div>',
 
           '<div class="field-row">',
             '<label>Event change</label> ',
@@ -374,7 +378,7 @@ Vue.component('eventInteractionChoice', {
   },
   computed: {
     getTypes: function () {
-      return ["dialog", "attack", "rest", "trade", "auto_trade", "exit"]
+      return ["dialog", "attack", "rest", "trade", "auto_trade", "exit", "teleport"]
     },
     getItems: function () {
       return config.db.items

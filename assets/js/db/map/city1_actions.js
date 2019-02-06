@@ -34,6 +34,16 @@ var db_map_city1_actions = {
                   }
                 ],
                 "type": "dialog"
+              },
+              {
+                "type": "teleport",
+                "position": [
+                  -17,
+                  3
+                ],
+                "map": "indoor1",
+                "conditions": [],
+                "answer": "ща расскажу историю!"
               }
             ]
           },
@@ -52,7 +62,8 @@ var db_map_city1_actions = {
             ]
           }
         },
-        "default_interaction_id": "dialog_1"
+        "default_interaction_id": "dialog_1",
+        "position": []
       }
     }
   },

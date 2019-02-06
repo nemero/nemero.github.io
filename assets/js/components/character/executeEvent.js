@@ -305,7 +305,7 @@ Vue.component('executeEvent', {
         }
       }
 
-      if (event.id == "teleport") {
+      if (event.id == "teleport" || event.type == "teleport") { // TODO: refactor to type
         // set character position
         // remove old player position on old map
         if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(config.character.position[1])] && config.db.map[config.db.map.activeMap].layerEvents[Math.round(config.character.position[1])][Math.round(config.character.position[0])]) {

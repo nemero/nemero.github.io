@@ -155,7 +155,17 @@ Vue.component('activeInteractions', {
   			config.activeUI = "world"
   		}
 
-  		if (choice.type == "exit" || choice.type == "attack" || !choice.next) {
+      if (choice.type == "teleport") {
+        config.activeUI = "world"
+        Vue.set(config, "executeEvent", {
+          id: "enter",
+          event: choice,
+        })
+
+        return
+      }
+
+  		if (choice.type == "exit" || choice.type == "attack" || !choice.next || choice.type == "teleport") {
   		  Vue.set(config, "activeInteractions", null)
   			this.active_interaction_id = null
   		}

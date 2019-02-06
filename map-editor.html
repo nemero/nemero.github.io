@@ -122,11 +122,11 @@
 						</select>
 					</div>
 
-					<event-player :config="config"></event-player>
+					<event-player :event="config.activeLayerEvent" :config="config"></event-player>
 					<event-enemies :enemy="config.activeLayerEvent" :config="config"></event-enemies>
-					<event-teleport :config="config"></event-teleport>
-					<event-unlock :config="config"></event-unlock>
-					<event-loot-box :config="config"></event-loot-box>
+					<event-teleport :event="config.activeLayerEvent"></event-teleport>
+					<event-unlock :event="config.activeLayerEvent" :config="config"></event-unlock>
+					<event-loot-box :event="config.activeLayerEvent" :config="config"></event-loot-box>
 				</div>
 
 				<div v-show="config.activeTab == 'battle_zone'" class="section">

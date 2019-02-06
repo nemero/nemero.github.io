@@ -1,5 +1,5 @@
 Vue.component('eventLootBox', {
-  props: ['config'],
+  props: ['event', 'config'],
   template: [
       '<div v-if="isActive">',
         '<div class="field-row">',

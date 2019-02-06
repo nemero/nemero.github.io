@@ -1,5 +1,5 @@
 Vue.component('eventUnlock', {
-  props: ['config'],
+  props: ['event', 'config'],
   data: function () {
   	return {
   		"activeTrigger": null,

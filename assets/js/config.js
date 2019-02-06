@@ -13,6 +13,9 @@ var config = {
 		}
 	},
 
+	character1: {
+		
+	},
 	character: {
 		id: "player0",
 		name: "kokoko",
