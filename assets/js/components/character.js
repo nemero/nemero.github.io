@@ -40,7 +40,7 @@ Vue.component('character', {
 
         '<span @click="showBag" class="button">Bag</span>',
         '<div class="ui-main-bag" v-show="show_bag">',
-          '<character-bag v-for="item in this.character.bag" :item="item"></character-bag>',
+          '<character-bag v-for="item in character.bag" :item="item" :character="character"></character-bag>',
         '</div>',
 
         '<span @click="logs = logs ? false : true" class="button">Logs</span>',
@@ -52,7 +52,32 @@ Vue.component('character', {
         '<span @click="mainMenu" class="button">Menu</span>',
       '</div>'
 	  	].join(''),
+  created: function () {
+    this.init()
+  },
+  updated: function () {
+    this.init()
+  },
   methods: {
+    init: function () {
+      if (!this.character.cooldown) {
+        Vue.set(this.character, "cooldown", {})
+      }
+      if (!this.character.buffs) {
+        Vue.set(this.character, "buffs", {})
+      }
+      if (!this.character.debuffs) {
+        Vue.set(this.character, "debuffs", {})
+      }
+
+      if (!this.character.max_health) {
+        Vue.set(this.character, "max_health", this.character.base_health + ((this.character.level - 1) * config.level.up.health) + this.character.stamina)
+      }
+
+      if (!this.character.max_mp) {
+        Vue.set(this.character, "max_mp", this.character.base_mp + ((this.character.level - 1) * config.level.up.mp) + this.character.intellect)
+      }
+    },
     getOption: function (option, label) {
       let item = this.character
       if (item && item[option]) {

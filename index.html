@@ -15,16 +15,16 @@
 		<div class="uiii">
 			<div class="ui-world">
 				<div class="ui-targets">
-					<character :character="config.character"></character>
-					<character-target :character="config.character"></character-target>
+					<character :character="config.characters[config.character[0]]"></character>
+					<character-target :character="config.characters[config.character[0]]"></character-target>
 					<execute-event :event="config.executeEvent"></execute-event>
 				</div>
 				<div class="tile-actions">
 					<div class="ui-actions">
-						<view-map-tile-actions :position="config.character.position" :config="config"></view-map-tile-actions>
+						<view-map-tile-actions :position="config.characters[config.character[0]].position" :character="config.characters[config.character[0]]"></view-map-tile-actions>
 					</div>
 					<div class="ui-move" v-show="config.moveUi">
-						<move-ui :config="config"></move-ui>
+						<move-ui :character="config.characters[config.character[0]]"></move-ui>
 					</div>
 				</div>
 				
@@ -37,11 +37,11 @@
 
 				<div class="ui-battle">
 					<div class="ui-list-enemies">
-						<active-enemy v-for="item in config.activeEnemies" :enemy="item" :config="config"></active-enemy>
+						<active-enemy v-for="item in config.activeEnemies" :enemy="item" :character="config.characters[config.character[0]]"></active-enemy>
 					</div>
 
 					<div class="ui-abilities">
-						<character-abilities v-for="item in config.character.abilities" :ability="item" :config="config"></character-abilities>
+						<character-abilities v-for="item in config.characters[config.character[0]].abilities" :ability="item" :character="config.characters[config.character[0]]"></character-abilities>
 					</div>
 					<!-- <ul class="combat-log">
 						<combat-log v-for="record in config.combatLog" :record="record"></combat-log>

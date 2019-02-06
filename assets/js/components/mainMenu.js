@@ -45,15 +45,22 @@ Vue.component('mainMenu', {
       let map = getCookie("map")
       if (map) {
         // remove old indication position
-        if (config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]] && config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]) {
-          Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]], config.character.id)
+        let character = config.characters[config.character[0]]
+        if (config.db.map[config.db.map.activeMap].layerEvents[character.position[1]] && config.db.map[config.db.map.activeMap].layerEvents[character.position[1]][character.position[0]]) {
+          Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[character.position[1]][character.position[0]], character.id)
         }
         Vue.set(config.db.map, "activeMap", map)
       }
 
-      let player = getCookie("player")
-      if (player) {
-        player = JSON.parse(player)
+      let characters = getCookie("characters")
+      let players = getCookie("player")
+      if (players && characters) {
+        characters = JSON.parse(characters)
+        Vue.set(config, "characters", characters)
+
+        //console.log(JSON.parse(player)[0], characters)
+        players = JSON.parse(players)
+        player = characters[players[0]]
         // render player in event layers
         if (!config.db.map[map].layerEvents[player.position[1]]) {
           Vue.set(config.db.map[map].layerEvents, player.position[1], {})  
@@ -69,7 +76,7 @@ Vue.component('mainMenu', {
           icon: "icon-player",
           tile_icon: "icon-player",
         })
-        Vue.set(config, "character", player)
+        Vue.set(config, "character", players)
       }
 
       let control = getCookie("control")
@@ -80,12 +87,14 @@ Vue.component('mainMenu', {
       config.activeUI = "world"
     },
     saveGame: function () {
+      let characters = JSON.stringify(config.characters)
       let player = JSON.stringify(config.character)
       let map = config.db.map.activeMap
       let control = config.moveUi
       let date = new Date(new Date().getTime() + 60 * 3600000 * 1000);
 
       document.cookie = "player=" + player + "; path=/; expires=" + date.toUTCString();
+      document.cookie = "characters=" + characters + "; path=/; expires=" + date.toUTCString();
       document.cookie = "map=" + map + "; path=/; expires=" + date.toUTCString();
       document.cookie = "control=" + control + "; path=/; expires=" + date.toUTCString();
 

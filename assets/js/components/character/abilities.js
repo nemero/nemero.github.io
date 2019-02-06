@@ -1,7 +1,7 @@
 Vue.component('characterAbilities', {
-  props: ['ability', 'config', 'cooldowns'],
+  props: ['ability', 'character'],
   template: [
-      '<span class="game-icon" :class="typeAbility" @click="useAbility(ability, config.character)" @animationend="cant_use = false" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
+      '<span class="game-icon" :class="typeAbility" @click="useAbility(ability, character)" @animationend="cant_use = false" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
             // '<div class="tooltip">',
             //   '<ul>',
             //     '<li><b>{{ getOption(ability, "name", "") }}</b></li>',
@@ -30,17 +30,17 @@ Vue.component('characterAbilities', {
 
         let key = e.key // char
         let ability_item = config.db.abilities[this.ability]
-        let key_binding = config.character.keyBindings[this.ability]
+        let key_binding = this.character.keyBindings[this.ability]
 
         if (config.activeUI != "battle") {
           return
         }
         if (key_binding && key_binding.key == e.keyCode) {
-          this.useAbility(this.ability, config.character)
+          this.useAbility(this.ability, this.character)
         }
     },
     getBind: function () {
-      let bindings = config.character.keyBindings
+      let bindings = this.character.keyBindings
       let value = ''
       if (bindings[this.ability]) {
         let bind = bindings[this.ability]
@@ -54,15 +54,15 @@ Vue.component('characterAbilities', {
 
       // for attack ability got active weapon damage + strength
       if (id == "attack") {
-        if (config.character.activeEquipment.weapon) {
-          item = config.db.items[config.character.activeEquipment.weapon]
+        if (this.character.activeEquipment.weapon) {
+          item = config.db.items[this.character.activeEquipment.weapon]
         } else {
           return label + "-"
         }
       }
 
       if (item && option == "damage" && item[option]) {
-        let damage = item[option] + config.character.strength
+        let damage = item[option] + this.character.strength
         return label + damage
       }
 
@@ -431,22 +431,22 @@ Vue.component('characterAbilities', {
             let percent = items[item]
             if (getRandomArbitrary(0, 100) >= 100 - percent) {
               loot.push(item)
-              config.character.bag.push(item)
+              this.character.bag.push(item)
             }
           }
 
-          config.character.experience += exp
+          this.character.experience += exp
           //config.character.cooldown = {}
-          if (enemy == config.character.activeTarget) {
-            config.character.activeTarget = null
+          if (enemy == this.character.activeTarget) {
+            this.character.activeTarget = null
           }
           Vue.set(enemy, 'dead', true)
 
           // calculate level
-          if (config.character.level < Math.trunc(config.character.experience/config.level.experience)) {
-            config.character.level = Math.trunc(config.character.experience/config.level.experience)
-            config.character.max_health = config.character.base_health + ((config.character.level - 1) * config.level.up.health) + config.character.stamina
-            config.character.health = config.character.max_health
+          if (this.character.level < Math.trunc(this.character.experience/config.level.experience)) {
+            this.character.level = Math.trunc(this.character.experience/config.level.experience)
+            this.character.max_health = this.character.base_health + ((this.character.level - 1) * config.level.up.health) + this.character.stamina
+            this.character.health = this.character.max_health
           }
         }
 
@@ -459,7 +459,7 @@ Vue.component('characterAbilities', {
       if (all_enemies_down) {
         // bug: checking only player position, need also check direction player cell
         // TODO: add enemies position in battle mode
-        let layers = config.db.map[config.db.map.activeMap].layerEvents[config.character.position[1]][config.character.position[0]]
+        let layers = config.db.map[config.db.map.activeMap].layerEvents[this.character.position[1]][this.character.position[0]]
         for (layer_idx in layers) {
           let layer = layers[layer_idx]
           if (layer.id == "enemies" && layer.cooldown) {
@@ -487,7 +487,7 @@ Vue.component('characterAbilities', {
         }
 
         if (!enemy.activeTarget) {
-          enemy.activeTarget = config.character
+          enemy.activeTarget = this.character
         }
 
         let target = enemy.activeTarget
@@ -595,8 +595,8 @@ Vue.component('characterAbilities', {
     },
     getCooldown: function (item) {
       let cooldown = 0
-      if (config.character.cooldown[item] !== undefined) {
-        cooldown = config.character.cooldown[item]
+      if (this.character.cooldown[item] !== undefined) {
+        cooldown = this.character.cooldown[item]
       }
       //if (config.character.cooldown[item] !== undefined/* && config.character.cooldown[item] > 0*/) {
         return "Cooldown: " + cooldown + '/' + (config.db.abilities[item].cooldown - 1)
@@ -604,8 +604,8 @@ Vue.component('characterAbilities', {
     },
     getCooldownLeft: function (item) {
       let cooldown = 0
-      if (config.character.cooldown[item] !== undefined) {
-        cooldown = config.character.cooldown[item]
+      if (this.character.cooldown[item] !== undefined) {
+        cooldown = this.character.cooldown[item]
       }
       //if (config.character.cooldown[item] !== undefined/* && config.character.cooldown[item] > 0*/) {
         return cooldown

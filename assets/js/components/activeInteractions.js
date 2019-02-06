@@ -94,12 +94,12 @@ Vue.component('activeInteractions', {
   			let can_trade = true
   			for (item_id in choice.give) {
   				let item = choice.give[item_id]
-  				if (Number.isInteger(item) && config.character.money < item) {
+  				if (Number.isInteger(item) && this.character.money < item) {
   					can_trade = false
   					break
   				}
 
-  				if (!Number.isInteger(item) && config.character.bag.indexOf(item) < 0) {
+  				if (!Number.isInteger(item) && this.character.bag.indexOf(item) < 0) {
   					can_trade = false
   					break
   				}
@@ -110,9 +110,9 @@ Vue.component('activeInteractions', {
 					for (item_id in choice.give) {
 	  				let item = choice.give[item_id]
 	  				if (Number.isInteger(item)) {
-	  					config.character.money -= item
+	  					this.character.money -= item
 	  				} else {
-	  					config.character.bag.splice(config.character.bag.indexOf(item), 1)
+	  					this.character.bag.splice(this.character.bag.indexOf(item), 1)
 	  				}
 	  			}
 
@@ -120,9 +120,9 @@ Vue.component('activeInteractions', {
 	  			for (item_id in choice.take) {
 	  				let item = choice.take[item_id]
 	  				if (Number.isInteger(item)) {
-	  					config.character.money += item
+	  					this.character.money += item
 	  				} else {
-	  					config.character.bag.push(item)
+	  					this.character.bag.push(item)
 	  				}	
 	  			}
   			} else {
@@ -137,15 +137,15 @@ Vue.component('activeInteractions', {
   		}
 
   		if (choice.type == "rest") {
-  			if (config.character.money - choice.cost >= 0) {
-  				config.character.money -= choice.cost
+  			if (this.character.money - choice.cost >= 0) {
+  				this.character.money -= choice.cost
   			} else {
   				// apply cant use effect
   				return
   			}
 
-  			config.character.health = config.character.max_health
-        config.character.mp = config.character.max_mp
+  			this.character.health = this.character.max_health
+        this.character.mp = this.character.max_mp
 
   			// after rest call next interaction
   			this.active_interaction_id = choice.next
@@ -174,8 +174,8 @@ Vue.component('activeInteractions', {
       if (choice.state) {
         for (idx in choice.state) {
           let state = choice.state[idx]
-          if (config.character.world_state.indexOf(state) < 0) {
-            config.character.world_state.push(state)
+          if (this.character.world_state.indexOf(state) < 0) {
+            this.character.world_state.push(state)
           }
         } 
       }
@@ -212,7 +212,7 @@ Vue.component('activeInteractions', {
   	},
     getChoices: function (interaction) {
       let active_choices = []
-      let world_state = config.character.world_state
+      let world_state = this.character.world_state
 
       for (idx in interaction.choices) {
         let choice = interaction.choices[idx]
@@ -237,7 +237,7 @@ Vue.component('activeInteractions', {
   	},
     getActiveInteractions: function () {
       let active_interactions = []
-      let world_state = config.character.world_state
+      let world_state = this.character.world_state
 
       for (idx in this.event.interactions) {
         let interaction = this.event.interactions[idx]
@@ -259,6 +259,9 @@ Vue.component('activeInteractions', {
   		}
 
   		return this.event.interactions[this.active_interaction_id]
-  	}
+  	},
+    character: function () {
+      return config.characters[config.character[0]]
+    }
   }
 })

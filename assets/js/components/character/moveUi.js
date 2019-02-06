@@ -1,5 +1,5 @@
 Vue.component('moveUi', {
-  props: ['config'],
+  props: ['character'],
   template: [
       '<div class="move-control">',
         '<div class="move-up" @click="move(\'up\')">UP</div>',
@@ -12,8 +12,8 @@ Vue.component('moveUi', {
     move: function (direction) {
       Vue.set(config, "executeEvent", {
         id: "move",
-        position: config.character.position,
-        player_id: config.character.id,
+        position: this.character.position,
+        player_id: this.character.id,
         directions: [direction]
       })
     },

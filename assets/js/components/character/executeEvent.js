@@ -246,6 +246,9 @@ Vue.component('executeEvent', {
       //let event = this.event.event
       // console.log(event.id, event.cooldown, event.cooldown_left, config.step)
       // variable can be undefined or null or 0......
+
+      let character = config.characters[config.character[0]] // get first active character
+
       if (event.id == "enemies" && 
             (
               event.cooldown == undefined || 
@@ -278,7 +281,7 @@ Vue.component('executeEvent', {
       if (event.id == "unlock") {
         
         // search item in character bag
-        if (event.type_unlock == "item" && config.character.bag.indexOf(event.item) < 0 ) {
+        if (event.type_unlock == "item" && character.bag.indexOf(event.item) < 0 ) {
           return
         }
 
@@ -308,8 +311,8 @@ Vue.component('executeEvent', {
       if (event.id == "teleport" || event.type == "teleport") { // TODO: refactor to type
         // set character position
         // remove old player position on old map
-        if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(config.character.position[1])] && config.db.map[config.db.map.activeMap].layerEvents[Math.round(config.character.position[1])][Math.round(config.character.position[0])]) {
-          Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[Math.round(config.character.position[1])][Math.round(config.character.position[0])], config.character.id)  
+        if (config.db.map[config.db.map.activeMap].layerEvents[Math.round(character.position[1])] && config.db.map[config.db.map.activeMap].layerEvents[Math.round(character.position[1])][Math.round(character.position[0])]) {
+          Vue.delete(config.db.map[config.db.map.activeMap].layerEvents[Math.round(character.position[1])][Math.round(character.position[0])], character.id)  
         }
 
         // change map 
@@ -326,15 +329,15 @@ Vue.component('executeEvent', {
           console.timeEnd('change_map_pos_event')
         })
 
-        this.setPlayerDirection(event.position, config.character.id, "down")
+        this.setPlayerDirection(event.position, character.id, "down")
 
-        config.character.position = [...event.position]
+        character.position = [...event.position]
       }
 
       if (event.id == "loot_box") {
         for (item_idx in event.items) {
           let item = event.items[item_idx]
-          config.character.bag.push(item)
+          character.bag.push(item)
         }
 
         // hide chest

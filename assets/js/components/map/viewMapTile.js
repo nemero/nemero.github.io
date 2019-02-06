@@ -189,7 +189,7 @@ Vue.component('viewMapTile', {
           return
         }
         
-        let position = config.character.position
+        let position = this.character.position
         if (position[0] == this.getColId && position[1] == this.getRowId) {
           // if click on same cell trigger event
           let events = this.getLayerEvents
@@ -223,7 +223,7 @@ Vue.component('viewMapTile', {
           Vue.set(config, "executeEvent", {
             id: "move",
             position: position,
-            player_id: config.character.id,
+            player_id: this.character.id,
             directions: directions
           })
         }
@@ -242,11 +242,11 @@ Vue.component('viewMapTile', {
       return true
     },
     getTileUID: function () {
-      let uid = config.character.position.join("-")
+      let uid = this.character.position.join("-")
 
       //for
       uid += this.getRowId + "_" + this.getColId
-      if (config.character.position[0] == this.getColId && config.character.position[1] == this.getRowId) {
+      if (this.character.position[0] == this.getColId && this.character.position[1] == this.getRowId) {
         console.log(this.tile_uid)
       }
 
@@ -281,7 +281,7 @@ Vue.component('viewMapTile', {
   },
   computed: {
     getRowId: function () {
-      let offset_y = config.character.position[1]
+      let offset_y = this.character.position[1]
       let height = Math.trunc(config.db.map.viewport[1]/2)
       let row_idx = this.row_id + parseInt(offset_y) - height 
 
@@ -289,7 +289,7 @@ Vue.component('viewMapTile', {
       return row_idx
     },
     getColId: function () {
-      let offset_x = config.character.position[0]
+      let offset_x = this.character.position[0]
       let width = Math.trunc(config.db.map.viewport[0]/2)
       let col_idx = this.col_id + parseInt(offset_x) - width
 
@@ -323,5 +323,8 @@ Vue.component('viewMapTile', {
     getCellId: function () {
       return 'cell_' + this.getRowId + '_' + this.getColId
     },
-  }
+    character: function () {
+      return config.characters[config.character[0]]
+    }
+  },
 })

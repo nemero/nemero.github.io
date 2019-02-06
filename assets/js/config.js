@@ -13,101 +13,160 @@ var config = {
 		}
 	},
 
-	character1: {
-		
-	},
-	character: {
-		id: "player0",
-		name: "kokoko",
-		level: 1, // calculating from experience 1 = 100 exp.
-		experience: 10,
-		
-		health: 20,
-		max_health: 20,
-		base_health: 20,
+	characters: {
+		player0: {
+			id: "player0",
+			name: "kokoko",
+			level: 1, // calculating from experience 1 = 100 exp.
+			experience: 10,
+			
+			health: 20,
+			base_health: 20,
 
-		mp: 5,
-		max_mp: 5,
-		base_mp: 5,
+			mp: 5,
+			base_mp: 5,
 
-		stamina: 0,
-		intellect: 0,
-		agility: 0,
-		strength: 0,
-		defence: 5,
-		base_defence: 5,
-		faction: 'aliance',
-		avatar: 'assets/images/hero.png',
-		hpScroll: [],
-		dies: 0,
-		money: 100,
-		world_state: [],
+			stamina: 0,
+			intellect: 0,
+			agility: 0,
+			strength: 0,
+			defence: 5,
+			base_defence: 5,
+			faction: 'aliance',
+			avatar: 'assets/images/hero.png',
+			hpScroll: [],
+			dies: 0,
+			money: 100,
+			world_state: [],
 
-		position: [0, 0], // will replacing afgter init component
+			position: [0, 0], // will replacing afgter init component
 
-		activeEquipment: {
-			head: "head0",
-			neck: null,
-			shoulders: null,
-			cloak: null,
-			chest: "chest0",
-			hands: null,
-			legs: "grey cloth",
-			boots: "grey cloth",
-			ring1: null,
-			ring2: null,
-			weapon: "fists0"
-		},
-
-		abilities: [
-			"attack", "range_shot", "regrown", "nekro_aoe", "stamina0", "strength0", "lose_stamina0", "escape0"
-		],
-
-		bag: [
-			"head0", "chest_test0", "chest0", "monomate", "ring0_s", "ring0", "neck0_i", "legs0_i"
-		],
-
-		activeTarget: null,
-		cooldown: {},
-		
-		buffs: {},
-		debuffs: {},
-
-		keyBindings: {
-			"attack": {
-				id: "attack",
-				key: 49
+			activeEquipment: {
+				head: "head0",
+				neck: null,
+				shoulders: null,
+				cloak: null,
+				chest: "chest0",
+				hands: null,
+				legs: "grey cloth",
+				boots: "grey cloth",
+				ring1: null,
+				ring2: null,
+				weapon: "fists0"
 			},
-			"range_shot": {
-				id: "range_shot",
-				key: 50
-			},
-			"regrown": {
-				id: "regrown",
-				key: 51
-			},
-			"nekro_aoe": {
-				id: "nekro_aoe",
-				key: 52
-			},
-			"stamina0": {
-				id: "stamina0",
-				key: 53
-			},
-			"strength0": {
-				id: "strength0",
-				key: 54
-			},
-			"lose_stamina0": {
-				id: "lose_stamina0",
-				key: 55
-			},
-			"escape0": {
-				id: "escape0",
-				key: 48
+
+			abilities: [
+				"attack", "range_shot", "regrown", "nekro_aoe", "stamina0", "strength0", "lose_stamina0", "escape0"
+			],
+
+			bag: [
+				"head0", "chest_test0", "chest0", "monomate", "ring0_s", "ring0", "neck0_i", "legs0_i"
+			],
+
+			activeTarget: null,
+			keyBindings: {
+				"attack": {
+					id: "attack",
+					key: 49
+				},
+				"range_shot": {
+					id: "range_shot",
+					key: 50
+				},
+				"regrown": {
+					id: "regrown",
+					key: 51
+				},
+				"nekro_aoe": {
+					id: "nekro_aoe",
+					key: 52
+				},
+				"stamina0": {
+					id: "stamina0",
+					key: 53
+				},
+				"strength0": {
+					id: "strength0",
+					key: 54
+				},
+				"lose_stamina0": {
+					id: "lose_stamina0",
+					key: 55
+				},
+				"escape0": {
+					id: "escape0",
+					key: 48
+				},
 			},
 		},
+		oldman0: {
+			id: "oldman0",
+			name: "kokoko",
+			level: 100, // calculating from experience 1 = 100 exp.
+			experience: 1000,
+			
+			health: 20,
+			max_health: 20,
+			base_health: 20,
+
+			mp: 5,
+			max_mp: 5,
+			base_mp: 5,
+
+			stamina: 0,
+			intellect: 0,
+			agility: 0,
+			strength: 0,
+			defence: 5,
+			base_defence: 5,
+			faction: 'aliance',
+			avatar: 'assets/images/hero.png',
+			hpScroll: [],
+			dies: 0,
+			money: 0,
+			world_state: [],
+
+			position: [0, 0], // will replacing afgter init component
+
+			activeEquipment: {
+				head: "head0",
+				neck: null,
+				shoulders: null,
+				cloak: null,
+				chest: "chest0",
+				hands: null,
+				legs: "grey cloth",
+				boots: "grey cloth",
+				ring1: null,
+				ring2: null,
+				weapon: "fists0"
+			},
+
+			abilities: [
+				"attack", "escape0"
+			],
+
+			bag: [],
+
+			activeTarget: null,
+			cooldown: {},
+			
+			buffs: {},
+			debuffs: {},
+
+			keyBindings: {
+				"attack": {
+					id: "attack",
+					key: 49
+				},
+				"escape0": {
+					id: "escape0",
+					key: 48
+				},
+			},
+		},
 	},
+	character: ["player0"], // current character
 
 	combatLog: [
 		"Start Logging..."

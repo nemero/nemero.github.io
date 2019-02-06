@@ -31,7 +31,7 @@ Vue.component('activeTrade', {
   },
   computed: {
     getCharacter: function () {
-      return config.character
+      return config.characters[config.character[0]]
     }
   }
 })
@@ -48,9 +48,9 @@ Vue.component('tradeSeller', {
   methods: {
     buyItem: function () {
       let item = config.db.items[this.idx]
-      if (item && config.character.money - this.price >= 0) {
-        config.character.money -= this.price
-        config.character.bag.push(this.idx)
+      if (item && this.character.money - this.price >= 0) {
+        this.character.money -= this.price
+        this.character.bag.push(this.idx)
       }
     },
     getOption(option, label) {
@@ -98,6 +98,9 @@ Vue.component('tradeSeller', {
 
       return data
     },
+    character: function () {
+      return config.characters[config.character[0]]
+    }
   }
 })
 
@@ -124,8 +127,8 @@ Vue.component('sellItem', {
     sellItem: function () {
       let item = config.db.items[this.item_id]
       if (item && item.price) {
-        config.character.money += item.price
-        config.character.bag.splice(this.idx, 1)
+        this.character.money += item.price
+        this.character.bag.splice(this.idx, 1)
       }
     },
     getOption(option, label) {
@@ -173,5 +176,8 @@ Vue.component('sellItem', {
 
       return data
     },
+    character: function () {
+      return config.characters[config.character[0]]
+    }
   }
 })

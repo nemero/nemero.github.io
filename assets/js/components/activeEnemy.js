@@ -1,5 +1,5 @@
 Vue.component('activeEnemy', {
-  props: ['enemy', 'config'],
+  props: ['enemy', 'character'],
   data: function () {
     return {
       previousHP: 0,
@@ -22,7 +22,7 @@ Vue.component('activeEnemy', {
       ].join(''),
   methods: {
     selectEnemy: function () {
-        this.config.character.activeTarget = this.enemy
+        this.character.activeTarget = this.enemy
     },
     getStats: function () {
       let buffs = this.enemy.buffs // activeBuffs TODO: refactor
@@ -135,7 +135,7 @@ Vue.component('activeEnemy', {
       let data = {}
 
       data['is_active'] = false
-      if (config.character.activeTarget && config.character.activeTarget.object_idx == this.enemy.object_idx) {
+      if (this.character.activeTarget && this.character.activeTarget.object_idx == this.enemy.object_idx) {
         data['is_active'] = true  
       } 
 

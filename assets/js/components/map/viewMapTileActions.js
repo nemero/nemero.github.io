@@ -1,5 +1,5 @@
 Vue.component('viewMapTileActions', {
-  	props: ['position', 'config'],
+  	props: ['position', 'character'],
   	template: ['<div class="view-map-tile-actions">',
           '<view-map-tile-action-event v-for="tile in getEventLayers" :tile="tile" :tiles="getEventLayers"></view-map-tile-action-event>',
         	'<view-map-tile-action-direction-event v-for="tile in getDirectionEventLayers" :tile="tile" :tiles="getEventLayers"></view-map-tile-action-direction-event>',
@@ -16,7 +16,7 @@ Vue.component('viewMapTileActions', {
         return 
     	},
       getDirectionEventLayers: function () {
-        let player = config.db.map[config.db.map.activeMap].layerEvents[Math.round(this.position[1])][Math.round(this.position[0])][config.character.id]
+        let player = config.db.map[config.db.map.activeMap].layerEvents[Math.round(this.position[1])][Math.round(this.position[0])][this.character.id]
         let direction_position = [...this.position]
 
         if (player.direction == "up") {

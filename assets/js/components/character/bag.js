@@ -1,5 +1,5 @@
 Vue.component('characterBag', {
-  props: ['item', 'config'],
+  props: ['item', 'character'],
   data: function() {
     return {
       cant_equip: false
@@ -32,47 +32,47 @@ Vue.component('characterBag', {
       // load item from db
       var bag_item = config.db.items[id]
 
-      if (bag_item && bag_item.level > config.character.level) {
+      if (bag_item && bag_item.level > this.character.level) {
         this.cant_equip = true
         return
       }
 
       if (bag_item && bag_item.type == "weapon") {
-    	  config.character.activeEquipment.weapon = id 
+    	  this.character.activeEquipment.weapon = id 
       }
 
       if (bag_item && bag_item.type == "gear" && bag_item.class) {
-        config.character.activeEquipment[bag_item.class] = id
+        this.character.activeEquipment[bag_item.class] = id
       }
 
       if (bag_item && bag_item.type == "consumable" && bag_item.class) {
         if (bag_item.class == "potion") {
-          if ((bag_item.health && config.character.health == config.character.max_health)
-            || (bag_item.mp && config.character.mp == config.character.max_mp)
+          if ((bag_item.health && this.character.health == this.character.max_health)
+            || (bag_item.mp && this.character.mp == this.character.max_mp)
           ) {
             this.cant_equip = true
             return
           }
 
           if (bag_item.health) {
-            if (config.character.health + bag_item.health > config.character.max_health) {
-              config.character.health = config.character.max_health
+            if (this.character.health + bag_item.health > this.character.max_health) {
+              this.character.health = this.character.max_health
             } else {
-              config.character.health += bag_item.health
+              this.character.health += bag_item.health
             }
           }
 
           if (bag_item.mp) {
-            if (config.character.mp + bag_item.mp > config.character.max_mp) {
-              config.character.mp = config.character.max_mp
+            if (this.character.mp + bag_item.mp > this.character.max_mp) {
+              this.character.mp = this.character.max_mp
             } else {
-              config.character.mp += bag_item.mp
+              this.character.mp += bag_item.mp
             }
           }
         }
 
         // remove item after using
-        config.character.bag.splice(config.character.bag.indexOf(this.item), 1)
+        this.character.bag.splice(this.character.bag.indexOf(this.item), 1)
       }
     },
     getOption(id, option, label) {
@@ -105,10 +105,10 @@ Vue.component('characterBag', {
       data['cant_equip'] = this.cant_equip
       data[html.icon] = true // showing icon class
       if (html.type == "weapon") {
-        data['equipped'] = config.character.activeEquipment.weapon == this.item ? true : false
+        data['equipped'] = this.character.activeEquipment.weapon == this.item ? true : false
       }
       if (html.type == "gear") {
-        data['equipped'] = config.character.activeEquipment[html.class] == this.item ? true : false
+        data['equipped'] = this.character.activeEquipment[html.class] == this.item ? true : false
       }
 
       return data

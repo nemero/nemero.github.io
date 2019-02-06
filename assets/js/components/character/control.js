@@ -13,9 +13,9 @@ Vue.component('characterControl', {
       for (col_idx in npc_list[row_idx]) {
         let npc = npc_list[row_idx][col_idx]
 
-        if (npc[config.character.id]) {
-          Vue.set(config.character.position, 0, parseInt(col_idx))
-          Vue.set(config.character.position, 1, parseInt(row_idx))
+        if (npc[this.character.id]) {
+          Vue.set(this.character.position, 0, parseInt(col_idx))
+          Vue.set(this.character.position, 1, parseInt(row_idx))
         }
       }
     }

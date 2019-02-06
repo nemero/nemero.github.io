@@ -1,7 +1,9 @@
 function isVisibleTileEvent (tile) {
-  if (tile.id == "player" && config.character.id == tile.player_id) {
-    return false
-  }
+  	let character = config.characters[config.character[0]] // get first active character
+
+	if (tile.id == "player" && character.id == tile.player_id) {
+		return false
+	}
 
 	// check conditions if exist
 	if (tile.conditions && tile.conditions.length > 0) {
@@ -18,6 +20,8 @@ function isVisibleTileEvent (tile) {
 }
 
 function isTrueConditions(conditions) {
+	let character = config.characters[config.character[0]] // get first active character
+
 	for (condition_idx in conditions) {
 	  let condition = conditions[condition_idx]
 	  if (condition.type == "exist_tile") {
@@ -27,7 +31,7 @@ function isTrueConditions(conditions) {
 	  }
 
 	  if (condition.type == 'world_state') {
-	  	let world_state = config.character.world_state
+	  	let world_state = character.world_state
 
 	    if (condition.has) {
 	      for (state_id in condition.has) {
@@ -48,7 +52,7 @@ function isTrueConditions(conditions) {
 	  }
 
 	  if (condition.type == "items") {
-	    let bag = config.character.bag
+	    let bag = character.bag
 
 	    if (condition.has) {
 	      for (item_id in condition.has) {
