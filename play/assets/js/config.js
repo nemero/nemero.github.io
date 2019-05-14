@@ -3,6 +3,7 @@ var config = {
 	step: 0,
 	holdKeys: [], // shift, ctrl, alt
 	moveUi: true,
+	heroUi: false,
 
 	level: {
 		experience: 30,
@@ -48,8 +49,8 @@ var config = {
 				cloak: null,
 				chest: "chest0",
 				hands: null,
-				legs: "grey cloth",
-				boots: "grey cloth",
+				legs: null,
+				boots: null,
 				ring1: null,
 				ring2: null,
 				weapon: "fists0"
@@ -60,7 +61,7 @@ var config = {
 			],
 
 			bag: [
-				"head0", "chest_test0", "chest0", "monomate", "ring0_s", "ring0", "neck0_i", "legs0_i"
+				"chest_test0", "monomate", "ring0_s", "ring0", "neck0_i", "legs0_i"
 			],
 
 			activeTarget: null,

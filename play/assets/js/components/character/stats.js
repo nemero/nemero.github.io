@@ -1,48 +1,89 @@
 Vue.component('characterStats', {
   props: ['character'],
-  data: function () {
-    return {
-      isShowStats: false,
-    }
-  },
   template: [
       '<div>',
-        '<div class="character-stats">',
-          '<span @click="showStats()">Show/Hide Stats</span>',
-          '<ul v-show="isShowStats">',
-            '<li>Money: {{ character.money }}</li>',
-          	'<li>{{ getEquipment() }}</li>',
-            '<li>Defence: {{ character.defence }}</li>',
-            '<li>Stamina: {{ character.stamina }}</li>',
-            '<li>Agility: {{ character.agility }}</li>',
-            '<li>Strength: {{ character.strength }}</li>',
-            '<li>Intellect: {{ character.intellect }}</li>',
-            '<li>EXP: {{ character.experience }}</li>',
-            '<li>Map position: {{ character.position }}</li>',
-            '<li>Resssrepecter: {{ character.dies }}</li>',
-            '<li>Active equipment</li>',
-            '<li>Head: {{ character.activeEquipment.head }}</li>',
-            '<li>Neck: {{ character.activeEquipment.neck }}</li>',
-            '<li>Shoulders: {{ character.activeEquipment.shoulders }}</li>',
-            '<li>Cloak: {{ character.activeEquipment.cloak }}</li>',
-            '<li>Chest: {{ character.activeEquipment.chest }}</li>',
-            '<li>Hands: {{ character.activeEquipment.hands }}</li>',
-            '<li>Legs: {{ character.activeEquipment.legs }}</li>',
-            '<li>Boots: {{ character.activeEquipment.boots }}</li>',
-            '<li>Ring L: {{ character.activeEquipment.ring1 }}</li>',
-            '<li>Ring R: {{ character.activeEquipment.ring2 }}</li>',
-            '<li>Weapon: {{ character.activeEquipment.weapon }}</li>',
-          '</ul>',
+        '<div class="character-stats" v-show="isShow()">',
+          '<span class="button" @click="showStats()">Close</span>',
+          '<div class="hero-box">',
+            '<div class="hero-gear">',
+              '<h3>Active equipment</h3>',
+              '<div>',
+                '<span class="hero-head">',
+                  '<character-wear type="head" :character="character"></character-wear>',
+                '</span>',
+                
+                '<div>',                
+                  '<span class="hero-shoulder">',
+                    '<character-wear type="shoulder" :character="character"></character-wear>',
+                  '</span>',
+                  '<span class="hero-neck">',
+                    '<character-wear type="neck" :character="character"></character-wear>',
+                  '</span>',
+                '</div>',
+
+                '<div>',
+                  '<span class="hero-cloak">',
+                    '<character-wear type="cloak" :character="character"></character-wear>',
+                  '</span>',
+                  '<span class="hero-chest">',
+                    '<character-wear type="chest" :character="character"></character-wear>',
+                  '</span>',
+                '</div>',
+                
+                '<div>',
+                  '<span class="hero-ring1">',
+                    '<character-wear type="ring1" :character="character"></character-wear>',
+                  '</span>',
+                  '<span class="hero-hands">',
+                    '<character-wear type="hands" :character="character"></character-wear>',
+                  '</span>',
+                  '<span class="hero-ring2">',
+                    '<character-wear type="ring2" :character="character"></character-wear>',
+                  '</span>',
+                '</div>',
+
+                '<div class="align-center">',
+                  '<span class="hero-legs">',
+                    '<character-wear type="legs" :character="character"></character-wear>',
+                  '</span>',
+                  '<span class="hero-boots">',
+                    '<character-wear type="boots" :character="character"></character-wear>',
+                  '</span>',
+                '</div>',
+
+
+                '<span class="hero-weapon">',
+                  '<character-wear type="weapon" :character="character"></character-wear>',
+                '</span>',
+              '</div>',
+            '</div>',
+
+            '<ul class="hero-info">',
+              '<li>Money: {{ character.money }}</li>',
+              '<li>{{ getEquipment() }}</li>',
+              '<li>Defence: {{ character.defence }}</li>',
+              '<li>Stamina: {{ character.stamina }}</li>',
+              '<li>Agility: {{ character.agility }}</li>',
+              '<li>Strength: {{ character.strength }}</li>',
+              '<li>Intellect: {{ character.intellect }}</li>',
+              '<li>EXP: {{ character.experience }}</li>',
+              '<li>Map position: {{ character.position }}</li>',
+              '<li>Resssrepecter: {{ character.dies }}</li>',
+            '</ul>',
+          '</div>',
         '</div>',
       '</div>'
 	  	].join(''),
   methods: {
   	showStats: function () {
-      if (this.isShowStats) {
-        this.isShowStats = false
+      if (config.heroUi) {
+        config.heroUi = false
       } else {
-        this.isShowStats = true
+        config.heroUi = true
       }
+    },
+    isShow: function () {
+      return config.heroUi
     },
 
     getEquipment: function () {

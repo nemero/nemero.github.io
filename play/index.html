@@ -15,6 +15,8 @@
 
 		<div class="uiii">
 			<div class="ui-world">
+				<character-stats :character="config.characters[config.character[0]]"></character-stats>
+
 				<div class="ui-targets">
 					<character :character="config.characters[config.character[0]]"></character>
 					<character-target :character="config.characters[config.character[0]]"></character-target>
@@ -133,6 +135,7 @@
 	<script type="text/javascript" src="assets/js/components/character/abilities.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/stats.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/bag.js"></script>
+	<script type="text/javascript" src="assets/js/components/character/wear.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/target.js"></script>
 	<script type="text/javascript" src="assets/js/components/character/executeEvent.js"></script>
 	<script type="text/javascript" src="assets/js/components/combatLog.js"></script>

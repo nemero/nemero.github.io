@@ -36,7 +36,8 @@ Vue.component('character', {
         '<character-debuff v-for="debuff in character.debuffs" :debuff="debuff"></character-debuff>',
         
         '<character-control :character="character"></character-control>',
-        '<character-stats :character="character"></character-stats>',
+
+        '<span @click="heroUi" class="button">Hero</span>',
 
         '<span @click="showBag" class="button">Bag</span>',
         '<div class="ui-main-bag" v-show="show_bag">',
@@ -110,6 +111,9 @@ Vue.component('character', {
       } else {
         this.show_bag = true
       }
+    },
+    heroUi: function () {
+      config.heroUi = config.heroUi ? false : true
     },
     moveUi: function () {
       config.moveUi = config.moveUi ? false : true

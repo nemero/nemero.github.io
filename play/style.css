@@ -594,8 +594,13 @@ a:hover {
 
 .character-stats {
 	font-size: 10px;
+	left: 50%;
+	top: 0;
+	z-index: 99;
+	transform: translateX(-50%);
+	position: absolute;
 }
-.character-stats span, .button {
+.button {
 	cursor: pointer;
 	padding: 3px;
 	display: inline-block;
@@ -605,10 +610,12 @@ a:hover {
 	background: #cecece;
 }
 .character-stats ul {
-	background: #f2f2f2;
-	border: 1px solid #c4c4c4;
+	border-left: 1px solid #c4c4c4;
 	border-radius: 2px;
 	padding: 6px 20px 10px;
+	font-size: 16px;
+	list-style: none;
+	text-align: left;
 }
 .target-box .name {
 	text-shadow: 1px 1px 1px #000;
@@ -721,5 +728,66 @@ a:hover {
 	top: 26%;
 }
 
+.hero-box {
+	display: flex;
+	border: 1px solid #cecece;
+	padding: 0 10px;
+	text-align: center;
+	color: #fff;
+	text-shadow: 0 1px 1px #000;
+	background: rgba(26, 26, 26, 0.85);
+	box-sizing: border-box;
+}
+.hero-gear {
+	width: 230px;
+}
+.hero-gear div {
+	padding: 5px;
+}
+.hero-gear .game-icon {
+	zoom: 0.7;
+}
+.character-stats .button {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+.hero-head, .hero-weapon {
+	display: block;
+	text-align: center;
+}
 
-
+/** placeholders for hero **/
+.hero-head .game-icon {
+	background: url(assets/images/helm.png) center center/cover;
+}
+.hero-neck .game-icon {
+	background: url(assets/images/neck.png) center center/cover;
+}
+.hero-shoulder .game-icon {
+	background: url(assets/images/shoulder.png) center center/cover;
+}
+.hero-cloak .game-icon {
+	background: url(assets/images/cloak.png) center center/cover;
+}
+.hero-chest .game-icon {
+	background: url(assets/images/chest.png) center center/cover;
+}
+.hero-hands .game-icon {
+	background: url(assets/images/hands.png) center center/cover;
+}
+.hero-ring1 .game-icon {
+	background: url(assets/images/ring.png) center center/cover;
+}
+.hero-ring2 .game-icon {
+	background: url(assets/images/ring.png) center center/cover;
+}
+.hero-legs .game-icon {
+	background: url(assets/images/legs.png) center center/cover;
+}
+.hero-boots .game-icon {
+	background: url(assets/images/boots.png) center center/cover;
+}
+.hero-weapon .game-icon {
+	background: url(assets/images/sword.png) center center/cover;
+}

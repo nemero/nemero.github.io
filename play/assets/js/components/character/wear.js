@@ -1,46 +1,52 @@
-Vue.component('characterBag', {
-  props: ['item', 'character'],
+Vue.component('characterWear', {
+  props: ['type', 'character'],
   data: function() {
     return {
       cant_equip: false
     }
   },
   template: [
-        '<span class="game-icon" :class="infoItem" @click="useItem()" @animationend="cant_equip = false" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
+        '<span class="game-icon" :class="infoItem" @click="removeItem(type)" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
+          // '<div class="tooltip">',
+          //   '<ul>',
+          //     '<li><b>{{ getOption(item, "name", "") }}</b></li>',
+          //     '<li>{{ getOption(item, "level", "Level: ") }}</li>',
+          //     '<li>{{ getOption(item, "damage", "Damage: ") }}</li>',
+          //     '<li>{{ getOption(item, "strength", "Strength: ") }}</li>',
+          //     '<li>{{ getOption(item, "stamina", "Stamina: ") }}</li>',
+          //     '<li>{{ getOption(item, "agility", "Agility: ") }}</li>',
+          //     '<li>{{ getOption(item, "defence", "Defence: ") }}</li>',
+          //     '<li>{{ getOption(item, "health", "Health: ") }}</li>',
+          //     '<li>{{ getOption(item, "text", "Note: ") }}</li>',
+          //     '<li>{{ getOption(item, "price", "Price: ") }}</li>',
+          //     '<li>{{ item }}</li>',
+          //   '</ul>',
+          // '</div>',
+
           '<span class="name"><b>{{ getOption(item, "name", "") }}</b></span>',
           '<span class="level">{{ getOption(item, "level", "lvl: ") }}</span>',
         '</span>'
       ].join(''),
       
   methods: {
-    useItem: function () {
+    removeItem: function (id) {
       // load item from db
       var bag_item = config.db.items[this.item]
 
-      if (bag_item && bag_item.level > this.character.level) {
-        this.cant_equip = true
+      if (bag_item) {
+        // put wear in bag and remove from hero
+        this.character.bag.push(this.item)
+        this.character.activeEquipment[this.type] = null
         return
       }
+      return
 
       if (bag_item && bag_item.type == "weapon") {
-        // if hero already weared to swap gear
-        if (this.character.activeEquipment.weapon) {
-          this.character.bag.push(this.character.activeEquipment.weapon)
-        }
-
-    	  this.character.activeEquipment.weapon = this.item
-        // remove item after put on
-        this.character.bag.splice(this.character.bag.indexOf(this.item), 1)
+    	  this.character.activeEquipment.weapon = id 
       }
 
       if (bag_item && bag_item.type == "gear" && bag_item.class) {
-        if (this.character.activeEquipment[bag_item.class]) {
-          this.character.bag.push(this.character.activeEquipment[bag_item.class])
-        }
-        
-        this.character.activeEquipment[bag_item.class] = this.item
-        // remove item after put on
-        this.character.bag.splice(this.character.bag.indexOf(this.item), 1)
+        this.character.activeEquipment[bag_item.class] = id
       }
 
       if (bag_item && bag_item.type == "consumable" && bag_item.class) {
@@ -121,5 +127,9 @@ Vue.component('characterBag', {
 
       return data
     },
+    item: function () {
+      console.log(this.type)
+      return this.character.activeEquipment[this.type]
+    }
   }
 })
