@@ -1,0 +1,100 @@
+.ui-enemies, .ui-list-enemies, .ui-character-bag, .ui-abilities, .ui {
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+}
+
+/** HIDE ALL NOT ACTIVE UI **/
+.ui-battle, .ui-battle-finish, .ui-game-over, .ui-dialog, .ui-trade, .ui-loading, .ui-game-menu {
+	display: none;
+}
+
+/** WORL UI  **/
+.ui-actions {
+	position: absolute;
+	right: 0;
+	z-index: 2;
+	//top: -16px;
+	top: 25%;
+	transform: translate(0, 50%);
+}
+
+/* BAG UI */
+.ui-main-bag {
+	position: absolute;
+	left: 0;
+	z-index: 1;
+	height: 190px;
+	overflow: auto;
+}
+
+/* MOVE BAR */
+.ui-move {
+	position: absolute;
+	right: 10%;
+	z-index: 2;
+	//top: -16px;
+	bottom: 10%;
+	//transform: translate(0, 50%);
+}
+
+/* BATTLE UI */
+.active-ui-battle .ui-battle {
+	display: flex;
+	position: absolute;
+	bottom: 30px;
+	transform: translate(-50%, 0);
+	z-index: 2;
+	border-radius: 4px;
+	padding: 2px 20px;
+	flex-direction: column;
+	left: 50%;
+}
+
+.active-ui-game-over .ui-game-over, 
+.active-ui-loading .ui-loading, 
+.active-ui-game-menu .ui-game-menu {
+	display: flex;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	background: rgba(26, 26, 26, 0.85);
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	color: wheat;
+	align-items: center;
+}
+.active-ui-dialog .ui-dialog {
+	display: flex;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	background: rgba(26, 26, 26, 0.85);
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	color: wheat;
+	align-items: center;
+}
+
+.active-ui-trade .ui-trade {
+	display: flex;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	background: rgba(26, 26, 26, 0.85);
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	color: wheat;
+	align-items: center;
+}
+.active-ui-game-over .ui-game-over a {
+	cursor: pointer;
+	text-decoration: underline;	
+	color: wheat;
+}

@@ -39,11 +39,7 @@ a:hover {
 	width: 100%;*/
 }
 
-.ui-enemies, .ui-list-enemies, .ui-character-bag, .ui-abilities, .ui {
-	display: flex;
-	justify-content: center;
-	cursor: pointer;
-}
+
 .ui-list-enemies-item {
 	position: relative;
 	bottom: 100px;
@@ -595,22 +591,7 @@ a:hover {
 	display: inline-block;
 }
 
-.ui-actions {
-	position: absolute;
-	right: 0;
-	z-index: 2;
-	//top: -16px;
-	top: 25%;
-	transform: translate(0, 50%);
-}
-.ui-move {
-	position: absolute;
-	right: 10%;
-	z-index: 2;
-	//top: -16px;
-	bottom: 10%;
-	//transform: translate(0, 50%);
-}
+
 .character-stats {
 	font-size: 10px;
 }
@@ -642,72 +623,6 @@ a:hover {
 }
 
 
-.ui-battle, .ui-battle-finish, .ui-game-over, .ui-dialog, .ui-trade, .ui-loading, .ui-game-menu {
-	display: none;
-}
-.active-ui-battle .ui-battle {
-	display: flex;
-	position: absolute;
-	bottom: 30px;
-	transform: translate(-50%, 0);
-	z-index: 2;
-	border-radius: 4px;
-	padding: 2px 20px;
-	flex-direction: column;
-	left: 50%;
-}
-.ui-main-bag {
-	position: absolute;
-	left: 0;
-	z-index: 1;
-	height: 190px;
-	overflow: auto;
-}
-.active-ui-game-over .ui-game-over, .active-ui-loading .ui-loading, .active-ui-game-menu .ui-game-menu {
-	display: flex;
-	position: fixed;
-	top: 0;
-	z-index: 99;
-	background: rgba(26, 26, 26, 0.85);
-	width: 100%;
-	height: 100%;
-	justify-content: center;
-	flex-direction: column;
-	color: wheat;
-	align-items: center;
-}
-.active-ui-dialog .ui-dialog {
-	display: flex;
-	position: fixed;
-	top: 0;
-	z-index: 99;
-	background: rgba(26, 26, 26, 0.85);
-	width: 100%;
-	height: 100%;
-	justify-content: center;
-	flex-direction: column;
-	color: wheat;
-	align-items: center;
-}
-
-.active-ui-trade .ui-trade {
-	display: flex;
-	position: fixed;
-	top: 0;
-	z-index: 99;
-	background: rgba(26, 26, 26, 0.85);
-	width: 100%;
-	height: 100%;
-	justify-content: center;
-	flex-direction: column;
-	color: wheat;
-	align-items: center;
-}
-.active-ui-game-over .ui-game-over a {
-	cursor: pointer;
-	text-decoration: underline;	
-	color: wheat;
-}
 .view-map-tile-actions {
 	display: flex;
 	flex-direction: column;
@@ -738,9 +653,35 @@ a:hover {
 .bag .game-icon, .seller .game-icon {
 	margin-bottom: 12px;
 }
+
+
 .ui-dialog div {
 	max-width: 80vw;
 	overflow-y: auto;
+}
+.ui-dialog .button {
+	background: transparent;
+	border: none;
+}
+.font-size-control {
+	position: absolute;
+	right: 10%;
+	top: 10%;
+}
+
+.menu {
+	list-style: none;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+.menu li {
+	cursor: pointer;
+	padding: 5px 10px;
+	font-size: 22px;
+}
+.menu li:hover {
+	color: #fff;
 }
 
 .move-control {
@@ -780,26 +721,5 @@ a:hover {
 	top: 26%;
 }
 
-.ui-dialog .button {
-	background: transparent;
-	border: none;
-}
-.font-size-control {
-	position: absolute;
-	right: 10%;
-	top: 10%;
-}
-.menu {
-	list-style: none;
-	text-align: center;
-	padding: 0;
-	margin: 0;
-}
-.menu li {
-	cursor: pointer;
-	padding: 5px 10px;
-	font-size: 22px;
-}
-.menu li:hover {
-	color: #fff;
-}
+
+
