@@ -101,7 +101,7 @@ var config = {
 		},
 		oldman0: {
 			id: "oldman0",
-			name: "kokoko",
+			name: "old man",
 			level: 100, // calculating from experience 1 = 100 exp.
 			experience: 1000,
 			
@@ -149,11 +149,6 @@ var config = {
 			bag: [],
 
 			activeTarget: null,
-			cooldown: {},
-			
-			buffs: {},
-			debuffs: {},
-
 			keyBindings: {
 				"attack": {
 					id: "attack",
