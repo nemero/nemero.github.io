@@ -221,7 +221,7 @@ var config = {
 				},
 				map: db_map_cave1,
 				layerEvents: db_map_cave1_actions,
-				battle: db_map_cave1_battle,
+				//battle: db_map_cave1_battle,
 			},
 			sewer1: {
 				name: "Instance test",
@@ -234,7 +234,7 @@ var config = {
 				},
 				map: db_map_sewer1,
 				layerEvents: db_map_sewer1_actions,
-				battle: db_map_sewer1_battle,
+				//battle: db_map_sewer1_battle,
 			},
 			world1: {
 				name: "World 1",
@@ -247,7 +247,7 @@ var config = {
 				},
 				map: db_map_world1,
 				layerEvents: db_map_world1_actions,
-				battle: db_map_world1_battle,
+				//battle: db_map_world1_battle,
 			},
 			city1: {
 				name: "City 1",
@@ -260,7 +260,7 @@ var config = {
 				},
 				map: db_map_city1,
 				layerEvents: db_map_city1_actions,
-				battle: db_map_city1_battle,
+				//battle: db_map_city1_battle,
 			},
 			indoor1: {
 				name: "Indoor 1",
@@ -273,7 +273,7 @@ var config = {
 				},
 				map: db_map_indoor1,
 				layerEvents: db_map_indoor1_actions,
-				battle: db_map_indoor1_battle,
+				//battle: db_map_indoor1_battle,
 			},
 		}
 	}

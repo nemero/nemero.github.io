@@ -275,6 +275,8 @@ Vue.component('executeEvent', {
 
         // show ui battle
         config.activeUI = "battle"
+        // auto target first enemy
+        character.activeTarget = config.activeEnemies[0]
       }
 
       // open lock

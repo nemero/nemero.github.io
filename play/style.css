@@ -115,9 +115,10 @@ a:hover {
 	min-width: 50px;
 	font-size: 10px;
 	cursor: pointer;
+	border-left: 9px solid red;
 }
 .select-enemy.is_active {
-	border: 2px solid rgb(115, 52, 43);
+	border-left: 9px solid rgb(229, 221, 124);
 }
 .select-item {
 	background: rgba(104, 104, 104, 1);
@@ -252,6 +253,10 @@ a:hover {
 .game-icon:hover {
 	border: 1px solid #9f55fc;
 	box-shadow: 0 0 3px 1px #fcf4b9 inset;
+}
+.ui-list-enemies-item .debuffs-box {
+	margin-bottom: -34px;
+	position: absolute;
 }
 
 .tooltip {

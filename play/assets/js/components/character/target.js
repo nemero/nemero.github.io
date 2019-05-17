@@ -2,32 +2,6 @@ Vue.component('characterTarget', {
   props: ['character'],
   template: [
       '<div v-if="character.activeTarget">',
-        '<div class="target-box">',
-          '<span class="avatar" :style="getAvatar">',
-            '<span class="level">{{ getOption("level", "") }}</span>',
-          '</span>',
-          
-          '<div>',
-            '<div class="name">{{ getOption("name", "") }}</div>',
-            '<span class="hp-bar">',
-              '<span class="hp-text">{{ getHP() }}</span>',
-              '<span class="hp-left" :style="getLeftHP"></span>',
-              '<span class="hp-left-border"></span>',
-            '</span>',
-            '<span class="mp-bar"></span>',
-          '</div>',
-
-          '<div class="">{{ takeDamageHeal }}',
-            '<hp-scroll :enemy="character.activeTarget"></hp-scroll>',
-          '</div>',
-        '</div>',
-
-        '<ul class="select-enemy">',
-          '<li>Target: {{ getTarget }}</li>',
-        '</ul>',
-
-        '<character-buff v-for="buff in character.activeTarget.buffs" :buff="buff"></character-buff>',
-        '<character-debuff v-for="debuff in character.activeTarget.debuffs" :debuff="debuff"></character-debuff>',
       '</div>'
       ].join(''),
   created: function () {

@@ -140,6 +140,26 @@ var db_map_world1_actions = {
       }
     }
   },
+  "10": {
+    "-6": {
+      "undefined_10_-6_0": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-battle0",
+        "tile_icon": "icon-battle0",
+        "cooldown": 20,
+        "enemies": [
+          "scorpion_small",
+          "scorpion_small",
+          "scorpion",
+          "worm"
+        ],
+        "hidden": false,
+        "autoTrigger": "hover",
+        "position": []
+      }
+    }
+  },
   "11": {
     "2": {
       "undefined_11_2_0": {
