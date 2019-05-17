@@ -136,8 +136,8 @@ function run() {
 		    },
 		    onResize: function (e) {
 		    	if (config.db.map.viewport) {
-		    			let w = 48
-				    	let h = 48
+		    			let w = 48*config.map_scale
+				    	let h = 48*config.map_scale
 				    	var width = window.innerWidth
 							|| document.documentElement.clientWidth
 							|| document.body.clientWidth;

@@ -42,6 +42,7 @@ Vue.component('viewMapTile', {
       let width = config.db.map.tileSize[0]
       let height = config.db.map.tileSize[1]
       let z_tiles = []
+      let scale = config.map_scale
 
       // default tile
       if (this.zone.default_tile) {
@@ -60,7 +61,7 @@ Vue.component('viewMapTile', {
           //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
           ctx.drawImage(document.getElementById(tile.map_class),
               offset_x, offset_y, width, height,
-              this.col_id*width, this.row_id*height, width, height
+              this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
           );
         }
       }
@@ -88,7 +89,7 @@ Vue.component('viewMapTile', {
         //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
         ctx.drawImage(document.getElementById(tile.map),
             offset_x, offset_y, width, height,
-            this.col_id*width, this.row_id*height, width, height
+            this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
         );
         //canvas.style.width = width*6 + 'px';
         //canvas.style.height = height*3 + 'px';
@@ -154,9 +155,9 @@ Vue.component('viewMapTile', {
           // } else {
             ctx.drawImage(source,
               0, 0, source.naturalWidth, source.naturalHeight,
-              this.col_id*width + offset_x, 
-              this.row_id*height + offset_y, 
-              or_width, or_height
+              (this.col_id*width + offset_x)*scale, 
+              (this.row_id*height + offset_y)*scale, 
+              or_width*scale, or_height*scale
             )
           //}
         }
@@ -179,7 +180,7 @@ Vue.component('viewMapTile', {
         }
         ctx.drawImage(document.getElementById(tile.map),
             offset_x, offset_y, width, height,
-            this.col_id*width, this.row_id*height, width, height
+            this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
         );
       }
     },

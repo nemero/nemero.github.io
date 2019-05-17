@@ -31,7 +31,7 @@
 /* MOVE BAR */
 .ui-move {
 	position: absolute;
-	right: 10%;
+	right: 8%;
 	z-index: 2;
 	//top: -16px;
 	bottom: 10%;

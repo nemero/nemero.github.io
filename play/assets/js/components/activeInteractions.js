@@ -3,7 +3,7 @@ Vue.component('activeInteractions', {
 	data: function () {
 		return {
 			active_interaction_id: null,
-      font_size: 100, // percent
+      font_size: 140, // percent
 		}
 	},
   template: [

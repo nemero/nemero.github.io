@@ -4,6 +4,7 @@ var config = {
 	holdKeys: [], // shift, ctrl, alt
 	moveUi: true,
 	heroUi: false,
+	map_scale: 1.5, // 48px by default
 
 	level: {
 		experience: 30,

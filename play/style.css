@@ -14,6 +14,7 @@ body {
 	font-family: Helvetica;
 	position: relative;
 	overflow: hidden;
+	font-size: 21px;
 }
 
 section {
@@ -43,6 +44,7 @@ a:hover {
 .ui-list-enemies-item {
 	position: relative;
 	bottom: 100px;
+	text-align: center;
 }
 .active-ui-battle .map:after {
 	background: rgba(66, 64, 62, 0.56);
@@ -56,7 +58,7 @@ a:hover {
 	z-index: 2;
 }
 .enemy-model {
-	display: block;
+	display: inline-block;
 	width: 100px;
 	height: 100px;
 }
@@ -113,9 +115,10 @@ a:hover {
 	margin: 5px;
 	padding: 5px 8px;
 	min-width: 50px;
-	font-size: 10px;
+	font-size: 80%;
 	cursor: pointer;
 	border-left: 9px solid red;
+	text-align: left;
 }
 .select-enemy.is_active {
 	border-left: 9px solid rgb(229, 221, 124);
@@ -174,13 +177,13 @@ a:hover {
 	cursor: pointer;
 	position: relative;
 	margin: 2px;
-	font-size: 9px;
+	font-size: 70%;
 	color: #fff;
 	background-color: #393637 !important;
 }
 .ui-main-bag .game-icon {
-	width: 43px;
-	height: 43px;
+	width: 62px;
+	height: 62px;
 	display: inline-block;
 	border: 1px solid #333;
 	border-radius: 3px;
@@ -189,7 +192,7 @@ a:hover {
 	cursor: pointer;
 	position: relative;
 	margin: 2px;
-	font-size: 8px;
+	font-size: 60%;
 	color: #fff;
 	background-color: #393637 !important;
 }
@@ -598,9 +601,8 @@ a:hover {
 
 
 .character-stats {
-	font-size: 10px;
 	left: 50%;
-	top: 0;
+	top: 5%;
 	z-index: 99;
 	transform: translateX(-50%);
 	position: absolute;
@@ -618,7 +620,6 @@ a:hover {
 	border-left: 1px solid #c4c4c4;
 	border-radius: 2px;
 	padding: 6px 20px 10px;
-	font-size: 16px;
 	list-style: none;
 	text-align: left;
 }
@@ -747,10 +748,10 @@ a:hover {
 	width: 230px;
 }
 .hero-gear div {
-	padding: 5px;
+	padding: 0;
 }
 .hero-gear .game-icon {
-	zoom: 0.7;
+	zoom: 0.9;
 }
 .character-stats .button {
 	position: absolute;
