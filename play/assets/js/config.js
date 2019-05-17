@@ -235,7 +235,7 @@ var config = {
 				},
 				map: db_map_sewer1,
 				layerEvents: db_map_sewer1_actions,
-				//battle: db_map_sewer1_battle,
+				battle: db_map_sewer1_battle,
 			},
 			world1: {
 				name: "World 1",

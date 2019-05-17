@@ -40,6 +40,8 @@
 
 				<div class="ui-battle">
 					<div class="ui-list-enemies">
+						<active-player :character="config.characters[config.character[0]]"></active-player>
+
 						<active-enemy v-for="item in config.activeEnemies" :enemy="item" :character="config.characters[config.character[0]]"></active-enemy>
 					</div>
 
@@ -125,6 +127,7 @@
 	<script type="text/javascript" src="assets/js/config.js"></script>
 	<script type="text/javascript" src="assets/js/components/mainMenu.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeEnemy.js"></script>
+	<script type="text/javascript" src="assets/js/components/activePlayer.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeInteractions.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeTrade.js"></script>
 	<script type="text/javascript" src="assets/js/components/character.js"></script>

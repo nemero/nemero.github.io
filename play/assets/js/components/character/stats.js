@@ -66,6 +66,7 @@ Vue.component('characterStats', {
               '<li>Agility: {{ character.agility }}</li>',
               '<li>Strength: {{ character.strength }}</li>',
               '<li>Intellect: {{ character.intellect }}</li>',
+              '<li>Damage: {{ getDamage }}</li>',
               '<li>EXP: {{ character.experience }}</li>',
               '<li>Map position: {{ character.position }}</li>',
               '<li>Resssrepecter: {{ character.dies }}</li>',
@@ -85,7 +86,6 @@ Vue.component('characterStats', {
     isShow: function () {
       return config.heroUi
     },
-
     getEquipment: function () {
     	let equipments = this.character.activeEquipment
     	let buffs = this.character.buffs // activeBuffs TODO: refactor
@@ -196,5 +196,15 @@ Vue.component('characterStats', {
       //return this.character.activeEquipment
     },
 
+  },
+  computed: {
+    getDamage: function () {
+      let bag_item = config.db.items[this.character.activeEquipment.weapon]
+      if (bag_item && bag_item.damage) {
+        return bag_item.damage + this.character.strength
+      }
+
+      return this.character.strength
+    }
   }
 })

@@ -26,10 +26,6 @@ Vue.component('character', {
               '<span class="mp-left-border"></span>',
             '</span>',
           '</div>',
-
-          '<div class="">{{ takeDamageHeal }}',
-            '<hp-scroll :enemy="character"></hp-scroll>',
-          '</div>',
         '</div>',
         
         '<character-buff v-for="buff in character.buffs" :buff="buff"></character-buff>',

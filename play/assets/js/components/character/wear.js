@@ -7,22 +7,6 @@ Vue.component('characterWear', {
   },
   template: [
         '<span class="game-icon" :class="infoItem" @click="removeItem(type)" :style="getIcon" @mouseover="setTooltip" @mouseleave="unsetTooltip">',
-          // '<div class="tooltip">',
-          //   '<ul>',
-          //     '<li><b>{{ getOption(item, "name", "") }}</b></li>',
-          //     '<li>{{ getOption(item, "level", "Level: ") }}</li>',
-          //     '<li>{{ getOption(item, "damage", "Damage: ") }}</li>',
-          //     '<li>{{ getOption(item, "strength", "Strength: ") }}</li>',
-          //     '<li>{{ getOption(item, "stamina", "Stamina: ") }}</li>',
-          //     '<li>{{ getOption(item, "agility", "Agility: ") }}</li>',
-          //     '<li>{{ getOption(item, "defence", "Defence: ") }}</li>',
-          //     '<li>{{ getOption(item, "health", "Health: ") }}</li>',
-          //     '<li>{{ getOption(item, "text", "Note: ") }}</li>',
-          //     '<li>{{ getOption(item, "price", "Price: ") }}</li>',
-          //     '<li>{{ item }}</li>',
-          //   '</ul>',
-          // '</div>',
-
           '<span class="name"><b>{{ getOption(item, "name", "") }}</b></span>',
           '<span class="level">{{ getOption(item, "level", "lvl: ") }}</span>',
         '</span>'
@@ -120,7 +104,7 @@ Vue.component('characterWear', {
     getIcon: function() {
       let obj = config.db.items[this.item]
       let data = {}
-      console.log(this.item)
+
       if (obj && obj.icon) {
         data['background'] =  'url(' + obj.icon + ') center center/cover'
       }
@@ -128,7 +112,6 @@ Vue.component('characterWear', {
       return data
     },
     item: function () {
-      console.log(this.type)
       return this.character.activeEquipment[this.type]
     }
   }

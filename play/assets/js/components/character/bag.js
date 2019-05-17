@@ -38,7 +38,7 @@ Vue.component('characterBag', {
           this.character.bag.push(this.character.activeEquipment[bag_item.class])
         }
         
-        this.character.activeEquipment[bag_item.class] = this.item
+        Vue.set(this.character.activeEquipment, bag_item.class, this.item)
         // remove item after put on
         this.character.bag.splice(this.character.bag.indexOf(this.item), 1)
       }

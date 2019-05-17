@@ -123,6 +123,22 @@ a:hover {
 .select-enemy.is_active {
 	border-left: 9px solid rgb(229, 221, 124);
 }
+.select-player {
+	background: rgb(0, 185, 6);
+    color: #fff;
+    border-radius: 4px;
+    list-style: none;
+    margin: 5px;
+    padding: 5px 8px;
+    min-width: 50px;
+    font-size: 80%;
+    cursor: pointer;
+    border-left: 9px solid green;
+    text-align: left;
+}
+.select-player.is_active {
+	border-left: 9px solid rgb(229, 221, 124);
+}
 .select-item {
 	background: rgba(104, 104, 104, 1);
 	color: #444;
@@ -247,6 +263,7 @@ a:hover {
 	text-shadow: 1px 1px 2px #000;
 	line-height: 2em;
 	background: rgba(255, 46, 5, 0.23);
+	left: 0;
 	//background: url(assets/images/default.png) center center/cover;
 }
 .game-icon.game-icon-small .cooldown { 
