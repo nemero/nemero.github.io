@@ -19,6 +19,7 @@ var config = {
 		player0: {
 			id: "player0",
 			name: "kokoko",
+			model: "player1",
 			level: 1, // calculating from experience 1 = 100 exp.
 			experience: 10,
 			

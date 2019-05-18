@@ -354,13 +354,15 @@ Vue.component('executeEvent', {
       return true
     },
     setPlayerDirection: function (position, player_id, direction) {
+      let model = config.characters[player_id].model
+      console.log(model)
       Vue.set(config.db.map[config.db.map.activeMap].layerEvents[Math.round(position[1])][Math.round(position[0])], player_id, {
         id: "player",
         name: "Player Kokoko",
         player_id: player_id,
         direction: direction ? direction : "",
-        icon: "icon-player",
-        tile_icon: "icon-player",
+        icon: "icon-" + model,
+        tile_icon: "icon-" + model,
         //tile_position: position
       })
     },

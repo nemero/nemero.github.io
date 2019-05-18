@@ -162,8 +162,8 @@ var db_map_cave1_actions = {
         "name": "Player",
         "direction": "down",
         "player_id": "player0",
-        "icon": "icon-player",
-        "tile_icon": "icon-player"
+        "icon": "icon-player1",
+        "tile_icon": "icon-player1"
       }
     }
   }

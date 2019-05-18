@@ -253,7 +253,6 @@ a:hover {
 	position: absolute;
 	bottom: -15px;
 	left: 0;
-	font-size: 150%;
 }
 
 .game-icon .name {
@@ -670,7 +669,7 @@ a:hover {
 }
 
 .dialog .text {
-	margin-bottom: 10px;
+	vertical-align: middle;
 	font-size: 120%;
 	display: inline-block;
 }
@@ -834,4 +833,25 @@ a:hover {
 }
 .game-buttons .button:hover {
 	color: #fff;
+}
+
+.dialog {
+	border-bottom: 5px solid wheat;
+	padding-bottom: 15px;
+}
+.dialog-head {
+	border-bottom: 5px solid wheat;
+	padding-right: 34px;
+	margin-bottom: 20px;
+}
+.dialog .unit {
+	width: 95px;
+	height: 95px;
+	display: inline-block;
+	top: 35px;
+	vertical-align: middle;
+	border-top: 5px solid wheat;
+	margin-right: 20px;
+	border-radius: 3px 3px 0 0;
+	border-bottom: none;
 }

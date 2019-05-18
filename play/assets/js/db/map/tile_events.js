@@ -53,28 +53,56 @@ var db_tile_events = [
 		width: 48,
 		height: 48,
 		tileSize: [48, 48],
-		src: "assets/images/player.png"
+		src: "assets/images/players/player.png"
 	},
 	{
 		id: 'icon-player-down',
 		width: 48,
 		height: 48,
 		tileSize: [48, 48],
-		src: "assets/images/player-down.png"
+		src: "assets/images/players/player-down.png"
 	},
 	{
 		id: 'icon-player-left',
 		width: 48,
 		height: 48,
 		tileSize: [48, 48],
-		src: "assets/images/player-left.png"
+		src: "assets/images/players/player-left.png"
 	},
 	{
 		id: 'icon-player-right',
 		width: 48,
 		height: 48,
 		tileSize: [48, 48],
-		src: "assets/images/player-right.png"
+		src: "assets/images/players/player-right.png"
+	},
+	{
+		id: 'icon-player1-up',
+		width: 48,
+		height: 48,
+		tileSize: [48, 48],
+		src: "assets/images/players/player1.png"
+	},
+	{
+		id: 'icon-player1-down',
+		width: 48,
+		height: 48,
+		tileSize: [48, 48],
+		src: "assets/images/players/player1-down.png"
+	},
+	{
+		id: 'icon-player1-left',
+		width: 48,
+		height: 48,
+		tileSize: [48, 48],
+		src: "assets/images/players/player1-left.png"
+	},
+	{
+		id: 'icon-player1-right',
+		width: 48,
+		height: 48,
+		tileSize: [48, 48],
+		src: "assets/images/players/player1-right.png"
 	},
 	{
 		id: 'icon-paper0',

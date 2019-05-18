@@ -14,14 +14,20 @@ Vue.component('activeInteractions', {
           '<span @click="decreaseFontSize" class="button">-</span>',
         '</div>',
         '<div class="dialogs dialog" v-if="!active_interaction_id" :style="fontSize()">',
-          '<span class="text">{{ event.name }} says:</span>',
+          '<div class="dialog-head">',
+            '<span class="unit" :class="activeEnemyClass"></span>',
+            '<span class="text">{{ event.name }}</span>',
+          '</div>',
           '<div class="answer" v-for="(_interaction, idx) in getActiveInteractions" @click="selectInteraction(idx)">',
             '{{ idx + 1 }}. {{ getActiveInteractions[idx].text }}',
           '</div>',
         '</div>',
 
        	'<div class="dialog" v-if="active_interaction_id" :style="fontSize()">',
-       		'<span class="text">{{ interaction.text }}</span>',
+          '<div class="dialog-head">',
+            '<span class="unit" :class="activeEnemyClass"></span>',
+            '<span class="text">{{ interaction.text }}</span>',
+          '</div>',
        		'<div class="answer" v-for="(choice, idx) in getChoices(interaction)" @click="selectChoice(choice)">',
        			'{{ idx + 1 }}. {{ choice.answer }} ({{ choice.type }})',
        		'</div>',
@@ -260,6 +266,16 @@ Vue.component('activeInteractions', {
   	},
     character: function () {
       return config.characters[config.character[0]]
+    },
+    activeEnemyClass: function () {
+      let data = {}
+      if (this.event.tile_icon) {
+        data[this.event.tile_icon] = true
+      } else {
+        data['icon-speak0'] = true
+      }
+
+      return data
     }
   }
 })
