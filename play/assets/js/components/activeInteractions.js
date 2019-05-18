@@ -161,8 +161,6 @@ Vue.component('activeInteractions', {
           id: "enter",
           event: choice,
         })
-
-        return
       }
 
   		if (choice.type == "exit" || choice.type == "attack" || !choice.next || choice.type == "teleport") {

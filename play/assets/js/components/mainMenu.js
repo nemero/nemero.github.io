@@ -7,6 +7,8 @@ Vue.component('mainMenu', {
           '<li @click="continueGame">Continue Game</li>',
           '<li @click="saveGame">Save Game</li>',
           '<li @click="loadGame" v-if="isAvailable()">Load Game</li>',
+          '<li @click="moveUi">Move UI: {{ config.moveUi }}</li>',
+          '<li @click="changeMapScale">Map Scaling {{ config.map_scale }}</li>',
         '</ul>',
       '</div>'
       ].join(''),
@@ -100,6 +102,43 @@ Vue.component('mainMenu', {
 
       alert("game saved.")
       this.continueGame()
+    },
+    moveUi: function () {
+      config.moveUi = config.moveUi ? false : true
+    },
+    changeMapScale: function () {
+      if (config.map_scale < 1.4) {
+        config.map_scale += 0.1
+      } else {
+        config.map_scale = 0.8
+      }
+
+      let onResize = function (e) {
+        if (config.db.map.viewport) {
+          let w = 48*config.map_scale
+          let h = 48*config.map_scale
+          var width = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
+          var height = window.innerHeight
+            || document.documentElement.clientHeight
+            || document.body.clientHeight;
+
+          let map_canvas = document.getElementById("map")
+
+          map_canvas.width = width
+          map_canvas.height = height
+          let rows = Math.trunc(height/h)
+          let cols = Math.trunc(width/w)
+          Vue.set(config.db.map.viewport, 0, cols + 1)
+          Vue.set(config.db.map.viewport, 1, rows + 1)
+        }
+      }
+
+      // update rescale & rendering actions
+      window.addEventListener('resize', onResize);
+      onResize();
     },
     isAvailable: function () {
       let map = getCookie("map")

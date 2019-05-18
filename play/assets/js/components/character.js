@@ -2,7 +2,7 @@ Vue.component('character', {
   props: ['character'],
   data: function () {
     return {
-      show_bag: true,
+      show_bag: false,
       logs: false,
     }
   },
@@ -33,20 +33,16 @@ Vue.component('character', {
         
         '<character-control :character="character"></character-control>',
 
-        '<span @click="heroUi" class="button">Hero</span>',
+        '<div class="game-buttons">',
+          '<span @click="heroUi" class="button">Hero</span>',
 
-        '<span @click="showBag" class="button">Bag</span>',
-        '<div class="ui-main-bag" v-show="show_bag">',
-          '<character-bag v-for="item in character.bag" :item="item" :character="character"></character-bag>',
+          '<span @click="showBag" class="button">Bag</span>',
+          '<div class="ui-main-bag" v-show="show_bag">',
+            '<character-bag v-for="item in character.bag" :item="item" :character="character"></character-bag>',
+          '</div>',
+
+          '<span @click="mainMenu" class="button">Menu</span>',
         '</div>',
-
-        '<span @click="logs = logs ? false : true" class="button">Logs</span>',
-        '<div class="ui-main-bag" v-show="logs">',
-          '{{ performance }}',
-        '</div>',
-
-        '<span @click="moveUi" class="button">Move UI</span>',
-        '<span @click="mainMenu" class="button">Menu</span>',
       '</div>'
 	  	].join(''),
   created: function () {
@@ -110,9 +106,6 @@ Vue.component('character', {
     },
     heroUi: function () {
       config.heroUi = config.heroUi ? false : true
-    },
-    moveUi: function () {
-      config.moveUi = config.moveUi ? false : true
     },
     mainMenu: function () {
       config.previousUI = config.activeUI

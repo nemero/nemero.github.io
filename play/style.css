@@ -337,12 +337,11 @@ a:hover {
 	position: relative;
 }
 .target-box.union {
-	margin-right: 25px;
 }
 .avatar {
 	display: inline-block;
-	width: 50px;
-	height: 50px;
+	width: 64px;
+	height: 64px;
 	background: url(assets/images/enemy.png) center center/cover;
 	border-radius: 50%;
 	border: 2px solid #b0b0b0;
@@ -359,7 +358,7 @@ a:hover {
 	text-shadow: 1px 1px 0px #000;
 	position: absolute;
 	bottom: -2px;
-	right: 34px;
+	right: 43px;
 	width: 18px;
 	height: 18px;
 	background: rgb(86, 84, 86);
@@ -369,7 +368,7 @@ a:hover {
 .hp-bar {
 	position: relative;
 	width: 130px;
-	display: inline-block;
+	display: block;
 }
 .hp-left {
 	background: red;
@@ -402,8 +401,8 @@ a:hover {
 	z-index: 3;
 	color: #fff;
 	text-shadow: 1px 1px #000;
-	font-size: 11px;
-	vertical-align: middle;
+	font-size: 14px;
+	display: block;
 }
 
 .mp-bar {
@@ -442,8 +441,8 @@ a:hover {
 	z-index: 3;
 	color: #fff;
 	text-shadow: 1px 1px #000;
-	font-size: 10px;
-	vertical-align: middle;
+	font-size: 14px;
+	display: block;
 }
 
 .view-map-row .service {
@@ -813,4 +812,15 @@ a:hover {
 }
 .hero-weapon .game-icon {
 	background: url(assets/images/sword.png) center center/cover;
+}
+
+
+.game-buttons .button {
+	margin: 5px;
+	background: rgba(26, 26, 26, 0.6);
+	color: wheat;
+	border: 2px solid wheat;
+}
+.game-buttons .button:hover {
+	color: #fff;
 }

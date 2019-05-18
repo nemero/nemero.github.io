@@ -24,8 +24,11 @@
 	position: absolute;
 	left: 0;
 	z-index: 1;
-	height: 190px;
+	height: 220px;
 	overflow: auto;
+	background: rgba(80, 80, 80, 0.6);
+	border: 2px solid wheat;
+	min-width: 224px;
 }
 
 /* MOVE BAR */
