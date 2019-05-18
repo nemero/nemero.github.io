@@ -1,11 +1,11 @@
-html, body {
-	touch-action: none;
-  	-webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+html {
+	touch-action: manipulation;
+  	-webkit-touch-callout: manipulation; /* iOS Safari */
+    -webkit-user-select: manipulation; /* Safari */
+     -khtml-user-select: manipulation; /* Konqueror HTML */
+       -moz-user-select: manipulation; /* Firefox */
+        -ms-user-select: manipulation; /* Internet Explorer/Edge */
+            user-select: manipulation; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
 body {
@@ -24,6 +24,17 @@ section {
 
 a:hover {
 	color: #EF233C;
+}
+
+.button, .move-control > div, .game-icon, .enemy-model, .select-enemy, .select-player, ul.menu > li, .answer, .dialog {
+	touch-action: manipulation;
+  	-webkit-touch-callout: manipulation; /* iOS Safari */
+    -webkit-user-select: manipulation; /* Safari */
+     -khtml-user-select: manipulation; /* Konqueror HTML */
+       -moz-user-select: manipulation; /* Firefox */
+        -ms-user-select: manipulation; /* Internet Explorer/Edge */
+            user-select: manipulation; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 .app {
