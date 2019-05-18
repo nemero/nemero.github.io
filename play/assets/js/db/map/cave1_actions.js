@@ -115,6 +115,54 @@ var db_map_cave1_actions = {
         },
         "default_interaction_id": "dialog_1"
       }
+    },
+    "6": {
+      "undefined_4_6_0": {
+        "id": "enemies",
+        "name": "Enemies",
+        "icon": "icon-paper0",
+        "tile_icon": "icon-paper0",
+        "cooldown": 20,
+        "enemies": [
+          "fly1"
+        ],
+        "hidden": false,
+        "autoTrigger": "hover",
+        "interactions": {
+          "dialog_1": {
+            "id": "dialog_1",
+            "type": "dialog",
+            "text": "На земле лежит неприметная записка запачканная красными пятнами, кажется это похоже на следы от кетчупа.",
+            "choices": [
+              {
+                "type": "auto_trade",
+                "answer": "Подобрать записку.",
+                "state": [
+                  "cave_quest1_taked"
+                ],
+                "take": [
+                  "paper_cave0",
+                ]
+              },
+              {
+                "type": "exit",
+                "answer": "УБЕГАТЬ! ПАМАГИТЕ!"
+              }
+            ],
+            "conditions": []
+          }
+        },
+        "default_interaction_id": "dialog_1",
+        "conditions": [
+          {
+            "type": "world_state",
+            "not": [
+              "cave_quest1_taked"
+            ]
+          }
+        ],
+        "position": []
+      }
     }
   },
   "5": {

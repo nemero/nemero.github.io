@@ -4,6 +4,7 @@ var config = {
 	holdKeys: [], // shift, ctrl, alt
 	moveUi: true,
 	heroUi: false,
+	noteUi: false,
 	map_scale: 1, // 48px by default
 
 	level: {

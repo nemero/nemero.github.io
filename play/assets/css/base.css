@@ -21,6 +21,9 @@ html, body {
 .icon-battle0 {
 	background: url(../images/battle.png) center center/cover;
 }
+.icon-battle2 {
+	background: url(../images/battle2.png) center center/cover;
+}
 .icon-chel0 {
 	background: url(../images/chel.png) center center/cover;
 }
@@ -248,4 +251,29 @@ html, body {
 
 .pointer {
 	cursor: pointer;
+}
+
+.icon-player-up {
+	background: url(../images/players/player.png) center center/cover;
+}
+.icon-player-down {
+	background: url(../images/players/player-down.png) center center/cover;
+}
+.icon-player-left {
+	background: url(../images/players/player-left.png) center center/cover;
+}
+.icon-player-right {
+	background: url(../images/players/player-right.png) center center/cover;
+}
+.icon-player1-up {
+	background: url(../images/players/player1.png) center center/cover;
+}
+.icon-player1-down {
+	background: url(../images/players/player1-down.png) center center/cover;
+}
+.icon-player1-left {
+	background: url(../images/players/player1-left.png) center center/cover;
+}
+.icon-player1-right {
+	background: url(../images/players/player1-right.png) center center/cover;
 }

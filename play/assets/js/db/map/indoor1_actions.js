@@ -70,6 +70,28 @@ var db_map_indoor1_actions = {
                 "answer": "nada rest! (10 cash)",
                 "cost": 10,
                 "next": "dialog_2"
+              },
+              {
+                "type": "dialog",
+                "conditions": [
+                  {
+                    "type": "world_state",
+                    "not": [
+                      "cave_quest1_looked"
+                    ]
+                  },
+                  {
+                    "type": "items",
+                    "has": [
+                      "paper_cave0"
+                    ]
+                  }
+                ],
+                "answer": "Я тут свиток нашел, в пещере к западу от этого города, совсем не помню как там очутился, может вы поможете? ",
+                "state": [
+                  "cave_quest1_looked"
+                ],
+                "next": "quest_cave1_part1"
               }
             ]
           },
@@ -334,10 +356,54 @@ var db_map_indoor1_actions = {
                 ]
               }
             ]
+          },
+          "quest_cave1_part1": {
+            "id": "quest_cave1_part1",
+            "type": "dialog",
+            "text": "С неделю назад группа направлялась на разведку в город wastern и так же не вернулась, возможно этот свиток принадлежал этой группе, а может и нашей дивизии что еще хуже!",
+            "choices": [
+              {
+                "type": "dialog",
+                "answer": "Что? Почему хуже?",
+                "next": "quest_cave1_part2"
+              },
+              {
+                "type": "dialog",
+                "answer": "Что делать?",
+                "next": "quest_cave1_part2"
+              }
+            ],
+            "conditions": [
+              {
+                "type": "world_state",
+                "has": [
+                  "cave_quest1_looked"
+                ],
+                "not": [
+                  "cave_quest1_completed"
+                ]
+              }
+            ]
+          },
+          "quest_cave1_part2": {
+            "id": "quest_cave1_part2",
+            "type": "dialog",
+            "text": "Нужно сперва выяснить кому принадлежал этот свиток, сходи в администрацию города, там как раз набирают рекрутов, покажи им этот свиток и расскажи как тут очутился",
+            "choices": [
+              {
+                "type": "exit",
+                "answer": "PAKA!!!",
+                "state": [
+                  "cave_quest1_completed"
+                ],
+                "conditions": []
+              }
+            ]
           }
         },
         "default_interaction_id": "dialog_1",
-        "autoTrigger": "13"
+        "autoTrigger": "13",
+        "position": []
       }
     },
     "-23": {

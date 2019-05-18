@@ -22,6 +22,11 @@ Vue.component('characterBag', {
         return
       }
 
+      if (bag_item && bag_item.type == "note") {
+        // set note text && show ui note
+        config.noteUi = bag_item
+      }
+
       if (bag_item && bag_item.type == "weapon") {
         // if hero already weared to swap gear
         if (this.character.activeEquipment.weapon) {

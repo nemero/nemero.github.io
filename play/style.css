@@ -207,6 +207,7 @@ a:hover {
 	font-size: 70%;
 	color: #fff;
 	background-color: #393637 !important;
+	word-wrap: anywhere;
 }
 .ui-main-bag .game-icon {
 	width: 62px;
@@ -302,6 +303,7 @@ a:hover {
 	min-width: 100px;
 	text-shadow: 1px 0px 1px black;
 	color: #fff;
+	max-width: 80%;
 }
 .tooltip ul {
 	list-style: none;
@@ -626,7 +628,7 @@ a:hover {
 }
 
 
-.character-stats {
+.character-stats, .note-window {
 	left: 50%;
 	top: 5%;
 	z-index: 99;
@@ -688,6 +690,7 @@ a:hover {
 	max-width: 290px;
 	overflow: auto;
 	max-height: 260px;
+	background: rgba(54, 54, 54, .8);
 }
 .bag .game-icon, .seller .game-icon {
 	margin-bottom: 12px;
@@ -854,4 +857,21 @@ a:hover {
 	margin-right: 20px;
 	border-radius: 3px 3px 0 0;
 	border-bottom: none;
+}
+
+
+.note-window .note-box {
+    border: 1px solid #cecece;
+    padding: 10px 10px 40px 10px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 1px #000;
+    background: rgba(54, 54, 54, .8);
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+.note-window .button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }

@@ -146,7 +146,7 @@ var db_map_world1_actions = {
         "id": "enemies",
         "name": "Enemies",
         "icon": "icon-battle0",
-        "tile_icon": "icon-battle0",
+        "tile_icon": "icon-battle2",
         "cooldown": 20,
         "enemies": [
           "scorpion_small",

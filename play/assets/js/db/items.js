@@ -9,7 +9,7 @@ var db_items = {
     "type": "weapon",
     "quality": "poor",
     "class": "fists",
-    "price": 0,
+    "price": 1,
     "icon": "assets/images/fists.png"
   },
   "bow0": {
@@ -422,5 +422,15 @@ var db_items = {
     "intellect": 2,
     "price": 55,
     "stamina": 1
+  },
+  "paper_cave0": {
+    "id": "paper_cave0",
+    "name": "paper_cave0",
+    "type": "note",
+    "quality": "common",
+    "level": 1,
+    "icon": "assets/images/paper.png",
+    "text": "Их было слишком много, мы уже не могли сдерживать натиск противника, мы отступаем на север [часть текста почти не возможно разобрать...]. Нужно срочно покинуть остров, у нас мало времени, [...] оттянуть их к нам на север [запачканную кетчупом оставшуюся часть текста не возможно разобрать]",
+    "price": 0
   }
 }

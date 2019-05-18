@@ -73,7 +73,7 @@ Vue.component('activePlayer', {
     activecharacterClass: function () {
       let data = {}
       if (this.character.model) {
-        data[this.character.model] = true
+        data['icon-' + this.character.model + '-right'] = true
       } else {
         data['icon-player-right'] = true
       }

@@ -16,6 +16,7 @@
 		<div class="uiii">
 			<div class="ui-world">
 				<character-stats :character="config.characters[config.character[0]]"></character-stats>
+				<note-window :note="config.noteUi"></note-window>
 
 				<div class="ui-targets">
 					<character :character="config.characters[config.character[0]]"></character>
@@ -126,6 +127,7 @@
 
 	<script type="text/javascript" src="assets/js/config.js"></script>
 	<script type="text/javascript" src="assets/js/components/mainMenu.js"></script>
+	<script type="text/javascript" src="assets/js/components/noteWindow.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeEnemy.js"></script>
 	<script type="text/javascript" src="assets/js/components/activePlayer.js"></script>
 	<script type="text/javascript" src="assets/js/components/activeInteractions.js"></script>

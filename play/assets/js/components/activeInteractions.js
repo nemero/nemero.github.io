@@ -250,7 +250,7 @@ Vue.component('activeInteractions', {
           active_interactions.push(this.event.interactions[this.event.default_interaction_id])
         }
 
-        if (interaction.conditions && isTrueConditions(interaction.conditions)) {
+        if (this.event.default_interaction_id != interaction.id && interaction.conditions && isTrueConditions(interaction.conditions)) {
           active_interactions.push(interaction)
         }
       }

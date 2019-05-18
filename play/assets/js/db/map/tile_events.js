@@ -7,6 +7,13 @@ var db_tile_events = [
 		src: "assets/images/battle.png"
 	},
 	{
+		id: 'icon-battle2',
+		width: 48,
+		height: 48,
+		tileSize: [48, 48],
+		src: "assets/images/battle2.png"
+	},
+	{
 		id: 'icon-speak0',
 		width: 48,
 		height: 48,
