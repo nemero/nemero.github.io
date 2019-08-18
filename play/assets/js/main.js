@@ -184,6 +184,12 @@ function run() {
 		    window.addEventListener('keyup', this.keyUp);
 		    window.addEventListener('resize', this.onResize);
 		    this.onResize();
+
+		    // var anim = function(m) {
+		    // 	this.onResize()
+		    // };
+		    // refresh rate 2 per sec
+		    setInterval(this.onResize, 1000);
 		}
 	})
 }

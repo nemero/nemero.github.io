@@ -202,6 +202,7 @@ var config = {
 		abilities: db_abilities,
 		tileMaps: db_tile_maps,
 		tileEvents: db_tile_events,
+		tileAnimate: db_tile_animate,
 		factions: db_factions,
 
 		map: {
@@ -218,8 +219,9 @@ var config = {
 				height: 15,
 				width: 15,
 				default_tile: {
-					map_class: "tile-map5",
-					position: [11, 1],
+					id: "tile-map3_1_11",
+					map: "tile-map5",
+					offset: [11, 1],
 					size: [48, 48]
 				},
 				map: db_map_cave1,
@@ -231,8 +233,9 @@ var config = {
 				height: 15,
 				width: 15,
 				default_tile: {
-					map_class: "tile-map5",
-					position: [0, 8],
+					id: "tile-map5_8_0",
+					map: "tile-map5",
+					offset: [0, 8],
 					size: [48, 48]
 				},
 				map: db_map_sewer1,
@@ -244,8 +247,9 @@ var config = {
 				height: 15,
 				width: 15,
 				default_tile: {
-					map_class: "tile-map3",
-					position: [0, 0],
+					id: "tile-map3_0_0",
+					map: "tile-map3",
+					offset: [0, 0],
 					size: [48, 48]
 				},
 				map: db_map_world1,
@@ -257,8 +261,9 @@ var config = {
 				height: 15,
 				width: 15,
 				default_tile: {
-					map_class: "tile-map6",
-					position: [6, 40],
+					id: "tile-map6_40_6",
+					map: "tile-map6",
+					offset: [6, 40],
 					size: [48, 48]
 				},
 				map: db_map_city1,
@@ -270,8 +275,9 @@ var config = {
 				height: 15,
 				width: 15,
 				default_tile: {
-					map_class: "tile-map6",
-					position: [6, 40],
+					id: "tile-map6_40_6",
+					map: "tile-map6",
+					offset: [6, 40],
 					size: [48, 48]
 				},
 				map: db_map_indoor1,

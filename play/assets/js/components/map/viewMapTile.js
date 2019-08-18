@@ -36,6 +36,54 @@ Vue.component('viewMapTile', {
         }
       }
     },
+    _animated: function (tile) {
+      let canvas = document.getElementById("map");
+      let ctx = canvas.getContext('2d');
+      let width = config.db.map.tileSize[0]
+      let height = config.db.map.tileSize[1]
+      let scale = config.map_scale
+      let list_animate = config.db.tileAnimate
+
+      // if animated return next tile
+      // if (tile.id == "tile-map5_4_4" || tile.id == "tile-map5_4_5" || tile.id == "tile-map5_4_6") {
+      //   console.log(tile.id, list_animate[tile.id]);
+      // }
+      
+      if (list_animate[tile.id]) {
+        let tile_anim = list_animate[tile.id]
+
+        if (tile_anim["type"] == "random") {
+          let offset = Math.trunc(Math.random() * tile_anim.offset.length)
+
+          offset_x = tile_anim.offset[offset][0]*config.db.map.tileSize[0]
+          offset_y = tile_anim.offset[offset][1]*config.db.map.tileSize[1]  
+        }
+
+        if (tile_anim["type"] == "sequence") {
+          offset_x = tile_anim['offset'][0]*config.db.map.tileSize[0]
+          offset_y = tile_anim['offset'][1]*config.db.map.tileSize[1]
+
+          // update tile
+          tile.id = tile_anim.map + '_' + tile_anim.offset[1] + '_' + tile_anim.offset[0]
+          //console.log(tile.id)
+          tile.map = tile_anim.map
+          tile.offset = tile_anim.offset
+        }
+
+        if (!document.getElementById(tile_anim.map)) {
+          console.log('missed texture', width, height, tile_anim.map)
+        } else {
+          //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
+          ctx.drawImage(document.getElementById(tile_anim.map),
+              offset_x, offset_y, width, height,
+              this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
+          );
+        }
+        return true
+      }
+
+      return false
+    },
     render: function () {
       let canvas = document.getElementById("map");
       let ctx = canvas.getContext('2d');
@@ -50,19 +98,21 @@ Vue.component('viewMapTile', {
         let offset_x = 0
         let offset_y = 0
 
-        if (tile['position']) {
-          offset_x = tile['position'][0]*config.db.map.tileSize[0]
-          offset_y = tile['position'][1]*config.db.map.tileSize[1]  
-        }
+        if (!this._animated(tile)) {
+          if (tile['offset']) {
+            offset_x = tile['offset'][0]*config.db.map.tileSize[0]
+            offset_y = tile['offset'][1]*config.db.map.tileSize[1]  
+          }
 
-        if (!document.getElementById(tile.map_class)) {
-          console.log('missed texture', width, height, tile.map_class)
-        } else {
-          //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
-          ctx.drawImage(document.getElementById(tile.map_class),
-              offset_x, offset_y, width, height,
-              this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
-          );
+          if (!document.getElementById(tile.map)) {
+            console.log('missed texture', width, height, tile.map)
+          } else {
+            //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
+            ctx.drawImage(document.getElementById(tile.map),
+                offset_x, offset_y, width, height,
+                this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
+            );
+          }
         }
       }
 
@@ -77,24 +127,26 @@ Vue.component('viewMapTile', {
           continue
         }
 
-        if (tile['offset']) {
-          offset_x = tile['offset'][0]*config.db.map.tileSize[0]
-          offset_y = tile['offset'][1]*config.db.map.tileSize[1]  
+        if (!this._animated(tile)) {
+          if (tile['offset']) {
+            offset_x = tile['offset'][0]*config.db.map.tileSize[0]
+            offset_y = tile['offset'][1]*config.db.map.tileSize[1]  
+          }
+          
+          if (!document.getElementById(tile.map)) {
+            console.log('missed texture', width, height, tile.map)
+            continue
+          }
+          //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
+          ctx.drawImage(document.getElementById(tile.map),
+              offset_x, offset_y, width, height,
+              this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
+          );
+          //canvas.style.width = width*6 + 'px';
+          //canvas.style.height = height*3 + 'px';
+          //scaleCanvas(canvas, ctx, width*2, height*2)
+          //ctx.drawImage(document.getElementById(tile.map), 0, 0);
         }
-        
-        if (!document.getElementById(tile.map)) {
-          console.log('missed texture', width, height, tile.map)
-          continue
-        }
-        //console.log(offset_x, offset_y, width, height, document.getElementById(tile.map), canvas, ctx)
-        ctx.drawImage(document.getElementById(tile.map),
-            offset_x, offset_y, width, height,
-            this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
-        );
-        //canvas.style.width = width*6 + 'px';
-        //canvas.style.height = height*3 + 'px';
-        //scaleCanvas(canvas, ctx, width*2, height*2)
-        //ctx.drawImage(document.getElementById(tile.map), 0, 0);
       }
 
       // draw tile events
@@ -169,19 +221,21 @@ Vue.component('viewMapTile', {
         let offset_x = 0
         let offset_y = 0
 
-        if (tile['offset']) {
-          offset_x = tile['offset'][0]*config.db.map.tileSize[0]
-          offset_y = tile['offset'][1]*config.db.map.tileSize[1]  
+        if (!this._animated(tile)) {
+          if (tile['offset']) {
+            offset_x = tile['offset'][0]*config.db.map.tileSize[0]
+            offset_y = tile['offset'][1]*config.db.map.tileSize[1]  
+          }
+          
+          if (!document.getElementById(tile.map)) {
+            console.log('missed texture', width, height, tile.map)
+            continue
+          }
+          ctx.drawImage(document.getElementById(tile.map),
+              offset_x, offset_y, width, height,
+              this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
+          );
         }
-        
-        if (!document.getElementById(tile.map)) {
-          console.log('missed texture', width, height, tile.map)
-          continue
-        }
-        ctx.drawImage(document.getElementById(tile.map),
-            offset_x, offset_y, width, height,
-            this.col_id*width*scale, this.row_id*height*scale, width*scale, height*scale
-        );
       }
     },
     movePlayer: function () {
