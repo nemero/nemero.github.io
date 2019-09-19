@@ -3,6 +3,7 @@ var config = {
 	width: 13,
 	height: 12,
 	layers: 15,
+	ip_server: "//192.168.159.128:8000",
 
 	activeTab: 'events', // 'tiles',
 	activeTile: null,

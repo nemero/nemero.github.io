@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>play</title>
+	<meta name="viewport" content="minimal-ui">
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/base.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/map-editor.css">
+</head>
+<body onload="run();">
+	<div id="play" class="play" :class="getTheme">
+		{{ config.holdKeys }}
+		<input type="button" value="Change Theme" @click="changeTheme"/>
+		<input type="input" v-model="config.ip_server"/>
+		
+		<div class="ui">
+			<div class="ui-left">
+				<div class="head-nav flex">
+					<ul class="ul-tabs">
+						<li @click="config.activeTab = 'tiles'" :class="{ active : config.activeTab == 'tiles'}">
+							Tiles 
+						</li>
+						<li @click="config.activeTab = 'events'" :class="{ active : config.activeTab == 'events'}">
+							Events
+						</li>
+						<li @click="config.activeTab = 'battle_zone'" :class="{ active : config.activeTab == 'battle_zone'}">
+							BattleZ
+						</li>
+						<li @click="config.activeTab = 'enemies'" :class="{ active : config.activeTab == 'enemies'}">
+							Enemies
+						</li>
+						<li @click="config.activeTab = 'items'" :class="{ active : config.activeTab == 'items'}">
+							Items
+						</li>
+						<li @click="config.activeTab = 'abilities'" :class="{ active : config.activeTab == 'abilities'}">
+							Abilities
+						</li>
+					</ul>
+					<div class="field-row">
+						<label>Active Tile:</label>
+						<active-brush-tile :tile="config.activeTile"></active-brush-tile>
+					</div>
+				</div>
+
+				<div v-show="config.activeTab == 'tiles'" class="section">
+					<div class="tiles-map">
+						<div class="field-row">
+							<label>Generating Tiles: </label>
+							<tiles-map :maps="config.db.tileMaps" :config="config"></tiles-map>
+							<active-tile-map :map="config.activeTileMap" v-model="config.activeLayer" :config="config"></active-tile-map>
+						</div>
+					</div>
+
+					Select Tile:
+					<div class="tile-list">
+						<tile v-for="tile in config.tiles" :tile="tile" :config="config"></tile>
+					</div>
+
+					<div class="flex flex-top">
+						Config Tiles:
+						<textarea style="width: 300px;" rows="20">{{ config.db.config_tiles }}</textarea>
+					</div>
+				</div>
+				<div v-show="config.activeTab == 'enemies'" class="section">
+					<h4>Enemies: </h4>
+					<div class="field-row">
+						<enemies :enemies="config.db.enemies"></enemies>
+					</div>
+				</div>
+				<div v-show="config.activeTab == 'items'" class="section">
+					<h4>Items: </h4>
+					<div class="field-row">
+						<items :items="config.db.items"></items>
+					</div>
+				</div>
+				<div v-show="config.activeTab == 'abilities'" class="section">
+					<h4>Abilities: </h4>
+					<div class="field-row">
+						<abilities :abilities="config.db.abilities"></abilities>
+					</div>
+				</div>
+				<div v-show="config.activeTab == 'events'" class="section">
+					<div class="field-row">
+				        <label>Select Layer type: </label>
+				      	<select v-model="config.activeLayerEvent">
+				          	<option value="" selected="selected">---</option>
+				          	<option v-for="layer in config.db.eventTemplates" :value="layer">{{ layer.id }}</option>
+				        </select>
+				    </div>
+
+					<div class="tiles-map">
+						<div class="field-row">
+							<label>Event Icon: </label>
+							<input type="text" v-model="config.activeLayerEvent.icon" />
+						</div>
+						<span class="layer-event" style="zoom: 3; border: 0.2px solid #cecece;" :class="config.activeLayerEvent.icon"></span>
+					</div>
+
+					<div class="tiles-map">
+						<div class="field-row">
+							<label>Tile Icon: </label>
+							<input type="text" v-model="config.activeLayerEvent.tile_icon" />
+						</div>
+						<span class="layer-event" style="zoom: 3; border: 0.2px solid #cecece;" :class="config.activeLayerEvent.tile_icon"></span>
+					</div>
+
+					<div class="field-row">
+						<label>Is Hidden: </label>
+						<select v-model="config.activeLayerEvent.hidden">
+							<option value="" selected="selected">---</option>
+							<option value="true">True</option>
+							<option value="false">False</option>
+						</select>
+					</div>
+
+					<div class="field-row">
+						<label>Auto Trigger Event : </label>
+						<select v-model="config.activeLayerEvent.autoTrigger">
+							<option value="" selected="selected">---</option>
+							<option value="false">false</option>
+							<option value="hover">hover</option>
+							<option value="13">Enter</option>
+						</select>
+					</div>
+
+					<event-player :event="config.activeLayerEvent" :config="config"></event-player>
+					<event-enemies :enemy="config.activeLayerEvent" :config="config"></event-enemies>
+					<event-teleport :event="config.activeLayerEvent"></event-teleport>
+					<event-unlock :event="config.activeLayerEvent" :config="config"></event-unlock>
+					<event-loot-box :event="config.activeLayerEvent" :config="config"></event-loot-box>
+				</div>
+
+				<div v-show="config.activeTab == 'battle_zone'" class="section">
+					<h4>Battle Zone: </h4>
+					<div class="field-row">
+						<battle-zone-default :config="config"></battle-zone-default>
+					</div>
+					<div class="field-row">
+						<battle-zone :config="config"></battle-zone>
+					</div>
+				</div>
+			</div>
+
+			<div class="ui-right" v-show="config.activeTab == 'tiles' || config.activeTab == 'events' || config.activeTab == 'battle_zone'">
+				<div>
+					<!-- <div class="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">Start dragging here</div> -->
+  					<!-- <div>X: {{x}}, Y: {{y}}</div> -->
+					Layer:
+					<select v-model="config.activeLayer">
+						<option value="" selected="selected">Custom</option>
+						<option v-for="layer in config.layers" :value="layer">{{ layer }}</option>
+					</select>
+
+					Dimensions:
+					<input type="number" v-model.number="config.width" name="" value="config.width" />
+					<input type="number" v-model.number="config.height" name="" value="config.height" />
+
+					Offset: 
+					<input type="number" v-model.number="config.mapOffset[0]" name="" value="config.mapOffset[0]" />
+					<input type="number" v-model.number="config.mapOffset[1]" name="" value="config.mapOffset[1]" />
+
+					<view-map-clear></view-map-clear>
+					<choose-saved-map :config="config"></choose-saved-map>
+					<input type="checkbox" v-model="config.eraseMode" id="erase-mode" /> <label for="erase-mode">Erase Mode</label>
+				</div>
+				<div @mousedown="startDrag" @mousemove="doDrag">
+					<view-map id="map" class="map" :config="config"></view-map>
+				</div>
+			</div>
+		</div>
+
+		<div class="map-config" v-show="config.activeTab == 'tiles' || config.activeTab == 'events' || config.activeTab == 'battle_zone'">
+			<div>
+				Map:
+				<textarea rows="20">{{ config.map }}</textarea>
+			</div>
+			<div>
+				Layer Events:
+				<textarea rows="20">{{ config.layerEvents }}</textarea>
+			</div>
+			<div>
+				Layer Event:
+				<textarea rows="20">{{ config.activeLayerEvent }}</textarea>
+			</div>
+			<div>
+				Battle Zone:
+				<textarea rows="20">{{ config.battleZone }}</textarea>
+			</div>
+			<div>
+				Battle Cell:
+				<textarea rows="20">{{ config.activeBattleCell }}</textarea>
+			</div>
+		</div>
+		<div class="map-config">
+			<div>
+				General config (you can copy/past config here for load/save states):
+				<config-textarea :db="config.db"></config-textarea>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- development version, includes helpful console warnings -->
+	<script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- <script src="offline-vue.js"></script> -->
+
+	<!-- Map Data -->
+	<script type="text/javascript" src="assets/js/db/map/tile_maps.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/config_tiles.js"></script>
+
+	<script type="text/javascript" src="assets/js/db/map/indoor1.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/indoor1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/indoor1_battle.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/city1.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/city1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/city1_battle.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/cave1.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/cave1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/cave1_battle.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/world1.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/world1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/world1_battle.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/sewer1.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/sewer1_actions.js"></script>
+	<script type="text/javascript" src="assets/js/db/map/sewer1_battle.js"></script>
+
+	<script type="text/javascript" src="assets/js/db/map/event_templates.js"></script>
+
+	<script type="text/javascript" src="assets/js/db/enemies.js"></script>
+	<script type="text/javascript" src="assets/js/db/items.js"></script>
+	<script type="text/javascript" src="assets/js/db/item/types.js"></script>
+	<script type="text/javascript" src="assets/js/db/item/qualities.js"></script>
+	<script type="text/javascript" src="assets/js/db/item/classes.js"></script>
+	<script type="text/javascript" src="assets/js/db/abilities.js"></script>
+	<script type="text/javascript" src="assets/js/db/factions.js"></script>
+	<script type="text/javascript" src="assets/js/db/loot.js"></script>
+
+	<script type="text/javascript" src="assets/js/map/config.js"></script>
+	<script type="text/javascript" src="assets/js/helper/ajax.js"></script>
+
+	<!-- Layer Events  -->
+	<!-- <script type="text/javascript" src="assets/js/components/map/editor/events/triggers/trigger.js"></script> -->
+	<script type="text/javascript" src="assets/js/components/map/editor/events/teleport.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/unlock.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/lootBox.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/enemies.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/player.js"></script>
+
+	<!-- Unlock Triggers  -->
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/hideEvent.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/showEvent.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/triggers/replaceTile.js"></script>
+
+	<!-- Event Conditions -->
+	<script type="text/javascript" src="assets/js/components/map/editor/events/conditions.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/conditions/existTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/conditions/worldState.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/events/conditions/items.js"></script>
+
+	<!-- Other -->
+	<script type="text/javascript" src="assets/js/components/map/editor/activeBrushTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/activeTileMap.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/tile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/tileMap.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/tilesMap.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMap.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapRow.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapClear.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTile.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileLayer.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileLayersInfo.js"></script>
+
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileEventsInfo.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/viewMapTileEvent.js"></script>
+
+	<script type="text/javascript" src="assets/js/components/map/editor/chooseSavedMap.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/enemies.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/items.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/abilities.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/battleZone.js"></script>
+	<script type="text/javascript" src="assets/js/components/map/editor/battleZoneDefault.js"></script>
+
+	<script type="text/javascript">
+		Vue.component('configTextarea', {
+		  props: ['db'],
+		  template: ['<div class="config">',
+		      	'<div class="flex">',
+		      		'<textarea rows="5" cols="100" v-model="db_config"></textarea>',
+		      	'</div>',
+		    '</div>'
+		  ].join(""),
+		  computed: {
+		  	db_config: {
+		  		get: function () {
+		  			return JSON.stringify(config.db)
+		  		},
+		  		set: function (text) {
+		  			Vue.set(config, "db", JSON.parse(text))
+		  			//return 
+		  		}
+		  	}
+		  }
+		})
+	</script>
+
+	<script type="text/javascript" src="assets/js/helper/tile.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>

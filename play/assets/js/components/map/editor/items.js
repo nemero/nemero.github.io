@@ -23,9 +23,13 @@ Vue.component('items', {
 
         '<active-item :item="items[item_id]" :items="items" v-if="items[item_id]"></active-item>',
 
-      	'<div class="flex">',
-      		'<textarea rows="5" cols="30">{{ items }}</textarea>',
-      	'</div>',
+      	'<div class="flex"><div>',
+          '<form :action="getIpServer" method="POST" @submit.prevent="onSubmit">',
+            '<textarea rows="5" cols="30" name="items">{{ items }}</textarea>',
+            '<br /><input type="submit" value="Save Items"/>',
+          '</form>',
+          '<input type="button" value="Load Items" @click="load()"/>',
+      	'</div></div>',
     '</div>'
   ].join(""),
   methods: {
@@ -43,8 +47,22 @@ Vue.component('items', {
       if (this.item_id) {
         Vue.delete(this.items, this.item_id)
       }
+    },
+    onSubmit: function () {
+      ajaxSubmit("POST", this.getIpServer, JSON.stringify(this.items), null)
+    },
+    load: function () {
+      ajaxSubmit("GET", this.getIpServer, null, function(data) {
+        console.log(JSON.parse(data))
+        Vue.set(config.db, "items", JSON.parse(data)) 
+      })
     }
   },
+  computed: {
+    getIpServer: function () {
+      return config.ip_server + '/item/'
+    }
+  }
 })
 
 Vue.component('activeItem', {
