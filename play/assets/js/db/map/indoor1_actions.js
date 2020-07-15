@@ -156,7 +156,8 @@ var db_map_indoor1_actions = {
                   "quest_1_progress"
                 ],
                 "answer": "HARASHO!!!!",
-                "conditions": []
+                "conditions": [],
+                "next": "quest_1_progress"
               },
               {
                 "type": "exit",
